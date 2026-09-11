@@ -13,6 +13,11 @@ Trooth resolves requests to verified sources, fetches real-time data, and wraps 
 - **Provider Information:** How data owners list feeds, get metered, and earn revenue through the pipe.
 - **Transparent Methodology:** Mathematical definitions of freshness lag, revision behavior, correction latency, completeness, schema stability, and internal consistency.
 
+## Live Public Site
+
+The site is published live at:
+**[https://alexchouck-hash.github.io/trooth-site/](https://alexchouck-hash.github.io/trooth-site/)**
+
 ## Local Development
 
 Prerequisites: Node.js 20+ or 22+.
@@ -27,13 +32,17 @@ npm run dev
 
 Visit `http://localhost:4321` in your browser.
 
-## Building for Production
+## Building and Deploying
 
 ```bash
+# Build static output to ./dist/
 npm run build
+
+# Deploy to GitHub Pages (gh-pages branch)
+npm run deploy
 ```
 
-Static output is compiled to `./dist/` and ready for global edge deployment on Cloudflare Pages, GitHub Pages, or Vercel.
+Static output is compiled to `./dist/` and served live via GitHub Pages.
 
 ## Design and Style Principles
 
