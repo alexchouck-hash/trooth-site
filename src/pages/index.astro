@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { p } from '../utils/paths';
 ---
 
 <Layout title="The Single Data Connector & Provenance Pipe for Agents" activeNav="home">
@@ -23,10 +24,10 @@ import Layout from '../layouts/Layout.astro';
     </p>
 
     <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-      <a href="/scorecards" class="btn btn-primary">
+      <a href={p('/scorecards')} class="btn btn-primary">
         Explore Public Scorecards &rarr;
       </a>
-      <a href="/docs" class="btn btn-secondary">
+      <a href={p('/docs')} class="btn btn-secondary">
         Read Documentation
       </a>
       <a href="https://github.com/alexchouck-hash/trooth-site" target="_blank" rel="noopener" class="btn btn-secondary">
@@ -337,13 +338,13 @@ import Layout from '../layouts/Layout.astro';
           Live mechanical benchmarks computed across 5 initial free and public domain feeds:
         </p>
       </div>
-      <a href="/scorecards" style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem;">
+      <a href={p('/scorecards')} style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem;">
         View all source scorecards &rarr;
       </a>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
-      <a href="/scorecards/nws" style="text-decoration: none; color: inherit;">
+      <a href={p('/scorecards/nws')} style="text-decoration: none; color: inherit;">
         <div class="card" style="height: 100%;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
             <span class="badge badge-green">Primary</span>
@@ -370,7 +371,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </a>
 
-      <a href="/scorecards/open-meteo" style="text-decoration: none; color: inherit;">
+      <a href={p('/scorecards/open-meteo')} style="text-decoration: none; color: inherit;">
         <div class="card" style="height: 100%;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
             <span class="badge badge-amber">Derivative</span>
@@ -397,7 +398,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </a>
 
-      <a href="/scorecards/usgs-earthquake" style="text-decoration: none; color: inherit;">
+      <a href={p('/scorecards/usgs-earthquake')} style="text-decoration: none; color: inherit;">
         <div class="card" style="height: 100%;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
             <span class="badge badge-green">Primary</span>
@@ -433,10 +434,10 @@ import Layout from '../layouts/Layout.astro';
       Get your first signed provenance envelope in under 5 minutes with our MCP and REST quickstart guides.
     </p>
     <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-      <a href="/docs" class="btn btn-primary">
+      <a href={p('/docs')} class="btn btn-primary">
         Start 5-Minute Quickstart &rarr;
       </a>
-      <a href="/providers" class="btn btn-secondary">
+      <a href={p('/providers')} class="btn btn-secondary">
         List a Feed (Providers)
       </a>
     </div>

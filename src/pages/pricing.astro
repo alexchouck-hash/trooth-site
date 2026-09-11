@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { p } from '../utils/paths';
 ---
 
 <Layout title="Pricing & Quotas" activeNav="pricing">
@@ -47,7 +48,7 @@ import Layout from '../layouts/Layout.astro';
           </ul>
         </div>
 
-        <a href="/docs" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+        <a href={p('/docs')} class="btn btn-secondary" style="width: 100%; justify-content: center;">
           Start with Free Tier
         </a>
       </div>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { p } from '../../utils/paths';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -26,7 +27,7 @@ const { dimensions, accuracy, scoring_window } = scorecard;
 <Layout title={`${scorecard.source_name} Scorecard`} activeNav="scorecards">
   <!-- Breadcrumb -->
   <div style="margin-bottom: 1.5rem; font-size: 0.88rem; color: var(--text-subtle);">
-    <a href="/scorecards" style="color: var(--text-muted); text-decoration: none;">Scorecards</a>
+    <a href={p('/scorecards')} style="color: var(--text-muted); text-decoration: none;">Scorecards</a>
     <span style="margin: 0 0.5rem;">/</span>
     <span style="color: var(--primary);">{scorecard.source_id}</span>
   </div>
@@ -44,7 +45,7 @@ const { dimensions, accuracy, scoring_window } = scorecard;
       </div>
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         <span class="badge badge-blue">Methodology v{scorecard.method_version}</span>
-        <a href={`/scorecards/${scorecard.source_id}.json`} target="_blank" class="badge" style="text-decoration: none; color: var(--text-main);">
+        <a href={p(`/scorecards/${scorecard.source_id}.json`)} target="_blank" class="badge" style="text-decoration: none; color: var(--text-main);">
           Raw JSON &nearr;
         </a>
       </div>

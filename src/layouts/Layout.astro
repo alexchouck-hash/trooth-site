@@ -1,4 +1,6 @@
 ---
+import { p } from '../utils/paths';
+
 interface Props {
   title: string;
   description?: string;
@@ -365,20 +367,20 @@ const {
   <body>
     <header>
       <div class="nav-container">
-        <a href="/" class="brand">
+        <a href={p('/')} class="brand">
           <div class="brand-icon">T</div>
           Trooth
           <span class="badge-tag">Benchmark v0</span>
         </a>
         <nav>
-          <a href="/" class={activeNav === "home" ? "active" : ""}>Overview</a>
-          <a href="/scorecards" class={activeNav === "scorecards" ? "active" : ""}>Scorecards</a>
-          <a href="/method" class={activeNav === "method" ? "active" : ""}>Methodology</a>
-          <a href="/docs" class={activeNav === "docs" ? "active" : ""}>Docs</a>
-          <a href="/providers" class={activeNav === "providers" ? "active" : ""}>Providers</a>
-          <a href="/pricing" class={activeNav === "pricing" ? "active" : ""}>Pricing</a>
-          <a href="/status" class={activeNav === "status" ? "active" : ""}>Status</a>
-          <a href="/docs" class="nav-cta">Quickstart</a>
+          <a href={p('/')} class={activeNav === "home" ? "active" : ""}>Overview</a>
+          <a href={p('/scorecards')} class={activeNav === "scorecards" ? "active" : ""}>Scorecards</a>
+          <a href={p('/method')} class={activeNav === "method" ? "active" : ""}>Methodology</a>
+          <a href={p('/docs')} class={activeNav === "docs" ? "active" : ""}>Docs</a>
+          <a href={p('/providers')} class={activeNav === "providers" ? "active" : ""}>Providers</a>
+          <a href={p('/pricing')} class={activeNav === "pricing" ? "active" : ""}>Pricing</a>
+          <a href={p('/status')} class={activeNav === "status" ? "active" : ""}>Status</a>
+          <a href={p('/docs')} class="nav-cta">Quickstart</a>
         </nav>
       </div>
     </header>
@@ -405,32 +407,32 @@ const {
         <div class="footer-column">
           <h4>Benchmark</h4>
           <ul>
-            <li><a href="/scorecards">Public Scorecards</a></li>
-            <li><a href="/method">Scoring Methodology</a></li>
-            <li><a href="/status">System Status</a></li>
-            <li><a href="/scorecards/nws">NWS Weather Card</a></li>
-            <li><a href="/scorecards/usgs-earthquake">USGS Seismic Card</a></li>
+            <li><a href={p('/scorecards')}>Public Scorecards</a></li>
+            <li><a href={p('/method')}>Scoring Methodology</a></li>
+            <li><a href={p('/status')}>System Status</a></li>
+            <li><a href={p('/scorecards/nws')}>NWS Weather Card</a></li>
+            <li><a href={p('/scorecards/usgs-earthquake')}>USGS Seismic Card</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h4>Developers</h4>
           <ul>
-            <li><a href="/docs">Quickstart (5 Min)</a></li>
-            <li><a href="/docs#mcp">MCP Installation</a></li>
-            <li><a href="/docs#rest">REST Endpoints</a></li>
-            <li><a href="/pricing">Pricing & Quotas</a></li>
-            <li><a href="/roadmap">Project Roadmap</a></li>
+            <li><a href={p('/docs')}>Quickstart (5 Min)</a></li>
+            <li><a href={p('/docs#mcp')}>MCP Installation</a></li>
+            <li><a href={p('/docs#rest')}>REST Endpoints</a></li>
+            <li><a href={p('/pricing')}>Pricing & Quotas</a></li>
+            <li><a href={p('/roadmap')}>Project Roadmap</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h4>Ecosystem</h4>
           <ul>
-            <li><a href="/providers">List Your Feed</a></li>
+            <li><a href={p('/providers')}>List Your Feed</a></li>
             <li><a href="https://github.com/alexchouck-hash/trooth-site" target="_blank" rel="noopener">GitHub Repository</a></li>
-            <li><a href="/method#anchor">The Anchor Rule</a></li>
-            <li><a href="/docs#envelope">Envelope Schema</a></li>
+            <li><a href={p('/method#anchor')}>The Anchor Rule</a></li>
+            <li><a href={p('/docs#envelope')}>Envelope Schema</a></li>
           </ul>
         </div>
       </div>
@@ -438,8 +440,8 @@ const {
       <div class="footer-bottom">
         <div>&copy; 2026 Alex Houck / Trooth Contributors. Open source under Apache-2.0.</div>
         <div style="display: flex; gap: 1.5rem;">
-          <a href="/method" style="color: var(--text-subtle); text-decoration: none;">Methodology v0.1</a>
-          <a href="/pricing" style="color: var(--text-subtle); text-decoration: none;">$50/mo Cap Rule</a>
+          <a href={p('/method')} style="color: var(--text-subtle); text-decoration: none;">Methodology v0.1</a>
+          <a href={p('/pricing')} style="color: var(--text-subtle); text-decoration: none;">$50/mo Cap Rule</a>
           <a href="https://github.com/alexchouck-hash/trooth-site" style="color: var(--text-subtle); text-decoration: none;">Source Code</a>
         </div>
       </div>
