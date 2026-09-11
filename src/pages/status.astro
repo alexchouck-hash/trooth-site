@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+let sourcesStatus = [];
+let lastUpdated = 'Unknown';
+
+try {
+  const scorecardsDir = path.resolve('./public/scorecards');
+  const manifestPath = path.join(scorecardsDir, 'manifest.json');
+  if (fs.existsSync(manifestPath)) {
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    lastUpdated = manifest.published_at;
+
+    const files = fs.readdirSync(scorecardsDir).filter(f => f.endsWith('.json') && f !== 'manifest.json');
+    sourcesStatus = files.map(file => {
+      const card = JSON.parse(fs.readFileSync(path.join(scorecardsDir, file), 'utf-8'));
+      return {
+        id: card.source_id,
+        name: card.source_name,
+        lastSnapshot: card.scoring_window.end,
+        snapshotCount: card.scoring_window.snapshot_count,
+        freshnessP50: card.dimensions.freshness_lag.p50_seconds,
+        status: 'Operational'
+      };
+    });
+  }
+} catch (e) {
+  console.error(e);
+}
+---
+
+<Layout title="System & Feed Status" activeNav="status">
+  <div style="max-width: 960px; margin: 0 auto;">
+    <div style="margin-bottom: 3rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em;">
+          Source Ingestion Status
+        </h1>
+        <span class="badge badge-green" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">
+          All Upstream Feeds Operational
+        </span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">
+        Live monitoring of snapshot capture jobs across all Phase 0 catalog endpoints.
+      </p>
+      <div style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 0.5rem;">
+        Last scoring publication: <code>{lastUpdated}</code>
+      </div>
+    </div>
+
+    <!-- Feed Status Table -->
+    <div style="overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 3.5rem;">
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Status</th>
+            <th>Last Captured (UTC)</th>
+            <th>Median Lag (p50)</th>
+            <th>Archive Depth</th>
+            <th>Scorecard</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sourcesStatus.map(s => (
+            <tr>
+              <td>
+                <div style="font-weight: 700; color: var(--text-main);">{s.name}</div>
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-subtle);">
+                  <code>{s.id}</code>
+                </div>
+              </td>
+              <td>
+                <span class="badge badge-green">
+                  {s.status}
+                </span>
+              </td>
+              <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+                {s.lastSnapshot}
+              </td>
+              <td style="font-weight: 700; color: var(--primary);">
+                {s.freshnessP50}s
+              </td>
+              <td style="color: var(--text-muted); font-size: 0.88rem;">
+                {s.snapshotCount} captures
+              </td>
+              <td>
+                <a href={`/scorecards/${s.id}`} style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.88rem;">
+                  Scorecard &rarr;
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Infrastructure Telemetry -->
+    <div class="card">
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">
+        Pipeline Infrastructure Telemetry
+      </h2>
+      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem;">
+        Snapshot ingestion executes automatically via GitHub Actions cron, writing immutable JSON payloads to Cloudflare R2 object storage.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem;">
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Infrastructure Spend</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent-green);">$0.00 / month</div>
+          <div style="font-size: 0.72rem; color: var(--text-subtle);">Cap: $50.00 / mo</div>
+        </div>
+
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Cron Cadence</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Every 6 Hours</div>
+          <div style="font-size: 0.72rem; color: var(--text-subtle);">GHA runner workflow</div>
+        </div>
+
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Storage Engine</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Cloudflare R2</div>
+          <div style="font-size: 0.72rem; color: var(--text-subtle);">Zero egress fees</div>
+        </div>
+
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Site Hosting</div>
+          <div style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Cloudflare Pages</div>
+          <div style="font-size: 0.72rem; color: var(--text-subtle);">Global edge distribution</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

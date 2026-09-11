@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Scoring Methodology v0.1" activeNav="method">
+  <div style="max-width: 840px; margin: 0 auto;">
+    <div style="margin-bottom: 3rem;">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em;">
+          Scoring Methodology
+        </h1>
+        <span class="badge badge-blue">Version 0.1</span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
+        How Trooth evaluates data feeds across six objective dimensions and computes anchored accuracy. Open, mechanical, and 100% reproducible.
+      </p>
+    </div>
+
+    <!-- Core Principles -->
+    <section style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--text-main);">
+        Core Principles
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.35rem;">
+            1. Mechanical Computation
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Every metric is calculated by software executing against immutable snapshot archives. There are no editorial meetings, no subjective star ratings, and no manual overrides (CLAUDE.md Rule H2).
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.35rem;">
+            2. Zero Sponsored Scores
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Scorecard integrity is the core product. Providers cannot pay to boost scores, purchase badges, or conceal unfavorable metrics.
+          </p>
+        </div>
+
+        <div class="card" id="anchor">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.35rem;">
+            3. Anchored Accuracy (Rule H1)
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Accuracy is never published without citing an authoritative, independent ground-truth reference on the exact same card. If no anchor exists, accuracy is omitted. Truth is never claimed.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.35rem;">
+            4. Full Reproducibility
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Given the same raw snapshot inputs and the published method version stamp, any external third party can run <code>jobs/score.py</code> and produce byte-identical JSON scorecards.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timestamps and Lag -->
+    <section style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-main);">
+        Timestamps and Reference Frames
+      </h2>
+      <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.25rem;">
+        Meaningful freshness scoring requires isolating Trooth's network clock from the upstream source event timestamp:
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <li>
+          <strong style="color: var(--text-main);">Capture Time (<code>captured_at</code>):</strong> The wall-clock UTC time according to Trooth when the HTTP fetch was issued.
+        </li>
+        <li>
+          <strong style="color: var(--text-main);">Source Event Timestamp (<code>source_timestamp</code>):</strong> The timestamp asserted by the upstream data provider within the payload representing when the observation occurred.
+        </li>
+      </ul>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
+        Every source in <code>catalog/sources/&lt;id&gt;.yaml</code> declares a <code>freshness_field</code> identifying the JSON path to this timestamp. Freshness lag is then computed as:
+      </p>
+      <pre><code>lag_seconds = max(0, captured_at - source_timestamp)</code></pre>
+    </section>
+
+    <!-- The Six Dimensions in Detail -->
+    <section style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main);">
+        The Six Evaluated Dimensions
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            Dimension 1: Freshness Lag
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+            Measures real-world ingest latency. Reported as p50 (median) and p95 (tail risk) percentiles across the snapshot window:
+          </p>
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.35rem;">
+            <li><strong>p50:</strong> The typical lag experienced by an agent calling this endpoint.</li>
+            <li><strong>p95:</strong> The delayed publication risk during peak loads or model runs.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            Dimension 2: Revision Behavior
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+            Consecutive snapshots are compared field by field using <code>jobs/diff.py</code>. When a value changes for a historical timestamp that has not advanced, the change is classified as a revision:
+          </p>
+          <pre><code>Revision Rate (%) = (Count of Revised Fields / Total Evaluated Fields) * 100</code></pre>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            Dimension 3: Correction Latency
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+            The time elapsed between an initial published value and the subsequent snapshot containing a revised figure. Reported as p50 and p95 in seconds. If no revisions occurred during the window, the metric is recorded as null.
+          </p>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            Dimension 4: Completeness by Segment
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+            Tracks the ratio of expected fields that contain populated, non-null data across discrete categories or geographic stations:
+          </p>
+          <pre><code>Completeness (%) = (Populated Expected Fields / Total Expected Fields) * 100</code></pre>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            Dimension 5: Schema Stability
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+            Evaluates structural predictability. Key additions, key deletions, or data type mutations (such as numeric values returning as strings) are flagged as schema alterations:
+          </p>
+          <pre><code>Schema Stability (%) = (Snapshots Free of Schema Alterations / Total Diffed Snapshots) * 100</code></pre>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+            Dimension 6: Internal Consistency
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.75rem;">
+            Applies mechanical boundary checks within individual response payloads:
+          </p>
+          <ul style="margin-left: 1.5rem; color: var(--text-muted); font-size: 0.9rem; display: flex; flex-direction: column; gap: 0.35rem;">
+            <li>Bounding coordinates: Latitude between -90 and 90, Longitude between -180 and 180.</li>
+            <li>Physical limits: Relative humidity between 0% and 100%, Wind speed greater than or equal to 0.</li>
+            <li>Mathematical consistency: Summary totals must equal child breakdown sums.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anchored Accuracy (Rule H1) -->
+    <section style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(15, 23, 42, 0.6)); border: 1px solid #2563eb; border-radius: 12px; padding: 2rem; margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: #93c5fd; margin-bottom: 0.75rem;">
+        The Anchor Rule (Rule H1)
+      </h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.25rem;">
+        Calling a data feed "accurate" without defining what constitutes ground truth is a marketing trick. Trooth enforces Rule H1 across all code and publications:
+      </p>
+      <blockquote style="border-left: 3px solid #38bdf8; background-color: var(--bg-surface); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-main); margin-bottom: 1.25rem;">
+        "Never publish an accuracy number without naming the anchor on the same page. Lineage and disagreement are always allowed; truth is never claimed."
+      </blockquote>
+      <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">
+        NWS Meteorological Benchmark
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+        For the National Weather Service, terminal forecast predictions issued 24 hours in advance are graded against official settled surface observations recorded at Automated Surface Observing System (ASOS) weather stations. The ground truth anchor is cited on the card as the <strong>NWS MADIS / Surface Weather Observation Network</strong>.
+      </p>
+    </section>
+
+    <!-- Reproducibility -->
+    <section class="card">
+      <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">How to Reproduce Scorecards</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+        Any evaluator can reproduce the exact scores locally using the open-source pipeline:
+      </p>
+      <pre><code># 1. Clone repository
+git clone https://github.com/alexchouck-hash/trooth-site.git
+cd trooth-site
+
+# 2. Run reproducibility eval suite
+npm run eval
+
+# Same snapshots in -> Byte-identical scorecard JSON out</code></pre>
+    </section>
+  </div>
+</Layout>

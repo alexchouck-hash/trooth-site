@@ -1,0 +1,264 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  const scorecardsDir = path.resolve('./public/scorecards');
+  if (!fs.existsSync(scorecardsDir)) {
+    return [];
+  }
+  const files = fs.readdirSync(scorecardsDir).filter(f => f.endsWith('.json') && f !== 'manifest.json');
+  return files.map(file => {
+    const filePath = path.join(scorecardsDir, file);
+    const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    return {
+      params: { source: content.source_id },
+      props: { scorecard: content }
+    };
+  });
+}
+
+const { scorecard } = Astro.props;
+const { dimensions, accuracy, scoring_window } = scorecard;
+---
+
+<Layout title={`${scorecard.source_name} Scorecard`} activeNav="scorecards">
+  <!-- Breadcrumb -->
+  <div style="margin-bottom: 1.5rem; font-size: 0.88rem; color: var(--text-subtle);">
+    <a href="/scorecards" style="color: var(--text-muted); text-decoration: none;">Scorecards</a>
+    <span style="margin: 0 0.5rem;">/</span>
+    <span style="color: var(--primary);">{scorecard.source_id}</span>
+  </div>
+
+  <!-- Header -->
+  <div style="margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+      <div>
+        <h1 style="font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.25rem;">
+          {scorecard.source_name}
+        </h1>
+        <div style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--primary);">
+          source_id: {scorecard.source_id}
+        </div>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <span class="badge badge-blue">Methodology v{scorecard.method_version}</span>
+        <a href={`/scorecards/${scorecard.source_id}.json`} target="_blank" class="badge" style="text-decoration: none; color: var(--text-main);">
+          Raw JSON &nearr;
+        </a>
+      </div>
+    </div>
+
+    <p style="color: var(--text-muted); font-size: 0.95rem;">
+      Scoring Window: <strong>{new Date(scoring_window.start).toLocaleDateString()}</strong> to <strong>{new Date(scoring_window.end).toLocaleDateString()}</strong> ({scoring_window.snapshot_count} snapshot captures analyzed).
+    </p>
+  </div>
+
+  <!-- The Six Dimensions Grid -->
+  <section style="margin-bottom: 3.5rem;">
+    <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);">
+      The Six Evaluated Dimensions
+    </h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <!-- 1. Freshness Lag -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700;">1. Freshness Lag</h3>
+          <span class="badge badge-blue">Ingest Latency</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Time elapsed between the source event timestamp and the capture timestamp.
+        </p>
+        <div style="display: flex; gap: 1.5rem; background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div>
+            <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">{dimensions.freshness_lag.p50_seconds}s</div>
+            <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">p50 Median</div>
+          </div>
+          <div>
+            <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">{dimensions.freshness_lag.p95_seconds}s</div>
+            <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">p95 Tail Risk</div>
+          </div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-subtle); margin-top: 0.6rem;">
+          Sample size: {dimensions.freshness_lag.sample_count} observations
+        </div>
+      </div>
+
+      <!-- 2. Revision Behavior -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700;">2. Revision Behavior</h3>
+          <span class="badge">Retroactive Edits</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Frequency at which historical records are revised for fixed event times.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">{dimensions.revision_behavior.revision_rate_pct}%</div>
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Revision Rate</div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-subtle); margin-top: 0.6rem;">
+          {dimensions.revision_behavior.revised_records_count} revisions across {dimensions.revision_behavior.total_records_count} field comparisons
+        </div>
+      </div>
+
+      <!-- 3. Correction Latency -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700;">3. Correction Latency</h3>
+          <span class="badge">Fix Speed</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Elapsed time between initial incorrect value and superseding revision.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          {dimensions.correction_latency.p50_seconds !== null ? (
+            <div style="display: flex; gap: 1.5rem;">
+              <div>
+                <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">{dimensions.correction_latency.p50_seconds}s</div>
+                <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">p50 Median</div>
+              </div>
+              <div>
+                <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">{dimensions.correction_latency.p95_seconds}s</div>
+                <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">p95 Tail</div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div style="font-size: 1.3rem; font-weight: 700; color: var(--text-muted);">None observed</div>
+              <div style="font-size: 0.75rem; color: var(--text-subtle);">No retroactive edits in window</div>
+            </div>
+          )}
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-subtle); margin-top: 0.6rem;">
+          Events evaluated: {dimensions.correction_latency.events_evaluated}
+        </div>
+      </div>
+
+      <!-- 4. Completeness by Segment -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700;">4. Completeness by Segment</h3>
+          <span class="badge badge-green">Data Integrity</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Ratio of expected data fields populated with valid, non-null values.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 0.75rem;">
+          <div style="font-size: 1.75rem; font-weight: 800; color: var(--accent-green);">{dimensions.completeness_by_segment.overall_pct}%</div>
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Overall Completeness</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+          {Object.entries(dimensions.completeness_by_segment.segments).map(([segment, score]) => (
+            <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted);">
+              <span>{segment}</span>
+              <span style="font-family: var(--font-mono);">{score}%</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 5. Schema Stability -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700;">5. Schema Stability</h3>
+          <span class="badge">API Reliability</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Proportion of snapshots exhibiting zero breaking key or type mutations.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">{dimensions.schema_stability.stable_snapshots_pct}%</div>
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Stable Snapshots</div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-subtle); margin-top: 0.6rem;">
+          {dimensions.schema_stability.schema_changes_count} schema alterations detected
+        </div>
+      </div>
+
+      <!-- 6. Internal Consistency -->
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 700;">6. Internal Consistency</h3>
+          <span class="badge">Logical Rigor</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Share of responses free from internal contradictions or boundary errors.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
+          <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);">{dimensions.internal_consistency.consistent_snapshots_pct}%</div>
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Contradiction-Free</div>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-subtle); margin-top: 0.6rem;">
+          {dimensions.internal_consistency.contradictions_count} contradictions flagged
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anchored Accuracy Section (Rule H1) -->
+  {accuracy ? (
+    <section style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(15, 23, 42, 0.6)); border: 2px solid #2563eb; border-radius: 12px; padding: 2rem; margin-bottom: 3.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <h2 style="font-size: 1.5rem; font-weight: 800; color: #93c5fd;">Anchored Accuracy Benchmark</h2>
+        <span class="badge badge-blue">Rule H1 Compliant</span>
+      </div>
+
+      <div style="background-color: var(--bg-surface); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
+        <div style="font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.25rem;">
+          Named Ground-Truth Anchor
+        </div>
+        <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-main);">
+          {accuracy.anchor}
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Metric</div>
+          <div style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); font-family: var(--font-mono);">{accuracy.metric}</div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Grade / Score</div>
+          <div style="font-size: 2.2rem; font-weight: 900; color: var(--primary); line-height: 1;">
+            {accuracy.score} <span style="font-size: 1rem; font-weight: 600;">{accuracy.unit}</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Settled Pairs</div>
+          <div style="font-size: 1.25rem; font-weight: 700; color: var(--text-main);">{accuracy.sample_count} observations</div>
+        </div>
+      </div>
+
+      {accuracy.details && (
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 1.25rem; border-top: 1px solid var(--border); padding-top: 1rem;">
+          {accuracy.details.notes}
+        </p>
+      )}
+    </section>
+  ) : (
+    <section style="background-color: var(--bg-surface); border: 1px dashed var(--border); border-radius: 12px; padding: 1.75rem; margin-bottom: 3.5rem;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem;">
+        Accuracy Score Omitted (Rule H1)
+      </h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+        Under Rule H1, accuracy is strictly published only when an independent ground-truth authority or settlement anchor exists and is cited on the card. Because this source does not possess an external settlement anchor, an accuracy score is deliberately not published. Lineage inference, disagreement reconciliation, and stability metrics are provided instead.
+      </p>
+    </section>
+  )}
+
+  <!-- Audit & Integration -->
+  <section class="card">
+    <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Programmatic Integration</h2>
+    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+      Retrieve this scorecard directly using the Trooth REST API or MCP tool:
+    </p>
+    <pre><code># Via cURL
+curl https://trooth.io/scorecards/{scorecard.source_id}.json
+
+# Via Trooth MCP Tool in agent prompt
+trooth.scorecard(source_id="{scorecard.source_id}")</code></pre>
+  </section>
+</Layout>

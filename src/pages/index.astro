@@ -1,0 +1,444 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="The Single Data Connector & Provenance Pipe for Agents" activeNav="home">
+  <!-- Hero Section -->
+  <section style="padding: 2.5rem 0 3.5rem; text-align: center; max-width: 900px; margin: 0 auto;">
+    <div style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;" class="badge badge-blue">
+      <span>Phase 0 Benchmark Live</span>
+      <span style="opacity: 0.5;">|</span>
+      <span>5 Verified Public Sources</span>
+    </div>
+
+    <h1 style="font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900; line-height: 1.15; letter-spacing: -0.035em; margin-bottom: 1.5rem;">
+      One data pipe for agents.<br />
+      <span style="background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Signed envelopes. Public scorecards.
+      </span>
+    </h1>
+
+    <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; max-width: 760px; margin-left: auto; margin-right: auto;">
+      The application installs one MCP server or calls one REST API. Trooth dynamically resolves requests to verified sources, fetches data, and wraps every response inside a cryptographic provenance envelope.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="/scorecards" class="btn btn-primary">
+        Explore Public Scorecards &rarr;
+      </a>
+      <a href="/docs" class="btn btn-secondary">
+        Read Documentation
+      </a>
+      <a href="https://github.com/alexchouck-hash/trooth-site" target="_blank" rel="noopener" class="btn btn-secondary">
+        View on GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- Key Architecture Pillars -->
+  <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 5rem;">
+    <div class="card">
+      <div style="font-size: 1.75rem; margin-bottom: 0.75rem;">⚡</div>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Zero Tool Sprawl</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.55;">
+        Instead of dozens of separate MCP servers cluttering the context window, install one server with six tools that dynamically route to dozens of upstream data sources.
+      </p>
+    </div>
+
+    <div class="card">
+      <div style="font-size: 1.75rem; margin-bottom: 0.75rem;">🛡️</div>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Cryptographic Provenance</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.55;">
+        Every response arrives inside an Ed25519 signed envelope carrying source timestamps, freshness lag in seconds, audit lineage, and quarantine for untrusted text.
+      </p>
+    </div>
+
+    <div class="card">
+      <div style="font-size: 1.75rem; margin-bottom: 0.75rem;">📊</div>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-main);">Mechanical Scorecards</h3>
+      <p style="color: var(--text-muted); margin-size: 0.95rem; line-height: 1.55;">
+        Every catalog source is graded across six objective dimensions computed from immutable snapshot archives. No manual score overrides and no sponsored placements.
+      </p>
+    </div>
+  </section>
+
+  <!-- The Problems We Solve -->
+  <section style="margin-bottom: 5rem;">
+    <div style="max-width: 760px; margin-bottom: 2rem;">
+      <h2 style="font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem;">
+        The Problems We Solve
+      </h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">
+        Building reliable applications on top of LLMs and autonomous agents reveals operational pain points across tools, auth, reproducibility, and security. Here is what Trooth does about each:
+      </p>
+    </div>
+
+    <div style="overflow-x: auto; border: 1px solid var(--border); border-radius: 10px;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 44%; padding: 1rem 1.25rem;">Problem Today</th>
+            <th style="width: 56%; padding: 1rem 1.25rem;">Trooth Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Tool sprawl:</strong> one MCP server per data source, dozens of tool schemas eating the context window</td>
+            <td>One server, six tools, dynamic resolution across catalog sources</td>
+          </tr>
+          <tr>
+            <td><strong>Auth sprawl:</strong> separate OAuth flows and credential stores for each individual upstream</td>
+            <td>One key to Trooth; pass-through credentials stored encrypted per customer</td>
+          </tr>
+          <tr>
+            <td><strong>No provenance:</strong> agent cannot tell how fresh or how trustworthy a returned value is</td>
+            <td>Every response is an envelope: source identity, timestamps, freshness lag, lineage, and scorecard link</td>
+          </tr>
+          <tr>
+            <td><strong>Silent revisions:</strong> upstream modifications break backtests and invalidate cached conclusions</td>
+            <td>Append-only snapshot history, revision diffs, and alerts when values or schemas shift</td>
+          </tr>
+          <tr>
+            <td><strong>Prompt injection:</strong> untrusted free text from upstream lands directly in the agent context</td>
+            <td>Structured data payload; upstream free text is quarantined in an untrusted text block</td>
+          </tr>
+          <tr>
+            <td><strong>Non-reproducible results:</strong> same query yields different answers tomorrow with no record why</td>
+            <td>Content hash and snapshot id in every envelope; fetch accepts as-of parameter to replay past state</td>
+          </tr>
+          <tr>
+            <td><strong>No cost visibility:</strong> lack of quota feedback inside autonomous execution loops</td>
+            <td>Remaining quota, unit cost, and cache status returned inside every envelope</td>
+          </tr>
+          <tr>
+            <td><strong>Discovery confusion:</strong> unclear which feeds are primary authorities and which are lagging republishers</td>
+            <td>Mechanical lineage inference based on observed publication lag published on public scorecards</td>
+          </tr>
+          <tr>
+            <td><strong>Data monetization barrier:</strong> data owners lack an easy way to sell feeds or filters to agents</td>
+            <td>Provider listing with automated metering, cryptographic provenance, and a public scorecard included</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- How It Works: The Single Connector -->
+  <section style="margin-bottom: 5rem;">
+    <div style="max-width: 760px; margin-bottom: 2rem;">
+      <h2 style="font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem;">
+        How It Works: The Single Connector
+      </h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">
+        Trooth sits between the caller and the universe of real-world data feeds, executing a deterministic 4-step pipeline:
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem;">
+      <div class="card" style="border-top: 3px solid #38bdf8;">
+        <span class="badge badge-blue" style="margin-bottom: 0.75rem;">Step 1</span>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Resolve</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Query is matched against catalog entries and performance scorecards. Trooth picks primary feeds and records rejected alternatives with explicit reasons.
+        </p>
+      </div>
+
+      <div class="card" style="border-top: 3px solid #818cf8;">
+        <span class="badge badge-blue" style="margin-bottom: 0.75rem;">Step 2</span>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Fetch</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Retrieves fresh live data from upstream or pulls from the versioned snapshot cache. Replays historical requests via <code>as_of</code> timestamps.
+        </p>
+      </div>
+
+      <div class="card" style="border-top: 3px solid #34d399;">
+        <span class="badge badge-blue" style="margin-bottom: 0.75rem;">Step 3</span>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Normalize</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Transforms raw upstream shapes into standardized schemas. Any free text is quarantined into <code>untrusted_text</code> to prevent prompt injection.
+        </p>
+      </div>
+
+      <div class="card" style="border-top: 3px solid #fbbf24;">
+        <span class="badge badge-blue" style="margin-bottom: 0.75rem;">Step 4</span>
+        <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Reconcile & Sign</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Attaches lineage graphs, field-level disagreements, computes SHA-256 payload digest, and cryptographically signs the envelope with Ed25519.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Envelope Breakdown -->
+  <section style="margin-bottom: 5rem;">
+    <div style="max-width: 760px; margin-bottom: 2rem;">
+      <h2 style="font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem;">
+        The Provenance Envelope
+      </h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">
+        Every response returned to an agent or application is wrapped in this contract (defined in <code>schema/envelope/v0.1.json</code>). Notice the mandatory audit trails and injection defenses:
+      </p>
+    </div>
+
+    <pre><code>&#123;
+  "schema_version": "0.1",
+  "request_id": "req_01j7v0q8x1m9k2a4b6c8d0e2f4",
+  "data": &#123;
+    "location": "KJFK",
+    "temperature_c": 21.1,
+    "relative_humidity_pct": 65,
+    "wind_speed_kmh": 14.5
+  &#125;,
+  "provenance": &#123;
+    "resolved_query": "weather/observations/KJFK",
+    "served_from": "live",
+    "snapshot_id": "snap_20260910T190000Z_nws_kjfk",
+    "sources": [
+      &#123;
+        "id": "nws",
+        "role": "primary",
+        "url": "https://api.weather.gov/stations/KJFK/observations/latest",
+        "license": "public-domain",
+        "source_timestamp": "2026-09-10T18:51:00Z",
+        "fetched_at": "2026-09-10T18:57:52Z",
+        "freshness_lag_s": 412,
+        "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      &#125;
+    ],
+    "considered_and_rejected": [
+      &#123; "id": "open-meteo", "reason": "derivative of nws; lag p95 38m" &#125;
+    ],
+    "disagreements": [
+      &#123; "field": "temp_c", "values": [ &#123; "source": "nws", "value": 21.1 &#125;, &#123; "source": "open-meteo", "value": 20.4 &#125; ] &#125;
+    ],
+    "scorecard_ref": "https://trooth.io/scorecards/nws",
+    "untrusted_text": [
+      "Fair and Breezy"
+    ],
+    "quota": &#123;
+      "remaining": 987,
+      "cost_units": 1
+    &#125;
+  &#125;,
+  "signature": &#123;
+    "alg": "ed25519",
+    "key_id": "2026-09",
+    "sig": "3a8b4c2e6f1a8d5b7c9e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4e6f8a0b2c"
+  &#125;
+&#125;</code></pre>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+      <div style="background-color: var(--bg-surface); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
+        <strong style="color: var(--primary); display: block; margin-bottom: 0.25rem;">auditable Routing</strong>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          <code>considered_and_rejected</code> is mandatory whenever multiple sources exist. It shows why an alternative was bypassed (such as publication lag).
+        </p>
+      </div>
+
+      <div style="background-color: var(--bg-surface); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
+        <strong style="color: var(--accent-rose); display: block; margin-bottom: 0.25rem;">Injection Defense</strong>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          <code>untrusted_text</code> isolates arbitrary string descriptions from upstream, preventing malicious prompt injections from entering autonomous loops.
+        </p>
+      </div>
+
+      <div style="background-color: var(--bg-surface); padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
+        <strong style="color: var(--accent-green); display: block; margin-bottom: 0.25rem;">Verifiable Signatures</strong>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          Every envelope is signed with an Ed25519 private key. Anyone can verify authenticity using the public key hosted at <code>/.well-known/trooth.json</code>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Six Tools -->
+  <section style="margin-bottom: 5rem;">
+    <div style="max-width: 760px; margin-bottom: 2rem;">
+      <div class="badge badge-blue" style="margin-bottom: 0.5rem;">CLAUDE.md Rule H10</div>
+      <h2 style="font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.75rem;">
+        The Six Tools of Trooth
+      </h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">
+        Agent context windows should hold reasoning, not tool schemas. Trooth bounds its interface to exactly six high-density tools. Depth goes into parameters, not new tools:
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-family: var(--font-mono); color: var(--primary);">trooth.resolve</h3>
+          <span class="badge">No fetch</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Given a natural query or typed request, returns the candidate sources Trooth would select with reasons, and those rejected with reasons.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-family: var(--font-mono); color: var(--primary);">trooth.fetch</h3>
+          <span class="badge badge-green">Returns Envelope</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Fetches data for a resolved request. Supports parameters: <code>freshness</code> (<code>live</code>, <code>cached_ok</code>, <code>as_of=&lt;snapshot&gt;</code>) and <code>max_sources</code>.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-family: var(--font-mono); color: var(--primary);">trooth.compare</h3>
+          <span class="badge">Reconciliation</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Executes the same query across multiple candidate sources simultaneously, returning field-level disagreements with lineage tracking.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-family: var(--font-mono); color: var(--primary);">trooth.scorecard</h3>
+          <span class="badge">6 Dimensions</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Retrieves the mechanical six-dimension scorecard for any source, plus anchored accuracy if an independent authority exists.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-family: var(--font-mono); color: var(--primary);">trooth.catalog.search</h3>
+          <span class="badge">Discovery</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Filters and searches the verified source catalog by domain, geographic coverage, specific field, license type, or cost model.
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.1rem; font-family: var(--font-mono); color: var(--primary);">trooth.verify</h3>
+          <span class="badge badge-blue">Cryptographic</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Verifies an envelope: Ed25519 signature validation, SHA-256 payload hash confirmation, and transparency log checkpoint verification.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Source Scorecards -->
+  <section style="margin-bottom: 5rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h2 style="font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem;">
+          Phase 0 Public Scorecards
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">
+          Live mechanical benchmarks computed across 5 initial free and public domain feeds:
+        </p>
+      </div>
+      <a href="/scorecards" style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem;">
+        View all source scorecards &rarr;
+      </a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;">
+      <a href="/scorecards/nws" style="text-decoration: none; color: inherit;">
+        <div class="card" style="height: 100%;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+            <span class="badge badge-green">Primary</span>
+            <span class="badge">Public Domain</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary);">NWS Weather API</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
+            Primary US meteorological observations and terminal forecasts. Serves as our primary anchored accuracy benchmark.
+          </p>
+          <div style="display: flex; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700;">380s</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Median Lag (p50)</div>
+            </div>
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700;">100%</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Schema Stability</div>
+            </div>
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700; color: var(--accent-green);">1.15°C</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">MAE (Anchored)</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/scorecards/open-meteo" style="text-decoration: none; color: inherit;">
+        <div class="card" style="height: 100%;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+            <span class="badge badge-amber">Derivative</span>
+            <span class="badge">CC-BY-4.0</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary);">Open-Meteo</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
+            Global weather model aggregator. Demonstrates lineage tracking, model run cycles, and publication lag vs NWS primary.
+          </p>
+          <div style="display: flex; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700;">300s</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Median Lag (p50)</div>
+            </div>
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700;">100%</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Schema Stability</div>
+            </div>
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700; color: var(--text-subtle);">N/A</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Rule H1 (No Anchor)</div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/scorecards/usgs-earthquake" style="text-decoration: none; color: inherit;">
+        <div class="card" style="height: 100%;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+            <span class="badge badge-green">Primary</span>
+            <span class="badge">Public Domain</span>
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary);">USGS Earthquake Feed</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
+            Real-time seismic feeds from US Geological Survey. Demonstrates near-real-time freshness and retroactive magnitude revisions.
+          </p>
+          <div style="display: flex; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700;">142s</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Median Lag (p50)</div>
+            </div>
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700;">14.8%</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Revision Rate</div>
+            </div>
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 700;">100%</div>
+              <div style="font-size: 0.72rem; color: var(--text-subtle);">Completeness</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <section style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9)); border: 1px solid var(--border); border-radius: 12px; padding: 3rem 2rem; text-align: center;">
+    <h2 style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.75rem;">Ready to build on verifiable data?</h2>
+    <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto 2rem;">
+      Get your first signed provenance envelope in under 5 minutes with our MCP and REST quickstart guides.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <a href="/docs" class="btn btn-primary">
+        Start 5-Minute Quickstart &rarr;
+      </a>
+      <a href="/providers" class="btn btn-secondary">
+        List a Feed (Providers)
+      </a>
+    </div>
+  </section>
+</Layout>

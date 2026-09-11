@@ -1,0 +1,17 @@
+{
+  "name": "trooth-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public website and documentation for Trooth: The Single Data Connector and Provenance Pipe for Apps and Agents.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.4.2"
+  }
+}

@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="For Data Providers: List Your Feed" activeNav="providers">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <!-- Hero -->
+    <div style="margin-bottom: 3.5rem;">
+      <div class="badge badge-blue" style="margin-bottom: 0.75rem;">Phase 3 Marketplace</div>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 0.75rem;">
+        List Your Feed in the Agent Data Pipe
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
+        Data owners, custom filter authors, and analysis creators: sell your feeds directly to agent swarms without building custom MCP servers or handling billing.
+      </p>
+    </div>
+
+    <!-- The Problem for Data Owners -->
+    <section style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.25rem;">
+        Why Selling Data to Agents is Broken Today
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--accent-rose); margin-bottom: 0.5rem;">
+            Integration Friction
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Every agent developer must write custom connectors, configure per-user credentials, and manage authentication stores.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--accent-rose); margin-bottom: 0.5rem;">
+            Context Window Bloat
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Publishing your own standalone MCP server forces users to burn context window tokens just to register your tool definitions.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--accent-rose); margin-bottom: 0.5rem;">
+            Trust & Quality Doubts
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Buyers have no independent way to verify your latency, uptime, or revision behavior before subscribing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Trooth Provider Advantage -->
+    <section style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.25rem;">
+        What Trooth Does for Providers
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div class="card" style="border-left: 4px solid var(--primary);">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--primary);">
+            1. Zero Integration Overhead
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            You list once as a catalog YAML entry. Any agent connected to Trooth can immediately resolve queries to your endpoint without installing new tools.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--primary);">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--primary);">
+            2. You Set Your Own Price
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Providers set their own price per query or per record. Trooth does not price your data. We handle per-request metering and automated payouts.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--primary);">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--primary);">
+            3. Public Scorecard Included
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Every listed feed gets the same objective six-dimension scorecard as public sources. Superior freshness and schema stability immediately differentiate your feed.
+          </p>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--primary);">
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--primary);">
+            4. Cryptographic Provenance & Lineage
+          </h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Your responses are signed with Ed25519 envelopes and hashed with SHA-256. Consumers get verifiable audit trails proving the data came from you.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Submit a Feed -->
+    <section class="card" style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;">
+        How to Submit a Feed
+      </h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">
+        Feeds are submitted via open pull requests to the Trooth catalog directory conforming to <code>schema/catalog/v0.1.json</code>:
+      </p>
+
+      <pre><code># Example Provider Entry: catalog/sources/custom-finance.yaml
+id: "custom-finance"
+name: "Acme Real-Time FX"
+description: "Sub-second foreign exchange spot rates with settlement guarantees."
+endpoints:
+  - name: "latest_rates"
+    url: "https://api.acme.example/v1/rates"
+    method: "GET"
+auth:
+  type: "bearer"
+license:
+  spdx: "Commercial"
+  url: "https://acme.example/terms"
+  redistribution_allowed: true
+refresh_cadence: "10s"
+declared_lineage:
+  role: "primary"
+freshness_field: "timestamp"
+cost:
+  model: "metered"
+  rate_limit: "600 requests per minute"</code></pre>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="https://github.com/alexchouck-hash/trooth-site" target="_blank" rel="noopener" class="btn btn-primary">
+          Submit Catalog Entry via GitHub PR &rarr;
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

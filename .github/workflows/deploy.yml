@@ -1,0 +1,36 @@
+name: Deploy Trooth Public Site
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build & Verify Static Site
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify no em dashes in copy
+        run: |
+          if grep -rn "—" src/; then
+            echo "Error: Em dashes are forbidden in site copy."
+            exit 1
+          fi
+
+      - name: Build static site
+        run: npm run build

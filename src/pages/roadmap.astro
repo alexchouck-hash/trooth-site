@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Project Roadmap & Phase Gates" activeNav="roadmap">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div style="margin-bottom: 3.5rem;">
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 0.75rem;">
+        Project Roadmap & Gates
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
+        Trooth grows through strict, transparent phase gates tied to cost constraints and verified user demand (CLAUDE.md section 9).
+      </p>
+    </div>
+
+    <!-- Phases Timeline -->
+    <div style="display: flex; flex-direction: column; gap: 2rem; margin-bottom: 4rem;">
+      <!-- Phase 0 -->
+      <div class="card" style="border-left: 4px solid var(--accent-green);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">
+            Phase 0: The Benchmark
+          </h2>
+          <span class="badge badge-green">Completed</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 1rem;">
+          Timeline: Weeks 1-3 | Cost Ceiling: &lt; $5/month (Actual: $0.00)
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+          Ships the public benchmark: 5-source verified catalog, Python snapshot pipeline, revision diff engine, six-dimension scorecards, and public Astro static site.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
+          <strong style="color: var(--accent-green);">Gate to proceed:</strong> Static site live, 5 public scorecards published, fresh-agent onboarding test passed. (All satisfied).
+        </div>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="card" style="border-left: 4px solid var(--primary); background-color: #13223f;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--primary);">
+            Phase 1: The Free Pipe
+          </h2>
+          <span class="badge badge-blue">Active / Next Up</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 1rem;">
+          Timeline: Weeks 4-8 | Cost Ceiling: &lt; $20/month
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+          Ships the single data connector: TypeScript Cloudflare Worker REST API and thin MCP server implementing the exact six tools. Every fetch returns an Ed25519 signed envelope with provenance.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
+          <strong style="color: var(--primary);">Gate to proceed:</strong> 25 distinct weekly active callers, with at least one autonomous production tool integration.
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="card" style="border-left: 4px solid var(--border);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">
+            Phase 2: Paid Tier & Immutability
+          </h2>
+          <span class="badge">Gated</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 1rem;">
+          Timeline: Weeks 9-14 | Cost Ceiling: &lt; $50/month
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+          Ships Stripe metered billing, Pro tier ($39/mo for 100k requests), 1-year historical snapshot replay, schema change webhooks, and append-only Merkle transparency log anchored into Bitcoin via OpenTimestamps.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
+          <strong style="color: var(--text-muted);">Gate to proceed:</strong> First paying customer. No new cost-bearing features built until this gate is met.
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="card" style="border-left: 4px solid var(--border);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">
+            Phase 3: The Provider Marketplace
+          </h2>
+          <span class="badge">Future</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 1rem;">
+          Timeline: After Phase 2 Gate | Cost Model: Scales with revenue
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+          Allows external data owners to list feeds, filters, or analysis layers. Trooth meters calls, runs the public scorecard, and handles automated payouts with platform take rate.
+        </p>
+        <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
+          <strong style="color: var(--text-muted);">Gate to proceed:</strong> 3 providers listed and 1 paid feed actively transacting.
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="card" style="border-left: 4px solid var(--border);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">
+            Phase 4: Specialized Verticals & Licensing
+          </h2>
+          <span class="badge">Future</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 1rem;">
+          Timeline: After Phase 3 Gate
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Regulatory data slices (openFDA MAUDE medical device reports), sports feeds graded against settled game outcomes, and licensed historical revision datasets.
+        </p>
+      </div>
+    </div>
+
+    <!-- Kill / Pivot Rule -->
+    <section class="card" style="border-color: rgba(244, 63, 94, 0.4); background-color: rgba(244, 63, 94, 0.05);">
+      <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--accent-rose); margin-bottom: 0.5rem;">
+        Kill / Pivot Rule (CLAUDE.md section 9)
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">
+        If Phase 2 ends with zero paying customers and fewer than 50 weekly active keys, Trooth freezes at Phase 1, keeps the public benchmark running for brand reputation at under $10/month, and documents the retrospective in public experiments. We do not burn capital without proven market pull.
+      </p>
+    </section>
+  </div>
+</Layout>
