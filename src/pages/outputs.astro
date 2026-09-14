@@ -1,0 +1,268 @@
+---
+/**
+ * /outputs - the UI directory.
+ *
+ * Every entry is rendered from src/data/ui-outputs.json, which is generated in the Trooth repo by
+ * jobs/ui_index.py and jobs/site_data.py. Nothing on this page is typed by hand, so the page and
+ * the catalogue cannot drift.
+ *
+ * On ratings: the chip on each row is the state of that tool's Modafied emblem slot, copied from
+ * the artifact, not computed here and not computed by Trooth anywhere (rule H2). Modafied does
+ * not currently grade rendering tools, so every chip reads "unrated" with Modafied's own reason
+ * attached. That is deliberately visible rather than hidden: "nobody has measured this" and
+ * "this measured badly" must never look the same.
+ */
+import Layout from '../layouts/Layout.astro';
+import { p } from '../utils/paths';
+import { MODAFIED_ORIGIN } from '../utils/modafied';
+import ui from '../data/ui-outputs.json';
+
+const rows: any[] = (ui as any).index ?? [];
+const facets: any = (ui as any).facets ?? {};
+const types: any[] = (ui as any).types ?? [];
+const whatByType: Record<string, string> = Object.fromEntries(
+  types.map((t: any) => [t.type, t.what])
+);
+
+const typeNames = Object.keys(facets.by_type ?? {}).sort();
+const inputNames = Object.keys(facets.by_input ?? {});
+const licenseNames = Object.keys(facets.by_license ?? {}).sort();
+
+const rated = rows.filter((r) => r.emblem && r.emblem.state !== 'unrated').length;
+const topInputs = inputNames.slice(0, 6);
+---
+
+<Layout
+  title="UI directory"
+  description="Every dashboard, renderer, and output surface that can consume a Trooth feed, with its licence, the artifact it reads, and its Modafied rating state."
+  activeNav="outputs"
+>
+  <section style="margin-bottom:2rem;">
+    <h1 style="font-size:2.25rem; font-weight:800; margin-bottom:0.75rem;">UI directory</h1>
+    <p style="font-size:1.1rem; color:var(--text-muted); max-width:780px;">
+      {ui.total_tools} dashboards, renderers, and output surfaces across {ui.total_types} output
+      types. Every one of them consumes at least one artifact Trooth already publishes, so none of
+      them needs an adapter anybody has to maintain. Trooth is a pipe, and this is the list of
+      things you can put on the end of it instead of building a front end.
+    </p>
+    <p style="color:var(--text-muted); max-width:780px; margin-top:0.75rem;">
+      The <a href={p('/console')}>Trooth Console</a> is the zero-setup default and needs no
+      account. It is not the only option, and we would rather you used something you already run.
+    </p>
+  </section>
+
+  <section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:0.75rem; margin-bottom:2rem;">
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{ui.total_tools}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">tools listed</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{ui.total_types}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">output types</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{facets.reciprocal_license ?? 0}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">reciprocal licences</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{rated}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">rated by Modafied</div>
+    </div>
+  </section>
+
+  <section class="card" style="padding:1.1rem 1.25rem; margin-bottom:2rem;">
+    <h2 style="font-size:1.05rem; font-weight:700; margin-bottom:0.5rem;">About the rating column</h2>
+    <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:0.6rem;">
+      Trooth publishes no scores of any kind. Grades come from
+      <a href={MODAFIED_ORIGIN} target="_blank" rel="noopener">Modafied</a>, which collects its own
+      snapshots on its own clock and grades the sources Trooth routes to, plus MCP servers.
+    </p>
+    <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:0.6rem;">
+      Modafied does not grade rendering tools, and the honest reason is that its six dimensions
+      measure a publisher. Freshness lag is the grader's clock minus the source's own event time;
+      revision behaviour, correction latency, completeness, schema stability, and internal
+      consistency all describe data arriving over time. A charting library publishes no data, so
+      there is nothing for those instruments to read.
+    </p>
+    <p style="font-size:0.92rem; color:var(--text-muted);">
+      So every tool here carries a rating slot that currently reads <strong>unrated</strong>, with
+      the reason attached, rather than a number nobody measured. If Modafied takes rendering tools
+      into its remit, these fill in from its published ratings with no change to this page.
+    </p>
+  </section>
+
+  <section style="margin-bottom:1rem;">
+    <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-bottom:0.75rem;">
+      <input
+        id="q"
+        type="search"
+        placeholder="Search 185 tools, notes included"
+        style="flex:1 1 260px; min-width:220px; padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;"
+      />
+      <select id="type" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;">
+        <option value="">All output types</option>
+        {typeNames.map((t) => <option value={t}>{t.replace(/-/g, ' ')} ({facets.by_type[t]})</option>)}
+      </select>
+      <select id="input" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;">
+        <option value="">Reads any artifact</option>
+        {inputNames.map((i) => <option value={i}>{i} ({facets.by_input[i]})</option>)}
+      </select>
+      <select id="license" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;">
+        <option value="">Any licence</option>
+        <option value="__permissive">Permissive only</option>
+        {licenseNames.map((l) => <option value={l}>{l} ({facets.by_license[l]})</option>)}
+      </select>
+    </div>
+    <p id="count" style="font-size:0.85rem; color:var(--text-subtle);">
+      Showing all {rows.length} tools.
+    </p>
+  </section>
+
+  <section style="margin-bottom:2.5rem; overflow-x:auto;">
+    <table id="directory" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Output type</th>
+          <th>Licence</th>
+          <th>Reads</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr
+            id={row.subject_id}
+            data-name={row.name.toLowerCase()}
+            data-notes={(row.notes || '').toLowerCase()}
+            data-type={row.type}
+            data-license={row.license}
+            data-permissive={row.reciprocal_license ? 'no' : 'yes'}
+            data-input={(row.trooth_input || []).join(' ')}
+          >
+            <td>
+              <a href={row.url} target="_blank" rel="noopener">{row.name}</a>
+              {row.notes ? (
+                <div style="font-size:0.8rem; color:var(--text-subtle); max-width:420px;">{row.notes}</div>
+              ) : null}
+            </td>
+            <td style="white-space:nowrap; font-size:0.85rem; color:var(--text-muted);">
+              {row.type.replace(/-/g, ' ')}
+            </td>
+            <td style="white-space:nowrap; font-size:0.85rem;">
+              {row.license}
+              {row.reciprocal_license ? (
+                <span class="badge badge-amber" style="margin-left:0.35rem;" title="Copyleft or source available. Read the terms before it goes near something you sell.">reciprocal</span>
+              ) : null}
+              {row.self_host === false ? (
+                <span class="badge" style="margin-left:0.35rem;" title="Hosted service; cannot be self-hosted.">hosted</span>
+              ) : null}
+            </td>
+            <td style="font-size:0.8rem; font-family:var(--font-mono); color:var(--text-muted);">
+              {(row.trooth_input || []).join(', ')}
+            </td>
+            <td style="white-space:nowrap;">
+              {row.emblem && row.emblem.grade ? (
+                <a href={`${MODAFIED_ORIGIN}/scorecards/${row.subject_id}`} target="_blank" rel="noopener" class="badge badge-green">
+                  Modafied {row.emblem.grade}
+                </a>
+              ) : (
+                <span class="badge" title={row.emblem?.unrated_reason ?? 'No Modafied rating has been published for this tool.'}>
+                  unrated
+                </span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">What each output type is for</h2>
+    <p style="color:var(--text-muted); max-width:780px; margin-bottom:1.25rem;">
+      "Dashboard" covers at least five different jobs, and picking the wrong one is why most data
+      projects end up with a chart nobody opens. The types are the useful unit of choice.
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0.85rem;">
+      {typeNames.map((t) => (
+        <div class="card" style="padding:1rem;">
+          <div style="display:flex; justify-content:space-between; gap:0.5rem; align-items:baseline;">
+            <strong style="text-transform:capitalize;">{t.replace(/-/g, ' ')}</strong>
+            <span class="badge">{facets.by_type[t]}</span>
+          </div>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.4rem;">{whatByType[t]}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">Which artifact do you need?</h2>
+    <p style="color:var(--text-muted); max-width:780px; margin-bottom:1rem;">
+      Counted across the whole directory. Trooth publishes JSON and CSV today, a Prometheus
+      metrics endpoint at Phase 1, and Parquet at Phase 2.
+    </p>
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+      {topInputs.map((i) => (
+        <span class="badge badge-blue">{i}: {facets.by_input[i]} tools</span>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-bottom:2rem;">
+    <p style="font-size:0.85rem; color:var(--text-subtle); max-width:780px;">
+      Licences are stated as commonly understood and are not verified the way catalog licences
+      are. Check the terms before adopting one. Links point at each project's own home page or
+      repository and are checked against the live web before this page is published; nothing here
+      is an endorsement, a partnership, or a claim that an integration exists.
+    </p>
+  </section>
+</Layout>
+
+<script is:inline>
+  (function () {
+    const q = document.getElementById('q');
+    const type = document.getElementById('type');
+    const input = document.getElementById('input');
+    const license = document.getElementById('license');
+    const count = document.getElementById('count');
+    const rows = Array.from(document.querySelectorAll('#directory tbody tr'));
+
+    function apply() {
+      const term = (q.value || '').trim().toLowerCase();
+      const wantType = type.value;
+      const wantInput = input.value;
+      const wantLicense = license.value;
+      let shown = 0;
+
+      for (const row of rows) {
+        const d = row.dataset;
+        const matches =
+          (!term || d.name.includes(term) || d.notes.includes(term)) &&
+          (!wantType || d.type === wantType) &&
+          (!wantInput || d.input.split(' ').includes(wantInput)) &&
+          (!wantLicense ||
+            (wantLicense === '__permissive' ? d.permissive === 'yes' : d.license === wantLicense));
+        row.hidden = !matches;
+        if (matches) shown++;
+      }
+
+      count.textContent =
+        shown === rows.length
+          ? `Showing all ${rows.length} tools.`
+          : `Showing ${shown} of ${rows.length} tools.`;
+    }
+
+    for (const el of [q, type, input, license]) {
+      el.addEventListener('input', apply);
+      el.addEventListener('change', apply);
+    }
+
+    // Deep link support: /outputs#ui-grafana is where an emblem card_url points.
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView({ block: 'center' });
+    }
+  })();
+</script>

@@ -75,2317 +75,3982 @@
   },
   "index": [
     {
+      "emblem": {
+        "card_url": "/outputs#ui-ag-grid-community",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "ag-grid-community",
       "license": "MIT",
       "name": "AG Grid Community",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-ag-grid-community",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://www.ag-grid.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-alerta",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "alerta",
       "license": "Apache-2.0",
       "name": "Alerta",
       "notes": "De-duplicates and correlates alerts, which a revision feed needs early or it becomes noise.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-alerta",
       "trooth_input": [
         "json",
         "webhook"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://alerta.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-alertmanager",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "alertmanager",
       "license": "Apache-2.0",
       "name": "Alertmanager",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-alertmanager",
       "trooth_input": [
         "prometheus"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://github.com/prometheus/alertmanager"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-anthias",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "anthias",
       "license": "GPL-2.0-or-later",
       "name": "Anthias",
       "notes": "Digital signage on a Raspberry Pi. The cheapest hardware path to a wall display.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-anthias",
       "trooth_input": [
         "http"
       ],
-      "type": "kiosk-and-signage"
+      "type": "kiosk-and-signage",
+      "url": "https://anthias.screenly.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-antv-g2",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "antv-g2",
       "license": "MIT",
       "name": "AntV G2",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-antv-g2",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://g2.antv.antgroup.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-antv-g6",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "antv-g6",
       "license": "MIT",
       "name": "AntV G6",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-antv-g6",
       "trooth_input": [
         "json"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://g6.antv.antgroup.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-echarts",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "echarts",
       "license": "Apache-2.0",
       "name": "Apache ECharts",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-echarts",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://echarts.apache.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-superset",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "superset",
       "license": "Apache-2.0",
       "name": "Apache Superset",
       "notes": "Most capable, heaviest to operate.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-superset",
       "trooth_input": [
         "sql"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://superset.apache.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-zeppelin",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "zeppelin",
       "license": "Apache-2.0",
       "name": "Apache Zeppelin",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-zeppelin",
       "trooth_input": [
         "sql",
         "json"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://zeppelin.apache.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-apexcharts",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "apexcharts",
       "license": "MIT",
       "name": "ApexCharts",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-apexcharts",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://apexcharts.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-apprise",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "apprise",
       "license": "BSD-3-Clause",
       "name": "Apprise",
       "notes": "One call fans out to eighty notification services.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-apprise",
       "trooth_input": [
         "webhook"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://github.com/caronc/apprise"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-appsmith",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "appsmith",
       "license": "Apache-2.0",
       "name": "Appsmith",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-appsmith",
       "trooth_input": [
         "json",
         "sql"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://www.appsmith.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-assistant-ui",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "assistant-ui",
       "license": "MIT",
       "name": "assistant-ui",
       "notes": "React components for embedding a provenance panel in another product.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-assistant-ui",
       "trooth_input": [
         "json"
       ],
-      "type": "agent-and-chat-surface"
+      "type": "agent-and-chat-surface",
+      "url": "https://www.assistant-ui.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-astro",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "astro",
       "license": "MIT",
       "name": "Astro",
       "notes": "What the Trooth site and console already use.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-astro",
       "trooth_input": [
         "json",
         "md"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://astro.build"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-atom",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "atom",
       "license": "n/a",
       "name": "Atom",
       "notes": "A change feed is a feed. Publishing Atom means every reader below works with no integration.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-atom",
       "trooth_input": [
         "json"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://datatracker.ietf.org/doc/html/rfc4287"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-badgen",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "badgen",
       "license": "ISC",
       "name": "Badgen",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-badgen",
       "trooth_input": [
         "json"
       ],
-      "type": "embeddable-widget"
+      "type": "embeddable-widget",
+      "url": "https://badgen.net"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-baserow",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "baserow",
       "license": "MIT",
       "name": "Baserow",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-baserow",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://baserow.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-billboard-js",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "billboard-js",
       "license": "MIT",
       "name": "billboard.js",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-billboard-js",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://naver.github.io/billboard.js/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-blazer",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "blazer",
       "license": "MIT",
       "name": "Blazer",
       "notes": "Smallest possible SQL dashboard; a single Rails mount.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-blazer",
       "trooth_input": [
         "sql"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://github.com/ankane/blazer"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-budibase",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "budibase",
       "license": "GPL-3.0-only",
       "name": "Budibase",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-budibase",
       "trooth_input": [
         "json",
         "sql"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://budibase.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-cachet",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "cachet",
       "license": "MIT",
       "name": "Cachet",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-cachet",
       "trooth_input": [
         "json"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://cachethq.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-centrifugo",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "centrifugo",
       "license": "MIT",
       "name": "Centrifugo",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-centrifugo",
       "trooth_input": [
         "websocket"
       ],
-      "type": "realtime-stream"
+      "type": "realtime-stream",
+      "url": "https://centrifugal.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-chainlit",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "chainlit",
       "license": "Apache-2.0",
       "name": "Chainlit",
       "notes": "Custom elements make a source and freshness panel easy to render beside an answer.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-chainlit",
       "trooth_input": [
         "json"
       ],
-      "type": "agent-and-chat-surface"
+      "type": "agent-and-chat-surface",
+      "url": "https://chainlit.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-chartjs",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "chartjs",
       "license": "MIT",
       "name": "Chart.js",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-chartjs",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://www.chartjs.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-chartbrew",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "chartbrew",
       "license": "MIT",
       "name": "Chartbrew",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-chartbrew",
       "trooth_input": [
         "json",
         "sql"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://chartbrew.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-csvlens",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "csvlens",
       "license": "MIT",
       "name": "csvlens",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-csvlens",
       "trooth_input": [
         "csv"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://github.com/YS-L/csvlens"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-cube",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "cube",
       "license": "Apache-2.0",
       "name": "Cube",
       "notes": "Semantic layer, if the six dimensions ever need one definition across many tools.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-cube",
       "trooth_input": [
         "sql"
       ],
-      "type": "sql-and-exploration"
+      "type": "sql-and-exploration",
+      "url": "https://cube.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-cytoscape",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "cytoscape",
       "license": "MIT",
       "name": "Cytoscape.js",
       "notes": "Best fit for an interactive primary/derivative lineage graph.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-cytoscape",
       "trooth_input": [
         "json"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://js.cytoscape.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-d2",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "d2",
       "license": "MPL-2.0",
       "name": "D2",
       "notes": "Text to diagram like Mermaid, with better layout for a wide lineage graph.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-d2",
       "trooth_input": [
         "text"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://d2lang.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-d3",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "d3",
       "license": "ISC",
       "name": "D3",
       "notes": "What Trooth Console's SVG generation is modelled on, without the runtime.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-d3",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://d3js.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-datalens",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "datalens",
       "license": "Apache-2.0",
       "name": "DataLens",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-datalens",
       "trooth_input": [
         "sql"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://datalens.tech"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-datasette",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "datasette",
       "license": "Apache-2.0",
       "name": "Datasette",
       "notes": "Publishes a database as a browsable, queryable, API-backed site.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-datasette",
       "trooth_input": [
         "sqlite",
         "csv"
       ],
-      "type": "sql-and-exploration"
+      "type": "sql-and-exploration",
+      "url": "https://datasette.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-datatables",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "datatables",
       "license": "MIT",
       "name": "DataTables",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-datatables",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://datatables.net"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-dbeaver-ce",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "dbeaver-ce",
       "license": "Apache-2.0",
       "name": "DBeaver Community",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-dbeaver-ce",
       "trooth_input": [
         "sql",
         "duckdb"
       ],
-      "type": "sql-and-exploration"
+      "type": "sql-and-exploration",
+      "url": "https://dbeaver.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-deckgl",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "deckgl",
       "license": "MIT",
       "name": "deck.gl",
       "notes": "Right choice for large point sets like seismic or AIS.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-deckgl",
       "trooth_input": [
         "geojson",
         "json"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://deck.gl"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-directus",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "directus",
       "license": "BSL-1.1",
       "name": "Directus",
       "notes": "Source-available rather than open source. Check the licence before commercial use.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-directus",
       "trooth_input": [
         "sql"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://directus.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-discourse",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "discourse",
       "license": "GPL-2.0-or-later",
       "name": "Discourse",
       "notes": "For a public changelog people can reply to.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-discourse",
       "trooth_input": [
         "json",
         "rss"
       ],
-      "type": "chat-and-collaboration"
+      "type": "chat-and-collaboration",
+      "url": "https://www.discourse.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-docusaurus",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "docusaurus",
       "license": "MIT",
       "name": "Docusaurus",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-docusaurus",
       "trooth_input": [
         "md"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://docusaurus.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-duckdb-cli",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "duckdb-cli",
       "license": "MIT",
       "name": "DuckDB CLI",
       "notes": "Query the published archive with no install beyond one binary.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-duckdb-cli",
       "trooth_input": [
         "parquet",
         "json",
         "csv"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://duckdb.org/docs/stable/clients/cli/overview"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-duckdb-wasm",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "duckdb-wasm",
       "license": "MIT",
       "name": "DuckDB-Wasm",
       "notes": "Query the archive in the browser with no backend. The cheapest 'try it' we could ship.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-duckdb-wasm",
       "trooth_input": [
         "parquet"
       ],
-      "type": "sql-and-exploration"
+      "type": "sql-and-exploration",
+      "url": "https://duckdb.org/docs/stable/clients/wasm/overview"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-mosquitto",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "mosquitto",
       "license": "EPL-2.0",
       "name": "Eclipse Mosquitto",
       "notes": "For the industrial and sensor buyers who expect MQTT rather than HTTP.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-mosquitto",
       "trooth_input": [
         "mqtt"
       ],
-      "type": "realtime-stream"
+      "type": "realtime-stream",
+      "url": "https://mosquitto.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-element",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "element",
       "license": "Apache-2.0",
       "name": "Element on Matrix",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-element",
       "trooth_input": [
         "webhook",
         "json"
       ],
-      "type": "chat-and-collaboration"
+      "type": "chat-and-collaboration",
+      "url": "https://element.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-eleventy",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "eleventy",
       "license": "MIT",
       "name": "Eleventy",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-eleventy",
       "trooth_input": [
         "md",
         "json"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://www.11ty.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-ethercalc",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "ethercalc",
       "license": "CPAL-1.0",
       "name": "EtherCalc",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-ethercalc",
       "trooth_input": [
         "csv"
       ],
-      "type": "spreadsheet"
+      "type": "spreadsheet",
+      "url": "https://github.com/audreyt/ethercalc"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-evidence",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "evidence",
       "license": "MIT",
       "name": "Evidence.dev",
       "notes": "Markdown with SQL in it, builds to a static site. Closest in spirit to how we publish.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-evidence",
       "trooth_input": [
         "sql",
         "parquet",
         "csv"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://evidence.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-feedgen",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "feedgen",
       "license": "BSD-2-Clause",
       "name": "feedgen",
       "notes": "Generates the Atom and RSS above from Python, which is where the jobs already live.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-feedgen",
       "trooth_input": [
         "json"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://feedgen.kiesow.be"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-frappe-charts",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "frappe-charts",
       "license": "MIT",
       "name": "Frappe Charts",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-frappe-charts",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://frappe.io/charts"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-frappe-datatable",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "frappe-datatable",
       "license": "MIT",
       "name": "Frappe DataTable",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-frappe-datatable",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://frappe.io/datatable"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-freshrss",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "freshrss",
       "license": "AGPL-3.0-only",
       "name": "FreshRSS",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-freshrss",
       "trooth_input": [
         "rss"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://freshrss.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-fx",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "fx",
       "license": "MIT",
       "name": "fx",
       "notes": "Interactive JSON viewer; the fastest way to read an envelope by hand.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-fx",
       "trooth_input": [
         "json"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://fx.wtf"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-gatus",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "gatus",
       "license": "Apache-2.0",
       "name": "Gatus",
       "notes": "Config as YAML, which fits how the catalog already works.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-gatus",
       "trooth_input": [
         "json",
         "http"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://gatus.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-gephi",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "gephi",
       "license": "GPL-3.0-only",
       "name": "Gephi",
       "notes": "Desktop analysis of the lineage graph.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-gephi",
       "trooth_input": [
         "csv"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://gephi.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-glance",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "glance",
       "license": "AGPL-3.0-only",
       "name": "Glance",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-glance",
       "trooth_input": [
         "json",
         "rss"
       ],
-      "type": "kiosk-and-signage"
+      "type": "kiosk-and-signage",
+      "url": "https://github.com/glanceapp/glance"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-glide-data-grid",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "glide-data-grid",
       "license": "MIT",
       "name": "Glide Data Grid",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-glide-data-grid",
       "trooth_input": [
         "json"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://grid.glideapps.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-gotenberg",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "gotenberg",
       "license": "MIT",
       "name": "Gotenberg",
       "notes": "PDF rendering as a stateless HTTP service, which avoids a headless browser in the Worker.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-gotenberg",
       "trooth_input": [
         "html"
       ],
-      "type": "print-and-pdf"
+      "type": "print-and-pdf",
+      "url": "https://gotenberg.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-gotify",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "gotify",
       "license": "MIT",
       "name": "Gotify",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-gotify",
       "trooth_input": [
         "webhook"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://gotify.net"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-gradio",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "gradio",
       "license": "Apache-2.0",
       "name": "Gradio",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-gradio",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://www.gradio.app"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-grafana",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "grafana",
       "license": "AGPL-3.0-only",
       "name": "Grafana",
       "notes": "Best fit for freshness and uptime; the Infinity datasource reads our JSON directly.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-grafana",
       "trooth_input": [
         "prometheus",
         "json",
         "sql"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://grafana.com/oss/grafana/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-grafana-kiosk",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "grafana-kiosk",
       "license": "Apache-2.0",
       "name": "Grafana Kiosk",
       "notes": "Drives an existing Grafana dashboard into full screen and keeps it logged in.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-grafana-kiosk",
       "trooth_input": [
         "http"
       ],
-      "type": "kiosk-and-signage"
+      "type": "kiosk-and-signage",
+      "url": "https://github.com/grafana/grafana-kiosk"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-grafana-live",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "grafana-live",
       "license": "AGPL-3.0-only",
       "name": "Grafana Live",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-grafana-live",
       "trooth_input": [
         "websocket"
       ],
-      "type": "realtime-stream"
+      "type": "realtime-stream",
+      "url": "https://grafana.com/docs/grafana/latest/setup-grafana/set-up-grafana-live/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-graphic-walker",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "graphic-walker",
       "license": "AGPL-3.0-only",
       "name": "Graphic Walker",
       "notes": "Drag-and-drop exploration embeddable in a page, with no server of its own.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-graphic-walker",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://github.com/Kanaries/graphic-walker"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-graphviz",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "graphviz",
       "license": "EPL-1.0",
       "name": "Graphviz",
       "notes": "Good for a static lineage diagram generated at build time.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-graphviz",
       "trooth_input": [
         "text"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://graphviz.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-grid-js",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "grid-js",
       "license": "MIT",
       "name": "Grid.js",
       "notes": "Small enough to drop into a static page with no build step.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-grid-js",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://gridjs.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-grist",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "grist",
       "license": "Apache-2.0",
       "name": "Grist",
       "notes": "Spreadsheet with real formulas; good for hand-checking a scorecard.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-grist",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://www.getgrist.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-gum",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "gum",
       "license": "MIT",
       "name": "gum",
       "notes": "Shell-script UIs; useful in runbooks.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-gum",
       "trooth_input": [
         "json"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://github.com/charmbracelet/gum"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-handsontable-ce",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "handsontable-ce",
       "license": "MIT",
       "name": "Handsontable Community",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-handsontable-ce",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://handsontable.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-harlequin",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "harlequin",
       "license": "MIT",
       "name": "Harlequin",
       "notes": "A terminal IDE for DuckDB; reads the archive with no browser.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-harlequin",
       "trooth_input": [
         "parquet",
         "duckdb"
       ],
-      "type": "sql-and-exploration"
+      "type": "sql-and-exploration",
+      "url": "https://harlequin.sh"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-healthchecks",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "healthchecks",
       "license": "BSD-3-Clause",
       "name": "Healthchecks",
       "notes": "Dead-man switch for the cron. Answers whether the snapshot ran, which is not the same question as whether the source is up.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-healthchecks",
       "trooth_input": [
         "http"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://healthchecks.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-panel",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "panel",
       "license": "BSD-3-Clause",
       "name": "HoloViz Panel",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-panel",
       "trooth_input": [
         "json",
         "csv",
         "parquet"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://panel.holoviz.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-homepage",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "homepage",
       "license": "GPL-3.0-only",
       "name": "Homepage",
       "notes": "YAML-configured, reads a JSON field straight into a tile. The least work per screen.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-homepage",
       "trooth_input": [
         "json",
         "http"
       ],
-      "type": "kiosk-and-signage"
+      "type": "kiosk-and-signage",
+      "url": "https://gethomepage.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-huginn",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "huginn",
       "license": "MIT",
       "name": "Huginn",
       "notes": "Agent-style rules over feeds; predates the current agent wave by a decade.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-huginn",
       "trooth_input": [
         "json",
         "rss"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://github.com/huginn/huginn"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-hugo",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "hugo",
       "license": "Apache-2.0",
       "name": "Hugo",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-hugo",
       "trooth_input": [
         "md",
         "json"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://gohugo.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-icalendar",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "icalendar",
       "license": "n/a",
       "name": "iCalendar",
       "notes": "Release calendars for scheduled publishers like FRED and SEC belong in a calendar, not a dashboard.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-icalendar",
       "trooth_input": [
         "json"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://datatracker.ietf.org/doc/html/rfc5545"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-inline-svg",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "inline-svg",
       "license": "n/a",
       "name": "Inline SVG (no library)",
       "notes": "What the Modafied emblem actually is. Zero dependencies, zero runtime, works in email.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-inline-svg",
       "trooth_input": [
         "json"
       ],
-      "type": "embeddable-widget"
+      "type": "embeddable-widget",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-jless",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "jless",
       "license": "MIT",
       "name": "jless",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-jless",
       "trooth_input": [
         "json"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://jless.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-jq",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "jq",
       "license": "MIT",
       "name": "jq",
       "notes": "The baseline. If a feed is not pleasant in jq, the shape is wrong.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-jq",
       "trooth_input": [
         "json"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://jqlang.github.io/jq/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-json-feed",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "json-feed",
       "license": "n/a",
       "name": "JSON Feed",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-json-feed",
       "trooth_input": [
         "json"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://www.jsonfeed.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-jspreadsheet-ce",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "jspreadsheet-ce",
       "license": "MIT",
       "name": "Jspreadsheet CE",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-jspreadsheet-ce",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "spreadsheet"
+      "type": "spreadsheet",
+      "url": "https://bossanova.uk/jspreadsheet/v4/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-jupyter",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "jupyter",
       "license": "BSD-3-Clause",
       "name": "JupyterLab",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-jupyter",
       "trooth_input": [
         "json",
         "csv",
         "parquet"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://jupyter.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-keila",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "keila",
       "license": "AGPL-3.0-only",
       "name": "Keila",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-keila",
       "trooth_input": [
         "json"
       ],
-      "type": "email-and-digest"
+      "type": "email-and-digest",
+      "url": "https://www.keila.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-keplergl",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "keplergl",
       "license": "MIT",
       "name": "kepler.gl",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-keplergl",
       "trooth_input": [
         "geojson",
         "csv"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://kepler.gl"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-kibana",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "kibana",
       "license": "Elastic-2.0",
       "name": "Kibana",
       "notes": "Source-available, not open source. Fine to self-host, not fine to resell as a service.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-kibana",
       "trooth_input": [
         "json"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://www.elastic.co/kibana"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-leaflet",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "leaflet",
       "license": "BSD-2-Clause",
       "name": "Leaflet",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-leaflet",
       "trooth_input": [
         "geojson"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://leafletjs.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-librechat",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "librechat",
       "license": "MIT",
       "name": "LibreChat",
       "notes": "Speaks MCP, so it can hold the Trooth server directly once Phase 1 ships.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-librechat",
       "trooth_input": [
         "json",
         "mcp"
       ],
-      "type": "agent-and-chat-surface"
+      "type": "agent-and-chat-surface",
+      "url": "https://www.librechat.ai"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-libreoffice-calc",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "libreoffice-calc",
       "license": "MPL-2.0",
       "name": "LibreOffice Calc",
       "notes": "Desktop, and the honest answer for a buyer who only wants the file.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-libreoffice-calc",
       "trooth_input": [
         "csv",
         "xlsx"
       ],
-      "type": "spreadsheet"
+      "type": "spreadsheet",
+      "url": "https://www.libreoffice.org/discover/calc/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-lightdash",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "lightdash",
       "license": "MIT",
       "name": "Lightdash",
       "notes": "Metrics defined in code, which suits a versioned method.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-lightdash",
       "trooth_input": [
         "sql"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://www.lightdash.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-listmonk",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "listmonk",
       "license": "AGPL-3.0-only",
       "name": "listmonk",
       "notes": "Single binary, handles lists and scheduled campaigns. The cheapest real digest we could run.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-listmonk",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "email-and-digest"
+      "type": "email-and-digest",
+      "url": "https://listmonk.app"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-llm-cli",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "llm-cli",
       "license": "Apache-2.0",
       "name": "llm",
       "notes": "Pipe an envelope into a model from a shell, which is how most people will first try this.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-llm-cli",
       "trooth_input": [
         "json"
       ],
-      "type": "agent-and-chat-surface"
+      "type": "agent-and-chat-surface",
+      "url": "https://llm.datasette.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-lowcoder",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "lowcoder",
       "license": "AGPL-3.0-only",
       "name": "Lowcoder",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-lowcoder",
       "trooth_input": [
         "json",
         "sql"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://www.lowcoder.cloud"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-luckysheet",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "luckysheet",
       "license": "MIT",
       "name": "Luckysheet",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-luckysheet",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "spreadsheet"
+      "type": "spreadsheet",
+      "url": "https://github.com/dream-num/Luckysheet"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-magicmirror",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "magicmirror",
       "license": "MIT",
       "name": "MagicMirror",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-magicmirror",
       "trooth_input": [
         "json",
         "rss"
       ],
-      "type": "kiosk-and-signage"
+      "type": "kiosk-and-signage",
+      "url": "https://magicmirror.builders"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-mailpit",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "mailpit",
       "license": "MIT",
       "name": "Mailpit",
       "notes": "Catches the digest in development so nobody tests against a real list.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-mailpit",
       "trooth_input": [
         "smtp"
       ],
-      "type": "email-and-digest"
+      "type": "email-and-digest",
+      "url": "https://mailpit.axllent.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-maizzle",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "maizzle",
       "license": "MIT",
       "name": "Maizzle",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-maizzle",
       "trooth_input": [
         "json",
         "md"
       ],
-      "type": "email-and-digest"
+      "type": "email-and-digest",
+      "url": "https://maizzle.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-malloy",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "malloy",
       "license": "MIT",
       "name": "Malloy",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-malloy",
       "trooth_input": [
         "parquet",
         "sql"
       ],
-      "type": "sql-and-exploration"
+      "type": "sql-and-exploration",
+      "url": "https://www.malloydata.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-maplibre-gl",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "maplibre-gl",
       "license": "BSD-3-Clause",
       "name": "MapLibre GL JS",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-maplibre-gl",
       "trooth_input": [
         "geojson",
         "pmtiles"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://maplibre.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-marimo",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "marimo",
       "license": "Apache-2.0",
       "name": "marimo",
       "notes": "Reactive notebooks that are plain Python files, so they diff properly.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-marimo",
       "trooth_input": [
         "json",
         "csv",
         "parquet"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://marimo.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-matterbridge",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "matterbridge",
       "license": "Apache-2.0",
       "name": "Matterbridge",
       "notes": "One post fans out to the chat tools we do not want to integrate one by one.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-matterbridge",
       "trooth_input": [
         "webhook"
       ],
-      "type": "chat-and-collaboration"
+      "type": "chat-and-collaboration",
+      "url": "https://github.com/42wim/matterbridge"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-mattermost",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "mattermost",
       "license": "AGPL-3.0-only",
       "name": "Mattermost",
       "notes": "Incoming webhooks take a JSON body directly, so a change feed needs no adapter.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-mattermost",
       "trooth_input": [
         "webhook",
         "json"
       ],
-      "type": "chat-and-collaboration"
+      "type": "chat-and-collaboration",
+      "url": "https://mattermost.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-mcp-inspector",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "mcp-inspector",
       "license": "MIT",
       "name": "MCP Inspector",
       "notes": "The debugging surface for our own server. Belongs in the quickstart.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-mcp-inspector",
       "trooth_input": [
         "mcp"
       ],
-      "type": "agent-and-chat-surface"
+      "type": "agent-and-chat-surface",
+      "url": "https://github.com/modelcontextprotocol/inspector"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-mermaid",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "mermaid",
       "license": "MIT",
       "name": "Mermaid",
       "notes": "Renders in GitHub and most docs tools with no build step.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-mermaid",
       "trooth_input": [
         "text"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://mermaid.js.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-metabase",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "metabase",
       "license": "AGPL-3.0-or-later",
       "name": "Metabase",
       "notes": "Easiest for non-technical viewers; needs the data in a database.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-metabase",
       "trooth_input": [
         "sql",
         "csv"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://www.metabase.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-miller",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "miller",
       "license": "BSD-2-Clause",
       "name": "Miller",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-miller",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://miller.readthedocs.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-miniflux",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "miniflux",
       "license": "Apache-2.0",
       "name": "Miniflux",
       "notes": "Minimal reader, single binary, and it honours conditional GETs, which TASK-MIG-5 cares about.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-miniflux",
       "trooth_input": [
         "rss"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://miniflux.app"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-mjml",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "mjml",
       "license": "MIT",
       "name": "MJML",
       "notes": "Email HTML that survives Outlook. Needed before any digest goes out.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-mjml",
       "trooth_input": [
         "json",
         "md"
       ],
-      "type": "email-and-digest"
+      "type": "email-and-digest",
+      "url": "https://mjml.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-mkdocs-material",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "mkdocs-material",
       "license": "MIT",
       "name": "MkDocs Material",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-mkdocs-material",
       "trooth_input": [
         "md"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://squidfunk.github.io/mkdocs-material/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-nats",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "nats",
       "license": "Apache-2.0",
       "name": "NATS",
       "notes": "Subject-based fan-out; one subject per source is the obvious shape for a change feed.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-nats",
       "trooth_input": [
         "websocket"
       ],
-      "type": "realtime-stream"
+      "type": "realtime-stream",
+      "url": "https://nats.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-netdata",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "netdata",
       "license": "GPL-3.0-only",
       "name": "Netdata",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-netdata",
       "trooth_input": [
         "prometheus"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://www.netdata.cloud"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-nivo",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "nivo",
       "license": "MIT",
       "name": "nivo",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-nivo",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://nivo.rocks"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-nocodb",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "nocodb",
       "license": "AGPL-3.0-only",
       "name": "NocoDB",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-nocodb",
       "trooth_input": [
         "sql",
         "csv"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://nocodb.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-novu",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "novu",
       "license": "MIT",
       "name": "Novu",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-novu",
       "trooth_input": [
         "webhook"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://novu.co"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-ntfy",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "ntfy",
       "license": "Apache-2.0",
       "name": "ntfy",
       "notes": "Push to phone from a webhook in one line. The cheapest useful output we could document.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-ntfy",
       "trooth_input": [
         "webhook"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://ntfy.sh"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-observable-framework",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "observable-framework",
       "license": "ISC",
       "name": "Observable Framework",
       "notes": "Static build, data loaders in any language, excellent charts.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-observable-framework",
       "trooth_input": [
         "json",
         "csv",
         "parquet"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://observablehq.com/framework/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-observable-plot",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "observable-plot",
       "license": "ISC",
       "name": "Observable Plot",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-observable-plot",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://observablehq.com/plot/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-oembed",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "oembed",
       "license": "n/a",
       "name": "oEmbed",
       "notes": "A standard worth supporting so cards unfurl in Slack and Notion.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-oembed",
       "trooth_input": [
         "json"
       ],
-      "type": "embeddable-widget"
+      "type": "embeddable-widget",
+      "url": "https://oembed.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-open-webui",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "open-webui",
       "license": "BSD-3-Clause with branding clause",
       "name": "Open WebUI",
       "notes": "Check the branding clause before white-labelling it.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-open-webui",
       "trooth_input": [
         "json",
         "mcp"
       ],
-      "type": "agent-and-chat-surface"
+      "type": "agent-and-chat-surface",
+      "url": "https://openwebui.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-openlayers",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "openlayers",
       "license": "BSD-2-Clause",
       "name": "OpenLayers",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-openlayers",
       "trooth_input": [
         "geojson"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://openlayers.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-opensearch-dashboards",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "opensearch-dashboards",
       "license": "Apache-2.0",
       "name": "OpenSearch Dashboards",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-opensearch-dashboards",
       "trooth_input": [
         "json"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://opensearch.org/docs/latest/dashboards/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-pandoc",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "pandoc",
       "license": "GPL-2.0-or-later",
       "name": "Pandoc",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-pandoc",
       "trooth_input": [
         "md",
         "json"
       ],
-      "type": "print-and-pdf"
+      "type": "print-and-pdf",
+      "url": "https://pandoc.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-perspective",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "perspective",
       "license": "Apache-2.0",
       "name": "Perspective",
       "notes": "Streaming pivot grid in WebAssembly; handles the archive without a server.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-perspective",
       "trooth_input": [
         "parquet",
         "json"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://perspective.finos.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-perspective-stream",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "perspective-stream",
       "license": "Apache-2.0",
       "name": "Perspective (streaming)",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-perspective-stream",
       "trooth_input": [
         "arrow",
         "websocket"
       ],
-      "type": "realtime-stream"
+      "type": "realtime-stream",
+      "url": "https://perspective.finos.org/docs/server/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-playwright",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "playwright",
       "license": "Apache-2.0",
       "name": "Playwright",
       "notes": "Heavier, and the only option when the page needs JavaScript to finish rendering.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-playwright",
       "trooth_input": [
         "html"
       ],
-      "type": "print-and-pdf"
+      "type": "print-and-pdf",
+      "url": "https://playwright.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-dash",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "dash",
       "license": "MIT",
       "name": "Plotly Dash",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-dash",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://dash.plotly.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-plotly-js",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "plotly-js",
       "license": "MIT",
       "name": "Plotly.js",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-plotly-js",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://plotly.com/javascript/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-postal",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "postal",
       "license": "MIT",
       "name": "Postal",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-postal",
       "trooth_input": [
         "smtp"
       ],
-      "type": "email-and-digest"
+      "type": "email-and-digest",
+      "url": "https://docs.postalserver.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-prometheus-alertmanager",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "prometheus-alertmanager",
       "license": "Apache-2.0",
       "name": "Prometheus Alertmanager",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-prometheus-alertmanager",
       "trooth_input": [
         "prometheus"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://prometheus.io/docs/alerting/latest/alertmanager/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-protomaps",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "protomaps",
       "license": "BSD-3-Clause",
       "name": "Protomaps",
       "notes": "Basemap tiles from a single file on R2, so no tile server to pay for.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-protomaps",
       "trooth_input": [
         "pmtiles"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://protomaps.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-qgis",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "qgis",
       "license": "GPL-2.0-or-later",
       "name": "QGIS",
       "notes": "Desktop; for analysis rather than publishing.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-qgis",
       "trooth_input": [
         "geojson",
         "csv"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://qgis.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-quarto",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "quarto",
       "license": "MIT",
       "name": "Quarto",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-quarto",
       "trooth_input": [
         "csv",
         "json",
         "parquet"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://quarto.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-quartz",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "quartz",
       "license": "MIT",
       "name": "Quartz",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-quartz",
       "trooth_input": [
         "md"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://quartz.jzhao.xyz"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-querybook",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "querybook",
       "license": "Apache-2.0",
       "name": "Querybook",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-querybook",
       "trooth_input": [
         "sql"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://www.querybook.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-react-admin",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "react-admin",
       "license": "MIT",
       "name": "React Admin",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-react-admin",
       "trooth_input": [
         "json"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://marmelab.com/react-admin/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-recharts",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "recharts",
       "license": "MIT",
       "name": "Recharts",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-recharts",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://recharts.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-redash",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "redash",
       "license": "BSD-2-Clause",
       "name": "Redash",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-redash",
       "trooth_input": [
         "sql",
         "json"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://redash.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-refine",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "refine",
       "license": "MIT",
       "name": "Refine",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-refine",
       "trooth_input": [
         "json"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://refine.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-reflex",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "reflex",
       "license": "Apache-2.0",
       "name": "Reflex",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-reflex",
       "trooth_input": [
         "json",
         "sql"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://reflex.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-resvg",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "resvg",
       "license": "MPL-2.0",
       "name": "resvg",
       "notes": "SVG to PNG for the surfaces that still refuse SVG, email among them.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-resvg",
       "trooth_input": [
         "svg"
       ],
-      "type": "embeddable-widget"
+      "type": "embeddable-widget",
+      "url": "https://github.com/linebender/resvg"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-revogrid",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "revogrid",
       "license": "MIT",
       "name": "RevoGrid",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-revogrid",
       "trooth_input": [
         "json"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://rv-grid.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-rich",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "rich",
       "license": "MIT",
       "name": "Rich",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-rich",
       "trooth_input": [
         "json"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://rich.readthedocs.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-rilldata",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "rilldata",
       "license": "Apache-2.0",
       "name": "Rill",
       "notes": "Reads Parquet with no warehouse at all.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-rilldata",
       "trooth_input": [
         "parquet",
         "duckdb"
       ],
-      "type": "bi-dashboard"
+      "type": "bi-dashboard",
+      "url": "https://www.rilldata.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-rocketchat",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "rocketchat",
       "license": "MIT",
       "name": "Rocket.Chat",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-rocketchat",
       "trooth_input": [
         "webhook",
         "json"
       ],
-      "type": "chat-and-collaboration"
+      "type": "chat-and-collaboration",
+      "url": "https://www.rocket.chat"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-rss-bridge",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "rss-bridge",
       "license": "Unlicense",
       "name": "RSS-Bridge",
       "notes": "The reverse direction: makes a feed out of a source that refuses to publish one.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-rss-bridge",
       "trooth_input": [
         "http"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://rss-bridge.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-rss2email",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "rss2email",
       "license": "GPL-3.0-or-later",
       "name": "rss2email",
       "notes": "Turns the syndication output below into the digest output here, with no code of ours.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-rss2email",
       "trooth_input": [
         "rss"
       ],
-      "type": "email-and-digest"
+      "type": "email-and-digest",
+      "url": "https://github.com/rss2email/rss2email"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-satori",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "satori",
       "license": "MIT",
       "name": "Satori",
       "notes": "Renders an SVG card at the edge, so a per-source social image costs one Worker call.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-satori",
       "trooth_input": [
         "json"
       ],
-      "type": "embeddable-widget"
+      "type": "embeddable-widget",
+      "url": "https://github.com/vercel/satori"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-sse",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "sse",
       "license": "n/a",
       "name": "Server-Sent Events",
       "notes": "Simplest streaming transport; works through the Worker with no extra service.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-sse",
       "trooth_input": [
         "http"
       ],
-      "type": "realtime-stream"
+      "type": "realtime-stream",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-sheetjs-ce",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "sheetjs-ce",
       "license": "Apache-2.0",
       "name": "SheetJS Community",
       "notes": "Writing a real .xlsx export is a one-day job and would unblock several buyers.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-sheetjs-ce",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "spreadsheet"
+      "type": "spreadsheet",
+      "url": "https://sheetjs.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-shields-io",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "shields-io",
       "license": "CC0-1.0",
       "name": "Shields.io",
       "notes": "Self-hostable badge renderer. The emblem endpoint can speak its schema.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-shields-io",
       "trooth_input": [
         "json"
       ],
-      "type": "embeddable-widget"
+      "type": "embeddable-widget",
+      "url": "https://shields.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-shiny",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "shiny",
       "license": "MIT",
       "name": "Shiny",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-shiny",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://shiny.posit.co"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-shoutrrr",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "shoutrrr",
       "license": "MIT",
       "name": "Shoutrrr",
       "notes": "One Go library, one URL per destination. Smallest possible notification dependency.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-shoutrrr",
       "trooth_input": [
         "webhook"
       ],
-      "type": "alerting-and-notification"
+      "type": "alerting-and-notification",
+      "url": "https://containrrr.dev/shoutrrr/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-sigma-js",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "sigma-js",
       "license": "MIT",
       "name": "Sigma.js",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-sigma-js",
       "trooth_input": [
         "json"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://www.sigmajs.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-simple-icons",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "simple-icons",
       "license": "CC0-1.0",
       "name": "Simple Icons",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-simple-icons",
       "trooth_input": [
         "svg"
       ],
-      "type": "embeddable-widget"
+      "type": "embeddable-widget",
+      "url": "https://simpleicons.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-slack-webhook",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "slack-webhook",
       "license": "n/a",
       "name": "Slack incoming webhook",
       "notes": "Hosted, not self-hostable. Listed because it is what most teams will actually point at us.",
       "reciprocal_license": false,
       "self_host": false,
+      "subject_id": "ui-slack-webhook",
       "trooth_input": [
         "webhook"
       ],
-      "type": "chat-and-collaboration"
+      "type": "chat-and-collaboration",
+      "url": "https://api.slack.com/messaging/webhooks"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-slickgrid",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "slickgrid",
       "license": "MIT",
       "name": "SlickGrid",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-slickgrid",
       "trooth_input": [
         "json"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://github.com/6pac/SlickGrid"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-smashing",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "smashing",
       "license": "MIT",
       "name": "Smashing",
       "notes": "The Dashing successor. One widget per tile, pushed over HTTP.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-smashing",
       "trooth_input": [
         "json"
       ],
-      "type": "kiosk-and-signage"
+      "type": "kiosk-and-signage",
+      "url": "https://smashing.github.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-socket-io",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "socket-io",
       "license": "MIT",
       "name": "Socket.IO",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-socket-io",
       "trooth_input": [
         "websocket"
       ],
-      "type": "realtime-stream"
+      "type": "realtime-stream",
+      "url": "https://socket.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-solara",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "solara",
       "license": "MIT",
       "name": "Solara",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-solara",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://solara.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-sqlpad",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "sqlpad",
       "license": "MIT",
       "name": "SQLPad",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-sqlpad",
       "trooth_input": [
         "sql"
       ],
-      "type": "sql-and-exploration"
+      "type": "sql-and-exploration",
+      "url": "https://github.com/sqlpad/sqlpad"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-starlight",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "starlight",
       "license": "MIT",
       "name": "Starlight",
       "notes": "Astro-native docs, so the docs and the console share one build.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-starlight",
       "trooth_input": [
         "md"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://starlight.astro.build"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-statping-ng",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "statping-ng",
       "license": "GPL-3.0-only",
       "name": "Statping-ng",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-statping-ng",
       "trooth_input": [
         "json"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://github.com/statping-ng/statping-ng"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-streamlit",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "streamlit",
       "license": "Apache-2.0",
       "name": "Streamlit",
       "notes": "Fastest path from a JSON feed to something clickable.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-streamlit",
       "trooth_input": [
         "json",
         "csv",
         "parquet"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://streamlit.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-tabulator",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "tabulator",
       "license": "MIT",
       "name": "Tabulator",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-tabulator",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://tabulator.info"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-tanstack-table",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "tanstack-table",
       "license": "MIT",
       "name": "TanStack Table",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-tanstack-table",
       "trooth_input": [
         "json"
       ],
-      "type": "table-and-grid"
+      "type": "table-and-grid",
+      "url": "https://tanstack.com/table"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-tectonic",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "tectonic",
       "license": "MIT",
       "name": "Tectonic",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-tectonic",
       "trooth_input": [
         "md",
         "csv"
       ],
-      "type": "print-and-pdf"
+      "type": "print-and-pdf",
+      "url": "https://tectonic-typesetting.github.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-terriajs",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "terriajs",
       "license": "Apache-2.0",
       "name": "TerriaJS",
       "notes": "Built for government open data portals, which is most of the catalog.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-terriajs",
       "trooth_input": [
         "geojson",
         "csv"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://terria.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-textual",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "textual",
       "license": "MIT",
       "name": "Textual",
       "notes": "For building a terminal console if one is ever wanted.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-textual",
       "trooth_input": [
         "json"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://textual.textualize.io"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-tt-rss",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "tt-rss",
       "license": "GPL-3.0-only",
       "name": "Tiny Tiny RSS",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-tt-rss",
       "trooth_input": [
         "rss"
       ],
-      "type": "feed-syndication"
+      "type": "feed-syndication",
+      "url": "https://tt-rss.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-tippecanoe",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "tippecanoe",
       "license": "BSD-3-Clause",
       "name": "tippecanoe",
       "notes": "Builds the tiles rather than drawing them, and every large map above needs it.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-tippecanoe",
       "trooth_input": [
         "geojson"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://github.com/felt/tippecanoe"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-tooljet",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "tooljet",
       "license": "AGPL-3.0-only",
       "name": "ToolJet",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-tooljet",
       "trooth_input": [
         "json",
         "sql"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://www.tooljet.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-turf",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "turf",
       "license": "MIT",
       "name": "Turf.js",
       "notes": "Geometry operations, not a UI, but needed by every map above.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-turf",
       "trooth_input": [
         "geojson"
       ],
-      "type": "map-and-geo"
+      "type": "map-and-geo",
+      "url": "https://turfjs.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-typst",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "typst",
       "license": "Apache-2.0",
       "name": "Typst",
       "notes": "Fast, scriptable, and the templates diff cleanly. Best fit for a recurring report.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-typst",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "print-and-pdf"
+      "type": "print-and-pdf",
+      "url": "https://typst.app"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-univer",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "univer",
       "license": "Apache-2.0",
       "name": "Univer",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-univer",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "spreadsheet"
+      "type": "spreadsheet",
+      "url": "https://univer.ai"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-uplot",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "uplot",
       "license": "MIT",
       "name": "uPlot",
       "notes": "Tiny and fast; right choice for long freshness time series.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-uplot",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://github.com/leeoniya/uPlot"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-upptime",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "upptime",
       "license": "MIT",
       "name": "Upptime",
       "notes": "Status page built from GitHub Actions and commits. Runs at no cost, which matters under H6.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-upptime",
       "trooth_input": [
         "http"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://upptime.js.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-uptime-kuma",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "uptime-kuma",
       "license": "MIT",
       "name": "Uptime Kuma",
       "notes": "Simplest self-hosted status page; can poll our status JSON directly.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-uptime-kuma",
       "trooth_input": [
         "json",
         "http"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://github.com/louislam/uptime-kuma"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-vega-lite",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "vega-lite",
       "license": "BSD-3-Clause",
       "name": "Vega-Lite",
       "notes": "Declarative spec; a chart becomes a JSON object we could publish alongside the data.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-vega-lite",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://vega.github.io/vega-lite/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-vis-network",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "vis-network",
       "license": "Apache-2.0",
       "name": "vis-network",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-vis-network",
       "trooth_input": [
         "json"
       ],
-      "type": "diagram-and-graph"
+      "type": "diagram-and-graph",
+      "url": "https://visjs.github.io/vis-network/docs/network/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-visidata",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "visidata",
       "license": "GPL-3.0-only",
       "name": "VisiData",
       "notes": "Explore a snapshot archive interactively in a terminal.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-visidata",
       "trooth_input": [
         "json",
         "csv",
         "parquet"
       ],
-      "type": "terminal-and-cli"
+      "type": "terminal-and-cli",
+      "url": "https://www.visidata.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-visx",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "visx",
       "license": "MIT",
       "name": "visx",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-visx",
       "trooth_input": [
         "json"
       ],
-      "type": "charting-library"
+      "type": "charting-library",
+      "url": "https://airbnb.io/visx/"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-vitepress",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "vitepress",
       "license": "MIT",
       "name": "VitePress",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-vitepress",
       "trooth_input": [
         "md"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://vitepress.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-voila",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "voila",
       "license": "BSD-3-Clause",
       "name": "Voila",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-voila",
       "trooth_input": [
         "json",
         "csv"
       ],
-      "type": "notebook-and-report"
+      "type": "notebook-and-report",
+      "url": "https://github.com/voila-dashboards/voila"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-weasyprint",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "weasyprint",
       "license": "BSD-3-Clause",
       "name": "WeasyPrint",
       "notes": "HTML and CSS to PDF with no browser, and the emblem SVG renders as-is.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-weasyprint",
       "trooth_input": [
         "html",
         "json"
       ],
-      "type": "print-and-pdf"
+      "type": "print-and-pdf",
+      "url": "https://weasyprint.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-windmill",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "windmill",
       "license": "AGPL-3.0-only",
       "name": "Windmill",
       "notes": "Scripts and an app builder in one, so the same tool can poll a feed and render it.",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-windmill",
       "trooth_input": [
         "json",
         "sql"
       ],
-      "type": "admin-panel-internal-tool"
+      "type": "admin-panel-internal-tool",
+      "url": "https://www.windmill.dev"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-x-spreadsheet",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "x-spreadsheet",
       "license": "MIT",
       "name": "x-spreadsheet",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-x-spreadsheet",
       "trooth_input": [
         "csv",
         "json"
       ],
-      "type": "spreadsheet"
+      "type": "spreadsheet",
+      "url": "https://github.com/myliang/x-spreadsheet"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-zabbix",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "zabbix",
       "license": "AGPL-3.0-only",
       "name": "Zabbix",
       "notes": "",
       "reciprocal_license": true,
       "self_host": true,
+      "subject_id": "ui-zabbix",
       "trooth_input": [
         "prometheus",
         "json"
       ],
-      "type": "status-and-uptime"
+      "type": "status-and-uptime",
+      "url": "https://www.zabbix.com"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-zola",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "zola",
       "license": "MIT",
       "name": "Zola",
       "notes": "",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-zola",
       "trooth_input": [
         "md",
         "json"
       ],
-      "type": "static-site-and-docs"
+      "type": "static-site-and-docs",
+      "url": "https://www.getzola.org"
     },
     {
+      "emblem": {
+        "card_url": "/outputs#ui-zulip",
+        "grade": null,
+        "issuer": "modafied",
+        "state": "unrated",
+        "unrated_reason": "UI output: Modafied grades sources and MCP servers, and a rendering tool publishes nothing for the six dimensions to measure. Unrated until ADR-0015 is answered upstream"
+      },
       "id": "zulip",
       "license": "Apache-2.0",
       "name": "Zulip",
       "notes": "A topic per source keeps a noisy revision feed readable, which flat channels do not.",
       "reciprocal_license": false,
       "self_host": true,
+      "subject_id": "ui-zulip",
       "trooth_input": [
         "webhook",
         "json"
       ],
-      "type": "chat-and-collaboration"
+      "type": "chat-and-collaboration",
+      "url": "https://zulip.com"
     }
   ],
   "total_tools": 185,
@@ -2402,7 +4067,8 @@
           "trooth_input": [
             "sql",
             "csv"
-          ]
+          ],
+          "url": "https://www.metabase.com"
         },
         {
           "id": "superset",
@@ -2412,7 +4078,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://superset.apache.org"
         },
         {
           "id": "redash",
@@ -2422,7 +4089,8 @@
           "trooth_input": [
             "sql",
             "json"
-          ]
+          ],
+          "url": "https://redash.io"
         },
         {
           "id": "grafana",
@@ -2434,7 +4102,8 @@
             "prometheus",
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://grafana.com/oss/grafana/"
         },
         {
           "id": "lightdash",
@@ -2444,7 +4113,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://www.lightdash.com"
         },
         {
           "id": "rilldata",
@@ -2455,7 +4125,8 @@
           "trooth_input": [
             "parquet",
             "duckdb"
-          ]
+          ],
+          "url": "https://www.rilldata.com"
         },
         {
           "id": "chartbrew",
@@ -2465,7 +4136,8 @@
           "trooth_input": [
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://chartbrew.com"
         },
         {
           "id": "opensearch-dashboards",
@@ -2474,7 +4146,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://opensearch.org/docs/latest/dashboards/"
         },
         {
           "id": "querybook",
@@ -2483,7 +4156,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://www.querybook.org"
         },
         {
           "id": "blazer",
@@ -2493,7 +4167,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://github.com/ankane/blazer"
         },
         {
           "id": "kibana",
@@ -2503,7 +4178,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://www.elastic.co/kibana"
         },
         {
           "id": "graphic-walker",
@@ -2514,7 +4190,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://github.com/Kanaries/graphic-walker"
         },
         {
           "id": "datalens",
@@ -2523,7 +4200,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://datalens.tech"
         }
       ],
       "type": "bi-dashboard",
@@ -2541,7 +4219,8 @@
             "sql",
             "parquet",
             "csv"
-          ]
+          ],
+          "url": "https://evidence.dev"
         },
         {
           "id": "observable-framework",
@@ -2553,7 +4232,8 @@
             "json",
             "csv",
             "parquet"
-          ]
+          ],
+          "url": "https://observablehq.com/framework/"
         },
         {
           "id": "quarto",
@@ -2564,7 +4244,8 @@
             "csv",
             "json",
             "parquet"
-          ]
+          ],
+          "url": "https://quarto.org"
         },
         {
           "id": "jupyter",
@@ -2575,7 +4256,8 @@
             "json",
             "csv",
             "parquet"
-          ]
+          ],
+          "url": "https://jupyter.org"
         },
         {
           "id": "marimo",
@@ -2587,7 +4269,8 @@
             "json",
             "csv",
             "parquet"
-          ]
+          ],
+          "url": "https://marimo.io"
         },
         {
           "id": "streamlit",
@@ -2599,7 +4282,8 @@
             "json",
             "csv",
             "parquet"
-          ]
+          ],
+          "url": "https://streamlit.io"
         },
         {
           "id": "dash",
@@ -2609,7 +4293,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://dash.plotly.com"
         },
         {
           "id": "panel",
@@ -2620,7 +4305,8 @@
             "json",
             "csv",
             "parquet"
-          ]
+          ],
+          "url": "https://panel.holoviz.org"
         },
         {
           "id": "shiny",
@@ -2630,7 +4316,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://shiny.posit.co"
         },
         {
           "id": "voila",
@@ -2640,7 +4327,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://github.com/voila-dashboards/voila"
         },
         {
           "id": "zeppelin",
@@ -2650,7 +4338,8 @@
           "trooth_input": [
             "sql",
             "json"
-          ]
+          ],
+          "url": "https://zeppelin.apache.org"
         },
         {
           "id": "gradio",
@@ -2660,7 +4349,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://www.gradio.app"
         },
         {
           "id": "solara",
@@ -2670,7 +4360,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://solara.dev"
         },
         {
           "id": "reflex",
@@ -2680,7 +4371,8 @@
           "trooth_input": [
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://reflex.dev"
         }
       ],
       "type": "notebook-and-report",
@@ -2697,7 +4389,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://vega.github.io/vega-lite/"
         },
         {
           "id": "echarts",
@@ -2706,7 +4399,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://echarts.apache.org"
         },
         {
           "id": "chartjs",
@@ -2715,7 +4409,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://www.chartjs.org"
         },
         {
           "id": "plotly-js",
@@ -2724,7 +4419,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://plotly.com/javascript/"
         },
         {
           "id": "d3",
@@ -2735,7 +4431,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://d3js.org"
         },
         {
           "id": "uplot",
@@ -2745,7 +4442,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://github.com/leeoniya/uPlot"
         },
         {
           "id": "observable-plot",
@@ -2755,7 +4453,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://observablehq.com/plot/"
         },
         {
           "id": "recharts",
@@ -2764,7 +4463,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://recharts.org"
         },
         {
           "id": "nivo",
@@ -2773,7 +4473,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://nivo.rocks"
         },
         {
           "id": "frappe-charts",
@@ -2782,7 +4483,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://frappe.io/charts"
         },
         {
           "id": "apexcharts",
@@ -2791,7 +4493,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://apexcharts.com"
         },
         {
           "id": "visx",
@@ -2800,7 +4503,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://airbnb.io/visx/"
         },
         {
           "id": "billboard-js",
@@ -2809,7 +4513,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://naver.github.io/billboard.js/"
         },
         {
           "id": "antv-g2",
@@ -2818,7 +4523,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://g2.antv.antgroup.com"
         }
       ],
       "type": "charting-library",
@@ -2834,7 +4540,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://www.ag-grid.com"
         },
         {
           "id": "tanstack-table",
@@ -2843,7 +4550,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://tanstack.com/table"
         },
         {
           "id": "tabulator",
@@ -2853,7 +4561,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://tabulator.info"
         },
         {
           "id": "datatables",
@@ -2863,7 +4572,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://datatables.net"
         },
         {
           "id": "glide-data-grid",
@@ -2872,7 +4582,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://grid.glideapps.com"
         },
         {
           "id": "perspective",
@@ -2883,7 +4594,8 @@
           "trooth_input": [
             "parquet",
             "json"
-          ]
+          ],
+          "url": "https://perspective.finos.org"
         },
         {
           "id": "handsontable-ce",
@@ -2893,7 +4605,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://handsontable.com"
         },
         {
           "id": "revogrid",
@@ -2902,7 +4615,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://rv-grid.com"
         },
         {
           "id": "grid-js",
@@ -2913,7 +4627,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://gridjs.io"
         },
         {
           "id": "slickgrid",
@@ -2922,7 +4637,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://github.com/6pac/SlickGrid"
         },
         {
           "id": "frappe-datatable",
@@ -2932,7 +4648,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://frappe.io/datatable"
         }
       ],
       "type": "table-and-grid",
@@ -2947,7 +4664,8 @@
           "self_host": true,
           "trooth_input": [
             "geojson"
-          ]
+          ],
+          "url": "https://leafletjs.com"
         },
         {
           "id": "maplibre-gl",
@@ -2957,7 +4675,8 @@
           "trooth_input": [
             "geojson",
             "pmtiles"
-          ]
+          ],
+          "url": "https://maplibre.org"
         },
         {
           "id": "openlayers",
@@ -2966,7 +4685,8 @@
           "self_host": true,
           "trooth_input": [
             "geojson"
-          ]
+          ],
+          "url": "https://openlayers.org"
         },
         {
           "id": "deckgl",
@@ -2977,7 +4697,8 @@
           "trooth_input": [
             "geojson",
             "json"
-          ]
+          ],
+          "url": "https://deck.gl"
         },
         {
           "id": "keplergl",
@@ -2987,7 +4708,8 @@
           "trooth_input": [
             "geojson",
             "csv"
-          ]
+          ],
+          "url": "https://kepler.gl"
         },
         {
           "id": "qgis",
@@ -2998,7 +4720,8 @@
           "trooth_input": [
             "geojson",
             "csv"
-          ]
+          ],
+          "url": "https://qgis.org"
         },
         {
           "id": "turf",
@@ -3008,7 +4731,8 @@
           "self_host": true,
           "trooth_input": [
             "geojson"
-          ]
+          ],
+          "url": "https://turfjs.org"
         },
         {
           "id": "protomaps",
@@ -3018,7 +4742,8 @@
           "self_host": true,
           "trooth_input": [
             "pmtiles"
-          ]
+          ],
+          "url": "https://protomaps.com"
         },
         {
           "id": "terriajs",
@@ -3029,7 +4754,8 @@
           "trooth_input": [
             "geojson",
             "csv"
-          ]
+          ],
+          "url": "https://terria.io"
         },
         {
           "id": "tippecanoe",
@@ -3039,7 +4765,8 @@
           "self_host": true,
           "trooth_input": [
             "geojson"
-          ]
+          ],
+          "url": "https://github.com/felt/tippecanoe"
         }
       ],
       "type": "map-and-geo",
@@ -3055,7 +4782,8 @@
           "trooth_input": [
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://www.appsmith.com"
         },
         {
           "id": "tooljet",
@@ -3065,7 +4793,8 @@
           "trooth_input": [
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://www.tooljet.com"
         },
         {
           "id": "budibase",
@@ -3075,7 +4804,8 @@
           "trooth_input": [
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://budibase.com"
         },
         {
           "id": "refine",
@@ -3084,7 +4814,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://refine.dev"
         },
         {
           "id": "react-admin",
@@ -3093,7 +4824,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://marmelab.com/react-admin/"
         },
         {
           "id": "directus",
@@ -3103,7 +4835,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://directus.io"
         },
         {
           "id": "nocodb",
@@ -3113,7 +4846,8 @@
           "trooth_input": [
             "sql",
             "csv"
-          ]
+          ],
+          "url": "https://nocodb.com"
         },
         {
           "id": "baserow",
@@ -3123,7 +4857,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://baserow.io"
         },
         {
           "id": "grist",
@@ -3134,7 +4869,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://www.getgrist.com"
         },
         {
           "id": "lowcoder",
@@ -3144,7 +4880,8 @@
           "trooth_input": [
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://www.lowcoder.cloud"
         },
         {
           "id": "windmill",
@@ -3155,7 +4892,8 @@
           "trooth_input": [
             "json",
             "sql"
-          ]
+          ],
+          "url": "https://www.windmill.dev"
         }
       ],
       "type": "admin-panel-internal-tool",
@@ -3172,7 +4910,8 @@
           "trooth_input": [
             "json",
             "http"
-          ]
+          ],
+          "url": "https://github.com/louislam/uptime-kuma"
         },
         {
           "id": "gatus",
@@ -3183,7 +4922,8 @@
           "trooth_input": [
             "json",
             "http"
-          ]
+          ],
+          "url": "https://gatus.io"
         },
         {
           "id": "cachet",
@@ -3192,7 +4932,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://cachethq.io"
         },
         {
           "id": "statping-ng",
@@ -3201,7 +4942,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://github.com/statping-ng/statping-ng"
         },
         {
           "id": "netdata",
@@ -3210,7 +4952,8 @@
           "self_host": true,
           "trooth_input": [
             "prometheus"
-          ]
+          ],
+          "url": "https://www.netdata.cloud"
         },
         {
           "id": "zabbix",
@@ -3220,7 +4963,8 @@
           "trooth_input": [
             "prometheus",
             "json"
-          ]
+          ],
+          "url": "https://www.zabbix.com"
         },
         {
           "id": "prometheus-alertmanager",
@@ -3229,7 +4973,8 @@
           "self_host": true,
           "trooth_input": [
             "prometheus"
-          ]
+          ],
+          "url": "https://prometheus.io/docs/alerting/latest/alertmanager/"
         },
         {
           "id": "upptime",
@@ -3239,7 +4984,8 @@
           "self_host": true,
           "trooth_input": [
             "http"
-          ]
+          ],
+          "url": "https://upptime.js.org"
         },
         {
           "id": "healthchecks",
@@ -3249,7 +4995,8 @@
           "self_host": true,
           "trooth_input": [
             "http"
-          ]
+          ],
+          "url": "https://healthchecks.io"
         }
       ],
       "type": "status-and-uptime",
@@ -3265,7 +5012,8 @@
           "self_host": true,
           "trooth_input": [
             "webhook"
-          ]
+          ],
+          "url": "https://ntfy.sh"
         },
         {
           "id": "apprise",
@@ -3275,7 +5023,8 @@
           "self_host": true,
           "trooth_input": [
             "webhook"
-          ]
+          ],
+          "url": "https://github.com/caronc/apprise"
         },
         {
           "id": "gotify",
@@ -3284,7 +5033,8 @@
           "self_host": true,
           "trooth_input": [
             "webhook"
-          ]
+          ],
+          "url": "https://gotify.net"
         },
         {
           "id": "novu",
@@ -3293,7 +5043,8 @@
           "self_host": true,
           "trooth_input": [
             "webhook"
-          ]
+          ],
+          "url": "https://novu.co"
         },
         {
           "id": "alertmanager",
@@ -3302,7 +5053,8 @@
           "self_host": true,
           "trooth_input": [
             "prometheus"
-          ]
+          ],
+          "url": "https://github.com/prometheus/alertmanager"
         },
         {
           "id": "huginn",
@@ -3313,7 +5065,8 @@
           "trooth_input": [
             "json",
             "rss"
-          ]
+          ],
+          "url": "https://github.com/huginn/huginn"
         },
         {
           "id": "alerta",
@@ -3324,7 +5077,8 @@
           "trooth_input": [
             "json",
             "webhook"
-          ]
+          ],
+          "url": "https://alerta.io"
         },
         {
           "id": "shoutrrr",
@@ -3334,7 +5088,8 @@
           "self_host": true,
           "trooth_input": [
             "webhook"
-          ]
+          ],
+          "url": "https://containrrr.dev/shoutrrr/"
         }
       ],
       "type": "alerting-and-notification",
@@ -3350,7 +5105,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://jqlang.github.io/jq/"
         },
         {
           "id": "visidata",
@@ -3362,7 +5118,8 @@
             "json",
             "csv",
             "parquet"
-          ]
+          ],
+          "url": "https://www.visidata.org"
         },
         {
           "id": "duckdb-cli",
@@ -3374,7 +5131,8 @@
             "parquet",
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://duckdb.org/docs/stable/clients/cli/overview"
         },
         {
           "id": "csvlens",
@@ -3383,7 +5141,8 @@
           "self_host": true,
           "trooth_input": [
             "csv"
-          ]
+          ],
+          "url": "https://github.com/YS-L/csvlens"
         },
         {
           "id": "textual",
@@ -3393,7 +5152,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://textual.textualize.io"
         },
         {
           "id": "rich",
@@ -3402,7 +5162,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://rich.readthedocs.io"
         },
         {
           "id": "gum",
@@ -3412,7 +5173,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://github.com/charmbracelet/gum"
         },
         {
           "id": "fx",
@@ -3422,7 +5184,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://fx.wtf"
         },
         {
           "id": "jless",
@@ -3431,7 +5194,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://jless.io"
         },
         {
           "id": "miller",
@@ -3441,7 +5205,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://miller.readthedocs.io"
         }
       ],
       "type": "terminal-and-cli",
@@ -3458,7 +5223,8 @@
           "trooth_input": [
             "json",
             "md"
-          ]
+          ],
+          "url": "https://astro.build"
         },
         {
           "id": "mkdocs-material",
@@ -3467,7 +5233,8 @@
           "self_host": true,
           "trooth_input": [
             "md"
-          ]
+          ],
+          "url": "https://squidfunk.github.io/mkdocs-material/"
         },
         {
           "id": "docusaurus",
@@ -3476,7 +5243,8 @@
           "self_host": true,
           "trooth_input": [
             "md"
-          ]
+          ],
+          "url": "https://docusaurus.io"
         },
         {
           "id": "vitepress",
@@ -3485,7 +5253,8 @@
           "self_host": true,
           "trooth_input": [
             "md"
-          ]
+          ],
+          "url": "https://vitepress.dev"
         },
         {
           "id": "hugo",
@@ -3495,7 +5264,8 @@
           "trooth_input": [
             "md",
             "json"
-          ]
+          ],
+          "url": "https://gohugo.io"
         },
         {
           "id": "eleventy",
@@ -3505,7 +5275,8 @@
           "trooth_input": [
             "md",
             "json"
-          ]
+          ],
+          "url": "https://www.11ty.dev"
         },
         {
           "id": "quartz",
@@ -3514,7 +5285,8 @@
           "self_host": true,
           "trooth_input": [
             "md"
-          ]
+          ],
+          "url": "https://quartz.jzhao.xyz"
         },
         {
           "id": "starlight",
@@ -3524,7 +5296,8 @@
           "self_host": true,
           "trooth_input": [
             "md"
-          ]
+          ],
+          "url": "https://starlight.astro.build"
         },
         {
           "id": "zola",
@@ -3534,7 +5307,8 @@
           "trooth_input": [
             "md",
             "json"
-          ]
+          ],
+          "url": "https://www.getzola.org"
         }
       ],
       "type": "static-site-and-docs",
@@ -3550,7 +5324,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://shields.io"
         },
         {
           "id": "badgen",
@@ -3559,7 +5334,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://badgen.net"
         },
         {
           "id": "simple-icons",
@@ -3568,7 +5344,8 @@
           "self_host": true,
           "trooth_input": [
             "svg"
-          ]
+          ],
+          "url": "https://simpleicons.org"
         },
         {
           "id": "inline-svg",
@@ -3578,7 +5355,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG"
         },
         {
           "id": "oembed",
@@ -3588,7 +5366,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://oembed.com"
         },
         {
           "id": "satori",
@@ -3598,7 +5377,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://github.com/vercel/satori"
         },
         {
           "id": "resvg",
@@ -3608,7 +5388,8 @@
           "self_host": true,
           "trooth_input": [
             "svg"
-          ]
+          ],
+          "url": "https://github.com/linebender/resvg"
         }
       ],
       "type": "embeddable-widget",
@@ -3624,7 +5405,8 @@
           "self_host": true,
           "trooth_input": [
             "parquet"
-          ]
+          ],
+          "url": "https://duckdb.org/docs/stable/clients/wasm/overview"
         },
         {
           "id": "datasette",
@@ -3635,7 +5417,8 @@
           "trooth_input": [
             "sqlite",
             "csv"
-          ]
+          ],
+          "url": "https://datasette.io"
         },
         {
           "id": "malloy",
@@ -3645,7 +5428,8 @@
           "trooth_input": [
             "parquet",
             "sql"
-          ]
+          ],
+          "url": "https://www.malloydata.dev"
         },
         {
           "id": "sqlpad",
@@ -3654,7 +5438,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://github.com/sqlpad/sqlpad"
         },
         {
           "id": "cube",
@@ -3664,7 +5449,8 @@
           "self_host": true,
           "trooth_input": [
             "sql"
-          ]
+          ],
+          "url": "https://cube.dev"
         },
         {
           "id": "harlequin",
@@ -3675,7 +5461,8 @@
           "trooth_input": [
             "parquet",
             "duckdb"
-          ]
+          ],
+          "url": "https://harlequin.sh"
         },
         {
           "id": "dbeaver-ce",
@@ -3685,7 +5472,8 @@
           "trooth_input": [
             "sql",
             "duckdb"
-          ]
+          ],
+          "url": "https://dbeaver.io"
         }
       ],
       "type": "sql-and-exploration",
@@ -3701,7 +5489,8 @@
           "self_host": true,
           "trooth_input": [
             "text"
-          ]
+          ],
+          "url": "https://mermaid.js.org"
         },
         {
           "id": "cytoscape",
@@ -3711,7 +5500,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://js.cytoscape.org"
         },
         {
           "id": "sigma-js",
@@ -3720,7 +5510,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://www.sigmajs.org"
         },
         {
           "id": "antv-g6",
@@ -3729,7 +5520,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://g6.antv.antgroup.com"
         },
         {
           "id": "graphviz",
@@ -3739,7 +5531,8 @@
           "self_host": true,
           "trooth_input": [
             "text"
-          ]
+          ],
+          "url": "https://graphviz.org"
         },
         {
           "id": "gephi",
@@ -3749,7 +5542,8 @@
           "self_host": true,
           "trooth_input": [
             "csv"
-          ]
+          ],
+          "url": "https://gephi.org"
         },
         {
           "id": "d2",
@@ -3759,7 +5553,8 @@
           "self_host": true,
           "trooth_input": [
             "text"
-          ]
+          ],
+          "url": "https://d2lang.com"
         },
         {
           "id": "vis-network",
@@ -3768,7 +5563,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://visjs.github.io/vis-network/docs/network/"
         }
       ],
       "type": "diagram-and-graph",
@@ -3784,7 +5580,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://github.com/dream-num/Luckysheet"
         },
         {
           "id": "x-spreadsheet",
@@ -3794,7 +5591,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://github.com/myliang/x-spreadsheet"
         },
         {
           "id": "sheetjs-ce",
@@ -3805,7 +5603,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://sheetjs.com"
         },
         {
           "id": "univer",
@@ -3815,7 +5614,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://univer.ai"
         },
         {
           "id": "ethercalc",
@@ -3824,7 +5624,8 @@
           "self_host": true,
           "trooth_input": [
             "csv"
-          ]
+          ],
+          "url": "https://github.com/audreyt/ethercalc"
         },
         {
           "id": "libreoffice-calc",
@@ -3835,7 +5636,8 @@
           "trooth_input": [
             "csv",
             "xlsx"
-          ]
+          ],
+          "url": "https://www.libreoffice.org/discover/calc/"
         },
         {
           "id": "jspreadsheet-ce",
@@ -3845,7 +5647,8 @@
           "trooth_input": [
             "csv",
             "json"
-          ]
+          ],
+          "url": "https://bossanova.uk/jspreadsheet/v4/"
         }
       ],
       "type": "spreadsheet",
@@ -3861,7 +5664,8 @@
           "self_host": true,
           "trooth_input": [
             "http"
-          ]
+          ],
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events"
         },
         {
           "id": "grafana-live",
@@ -3870,7 +5674,8 @@
           "self_host": true,
           "trooth_input": [
             "websocket"
-          ]
+          ],
+          "url": "https://grafana.com/docs/grafana/latest/setup-grafana/set-up-grafana-live/"
         },
         {
           "id": "perspective-stream",
@@ -3880,7 +5685,8 @@
           "trooth_input": [
             "arrow",
             "websocket"
-          ]
+          ],
+          "url": "https://perspective.finos.org/docs/server/"
         },
         {
           "id": "centrifugo",
@@ -3889,7 +5695,8 @@
           "self_host": true,
           "trooth_input": [
             "websocket"
-          ]
+          ],
+          "url": "https://centrifugal.dev"
         },
         {
           "id": "mosquitto",
@@ -3899,7 +5706,8 @@
           "self_host": true,
           "trooth_input": [
             "mqtt"
-          ]
+          ],
+          "url": "https://mosquitto.org"
         },
         {
           "id": "nats",
@@ -3909,7 +5717,8 @@
           "self_host": true,
           "trooth_input": [
             "websocket"
-          ]
+          ],
+          "url": "https://nats.io"
         },
         {
           "id": "socket-io",
@@ -3918,7 +5727,8 @@
           "self_host": true,
           "trooth_input": [
             "websocket"
-          ]
+          ],
+          "url": "https://socket.io"
         }
       ],
       "type": "realtime-stream",
@@ -3935,7 +5745,8 @@
           "trooth_input": [
             "webhook",
             "json"
-          ]
+          ],
+          "url": "https://mattermost.com"
         },
         {
           "id": "rocketchat",
@@ -3945,7 +5756,8 @@
           "trooth_input": [
             "webhook",
             "json"
-          ]
+          ],
+          "url": "https://www.rocket.chat"
         },
         {
           "id": "zulip",
@@ -3956,7 +5768,8 @@
           "trooth_input": [
             "webhook",
             "json"
-          ]
+          ],
+          "url": "https://zulip.com"
         },
         {
           "id": "element",
@@ -3966,7 +5779,8 @@
           "trooth_input": [
             "webhook",
             "json"
-          ]
+          ],
+          "url": "https://element.io"
         },
         {
           "id": "matterbridge",
@@ -3976,7 +5790,8 @@
           "self_host": true,
           "trooth_input": [
             "webhook"
-          ]
+          ],
+          "url": "https://github.com/42wim/matterbridge"
         },
         {
           "id": "discourse",
@@ -3987,7 +5802,8 @@
           "trooth_input": [
             "json",
             "rss"
-          ]
+          ],
+          "url": "https://www.discourse.org"
         },
         {
           "id": "slack-webhook",
@@ -3997,7 +5813,8 @@
           "self_host": false,
           "trooth_input": [
             "webhook"
-          ]
+          ],
+          "url": "https://api.slack.com/messaging/webhooks"
         }
       ],
       "type": "chat-and-collaboration",
@@ -4014,7 +5831,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://listmonk.app"
         },
         {
           "id": "keila",
@@ -4023,7 +5841,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://www.keila.io"
         },
         {
           "id": "mjml",
@@ -4034,7 +5853,8 @@
           "trooth_input": [
             "json",
             "md"
-          ]
+          ],
+          "url": "https://mjml.io"
         },
         {
           "id": "maizzle",
@@ -4044,7 +5864,8 @@
           "trooth_input": [
             "json",
             "md"
-          ]
+          ],
+          "url": "https://maizzle.com"
         },
         {
           "id": "postal",
@@ -4053,7 +5874,8 @@
           "self_host": true,
           "trooth_input": [
             "smtp"
-          ]
+          ],
+          "url": "https://docs.postalserver.io"
         },
         {
           "id": "mailpit",
@@ -4063,7 +5885,8 @@
           "self_host": true,
           "trooth_input": [
             "smtp"
-          ]
+          ],
+          "url": "https://mailpit.axllent.org"
         },
         {
           "id": "rss2email",
@@ -4073,7 +5896,8 @@
           "self_host": true,
           "trooth_input": [
             "rss"
-          ]
+          ],
+          "url": "https://github.com/rss2email/rss2email"
         }
       ],
       "type": "email-and-digest",
@@ -4089,7 +5913,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://datatracker.ietf.org/doc/html/rfc4287"
         },
         {
           "id": "json-feed",
@@ -4098,7 +5923,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://www.jsonfeed.org"
         },
         {
           "id": "miniflux",
@@ -4108,7 +5934,8 @@
           "self_host": true,
           "trooth_input": [
             "rss"
-          ]
+          ],
+          "url": "https://miniflux.app"
         },
         {
           "id": "freshrss",
@@ -4117,7 +5944,8 @@
           "self_host": true,
           "trooth_input": [
             "rss"
-          ]
+          ],
+          "url": "https://freshrss.org"
         },
         {
           "id": "tt-rss",
@@ -4126,7 +5954,8 @@
           "self_host": true,
           "trooth_input": [
             "rss"
-          ]
+          ],
+          "url": "https://tt-rss.org"
         },
         {
           "id": "rss-bridge",
@@ -4136,7 +5965,8 @@
           "self_host": true,
           "trooth_input": [
             "http"
-          ]
+          ],
+          "url": "https://rss-bridge.org"
         },
         {
           "id": "icalendar",
@@ -4146,7 +5976,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://datatracker.ietf.org/doc/html/rfc5545"
         },
         {
           "id": "feedgen",
@@ -4156,7 +5987,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://feedgen.kiesow.be"
         }
       ],
       "type": "feed-syndication",
@@ -4173,7 +6005,8 @@
           "trooth_input": [
             "html",
             "json"
-          ]
+          ],
+          "url": "https://weasyprint.org"
         },
         {
           "id": "typst",
@@ -4184,7 +6017,8 @@
           "trooth_input": [
             "json",
             "csv"
-          ]
+          ],
+          "url": "https://typst.app"
         },
         {
           "id": "pandoc",
@@ -4194,7 +6028,8 @@
           "trooth_input": [
             "md",
             "json"
-          ]
+          ],
+          "url": "https://pandoc.org"
         },
         {
           "id": "gotenberg",
@@ -4204,7 +6039,8 @@
           "self_host": true,
           "trooth_input": [
             "html"
-          ]
+          ],
+          "url": "https://gotenberg.dev"
         },
         {
           "id": "playwright",
@@ -4214,7 +6050,8 @@
           "self_host": true,
           "trooth_input": [
             "html"
-          ]
+          ],
+          "url": "https://playwright.dev"
         },
         {
           "id": "tectonic",
@@ -4224,7 +6061,8 @@
           "trooth_input": [
             "md",
             "csv"
-          ]
+          ],
+          "url": "https://tectonic-typesetting.github.io"
         }
       ],
       "type": "print-and-pdf",
@@ -4240,7 +6078,8 @@
           "self_host": true,
           "trooth_input": [
             "http"
-          ]
+          ],
+          "url": "https://github.com/grafana/grafana-kiosk"
         },
         {
           "id": "smashing",
@@ -4250,7 +6089,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://smashing.github.io"
         },
         {
           "id": "homepage",
@@ -4261,7 +6101,8 @@
           "trooth_input": [
             "json",
             "http"
-          ]
+          ],
+          "url": "https://gethomepage.dev"
         },
         {
           "id": "glance",
@@ -4271,7 +6112,8 @@
           "trooth_input": [
             "json",
             "rss"
-          ]
+          ],
+          "url": "https://github.com/glanceapp/glance"
         },
         {
           "id": "magicmirror",
@@ -4281,7 +6123,8 @@
           "trooth_input": [
             "json",
             "rss"
-          ]
+          ],
+          "url": "https://magicmirror.builders"
         },
         {
           "id": "anthias",
@@ -4291,7 +6134,8 @@
           "self_host": true,
           "trooth_input": [
             "http"
-          ]
+          ],
+          "url": "https://anthias.screenly.io"
         }
       ],
       "type": "kiosk-and-signage",
@@ -4308,7 +6152,8 @@
           "trooth_input": [
             "json",
             "mcp"
-          ]
+          ],
+          "url": "https://openwebui.com"
         },
         {
           "id": "librechat",
@@ -4319,7 +6164,8 @@
           "trooth_input": [
             "json",
             "mcp"
-          ]
+          ],
+          "url": "https://www.librechat.ai"
         },
         {
           "id": "chainlit",
@@ -4329,7 +6175,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://chainlit.io"
         },
         {
           "id": "mcp-inspector",
@@ -4339,7 +6186,8 @@
           "self_host": true,
           "trooth_input": [
             "mcp"
-          ]
+          ],
+          "url": "https://github.com/modelcontextprotocol/inspector"
         },
         {
           "id": "llm-cli",
@@ -4349,7 +6197,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://llm.datasette.io"
         },
         {
           "id": "assistant-ui",
@@ -4359,7 +6208,8 @@
           "self_host": true,
           "trooth_input": [
             "json"
-          ]
+          ],
+          "url": "https://www.assistant-ui.com"
         }
       ],
       "type": "agent-and-chat-surface",
