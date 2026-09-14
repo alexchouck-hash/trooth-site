@@ -32,11 +32,13 @@
   "emblem_version": "0.1",
   "generated_at": "2026-09-14T00:18:30Z",
   "grade": null,
-  "issuer": "modafied",
+  "issuer": "trooth",
   "method_version": "0.1",
+  "modafied_emblem": null,
+  "record_kind": "trooth-registry-status",
   "state": "unrated",
   "subject_id": "brave-search",
   "subject_kind": "mcp-server",
-  "unrated_reason": "registry candidate: not yet benchmarked by Modafied",
+  "unrated_reason": "Trooth registry candidate. Modafied has not benchmarked this subject, and does not yet benchmark MCP servers at all; this record is Trooth stating its own registry status, not a Modafied measurement.",
   "window": null
 }

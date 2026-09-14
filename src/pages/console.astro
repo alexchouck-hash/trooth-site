@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Emblem from '../components/Emblem.astro';
+import { MODAFIED_EMBED_SRC } from '../utils/modafied';
 import { p } from '../utils/paths';
 import registry from '../data/registry.json';
 import fs from 'node:fs';
@@ -32,7 +33,6 @@ const sources = (registry.groups as any[])
   .map((e: any) => ({
     entry: e,
     card: readJson(path.join(SCORECARD_DIR, `${e.id}.json`)),
-    emblem: readJson(path.join(EMBLEM_DIR, `${e.id}.json`)),
   }))
   .filter((s) => s.card);
 
@@ -62,9 +62,9 @@ const unrated = emblemIndex.counts?.unrated ?? 0;
 const stats: [string, string][] = [
   ['Connectors tracked', String(registry.total)],
   ['Live in catalog', String(registry.by_status?.promoted ?? 0)],
-  ['Rated', String(rated)],
-  ['Provisional', String(provisional)],
-  ['Unrated', String(unrated)],
+  ['Rated by Trooth', String(rated)],
+  ['Provisional (Trooth)', String(provisional)],
+  ['Unrated by Trooth', String(unrated)],
   ['Last published', manifest?.published_at ?? 'never'],
 ];
 
@@ -98,19 +98,23 @@ const artifacts: [string, string, string][] = [
   {rated === 0 && (
     <section style="border:1px solid var(--accent-amber); background:rgba(251,191,36,0.08); border-radius:10px; padding:1.25rem 1.5rem; margin-bottom:2.5rem;">
       <h2 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">
-        Nothing is rated yet, and that is the honest answer
+        Trooth has rated nothing, and that is the honest answer
       </h2>
       <p style="color:var(--text-muted); margin-bottom:0.6rem;">
-        All {emblemIndex.total} connectors currently read <strong>unrated</strong>. Two real
-        reasons, both being fixed before any grade appears here:
+        All {emblemIndex.total} connectors read <strong>unrated</strong> in Trooth's own registry.
+        The letter grades on this page come from Modafied, not from us: those emblems are fetched
+        live from the benchmark and we keep no copy of them. Trooth's own method has not produced
+        a grade for two real reasons, both being fixed before any Trooth grade appears here:
       </p>
       <ul style="margin-left:1.25rem; color:var(--text-muted); display:flex; flex-direction:column; gap:0.3rem;">
         <li>The scoring job still returns fixed constants where measurements belong. A grade computed from those would be decoration.</li>
         <li>The archive does not yet cover a long enough window for the percentiles to mean anything.</li>
       </ul>
       <p style="color:var(--text-muted); margin-top:0.6rem;">
-        Publishing a confident letter grade today would be the exact failure this project exists
-        to argue against. The count of rated connectors is the real progress bar.
+        Publishing a confident letter grade of our own today would be the exact failure this
+        project exists to argue against. The count of connectors Trooth has rated is the real
+        progress bar, and it is allowed to sit at zero while an independent benchmark that we
+        fund, but do not control, grades the same feeds in public.
       </p>
     </section>
   )}
@@ -138,18 +142,16 @@ const artifacts: [string, string, string][] = [
           </tr>
         </thead>
         <tbody>
-          {sources.map(({ entry, card, emblem }) => (
+          {sources.map(({ entry, card }) => (
             <tr>
               <td style="white-space:nowrap;">
                 <a href={p(`/scorecards/${entry.id}`)} style="font-weight:600;">{entry.name}</a>
               </td>
               <td>
-                {emblem
-                  ? <Emblem emblem={emblem} size="sm" href={p(`/scorecards/${entry.id}`)} />
-                  : <span style="color:var(--text-subtle);">none</span>}
+                <Emblem subjectId={entry.id} size="sm" />
               </td>
               {DIMS.map(([key, , pick, unit]) => {
-                const measured = emblem?.dimensions?.[key]?.status === 'ok';
+                const measured = card?.dimensions?.[key]?.status === 'ok';
                 const shown = fmt(pick(card.dimensions), unit);
                 return (
                   <td style="white-space:nowrap;">
@@ -203,4 +205,7 @@ const artifacts: [string, string, string][] = [
       </table>
     </div>
   </section>
+
+  <!-- Modafied's emblem renderer. The emblem is fetched live; we keep no copy of a grade. -->
+  <script is:inline defer src={MODAFIED_EMBED_SRC}></script>
 </Layout>

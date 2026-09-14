@@ -34,6 +34,8 @@
   "grade": null,
   "issuer": "trooth",
   "method_version": "0.1",
+  "modafied_emblem": null,
+  "record_kind": "trooth-registry-status",
   "state": "unrated",
   "subject_id": "merger-review-status",
   "subject_kind": "demand-hypothesis",

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Emblem from '../components/Emblem.astro';
+import { MODAFIED_EMBED_SRC } from '../utils/modafied';
 import { p } from '../utils/paths';
 import registry from '../data/registry.json';
 import demand from '../data/demand.json';
@@ -8,15 +9,6 @@ import ui from '../data/ui-outputs.json';
 import connect from '../data/connect.json';
 import fs from 'node:fs';
 import path from 'node:path';
-
-const EMBLEM_DIR = path.resolve('./public/emblems');
-
-function emblemFor(id: string) {
-  try {
-    const file = path.join(EMBLEM_DIR, `${id}.json`);
-    return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf-8')) : null;
-  } catch { return null; }
-}
 
 const allEntries = (registry.groups as any[]).flatMap((g) => g.entries);
 const promoted = allEntries.filter((e: any) => e.status === 'promoted');
@@ -264,11 +256,10 @@ const cascade: [string, string][] = [
     <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.75rem;">Live now</h3>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:0.85rem; margin-bottom:2rem;">
       {promoted.map((entry: any) => {
-        const emblem = emblemFor(entry.id);
         return (
           <div style="border:1px solid var(--border); border-radius:10px; padding:1rem; background:var(--bg-card);">
             <a href={p(`/scorecards/${entry.id}`)} style="font-weight:700; display:block; margin-bottom:0.6rem;">{entry.name}</a>
-            {emblem && <Emblem emblem={emblem} size="sm" href={p(`/scorecards/${entry.id}`)} />}
+            <Emblem subjectId={entry.id} size="sm" />
             <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.6rem;">{entry.why}</p>
           </div>
         );
@@ -288,4 +279,8 @@ const cascade: [string, string][] = [
       ))}
     </div>
   </section>
+
+  <!-- Modafied's emblem renderer. See src/components/Emblem.astro for why the emblem is a live
+       reference rather than a file we keep. -->
+  <script is:inline defer src={MODAFIED_EMBED_SRC}></script>
 </Layout>
