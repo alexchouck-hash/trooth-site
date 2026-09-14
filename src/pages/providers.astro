@@ -80,7 +80,7 @@ import Layout from '../layouts/Layout.astro';
             3. Public Scorecard Included
           </h3>
           <p style="color: var(--text-muted); font-size: 0.95rem;">
-            Every listed feed gets the same objective six-dimension scorecard as public sources. Superior freshness and schema stability immediately differentiate your feed.
+            Every listed feed gets the same objective six-dimension scorecard as public sources. Superior freshness and schema stability immediately differentiate your feed. We do not run that scoring ourselves &mdash; <a href="https://alexchouck-hash.github.io/modafied-site/" target="_blank" rel="noopener" style="color: var(--primary);">Modafied</a> does, and its emblems are shown below exactly as they come.
           </p>
         </div>
 
@@ -93,6 +93,51 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </div>
       </div>
+    </section>
+
+    <!-- Independent benchmark emblems, served live from Modafied -->
+    <section style="margin-bottom: 4rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">
+        What the Benchmark Actually Says
+      </h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem;">
+        These are the live Modafied emblems for the feeds we route to today. They are hotlinked from
+        Modafied, not copied here, so they show the current measurement and they change without
+        asking us. Every one carries a trace id: click it and you get the exact scorecard digest,
+        method version, and band table the grade came from, plus every claim that emblem has made
+        before.
+      </p>
+
+      <!-- The conflict of interest, stated before the grades rather than under them. -->
+      <div class="card" style="border-left: 4px solid var(--accent-amber); margin-bottom: 1.75rem;">
+        <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--accent-amber);">
+          Disclosure, because it matters here
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">
+          Trooth funds Modafied. That is exactly why this section shows every feed we route to
+          rather than the flattering ones: below you will find a C, and two feeds we cannot yet
+          measure well enough to grade at all. Modafied runs identical code on every source, takes
+          no money from anything it scores, publishes no purchasable emblem of any kind, and will
+          score Trooth's own MCP server the same way once it exists. An emblem here is a
+          measurement with a date on it, not an endorsement, a certification, or a partnership.
+          If a grade falls, the emblem on this page falls with it and we get no notice.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+        <span data-modafied="nws"></span>
+        <span data-modafied="usgs-earthquake"></span>
+        <span data-modafied="open-meteo"></span>
+        <span data-modafied="bls"></span>
+        <span data-modafied="fred"></span>
+      </div>
+
+      <p style="color: var(--text-subtle); font-size: 0.85rem; line-height: 1.7;">
+        A feed reading <em>insufficient data</em> has not been withheld or hidden; it means the
+        benchmark does not yet have the samples to grade it, and saying so is the point.
+        Method and band table: <a href="https://alexchouck-hash.github.io/modafied-site/method/" target="_blank" rel="noopener" style="color: var(--primary);">the published method</a>.
+        Resolve any trace id: <a href="https://alexchouck-hash.github.io/modafied-site/trace/" target="_blank" rel="noopener" style="color: var(--primary);">the trace resolver</a>.
+      </p>
     </section>
 
     <!-- How to Submit a Feed -->
@@ -133,4 +178,13 @@ cost:
       </div>
     </section>
   </div>
+
+  <!--
+    Modafied's emblem renderer. It fetches each feed's attestation and renders the emblem plus its
+    trace line, so this page cannot drift from what the benchmark publishes. It sets no cookie,
+    stores nothing, and reports nothing back to Modafied; if Modafied is unreachable each slot falls
+    back to a plain linked emblem rather than blanking. Source is public and short, read it:
+    https://alexchouck-hash.github.io/modafied-site/v1/embed.js
+  -->
+  <script is:inline defer src="https://alexchouck-hash.github.io/modafied-site/v1/embed.js"></script>
 </Layout>
