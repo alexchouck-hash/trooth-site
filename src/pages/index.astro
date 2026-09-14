@@ -427,6 +427,26 @@ import { p } from '../utils/paths';
     </div>
   </section>
 
+  <!-- KouroB -->
+  <section style="border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2.5rem; background: var(--bg-card);">
+    <div style="display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700;">Pairs with KouroB</h2>
+      <span class="badge-tag">Open protocol</span>
+      <span class="badge-tag">Apache-2.0</span>
+    </div>
+    <p style="color: var(--text-muted); max-width: 820px; margin-bottom: 1rem;">
+      <strong>Self-specializing nodes that agents attach to.</strong> A KouroB node answers from
+      compiled rules and cached SQL first and falls back to a frontier model only as a last
+      resort, leaving an ed25519-signed, hash-chained receipt for every answer. Trooth makes the
+      outside world verifiable; KouroB makes a node's own answers verifiable. The two were built
+      from the same conviction at opposite ends.
+    </p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href={p('/connect')} class="btn btn-secondary">How they fit together</a>
+      <a href="https://alexchouck-hash.github.io/kourob/" class="btn btn-secondary">Visit KouroB &rarr;</a>
+    </div>
+  </section>
+
   <!-- CTA Box -->
   <section style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9)); border: 1px solid var(--border); border-radius: 12px; padding: 3rem 2rem; text-align: center;">
     <h2 style="font-size: 1.85rem; font-weight: 800; margin-bottom: 0.75rem;">Ready to build on verifiable data?</h2>

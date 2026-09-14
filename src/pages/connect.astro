@@ -38,17 +38,39 @@ const clients: [string, string][] = [
 const frameworks = 'Anthropic Agent SDK, OpenAI Agents SDK, LangChain and LangGraph, LlamaIndex, CrewAI, AutoGen, Pydantic AI, Mastra, Vercel AI SDK, Semantic Kernel, Haystack, DSPy';
 const automation = 'n8n, Node-RED, Windmill, Temporal, Apache Airflow, Dagster, Prefect, Huginn, Zapier, Make, Pipedream, Activepieces';
 
-const comparison: [string, string, string][] = [
-  ['Answers', 'what changed, when, from where', 'what it means, what to do'],
-  ['Method', 'mechanical, reproducible, no model', 'interpretive, may use a model'],
-  ['Output', 'signed envelope with provenance', 'analysis, citing that envelope'],
-  ['Fails by', 'being stale, or wrong about a fact', 'being wrong about a judgement'],
+// The seam between Trooth and KouroB, taken from KouroB's own KNP specifications rather than
+// paraphrased. Both make something verifiable: Trooth the outside world, KouroB a node's own
+// answers. Neither is the other's interface.
+const seam: [string, string, string][] = [
+  ['Response shape', 'Envelope: data, provenance, signature', 'data, rendered, citations, receipt_id (KNP-0)'],
+  ['Signing', 'Ed25519 envelopes, SHA-256 content hashes', 'Ed25519 hash-chained receipt ledger (KNP-2)'],
+  ['Corrections', 'Snapshots append-only; corrections supersede', 'Outcomes judge past receipts without editing them (KNP-2)'],
+  ['Saying no', 'considered_and_rejected, with reasons', 'Refusal, referral and bridging out of scope (KNP-1)'],
+  ['Cost', 'quota and cost_units inside every envelope', 'Quoted ceiling the final receipt never exceeds (KNP-3)'],
+  ['Untrusted text', 'Quarantined in untrusted_text, never obeyed', 'Ingest gate validates and quarantines invalid rows'],
+  ['Models', 'No model on the hot path, ever', 'T0 rules and SQL answer first; frontier LLM is last resort'],
+];
+
+const kourobCli = [
+  'pipx install kourob',
+  'kourob init my-cell && cd my-cell',
+  'kourob ingest fixtures/events.jsonl',
+  'kourob serve --mcp        # query, ingest, get_page, list_schemas, submit_outcome',
+  'kourob attach claude-code # also: cursor, windsurf',
+].join('\n');
+
+const cascade: [string, string][] = [
+  ['T0', 'compiled rules and cached SQL'],
+  ['T1', 'distilled model'],
+  ['T2', 'specialized model'],
+  ['T3', 'frontier LLM'],
+  ['T4', 'human review'],
 ];
 ---
 
 <Layout
   title="Connect"
-  description="What Trooth feeds connect to: the Kourob analysis layer, agent clients, automation, and 108 open source UI tools."
+  description="What Trooth feeds connect to: KouroB nodes, agent clients, automation, and 108 open source UI tools."
   activeNav="connect"
 >
   <section style="margin-bottom:2.5rem;">
@@ -60,47 +82,98 @@ const comparison: [string, string, string][] = [
     </p>
   </section>
 
-  <section style="margin-bottom:3rem;">
-    <div style="display:flex; align-items:baseline; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.75rem;">
-      <h2 style="font-size:1.5rem; font-weight:700;">1. Kourob</h2>
-      <span class="badge-tag">Analysis layer</span>
+  <section style="margin-bottom:3.5rem;">
+    <div style="display:flex; align-items:baseline; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.35rem;">
+      <h2 style="font-size:1.5rem; font-weight:700;">1. KouroB</h2>
+      <span class="badge-tag">v0.1</span>
+      <span class="badge-tag">Open protocol</span>
+      <span class="badge-tag">Apache-2.0</span>
     </div>
-
-    {connect.kourob_description_pending && (
-      <div style="border:1px solid var(--accent-amber); background:rgba(251,191,36,0.08); padding:1rem 1.25rem; border-radius:10px; margin-bottom:1rem;">
-        <strong style="display:block; margin-bottom:0.35rem;">Description pending</strong>
-        <p style="font-size:0.95rem; color:var(--text-muted); margin:0;">
-          The description of Kourob has not been supplied by its owner yet. Rather than guess,
-          this page says so. A provenance product does not publish claims it cannot source,
-          including claims about itself.
-        </p>
-      </div>
-    )}
-
-    <p style="color:var(--text-muted); max-width:760px; margin-bottom:1.25rem;">
-      Trooth answers what changed, when, and according to which source. That is mechanical,
-      reproducible, and runs with no model anywhere in the request path. Kourob answers what it
-      means, which is interpretation and belongs in a layer that is allowed to use a model.
-      Keeping the two apart is why a Trooth answer can be verified and a Kourob answer can be
-      argued with.
+    <p style="font-size:1.15rem; color:var(--text-main); margin-bottom:0.75rem;">
+      Self-specializing nodes that agents attach to.
+    </p>
+    <p style="color:var(--text-muted); max-width:820px; margin-bottom:1rem;">
+      A KouroB node is not an agent, a chat memory, or an LLM wrapper. It is an independent,
+      metered unit of knowledge that gets cheaper the more it is used. A query runs down a
+      five-tier cascade and stops at the first tier that can answer it. Frontier models train
+      the node; they do not serve it.
     </p>
 
-    <div style="overflow-x:auto; margin-bottom:1rem;">
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.25rem;">
+      {cascade.map(([tier, what]) => (
+        <span style="border:1px solid var(--border); background:var(--bg-card); padding:0.3rem 0.7rem; border-radius:8px; font-size:0.85rem;">
+          <strong style="color:var(--primary); font-family:var(--font-mono);">{tier}</strong>
+          <span style="color:var(--text-muted); margin-left:0.4rem;">{what}</span>
+        </span>
+      ))}
+    </div>
+
+    <p style="color:var(--text-muted); max-width:820px; margin-bottom:1.25rem;">
+      Every answer leaves an ed25519-signed receipt carrying the request hash, the response
+      hash, the tier that served it, the citations, the cost in credits, and a cryptographic
+      pointer to the previous receipt. The ledger is append-only and hash-chained, so history
+      cannot be quietly rewritten.
+    </p>
+
+    <pre style="margin-bottom:1.5rem;"><code>{kourobCli}</code></pre>
+
+    <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Why this pairs with Trooth</h3>
+    <p style="color:var(--text-muted); max-width:820px; margin-bottom:1rem;">
+      Trooth and KouroB were built from the same conviction, at opposite ends. Trooth makes the
+      outside world verifiable: which upstream published a value, when, under what licence, and
+      what it disagreed with. KouroB makes a node's own answers verifiable: which tier served
+      them, from which events, at what cost. Neither is the other's interface. They meet in the
+      middle, and the seams line up unusually well.
+    </p>
+
+    <div style="overflow-x:auto; margin-bottom:1.5rem;">
       <table>
-        <thead><tr><th></th><th>Trooth</th><th>Kourob</th></tr></thead>
+        <thead><tr><th></th><th>Trooth</th><th>KouroB</th></tr></thead>
         <tbody>
-          {comparison.map(([label, a, b]) => (
-            <tr><td><strong>{label}</strong></td><td>{a}</td><td>{b}</td></tr>
+          {seam.map(([label, a, b]) => (
+            <tr><td style="white-space:nowrap;"><strong>{label}</strong></td><td>{a}</td><td>{b}</td></tr>
           ))}
         </tbody>
       </table>
     </div>
 
-    <p style="font-size:0.95rem; color:var(--text-muted);">
-      Of the {demand.total} feed opportunities in the demand register,
-      <strong>{demand.kourob_count}</strong> are marked as needing an analysis layer. Those are
-      the natural first integration.
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem; margin-bottom:1.25rem;">
+      <div style="border:1px solid var(--border); border-radius:10px; padding:1.1rem 1.25rem; background:var(--bg-card);">
+        <h4 style="font-weight:700; margin-bottom:0.4rem;">Trooth into a node</h4>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0;">
+          An envelope is close to an ideal ingest payload: already schema-valid, content-hashed,
+          stamped with both the source's event time and our capture time, and carrying the
+          licence chain. A node grounded in envelopes can cite provenance past its own boundary,
+          all the way to the upstream publisher, instead of stopping at the node itself.
+        </p>
+      </div>
+      <div style="border:1px solid var(--border); border-radius:10px; padding:1.1rem 1.25rem; background:var(--bg-card);">
+        <h4 style="font-weight:700; margin-bottom:0.4rem;">A node back into Trooth</h4>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin:0;">
+          The more interesting direction. We never publish an accuracy number without naming an
+          independent, settleable anchor, which is why only a handful of sources can carry one.
+          KouroB's <code>submit_outcome</code> with <code>source: reality</code> is exactly that
+          mechanism. Settled outcomes flowing back through it are anchors, and anchors are the
+          scarcest input this benchmark has.
+        </p>
+      </div>
+    </div>
+
+    <p style="font-size:0.9rem; color:var(--text-subtle); margin-bottom:1rem;">
+      Neither integration is built yet. Both are described here as intent, not as shipped work.
     </p>
+
+    <p style="color:var(--text-muted); max-width:820px; margin-bottom:1.25rem;">
+      Of the {demand.total} feed opportunities in our demand register,
+      <strong>{demand.kourob_count}</strong> are cases where computing the change is mechanical
+      but the customer needs the interpretation. That is a node's job and not a pipe's, and it
+      is where the two would meet first.
+    </p>
+
+    <a href="https://alexchouck-hash.github.io/kourob/"
+       style="display:inline-block; border:1px solid var(--primary); color:var(--primary); padding:0.55rem 1.1rem; border-radius:8px; text-decoration:none; font-weight:600;">
+      Visit KouroB
+    </a>
   </section>
 
   <section style="margin-bottom:3rem;">
