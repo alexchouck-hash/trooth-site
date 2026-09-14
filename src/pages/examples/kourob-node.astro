@@ -90,11 +90,32 @@ uv run kourob ingest https://alexchouck-hash.github.io/trooth-site --from-trooth
     </section>
 
     <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">A set of nodes, and the provider outputs</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The second example connects four nodes. Three hold data from Trooth sources (NWS and Open-Meteo weather at KJFK, the USGS past-hour earthquake feed, the BLS consumer price index). The fourth, a desk, holds nothing: it declares which questions belong where and keeps a route to each node. Ask the desk about an earthquake and it bridges once to the seismic node, returns that node's cited answer together with the direct route, and refers on the next call. Every hop leaves a receipt, and the receipts chain across nodes, so the price and cost of the whole path are one table.
+      </p>
+      <pre><code>uv run python examples/trooth-set/build.py
+uv run kourob query "largest earthquake in the last hour" --node examples/trooth-set/cells/trooth-desk
+uv run streamlit run examples/trooth-set/dashboard.py -- examples/trooth-set/cells</code></pre>
+      <p style="color: var(--text-muted); margin: 1rem 0;">
+        A KouroB node is also a feed in the sense of the <a href={p('/providers')}>provider page</a>: it answers typed questions from held events, meters every request, and signs every receipt. So <code>kourob publish --trooth</code> writes the two documents a provider needs, in Trooth's schemas, from the node's own records:
+      </p>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+        <li><strong>A catalog entry</strong> (<code>schema/catalog/v0.1</code>): the node's held schemas as fields, its held sources as lineage, their licence, and a metered cost with the node's capacity window.</li>
+        <li><strong>A provider scorecard</strong> (<code>schema/scorecard/v0.1</code>): the six dimensions computed from the node's request log, receipts, quarantine and outcomes. Freshness lag is answer time minus the newest cited event's time; completeness is in-scope requests answered; internal consistency counts contradictions the node's gate quarantined; revisions and correction latency come from settled outcomes.</li>
+      </ul>
+      <p style="color: var(--text-muted);">
+        Both validate against the schemas in this repository. The set dashboard shows them per node next to the node's meter report, so a node and a public source read on one page. The envelopes in that example are snapshots of the real sources signed by the operator's local key, marked <code>key_id: kourob-local</code>, because <code>/fetch</code> is not public yet.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
       <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">What is not built yet</h2>
       <ul style="color: var(--text-muted); padding-left: 1.25rem; line-height: 1.7;">
         <li>Nothing settles an observation answer. The natural correction is a Trooth revision: the same source timestamp with a different content hash. The comparator is tracked in the KouroB queue.</li>
         <li>The <code>/fetch</code> endpoint is not public, so envelopes are ingested from files.</li>
-        <li>The dashboard polls the store. When the node's event tap ships it will subscribe instead.</li>
+        <li>The dashboards poll the store. When the node's event tap ships they will subscribe instead.</li>
+        <li>Listing a node in this catalog for real is a pull request to the catalog directory; the entry is generated, the submission is the operator's.</li>
       </ul>
     </section>
 
