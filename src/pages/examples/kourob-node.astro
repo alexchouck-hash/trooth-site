@@ -110,6 +110,26 @@ uv run streamlit run examples/trooth-set/dashboard.py -- examples/trooth-set/cel
     </section>
 
     <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">A network, with Modafied emblems</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The third example is seven nodes: one per Trooth feed (NWS, Open-Meteo, USGS, BLS, FRED), a weather desk over the two weather nodes, and a front desk over all of them, so a weather question crosses three nodes and three receipts. Each source node also holds the feed's <a href="https://modafied.org/" target="_blank" rel="noopener">Modafied</a> emblem. Modafied is the independent benchmark funded by Trooth; the node's in-port verifies each attestation's scorecard hash against Modafied's manifest and fails closed, then keeps the notice with the emblem. The network generates a credits page from what it holds: every feed with its licence and attribution, every Trooth scorecard page, every Modafied emblem in the embed form Modafied prescribes.
+      </p>
+      <p style="color: var(--text-muted);">
+        These are the emblems as Modafied publishes them today, for the five feeds the network holds. They are Modafied's files, linked to Modafied's pages, and they change when the measurement changes.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0;">
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/nws" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/nws.svg" alt="Modafied benchmark emblem for National Weather Service API" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/open-meteo" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/open-meteo.svg" alt="Modafied benchmark emblem for Open-Meteo Weather API" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/usgs-earthquake" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/usgs-earthquake.svg" alt="Modafied benchmark emblem for USGS Earthquake Hazards Program" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/bls" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/bls.svg" alt="Modafied benchmark emblem for Bureau of Labor Statistics Public Data API" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/fred" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/fred.svg" alt="Modafied benchmark emblem for Federal Reserve Economic Data (FRED)" height="56" /></a>
+      </div>
+      <p style="color: var(--text-subtle); font-size: 0.85rem;">
+        Mechanically computed from public snapshots. This is a measurement, not an endorsement, a verification, or a partnership. It cannot be purchased and it changes without notice when the measurement changes.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
       <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">What is not built yet</h2>
       <ul style="color: var(--text-muted); padding-left: 1.25rem; line-height: 1.7;">
         <li>Nothing settles an observation answer. The natural correction is a Trooth revision: the same source timestamp with a different content hash. The comparator is tracked in the KouroB queue.</li>
