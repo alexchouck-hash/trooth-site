@@ -1,0 +1,4022 @@
+{
+  "by_phase": {
+    "1": 12,
+    "2": 113,
+    "3": 200,
+    "4": 175
+  },
+  "by_shape": {
+    "change": 274,
+    "coverage": 42,
+    "grading": 22,
+    "reconciliation": 27,
+    "revision": 135
+  },
+  "kourob_count": 68,
+  "sectors": [
+    {
+      "description": "Hypotheses only (ADR-0012). This is the sector we are ourselves in, which means it is the cheapest to validate: we can ask the buyer in a Discord channel. The MCP entries at the end are the ones Modafied benchmarks (ADR-0009), not Trooth.",
+      "entries": [
+        {
+          "buyer": "security teams, vulnerability vendors, insurers",
+          "id": "cve-severity-revisions",
+          "need": "When a CVSS score is revised after publication, with the old and new score",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "nvd-cve"
+          ]
+        },
+        {
+          "buyer": "security teams, researchers",
+          "id": "cve-enrichment-latency",
+          "need": "How long between the CVE record and the enriched analysis, by year",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "nvd-cve",
+            "cve-org"
+          ]
+        },
+        {
+          "buyer": "security operations, federal contractors",
+          "id": "kev-addition-alerts",
+          "need": "Known exploited additions within minutes, with the remediation deadline",
+          "phase": 1,
+          "shape": "change",
+          "upstream": [
+            "cisa-kev"
+          ]
+        },
+        {
+          "buyer": "vulnerability management, insurers",
+          "id": "epss-score-movement",
+          "need": "Daily score changes above a threshold for CVEs in our inventory",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "epss"
+          ]
+        },
+        {
+          "buyer": "security teams, tool vendors",
+          "id": "advisory-disagreement-index",
+          "need": "Where advisory databases disagree on severity or affected versions",
+          "phase": 2,
+          "shape": "reconciliation",
+          "upstream": [
+            "nvd-cve",
+            "osv-dev",
+            "github-advisory"
+          ]
+        },
+        {
+          "buyer": "security tool vendors, researchers",
+          "id": "advisory-coverage-gaps",
+          "need": "Vulnerabilities present in one database and missing from another",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "nvd-cve",
+            "osv-dev",
+            "github-advisory"
+          ]
+        },
+        {
+          "buyer": "platform teams, security, build engineers",
+          "id": "package-yank-feed",
+          "need": "Packages yanked, deprecated, or removed that our builds depend on",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "security teams, registries, platform teams",
+          "id": "malicious-package-feed",
+          "need": "Confirmed malicious packages as soon as they are flagged",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "legal, platform teams, open source offices",
+          "id": "dependency-license-changes",
+          "need": "When a dependency changes its licence between versions",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "security, compliance, federal suppliers",
+          "id": "sbom-drift-detection",
+          "need": "What changed in our bill of materials between two builds",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "platform teams, security",
+          "id": "base-image-cve-delta",
+          "need": "New vulnerabilities appearing in base images we pin",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "platform teams, compliance, procurement",
+          "id": "os-eol-calendar",
+          "need": "End of life and end of support dates with the changes to them",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "engineering leadership, platform teams",
+          "id": "runtime-deprecation-calendar",
+          "need": "Language and runtime deprecation dates in one place",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "platform teams, architects, finance",
+          "id": "cloud-deprecation-feed",
+          "need": "Service and API deprecations across cloud providers",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "integration teams, SaaS vendors",
+          "id": "api-breaking-change-feed",
+          "need": "Breaking changes in the APIs we depend on, before they ship",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "integration teams, SDK maintainers",
+          "id": "openapi-spec-diff",
+          "need": "Endpoint, field, and type changes between spec versions",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "integration teams, client developers",
+          "id": "graphql-schema-diff",
+          "need": "Schema changes with the deprecation timeline",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "integration teams, SaaS vendors",
+          "id": "rate-limit-policy-changes",
+          "need": "Quota and throttling changes that will break our throughput",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "finance, procurement, competitors",
+          "id": "pricing-page-diff",
+          "need": "Vendor price and tier changes with the prior values",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "startups, indie developers, press",
+          "id": "free-tier-shrinkage",
+          "need": "Free tier limits reduced, which vendors rarely announce",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "SRE teams, procurement, customers",
+          "id": "status-page-incident-feed",
+          "need": "Incidents across all our vendors in one normalised feed",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "procurement, SRE, finance",
+          "id": "uptime-vs-claimed-sla",
+          "need": "Measured availability against the SLA the contract promises",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "finance, procurement",
+          "id": "sla-credit-eligibility",
+          "need": "When an outage crosses the threshold that entitles us to a credit",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "SRE teams, researchers, procurement",
+          "id": "incident-postmortem-feed",
+          "need": "Published postmortems and the time from incident to publication",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "procurement, SRE, press",
+          "id": "status-page-honesty-index",
+          "need": "How long a vendor's status page says green while users report red",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "security teams, SRE, brand protection",
+          "id": "dns-change-feed",
+          "need": "Record changes on domains we own or watch",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "network teams, security, CDNs",
+          "id": "bgp-anomaly-feed",
+          "need": "Route hijacks and leaks affecting our prefixes",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "SRE, security, platform teams",
+          "id": "tls-expiry-feed",
+          "need": "Certificates approaching expiry across our estate and our vendors",
+          "phase": 2,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "security, compliance, platform teams",
+          "id": "cipher-deprecation-tracker",
+          "need": "Algorithm and protocol deprecation timelines by standards body",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "security teams, incident response",
+          "id": "credential-exposure-feed",
+          "need": "Our credentials appearing in public exposure sources",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "incident response, insurers, threat intel",
+          "id": "ransomware-leak-feed",
+          "need": "Victim postings with the time the claim appeared",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "threat intel, detection engineering",
+          "id": "threat-actor-ttp-changes",
+          "need": "Technique and tooling changes attributed to tracked actors",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "detection engineering, GRC",
+          "id": "attack-framework-updates",
+          "need": "Technique additions, deprecations, and remappings between versions",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "detection engineering, MSSPs",
+          "id": "detection-rule-updates",
+          "need": "Community rule changes affecting our coverage",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "threat intel, SOC teams",
+          "id": "ioc-feed-disagreement",
+          "need": "Where reputation feeds disagree about the same indicator",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "email teams, marketers, deliverability",
+          "id": "blocklist-changes",
+          "need": "Our domains or IPs appearing on a blocklist, with the delisting path",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "deliverability, security, marketers",
+          "id": "email-auth-policy-changes",
+          "need": "Sender policy changes at major mailbox providers",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "AI platform teams, researchers, procurement",
+          "id": "model-release-feed",
+          "need": "New models, versions, and availability windows across providers",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "AI product teams, platform engineering",
+          "id": "model-deprecation-feed",
+          "need": "Retirement dates for models our product depends on",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "AI product finance, procurement",
+          "id": "model-pricing-changes",
+          "need": "Token price changes with the prior price and effective date",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "AI product teams",
+          "id": "model-capability-changes",
+          "need": "Context window, rate limit, and feature changes between versions",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "AI product teams, evaluators, regulators",
+          "id": "model-behaviour-drift",
+          "need": "Same prompt, same model id, different answer over time, with evidence",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "AI procurement, researchers, press",
+          "id": "benchmark-disagreement",
+          "need": "Where published benchmark results disagree for the same model",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "AI teams, press, investors",
+          "id": "leaderboard-changes",
+          "need": "Leaderboard position changes with the evaluation version behind each",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "AI governance, insurers, regulators, press",
+          "id": "ai-incident-feed",
+          "need": "Reported AI incidents and harms as they are catalogued",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "agent platform teams, security, Trooth itself",
+          "id": "mcp-registry-delta",
+          "need": "Servers added, removed, or changed in the public MCP registry",
+          "notes": "Benchmarked by Modafied under ADR-0009, not scored by Trooth.",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "agent developers, platform teams",
+          "id": "mcp-tool-schema-drift",
+          "need": "When a server changes its tool schemas and breaks our prompts",
+          "notes": "Modafied computes the schema-bytes dimension; Trooth serves the change feed.",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "agent platform teams, procurement",
+          "id": "mcp-server-uptime",
+          "need": "Measured availability of hosted MCP servers we depend on",
+          "notes": "Modafied benchmark dimension.",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "security teams, agent platform teams",
+          "id": "mcp-injection-surface-changes",
+          "need": "When a server starts returning free text where it used to return structure",
+          "notes": "Modafied benchmark dimension; the clearest security argument for the envelope.",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "agent developers, platform teams",
+          "id": "agent-framework-breaking-changes",
+          "need": "Breaking changes in the frameworks our agents are built on",
+          "phase": 2,
+          "shape": "change"
+        }
+      ],
+      "sector": "developer-security-ai"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). This sector has the best anchors in the whole register: forecasts and settled outcomes are both published by the same agencies, which makes grading feeds mechanical and compliant with rule H1 without any judgement call.",
+      "entries": [
+        {
+          "buyer": "developers, investors, utilities",
+          "id": "interconnection-queue-changes",
+          "need": "Position, capacity, and withdrawal changes in the interconnection queue",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "utilities, energy counsel, traders",
+          "id": "ferc-filing-feed",
+          "need": "Filings and orders by docket as they post",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "energy traders, large consumers",
+          "id": "lmp-price-spikes",
+          "need": "Nodal price spikes with the settlement value when it later publishes",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "industrial consumers, demand response",
+          "id": "grid-emergency-alerts",
+          "need": "Emergency and conservation alerts by balancing authority",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "utilities, regulators, customers",
+          "id": "outage-restoration-grading",
+          "need": "Grade published restoration estimates against actual restoration time",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "carbon accounting, data centres",
+          "id": "generation-mix-realtime",
+          "need": "Fuel mix by region with the reporting lag stated",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "eia"
+          ]
+        },
+        {
+          "buyer": "developers, offtakers",
+          "id": "renewable-curtailment-feed",
+          "need": "Curtailment volumes by region and the revisions to them",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "eia"
+          ]
+        },
+        {
+          "buyer": "generators, retailers",
+          "id": "capacity-auction-results",
+          "need": "Auction results and subsequent corrections",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "energy traders",
+          "id": "petroleum-inventory-revisions",
+          "need": "Weekly inventory revisions separated from new prints",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "eia"
+          ]
+        },
+        {
+          "buyer": "gas traders, utilities",
+          "id": "gas-storage-revisions",
+          "need": "Storage report reclassifications and revisions",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "eia"
+          ]
+        },
+        {
+          "buyer": "traders, logistics",
+          "id": "refinery-outage-feed",
+          "need": "Planned and unplanned outages with capacity affected",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "gas traders, shippers",
+          "id": "pipeline-maintenance-notices",
+          "need": "Operationally available capacity changes by pipeline",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "commodity traders",
+          "id": "lng-terminal-flows",
+          "need": "Feedgas and export volumes with the revision history",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "oil traders, analysts",
+          "id": "opec-production-vs-quota",
+          "need": "Reported production against stated quota, by country, with revisions",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "oilfield services, investors",
+          "id": "rig-count-weekly",
+          "need": "Weekly counts with revisions and the basin breakdown",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "operators, mineral owners, investors",
+          "id": "well-permit-feed",
+          "need": "New drilling permits by operator and county",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "operators, regulators, ESG funds",
+          "id": "methane-leak-detection",
+          "need": "Detected emission events matched to facility operators",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "ESG analysts, regulators",
+          "id": "flaring-detection",
+          "need": "Satellite-observed flaring by basin with the observation lag",
+          "phase": 4,
+          "shape": "change",
+          "upstream": [
+            "nasa-earthdata"
+          ]
+        },
+        {
+          "buyer": "data centres, corporates, carbon accounting",
+          "id": "carbon-intensity-by-region",
+          "need": "Grid carbon intensity now and forecast, with the forecast graded later",
+          "phase": 3,
+          "shape": "grading",
+          "upstream": [
+            "eia"
+          ]
+        },
+        {
+          "buyer": "corporate buyers, traders",
+          "id": "rec-issuance-feed",
+          "need": "Certificate issuance and retirement events by registry",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "carbon buyers, auditors, press",
+          "id": "offset-invalidation-feed",
+          "need": "Credits invalidated or reversed after issuance, which buyers rarely hear about",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "ESG analysts, regulators",
+          "id": "emissions-reporting-revisions",
+          "need": "Reported emissions restated between publication years",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "corporate sustainability, counsel",
+          "id": "climate-disclosure-tracker",
+          "need": "Disclosure rule changes by jurisdiction with effective dates",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "federal-register"
+          ]
+        },
+        {
+          "buyer": "insurers, utilities, emergency managers",
+          "id": "wildfire-perimeter-feed",
+          "need": "Perimeter growth with the update cadence and gaps made explicit",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "public health, schools, employers",
+          "id": "wildfire-smoke-forecast-grading",
+          "need": "Grade smoke forecasts against measured air quality",
+          "phase": 3,
+          "shape": "grading",
+          "upstream": [
+            "airnow",
+            "openaq"
+          ]
+        },
+        {
+          "buyer": "agriculture, water utilities, insurers",
+          "id": "drought-monitor-changes",
+          "need": "Weekly category changes by county with the revision history",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "water managers, hydropower, agriculture",
+          "id": "snowpack-water-equivalent",
+          "need": "Snow water equivalent by basin against the historical norm",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "water utilities, agriculture, hydropower",
+          "id": "reservoir-level-feed",
+          "need": "Storage levels with provisional values flagged separately",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "usgs-water"
+          ]
+        },
+        {
+          "buyer": "hydrologists, insurers, water rights",
+          "id": "streamflow-provisional-to-approved",
+          "need": "Track how much provisional streamflow moves once approved",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "usgs-water"
+          ]
+        },
+        {
+          "buyer": "insurers, emergency managers, municipalities",
+          "id": "flood-forecast-grading",
+          "need": "Grade river stage forecasts against observed crest",
+          "phase": 2,
+          "shape": "grading",
+          "upstream": [
+            "usgs-water",
+            "nws"
+          ]
+        },
+        {
+          "buyer": "insurers, energy, logistics",
+          "id": "hurricane-track-error",
+          "need": "Forecast cone against the actual track, by lead time",
+          "phase": 2,
+          "shape": "grading",
+          "upstream": [
+            "nws"
+          ]
+        },
+        {
+          "buyer": "insurers, emergency managers, researchers",
+          "id": "tornado-warning-lead-time",
+          "need": "Warning issuance against confirmed touchdown time",
+          "phase": 2,
+          "shape": "grading",
+          "upstream": [
+            "nws"
+          ]
+        },
+        {
+          "buyer": "employers, utilities, public health",
+          "id": "heat-advisory-feed",
+          "need": "Advisory issuance and cancellation by county",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "nws"
+          ]
+        },
+        {
+          "buyer": "public health, schools, employers",
+          "id": "air-quality-forecast-grading",
+          "need": "Grade forecast AQI against measured AQI by monitor",
+          "phase": 2,
+          "shape": "grading",
+          "upstream": [
+            "airnow",
+            "openaq"
+          ]
+        },
+        {
+          "buyer": "pharma, retail, health apps",
+          "id": "pollen-count-feed",
+          "need": "Counts by station with the gaps rather than interpolated guesses",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "grain traders, input suppliers",
+          "id": "crop-progress-weekly",
+          "need": "Planting and condition progress by state with revisions separated",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "grain traders, food manufacturers",
+          "id": "wasde-revisions",
+          "need": "Supply and demand estimate revisions month over month",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "insurers, traders, lenders",
+          "id": "crop-condition-by-county",
+          "need": "Condition ratings at county granularity with completeness shown",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "traders, seed companies",
+          "id": "planted-acreage-revisions",
+          "need": "Acreage estimate revisions between reports",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "protein traders, packers",
+          "id": "livestock-inventory-revisions",
+          "need": "Inventory restatements between quarterly reports",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "exporters, traders",
+          "id": "grain-export-inspections",
+          "need": "Weekly inspections by port and destination with corrections",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "food manufacturers, policy, retail",
+          "id": "food-price-index-feed",
+          "need": "Index components with the source and lag of each",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "agriculture, retailers, counsel",
+          "id": "pesticide-registration-changes",
+          "need": "Registrations, cancellations, and label restrictions by product",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "protein industry, traders, insurers",
+          "id": "animal-disease-outbreak-feed",
+          "need": "Outbreak declarations and quarantine zones as they publish",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "fishing industry, seafood buyers",
+          "id": "fishery-quota-changes",
+          "need": "Quota and closure announcements by fishery",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "commodity buyers, ESG, regulators",
+          "id": "deforestation-alert-feed",
+          "need": "Alerts matched to supplier concession boundaries",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "developers, consultants, regulators",
+          "id": "biodiversity-observation-feed",
+          "need": "Protected species observations near a proposed site",
+          "phase": 4,
+          "shape": "change",
+          "upstream": [
+            "gbif"
+          ]
+        },
+        {
+          "buyer": "agriculture, developers, investors",
+          "id": "water-rights-transfers",
+          "need": "Transfer applications and approvals by basin",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "large consumers, consumer advocates",
+          "id": "utility-rate-case-tracker",
+          "need": "Rate case filings, proposed increases, and final orders",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "traders, grid operators, asset owners",
+          "id": "solar-wind-forecast-grading",
+          "need": "Grade generation forecasts against metered output",
+          "phase": 3,
+          "shape": "grading"
+        }
+      ],
+      "sector": "energy-climate-agriculture"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). Nothing here is a product or a commitment. Finance is the sector where revision feeds are worth the most, because a restated number invalidates a model and the people running those models already pay for data.",
+      "entries": [
+        {
+          "buyer": "audit firms, activist funds, quant research",
+          "id": "sec-restatement-alerts",
+          "need": "Tell me within minutes when a filer restates a previously reported figure, with the old and new values",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "credit analysts, short sellers",
+          "id": "filing-latency-index",
+          "need": "Rank filers by how late they file relative to their own deadline history",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "macro desks, fintech APIs",
+          "id": "fred-republish-lag",
+          "need": "How long after the primary agency does FRED actually carry the new print",
+          "phase": 1,
+          "shape": "reconciliation",
+          "upstream": [
+            "fred",
+            "bls",
+            "bea"
+          ]
+        },
+        {
+          "buyer": "inflation-linked product desks, economists",
+          "id": "cpi-revision-history",
+          "need": "Every CPI value ever published for each period, with the date each version appeared",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "bls"
+          ]
+        },
+        {
+          "buyer": "macro funds, forecasters",
+          "id": "gdp-vintage-tracker",
+          "need": "Advance, second, and third GDP estimates as separate series with the revision between them",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "bea"
+          ]
+        },
+        {
+          "buyer": "trading desks, news automation",
+          "id": "economic-calendar-drift",
+          "need": "When a scheduled release slips, moves, or publishes early, tell me before the print",
+          "phase": 1,
+          "shape": "change",
+          "upstream": [
+            "bls",
+            "bea",
+            "eia",
+            "treasury-fiscaldata"
+          ]
+        },
+        {
+          "buyer": "rates traders",
+          "id": "jobless-claims-revisions",
+          "need": "The prior week's claims number is revised almost every week; give me the size and direction",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "bls"
+          ]
+        },
+        {
+          "buyer": "consumer analysts",
+          "id": "retail-sales-revisions",
+          "need": "Track how much the retail sales print moves between first and final",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "bea"
+          ]
+        },
+        {
+          "buyer": "homebuilder analysts",
+          "id": "housing-starts-revisions",
+          "need": "Revision magnitude on starts and permits by region",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "census-acs"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "macro desks",
+          "id": "trade-balance-revisions",
+          "need": "Trade balance restatements and which category drove them",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "bea"
+          ]
+        },
+        {
+          "buyer": "treasury teams, auditors",
+          "id": "fx-reference-vs-venue",
+          "need": "Where the ECB daily reference rate sits against traded venue rates at the fixing moment",
+          "phase": 1,
+          "shape": "reconciliation",
+          "upstream": [
+            "ecb-fx",
+            "frankfurter",
+            "kraken-public"
+          ]
+        },
+        {
+          "buyer": "payments companies",
+          "id": "fx-republisher-divergence",
+          "need": "Which FX API is quoting a stale reference rate and by how long",
+          "phase": 1,
+          "shape": "reconciliation",
+          "upstream": [
+            "ecb-fx",
+            "frankfurter"
+          ]
+        },
+        {
+          "buyer": "crypto funds, auditors",
+          "id": "crypto-aggregator-divergence",
+          "need": "Aggregator price versus the venues it claims to aggregate, per asset per minute",
+          "phase": 1,
+          "shape": "reconciliation",
+          "upstream": [
+            "coingecko",
+            "coinbase-exchange",
+            "kraken-public"
+          ]
+        },
+        {
+          "buyer": "crypto trading firms",
+          "id": "exchange-outage-detector",
+          "need": "Detect a venue that has stopped updating before its status page admits it",
+          "phase": 1,
+          "shape": "coverage",
+          "upstream": [
+            "coinbase-exchange",
+            "kraken-public"
+          ]
+        },
+        {
+          "buyer": "treasury, risk teams",
+          "id": "stablecoin-attestation-feed",
+          "need": "Attestation publications and the gap between promised and actual publication date",
+          "phase": 2,
+          "shape": "coverage"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "crypto research",
+          "id": "defi-tvl-disagreement",
+          "need": "Where two TVL trackers disagree on the same protocol and why",
+          "phase": 2,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "exchanges, compliance",
+          "id": "token-listing-delisting",
+          "need": "Listing and delisting events across venues in one feed",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "coingecko"
+          ]
+        },
+        {
+          "buyer": "fixed income quants, backtesters",
+          "id": "yield-curve-asof",
+          "need": "The yield curve exactly as it was published on any past date, not as later corrected",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "treasury-yield-curve"
+          ]
+        },
+        {
+          "buyer": "rates desks",
+          "id": "treasury-auction-drift",
+          "need": "Auction schedule changes and result publication latency",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "treasury-fiscaldata"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "macro funds",
+          "id": "rate-decision-nowcast-grading",
+          "need": "Grade published rate forecasts against the settled decision",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "commodity traders",
+          "id": "cftc-cot-weekly-delta",
+          "need": "Positioning change week over week with the corrections applied separately",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "cftc-cot"
+          ]
+        },
+        {
+          "buyer": "energy traders",
+          "id": "commodity-inventory-revisions",
+          "need": "How often weekly petroleum and gas inventories get revised, and by how much",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "eia"
+          ]
+        },
+        {
+          "buyer": "event-driven funds",
+          "id": "insider-form4-latency",
+          "need": "Time between the transaction date and the Form 4 hitting EDGAR, ranked by issuer",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "allocators, competitive intel",
+          "id": "thirteen-f-holdings-change",
+          "need": "Position changes per manager as soon as the filing lands, with amendments tracked",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "quant research",
+          "id": "thirteen-f-amendment-tracker",
+          "need": "Which managers amend their 13F after the fact and how much the holdings move",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "sell side, options desks",
+          "id": "earnings-calendar-changes",
+          "need": "Confirmed date changes for earnings, not the aggregator's guess",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "income funds",
+          "id": "dividend-announcement-revisions",
+          "need": "Declared, revised, and cancelled dividends with the revision history",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "index funds, arbitrage desks",
+          "id": "index-rebalance-announcements",
+          "need": "Constituent changes the moment they are announced",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "long short funds",
+          "id": "short-interest-updates",
+          "need": "Reported short interest with the revision between preliminary and final",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "credit funds, treasury",
+          "id": "credit-rating-actions",
+          "need": "Upgrades, downgrades, outlook changes, and withdrawals in one normalised feed",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "compliance, payments, banks",
+          "id": "sanctions-list-delta",
+          "need": "Every addition, removal, and amendment to sanctions lists within minutes",
+          "phase": 1,
+          "shape": "change"
+        },
+        {
+          "buyer": "KYC vendors, banks",
+          "id": "pep-list-changes",
+          "need": "Politically exposed person designations added or removed",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "AML teams",
+          "id": "beneficial-ownership-changes",
+          "need": "Ownership disclosure changes across the registries that publish them",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "procurement, government contractors",
+          "id": "debarment-list-changes",
+          "need": "Suspension and debarment additions before they hit our vendor onboarding",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "usaspending"
+          ]
+        },
+        {
+          "buyer": "credit risk, suppliers",
+          "id": "bankruptcy-filing-feed",
+          "need": "Corporate bankruptcy filings normalised across courts",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "asset-based lenders",
+          "id": "ucc-lien-filings",
+          "need": "New liens against a borrower as they are recorded",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "sales intelligence, credit",
+          "id": "business-registration-delta",
+          "need": "New and dissolved entities by state with the filing timestamp",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "govcon competitors, suppliers",
+          "id": "federal-contract-mods",
+          "need": "Contract modifications and ceiling increases as they post",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "usaspending"
+          ]
+        },
+        {
+          "buyer": "procurement teams",
+          "id": "gsa-price-changes",
+          "need": "Schedule price changes so we know when our negotiated rate moved",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "lenders, researchers",
+          "id": "sba-program-revisions",
+          "need": "Loan program data corrections after initial publication",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "bank analysts, regulators",
+          "id": "bank-call-report-changes",
+          "need": "Call report restatements by institution",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "risk teams, press",
+          "id": "failed-bank-feed",
+          "need": "Institution failures and assisted transactions the hour they are announced",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "muni desks",
+          "id": "municipal-disclosure-feed",
+          "need": "Continuing disclosure and material event notices by issuer",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "allocators, consultants",
+          "id": "pension-disclosure-changes",
+          "need": "Assumption and allocation changes in public pension filings",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "asset managers, IR teams",
+          "id": "esg-rating-disagreement",
+          "need": "Where ESG raters disagree about the same issuer and on which factor",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "carbon traders, auditors",
+          "id": "carbon-registry-delta",
+          "need": "Credit issuance, retirement, and invalidation events across registries",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, brokers, consumers",
+          "id": "insurance-rate-filings",
+          "need": "Rate filings and approvals by state and line of business",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "brokers, consumer apps",
+          "id": "insurance-complaint-index",
+          "need": "Complaint ratios by carrier with the revision history",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "merchants, fintech ops",
+          "id": "payment-outage-detector",
+          "need": "Detect a processor degrading before the status page updates",
+          "phase": 2,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "community lenders, researchers",
+          "id": "bank-branch-closures",
+          "need": "Branch closure and opening filings by geography",
+          "phase": 3,
+          "shape": "change"
+        }
+      ],
+      "sector": "finance-markets"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). This is the sector the 10xAnd regulatory wedge points at. The common thread is that a device, drug, or trial record is amended quietly after publication and nobody downstream is told.",
+      "entries": [
+        {
+          "analysis": "kourob",
+          "buyer": "device manufacturers, plaintiff and defence counsel, FDA consultants",
+          "id": "maude-adverse-event-spikes",
+          "need": "Alert me when adverse event reports for a device code jump above their own baseline",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "device safety teams",
+          "id": "maude-duplicate-dedup",
+          "need": "The same event reported three times by manufacturer, importer, and user facility, collapsed to one",
+          "phase": 2,
+          "shape": "reconciliation",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "regulatory affairs, litigators",
+          "id": "maude-summary-reporting-flags",
+          "need": "Flag summary reports that bundle many events into one record and hide the true count",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "buyer": "hospitals, group purchasing organisations",
+          "id": "device-recall-early-warning",
+          "need": "Recall classification changes and expansions before the press notices",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "buyer": "device competitors, investors",
+          "id": "five-ten-k-clearance-feed",
+          "need": "New 510(k) clearances by product code with predicate lineage",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "buyer": "device investors, competitors",
+          "id": "pma-approval-feed",
+          "need": "Premarket approvals and supplements as they publish",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "buyer": "hospital pharmacy, distributors",
+          "id": "drug-shortage-feed",
+          "need": "Shortage declarations and resolutions with the duration of each",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "pharmacy systems, EHR vendors",
+          "id": "label-change-alerts",
+          "need": "Structured product label changes diffed field by field",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "dailymed"
+          ]
+        },
+        {
+          "buyer": "clinical decision support, insurers",
+          "id": "boxed-warning-changes",
+          "need": "Additions and removals of boxed warnings the day they post",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "dailymed"
+          ]
+        },
+        {
+          "buyer": "pharma competitive intel, investors",
+          "id": "trial-status-changes",
+          "need": "Recruiting to suspended to terminated transitions with the date of each",
+          "phase": 1,
+          "shape": "change",
+          "upstream": [
+            "clinicaltrials-gov"
+          ]
+        },
+        {
+          "buyer": "investors, journals, regulators",
+          "id": "trial-endpoint-changes",
+          "need": "Primary endpoint edits after enrolment started, with old and new text",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "clinicaltrials-gov"
+          ]
+        },
+        {
+          "buyer": "CROs, site networks",
+          "id": "trial-site-additions",
+          "need": "New and dropped sites per trial, which signals enrolment trouble",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "clinicaltrials-gov"
+          ]
+        },
+        {
+          "buyer": "regulators, journals, advocacy",
+          "id": "trial-results-posting-latency",
+          "need": "How long after completion results actually post, by sponsor",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "clinicaltrials-gov"
+          ]
+        },
+        {
+          "buyer": "investors",
+          "id": "trial-completion-date-slips",
+          "need": "Every time a sponsor pushes the estimated completion date back",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "clinicaltrials-gov"
+          ]
+        },
+        {
+          "buyer": "regulatory affairs, quality teams",
+          "id": "warning-letter-feed",
+          "need": "FDA warning letters by facility and the issues cited",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "quality teams, investors",
+          "id": "inspection-observation-feed",
+          "need": "Form 483 observations and the facilities they land on",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "importers, supply chain",
+          "id": "import-refusal-feed",
+          "need": "Refused shipments by manufacturer and reason",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "biotech investors",
+          "id": "approval-calendar-grading",
+          "need": "Grade predicted approval dates against the actual decision",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "generic manufacturers, patent counsel",
+          "id": "orange-book-patent-changes",
+          "need": "Patent listings and delistings per drug product",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "biosimilar developers",
+          "id": "purple-book-changes",
+          "need": "Biologic exclusivity and interchangeability changes",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "pharmacy systems, payers",
+          "id": "ndc-directory-delta",
+          "need": "New, discontinued, and reclassified national drug codes",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "EHR and pharmacy vendors",
+          "id": "rxnorm-term-changes",
+          "need": "Terminology additions, retirements, and remappings between releases",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "rxnorm"
+          ]
+        },
+        {
+          "buyer": "revenue cycle, billing vendors",
+          "id": "code-set-updates",
+          "need": "HCPCS and CPT additions, deletions, and description changes by effective date",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "coders, payers, analytics vendors",
+          "id": "icd-code-changes",
+          "need": "Diagnosis code changes with the crosswalk from the prior version",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "provider finance, billing companies",
+          "id": "fee-schedule-changes",
+          "need": "Medicare fee schedule changes by code and locality",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "employers, price comparison apps, researchers",
+          "id": "hospital-price-transparency-delta",
+          "need": "When a hospital changes its posted prices, and by how much",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "pharma market access, patient advocates",
+          "id": "payer-formulary-changes",
+          "need": "Tier changes, removals, and new restrictions by plan",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "provider operations, pharma access",
+          "id": "prior-auth-policy-changes",
+          "need": "Prior authorisation requirement changes by payer and code",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "payers under directory accuracy rules, patients",
+          "id": "provider-directory-accuracy",
+          "need": "Where the payer directory disagrees with the authoritative provider registry",
+          "phase": 2,
+          "shape": "reconciliation",
+          "upstream": [
+            "npi-registry"
+          ]
+        },
+        {
+          "buyer": "recruiters, payers, pharma field teams",
+          "id": "provider-churn-feed",
+          "need": "Providers changing practice, address, or status",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "npi-registry"
+          ]
+        },
+        {
+          "buyer": "credentialing, payers, hospitals",
+          "id": "licensure-disciplinary-feed",
+          "need": "State board disciplinary actions across all states in one feed",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "pharmacies, compliance",
+          "id": "dea-registration-actions",
+          "need": "Registration revocations and surrenders",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "hospital executives, payers",
+          "id": "hospital-quality-revisions",
+          "need": "Star ratings and quality measures get restated; show me the old and new",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "families, operators, investors",
+          "id": "nursing-home-inspection-feed",
+          "need": "Inspection findings and their severity as they publish",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "public health modellers, insurers",
+          "id": "cdc-backfill-tracker",
+          "need": "How much this week's number will move over the next six weeks, based on history",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "cdc-socrata"
+          ]
+        },
+        {
+          "buyer": "public health, employers, insurers",
+          "id": "wastewater-signal-feed",
+          "need": "Wastewater surveillance changes by site with the reporting lag",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "cdc-socrata"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "public health, travel, insurers",
+          "id": "outbreak-signal-detection",
+          "need": "Anomalies across surveillance streams before the official declaration",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "cdc-socrata",
+            "who-gho"
+          ]
+        },
+        {
+          "buyer": "public health, pharma demand planning",
+          "id": "flu-forecast-grading",
+          "need": "Grade published seasonal forecasts against settled surveillance data",
+          "phase": 3,
+          "shape": "grading",
+          "upstream": [
+            "cdc-socrata"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "manufacturers, regulators",
+          "id": "vaccine-signal-feed",
+          "need": "Reporting anomalies in adverse event surveillance with baselines",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "buyer": "health systems, EMS, insurers",
+          "id": "hospital-capacity-feed",
+          "need": "Bed and ICU capacity by facility with the reporting gaps made visible",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "hospitals, blood centres",
+          "id": "blood-supply-levels",
+          "need": "Regional supply levels and shortage declarations",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "transplant centres, researchers",
+          "id": "transplant-waitlist-changes",
+          "need": "Waitlist and allocation policy changes",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "genetic testing labs, clinicians",
+          "id": "variant-classification-changes",
+          "need": "When a variant is reclassified from pathogenic to benign or back",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "publishers, pharma, research integrity",
+          "id": "retraction-feed",
+          "need": "Retractions and expressions of concern with the delay from first concern",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "pubmed"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "journals, funders, due diligence",
+          "id": "research-integrity-signals",
+          "need": "Correction and retraction patterns by author and institution",
+          "phase": 3,
+          "shape": "coverage",
+          "upstream": [
+            "pubmed",
+            "openalex"
+          ]
+        },
+        {
+          "buyer": "research administrators, biotech",
+          "id": "grant-funding-changes",
+          "need": "Award modifications, terminations, and supplements",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "nih-reporter"
+          ]
+        },
+        {
+          "buyer": "rare disease biotech, investors",
+          "id": "orphan-designation-feed",
+          "need": "Orphan and breakthrough designations as granted",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "patient advocacy, sponsors",
+          "id": "expanded-access-feed",
+          "need": "Expanded access programme openings and closures",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "clinicaltrials-gov"
+          ]
+        },
+        {
+          "buyer": "veterinary clinics, pet retail",
+          "id": "veterinary-recall-feed",
+          "need": "Animal drug and food recalls, which nobody aggregates well",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "payers, providers, pharma access",
+          "id": "medicaid-policy-by-state",
+          "need": "State-level coverage policy changes in one normalised feed",
+          "phase": 4,
+          "shape": "change"
+        }
+      ],
+      "sector": "healthcare-life-sciences"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). Compliance buyers pay for completeness and timeliness, and both are measurable. A missed rule change is a fine, so the value of the feed is easy for the buyer to calculate, which makes this the sector where pricing conversations are simplest.",
+      "entries": [
+        {
+          "buyer": "compliance teams, counsel, trade associations",
+          "id": "federal-rule-tracker",
+          "need": "Proposed and final rules touching our topics, the day they publish",
+          "phase": 1,
+          "shape": "change",
+          "upstream": [
+            "federal-register"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "counsel, compliance, lobbyists",
+          "id": "proposed-to-final-diff",
+          "need": "What actually changed between the proposed and the final rule",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "federal-register"
+          ]
+        },
+        {
+          "buyer": "trade associations, counsel, advocacy",
+          "id": "comment-deadline-feed",
+          "need": "Comment periods opening and closing, including extensions",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "regulations-gov"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "compliance, counsel",
+          "id": "agency-guidance-changes",
+          "need": "Sub-regulatory guidance that changes without any rulemaking",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "multistate operators, counsel",
+          "id": "state-regulation-tracker",
+          "need": "State register changes across all fifty states in one feed",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "government affairs, trade groups",
+          "id": "state-bill-tracker",
+          "need": "Bill introductions and status changes matched to our topics",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "compliance, product, engineering",
+          "id": "effective-date-calendar",
+          "need": "What becomes enforceable when, so we can plan the work",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "multi-location operators, counsel",
+          "id": "municipal-ordinance-feed",
+          "need": "Local ordinances affecting our sites",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "litigation teams, insurers, investors",
+          "id": "court-docket-feed",
+          "need": "New filings and docket events in matters we watch",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "counsel, publishers, insurers",
+          "id": "appellate-opinion-feed",
+          "need": "Opinions as issued, with later corrections tracked",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "defence counsel, insurers, risk",
+          "id": "class-action-filing-feed",
+          "need": "New class actions by defendant and theory",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "counsel, claims administrators",
+          "id": "settlement-approval-feed",
+          "need": "Preliminary and final approvals with the terms",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "compliance, monitors",
+          "id": "consent-decree-tracker",
+          "need": "Decree milestones and compliance deadlines",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "compliance, funds, counsel",
+          "id": "sec-enforcement-feed",
+          "need": "Actions, orders, and settlements as published",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "marketing, product counsel",
+          "id": "ftc-enforcement-feed",
+          "need": "Actions and consent orders that set the practical rules",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "banks, fintech, consumer advocates",
+          "id": "cfpb-complaint-trends",
+          "need": "Complaint volume shifts by product and company",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "multistate operators, counsel",
+          "id": "state-ag-action-feed",
+          "need": "Attorney general actions and multistate investigations",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "compliance, counsel, press",
+          "id": "doj-action-feed",
+          "need": "Enforcement announcements by industry",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "dealmakers, competitors, counsel",
+          "id": "merger-review-status",
+          "need": "Filing, second request, and clearance events",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "competitors, investors, counsel",
+          "id": "antitrust-filing-feed",
+          "need": "Premerger notification activity by industry",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "IP counsel, competitors, investors",
+          "id": "patent-grant-feed",
+          "need": "Grants matched to our technology areas and competitors",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "IP counsel, investors, licensing",
+          "id": "patent-assignment-changes",
+          "need": "Ownership transfers, which often precede litigation",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "IP counsel, insurers, investors",
+          "id": "patent-litigation-feed",
+          "need": "New suits by patent and asserted party",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "brand counsel",
+          "id": "trademark-opposition-feed",
+          "need": "Oppositions and cancellations against marks we watch",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "brand counsel, competitive intel",
+          "id": "trademark-registration-feed",
+          "need": "Applications and registrations in our classes",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "media companies, counsel",
+          "id": "copyright-registration-feed",
+          "need": "Registrations relevant to our catalogue",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "platforms, rights holders, researchers",
+          "id": "dmca-notice-trends",
+          "need": "Notice volumes and targets over time",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "privacy teams, product, counsel",
+          "id": "privacy-law-tracker",
+          "need": "State and national privacy law changes with effective dates",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "privacy teams, counsel",
+          "id": "privacy-enforcement-feed",
+          "need": "Enforcement actions and the practices they targeted",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, security teams, counsel",
+          "id": "breach-notification-feed",
+          "need": "Breach notifications filed with state regulators, normalised",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, regulators, researchers",
+          "id": "breach-notification-latency",
+          "need": "Time between discovery date and notification date, by company",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "web teams, retailers, counsel",
+          "id": "accessibility-suit-feed",
+          "need": "Accessibility litigation by defendant and site",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "HR, payroll vendors, counsel",
+          "id": "employment-law-changes",
+          "need": "Wage, leave, and scheduling law changes by jurisdiction",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "payroll vendors, multi-site employers",
+          "id": "minimum-wage-tracker",
+          "need": "Every state and local rate change with its effective date",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "safety teams, insurers, unions",
+          "id": "osha-citation-feed",
+          "need": "Citations by establishment and standard cited",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "employers, unions, labour counsel",
+          "id": "nlrb-petition-feed",
+          "need": "Election petitions and results by employer",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "recruiters, economists, investors, press",
+          "id": "warn-notice-feed",
+          "need": "Layoff notices across all state filing systems in one feed",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "mobility teams, counsel, employers",
+          "id": "immigration-policy-changes",
+          "need": "Policy and processing changes affecting our filings",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "recruiters, researchers, competitors",
+          "id": "lca-disclosure-feed",
+          "need": "Labour condition applications by employer, role, and wage",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "mobility teams, applicants",
+          "id": "visa-bulletin-changes",
+          "need": "Priority date movement month over month",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "exporters, compliance",
+          "id": "export-license-actions",
+          "need": "Denials, revocations, and temporary denial orders",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "compliance, counsel, multinationals",
+          "id": "fcpa-enforcement-feed",
+          "need": "Actions and declinations with the conduct described",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "banks, fintech compliance",
+          "id": "aml-guidance-changes",
+          "need": "Guidance and advisory changes from financial regulators",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "credentialing, employers, insurers",
+          "id": "licensing-board-feed",
+          "need": "Professional disciplinary actions across boards and states",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "government affairs, journalists, researchers",
+          "id": "lobbying-disclosure-feed",
+          "need": "Registrations and reports by issue and client",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "journalists, researchers, compliance",
+          "id": "campaign-finance-amendments",
+          "need": "Amended filings and what changed between versions",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "fec"
+          ]
+        },
+        {
+          "buyer": "journalists, researchers, compliance",
+          "id": "ethics-disclosure-changes",
+          "need": "Financial disclosure amendments by official",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "journalists, researchers, competitors",
+          "id": "foia-log-feed",
+          "need": "Request logs and releases, which reveal what others are asking about",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "government affairs, compliance",
+          "id": "regulatory-agenda-tracker",
+          "need": "Unified agenda changes that signal what is coming",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "AI product teams, counsel, policy",
+          "id": "ai-regulation-tracker",
+          "need": "AI-specific rules and guidance by jurisdiction with effective dates",
+          "phase": 3,
+          "shape": "change"
+        }
+      ],
+      "sector": "legal-regulatory-compliance"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). Reputation buyers are used to paying for monitoring that cannot tell them where a claim came from. Provenance is the differentiator here more than anywhere else: the value is being able to prove what a source said and when it changed its mind.",
+      "entries": [
+        {
+          "analysis": "kourob",
+          "buyer": "communications teams, agencies, legal",
+          "id": "brand-mention-provenance",
+          "need": "Mentions with a verifiable source, capture time, and content hash, not a vendor's word",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "journalists, competitive intel, investors",
+          "id": "press-release-feed",
+          "need": "Releases by company with the exact publication timestamp",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "investors, competitive intel",
+          "id": "earnings-transcript-feed",
+          "need": "Transcripts with corrections tracked against the original",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "recruiters, investors, sales teams",
+          "id": "executive-change-feed",
+          "need": "Officer and director changes as disclosed",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "governance analysts, recruiters, investors",
+          "id": "board-appointment-feed",
+          "need": "Board additions and departures with the stated reason",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "recruiters, economists, press, investors",
+          "id": "layoff-announcement-feed",
+          "need": "Layoffs from official filings rather than rumour",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "sales intelligence, investors, recruiters",
+          "id": "hiring-signal-feed",
+          "need": "Posting volume shifts by company and function",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "competitive intel, recruiters, researchers",
+          "id": "job-posting-delta",
+          "need": "Postings added and removed, with the removal reason inferred",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "compensation teams, candidates, regulators",
+          "id": "salary-range-disclosure-changes",
+          "need": "Posted range changes for the same role over time",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "employer brand teams, investors",
+          "id": "employer-sentiment-divergence",
+          "need": "Where review platforms disagree about the same employer",
+          "phase": 4,
+          "shape": "reconciliation"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "product teams, investors",
+          "id": "app-review-sentiment-shift",
+          "need": "Rating and review volume shifts after a release",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "publishers, investors, ASO teams",
+          "id": "app-ranking-changes",
+          "need": "Category rank movement with the observation time stated",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "security teams, privacy researchers, press",
+          "id": "app-permission-changes",
+          "need": "Permission and entitlement changes between app versions",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "privacy researchers, security, competitors",
+          "id": "sdk-inclusion-changes",
+          "need": "Third-party SDKs added or removed from an app",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "privacy teams, regulators, publishers",
+          "id": "tracker-presence-changes",
+          "need": "Tracking scripts appearing on a site over time",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "privacy teams, regulators, agencies",
+          "id": "cookie-banner-compliance",
+          "need": "Consent implementation changes and compliance drift",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "journalists, researchers, campaigns",
+          "id": "political-ad-spend-feed",
+          "need": "Ad spend and targeting disclosures as published",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "advertisers, researchers, regulators",
+          "id": "ad-transparency-changes",
+          "need": "Platform ad disclosure policy and library changes",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "brands, agencies, regulators",
+          "id": "influencer-disclosure-compliance",
+          "need": "Sponsored content disclosure presence across posts we paid for",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "brand protection, security, competitive intel",
+          "id": "domain-registration-feed",
+          "need": "New registrations matching our brand patterns",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "security teams, brand protection",
+          "id": "certificate-transparency-feed",
+          "need": "Certificates issued for domains resembling ours",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "brand protection, security, banks",
+          "id": "typosquat-detection",
+          "need": "Lookalike domains with the evidence trail for a takedown",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "brand protection, banks, marketplaces",
+          "id": "brand-impersonation-feed",
+          "need": "Impersonating sites and accounts with capture evidence",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "security teams, banks, email providers",
+          "id": "phishing-domain-feed",
+          "need": "Phishing infrastructure targeting our brand",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "brand protection, press",
+          "id": "social-verification-changes",
+          "need": "Verification status changes on accounts we track",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "publishers, creators, agencies, counsel",
+          "id": "platform-policy-diff",
+          "need": "Platform policy changes diffed clause by clause",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "researchers, policy teams, press",
+          "id": "moderation-report-feed",
+          "need": "Transparency report publications and the metrics that changed definition",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "researchers, rights holders, press",
+          "id": "takedown-transparency-feed",
+          "need": "Takedown volumes and requesters over time",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "communications teams, agencies, researchers",
+          "id": "wikipedia-article-alerts",
+          "need": "Edits to articles about us, with the diff and the editor",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "wikipedia"
+          ]
+        },
+        {
+          "buyer": "knowledge graph teams, SEO, brands",
+          "id": "wikidata-entity-changes",
+          "need": "Entity property changes that propagate into search results",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "wikidata"
+          ]
+        },
+        {
+          "buyer": "brands, SEO teams",
+          "id": "knowledge-panel-divergence",
+          "need": "Where the public knowledge graph disagrees with our own facts",
+          "phase": 3,
+          "shape": "reconciliation",
+          "upstream": [
+            "wikidata"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "communications teams, researchers, press",
+          "id": "news-correction-feed",
+          "need": "Corrections and stealth edits to published articles",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "researchers, media analysts, press",
+          "id": "correction-latency-index",
+          "need": "How long outlets take to correct, ranked by outlet",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "researchers, press, communications",
+          "id": "stealth-edit-detection",
+          "need": "Article text changed after publication with no correction notice",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "platforms, researchers, press",
+          "id": "fact-check-claim-feed",
+          "need": "Fact check publications matched to the claims they address",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "publishers, aggregators, traders",
+          "id": "syndication-lag-index",
+          "need": "How long a story takes to travel from origin to republisher",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "researchers, aggregators, libraries",
+          "id": "paywall-policy-changes",
+          "need": "Access policy changes by publication",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "aggregators, app developers, researchers",
+          "id": "rss-feed-health",
+          "need": "Which publisher feeds are stale, broken, or silently truncated",
+          "phase": 2,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "advertisers, networks, researchers",
+          "id": "podcast-catalog-changes",
+          "need": "Episodes added, removed, or edited after publication",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "studios, consumers, analysts",
+          "id": "streaming-catalog-churn",
+          "need": "Titles added and removed by platform and region",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "labels, distributors, royalty teams",
+          "id": "music-metadata-disagreement",
+          "need": "Where music databases disagree on credits and rights",
+          "phase": 4,
+          "shape": "reconciliation",
+          "upstream": [
+            "musicbrainz"
+          ]
+        },
+        {
+          "buyer": "studios, exhibitors, analysts",
+          "id": "box-office-revisions",
+          "need": "Estimate to actual revisions with the gap",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "networks, advertisers, analysts",
+          "id": "ratings-revisions",
+          "need": "Audience measurement restatements between preliminary and final",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "broadcasters, venues, ticketing, betting",
+          "id": "sports-schedule-changes",
+          "need": "Fixture changes with the prior time and the reason",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "betting, fantasy, media, teams",
+          "id": "sports-injury-report-feed",
+          "need": "Injury designations with the exact publication time",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "betting operators, traders, media",
+          "id": "odds-line-movement",
+          "need": "Line movement across books with the timestamp of each observation",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "betting operators, media, researchers",
+          "id": "settled-outcome-grading",
+          "need": "Grade predicted outcomes against settled results",
+          "phase": 4,
+          "shape": "grading"
+        },
+        {
+          "buyer": "betting, media, teams",
+          "id": "esports-result-feed",
+          "need": "Match results with correction history",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "studios, press, prediction markets",
+          "id": "awards-nomination-feed",
+          "need": "Nominations and rule changes as announced",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "promoters, ticketing, insurers",
+          "id": "venue-capacity-changes",
+          "need": "Capacity and configuration changes by venue",
+          "phase": 4,
+          "shape": "revision"
+        }
+      ],
+      "sector": "media-marketing-reputation"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). Property data is fragmented across thousands of jurisdictions, which is precisely why a normalised change feed is worth money: the buyer cannot build it themselves without watching every county.",
+      "entries": [
+        {
+          "buyer": "contractors, suppliers, investors, proptech",
+          "id": "building-permit-feed",
+          "need": "New permits by metro, normalised, within a day of issue",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "developers, lenders, economists",
+          "id": "permit-to-completion-lag",
+          "need": "How long permits actually take to reach completion, by jurisdiction",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "lenders, property managers, utilities",
+          "id": "certificate-of-occupancy-feed",
+          "need": "COs issued, which is the real signal that supply arrived",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "developers, investors, community groups",
+          "id": "zoning-change-alerts",
+          "need": "Zoning map and text amendments affecting a parcel or radius",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "developers, neighbours, brokers",
+          "id": "rezoning-application-feed",
+          "need": "Applications filed before the hearing, not after",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "developers, counsel, civic groups",
+          "id": "planning-agenda-feed",
+          "need": "Planning and zoning board agendas across jurisdictions in one feed",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "developers, appraisers",
+          "id": "variance-decision-feed",
+          "need": "Variance grants and denials with the conditions attached",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "investors, insurers, tenants",
+          "id": "code-violation-feed",
+          "need": "Open violations by parcel and how long they stay open",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "owners, tax consultants, investors",
+          "id": "assessment-change-feed",
+          "need": "Assessed value changes with the prior value and the appeal deadline",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "lien investors, lenders",
+          "id": "tax-lien-sale-feed",
+          "need": "Upcoming and completed lien sales by county",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "investors, lenders, housing advocates",
+          "id": "foreclosure-filing-feed",
+          "need": "Notices of default and sale as filed",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "brokers, investors, title companies",
+          "id": "deed-transfer-feed",
+          "need": "Recorded transfers with price where disclosed",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "lenders, competitive intel",
+          "id": "mortgage-recording-feed",
+          "need": "New mortgages and releases by lender and geography",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "fair lending analysts, regulators, banks",
+          "id": "hmda-revisions",
+          "need": "Lending data restated between initial and final publication",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "insurers, lenders, homeowners",
+          "id": "flood-map-changes",
+          "need": "Map revisions that move a property in or out of a flood zone",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "insurers, agents, lenders",
+          "id": "flood-insurance-rate-changes",
+          "need": "Rating changes by zone and effective date",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, lenders, homeowners",
+          "id": "wildfire-risk-zone-changes",
+          "need": "Designation changes that trigger new requirements or cancellations",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "owners, engineers, lenders",
+          "id": "seismic-retrofit-mandates",
+          "need": "Retrofit ordinances and deadlines by jurisdiction",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "builders, manufacturers, consultants",
+          "id": "energy-code-adoption",
+          "need": "Which code version each jurisdiction adopted and when it takes effect",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "owners, brokers, ESG teams",
+          "id": "energy-benchmark-disclosure",
+          "need": "Required building energy disclosures and the buildings missing them",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "owners, managers, tenant advocates",
+          "id": "rent-regulation-changes",
+          "need": "Rent control and stabilisation rule changes by jurisdiction",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "investors, housing researchers, advocates",
+          "id": "eviction-filing-feed",
+          "need": "Filings by jurisdiction with the disposition when it settles",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "hosts, platforms, investors",
+          "id": "short-term-rental-rules",
+          "need": "Registration requirements and caps as they change by city",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "buyers, lenders, insurers",
+          "id": "hoa-assessment-changes",
+          "need": "Special assessments and dues changes where disclosed",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "contractors, developers, insurers",
+          "id": "construction-cost-index",
+          "need": "Cost index movement with revisions separated from new data",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "contractors, manufacturers, buyers",
+          "id": "material-price-feed",
+          "need": "Lumber, cement, steel, and copper prices with the publication lag exposed",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "owners, GCs, insurers",
+          "id": "contractor-license-actions",
+          "need": "Licence suspensions and revocations before we sign the subcontract",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "GCs, insurers, owners",
+          "id": "osha-construction-citations",
+          "need": "Citations by contractor, as a prequalification input",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, safety teams",
+          "id": "construction-accident-feed",
+          "need": "Reported incidents with the later amendments to cause",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "contractors, suppliers, estimators",
+          "id": "public-works-bid-tabs",
+          "need": "Bid tabulations so we can see what everyone actually bid",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "contractors, consultants, municipalities",
+          "id": "infrastructure-grant-awards",
+          "need": "Federal and state awards by project and recipient",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "usaspending"
+          ]
+        },
+        {
+          "buyer": "heavy civil contractors, suppliers",
+          "id": "dot-letting-schedule",
+          "need": "Project letting calendars and the changes to them",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "developers, data centre siting",
+          "id": "utility-connection-lead-times",
+          "need": "Interconnection and service lead times by utility",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "ISPs, developers, policy",
+          "id": "broadband-availability-changes",
+          "need": "Availability map changes and the challenges filed against them",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "brokers, families, proptech",
+          "id": "school-boundary-changes",
+          "need": "Attendance boundary changes that move a home between schools",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "proptech, families",
+          "id": "school-rating-revisions",
+          "need": "Rating changes with the prior value, since listings quote them as facts",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "insurers, proptech, residents",
+          "id": "crime-incident-feed",
+          "need": "Incidents by geography with reporting completeness stated honestly",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "developers, brokers, planners",
+          "id": "transit-accessibility-changes",
+          "need": "Service changes that alter a site's transit access",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "lenders, developers, insurers",
+          "id": "environmental-site-assessment-feed",
+          "need": "Known contamination records touching a parcel",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "developers, municipalities",
+          "id": "brownfield-registry-changes",
+          "need": "Site status changes and grant eligibility",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "developers, lenders, neighbours",
+          "id": "superfund-status-changes",
+          "need": "Site listings, deletions, and remediation milestones",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "epa-echo"
+          ]
+        },
+        {
+          "buyer": "utilities, owners, buyers",
+          "id": "lead-service-line-inventory",
+          "need": "Inventory updates by address as utilities publish them",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "buyers, utilities, advocates",
+          "id": "water-quality-violations",
+          "need": "System violations and the time to resolution",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "inspectors, buyers",
+          "id": "radon-zone-updates",
+          "need": "Zone designation changes",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "lenders, regulators, appraisers",
+          "id": "appraisal-vs-sale-divergence",
+          "need": "Where appraised value systematically diverges from sale price by geography",
+          "phase": 4,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "brokers, investors, portals",
+          "id": "listing-price-revisions",
+          "need": "Price change history per listing rather than only the current ask",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "brokers, investors",
+          "id": "days-on-market-index",
+          "need": "DOM with relisting resets made visible instead of hidden",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "commercial brokers, lenders, REITs",
+          "id": "submarket-vacancy-rates",
+          "need": "Vacancy by submarket with revisions separated",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "investors, appraisers, lenders",
+          "id": "cap-rate-disagreement",
+          "need": "Where published cap rate sources disagree on the same submarket",
+          "phase": 4,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "investors, developers",
+          "id": "opportunity-zone-changes",
+          "need": "Designation and programme rule changes",
+          "phase": 4,
+          "shape": "change"
+        }
+      ],
+      "sector": "real-estate-construction"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). Retail buyers already pay for scraped price data. The difference Trooth can sell is provenance and revision history: not just what the price is, but what it was, when it changed, and whether the source has been reliable about saying so.",
+      "entries": [
+        {
+          "buyer": "retailers, marketplaces, insurers",
+          "id": "consumer-recall-feed",
+          "need": "Recalls across food, drug, device, vehicle, and product agencies in one normalised feed",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "openfda",
+            "cpsc-recalls",
+            "nhtsa-recalls"
+          ]
+        },
+        {
+          "buyer": "manufacturers, regulators, counsel",
+          "id": "recall-effectiveness-tracker",
+          "need": "How recall scope and classification change after the first announcement",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "cpsc-recalls",
+            "nhtsa-recalls"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "retailers, marketplaces",
+          "id": "recall-to-sku-mapping",
+          "need": "A recall mapped to the exact SKUs on our shelves",
+          "phase": 3,
+          "shape": "reconciliation",
+          "upstream": [
+            "openfda",
+            "cpsc-recalls"
+          ]
+        },
+        {
+          "buyer": "retailers, CPG brands, investors",
+          "id": "price-change-detection",
+          "need": "Price moves with the prior price and the time it held, not just the current price",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "consumer press, regulators, brands",
+          "id": "shrinkflation-detector",
+          "need": "Pack size reduced while price held, detected from label data over time",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "openfoodfacts"
+          ]
+        },
+        {
+          "buyer": "brands, investors, supply planners",
+          "id": "out-of-stock-index",
+          "need": "Availability by SKU and region with the observation gaps stated",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "CPG brands, competitors",
+          "id": "assortment-change-tracker",
+          "need": "Products added to or dropped from a retailer's range",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "competitive intel, retail buyers",
+          "id": "new-product-launch-feed",
+          "need": "New product registrations and listings by category",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "retailers, marketplaces, data teams",
+          "id": "gtin-registry-changes",
+          "need": "Identifier reassignments and retirements that break our joins",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "health apps, retailers, regulators",
+          "id": "nutrition-label-changes",
+          "need": "Nutrition panel edits with the prior values",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "openfoodfacts"
+          ]
+        },
+        {
+          "buyer": "health apps, retailers, allergy advocates",
+          "id": "allergen-declaration-changes",
+          "need": "Allergen additions or removals, which are safety-critical and often silent",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "openfoodfacts"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "brands, competitors, health apps",
+          "id": "ingredient-reformulation-detector",
+          "need": "Ingredient list changes indicating reformulation",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "openfoodfacts"
+          ]
+        },
+        {
+          "buyer": "beauty brands, retailers, compliance",
+          "id": "cosmetic-ingredient-restrictions",
+          "need": "Restricted substance list changes by jurisdiction",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "consumer goods, retailers, counsel",
+          "id": "prop-sixty-five-changes",
+          "need": "Listed chemical additions and warning requirement changes",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "manufacturers, compliance",
+          "id": "substance-restriction-updates",
+          "need": "REACH and similar substance list updates with effective dates",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "toy makers, retailers",
+          "id": "toy-safety-standard-changes",
+          "need": "Standard and testing requirement changes",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "appliance makers, retailers, utilities",
+          "id": "efficiency-standard-changes",
+          "need": "Efficiency rules and certification changes by product class",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "retailers, consumers, brands",
+          "id": "certification-status-changes",
+          "need": "Products gaining or losing a certification mark",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "consumer advocates, retailers, insurers",
+          "id": "warranty-term-changes",
+          "need": "Warranty length and coverage changes by product line",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "consumer press, competitors, shoppers",
+          "id": "return-policy-changes",
+          "need": "Retailer return window and restocking fee changes",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "counsel, consumer advocates, procurement",
+          "id": "terms-of-service-diff",
+          "need": "What changed in the terms, clause by clause, with the date",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "privacy teams, researchers, advocates",
+          "id": "privacy-policy-diff",
+          "need": "Policy changes diffed, especially new data sharing language",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "consumers, finance teams, press",
+          "id": "subscription-price-increases",
+          "need": "Price increases across subscription services with the prior price",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "app developers, publishers",
+          "id": "app-store-policy-changes",
+          "need": "Platform policy changes that could pull our app",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "sellers, developers, finance",
+          "id": "platform-fee-changes",
+          "need": "Commission and fee schedule changes by platform",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "sellers, aggregators, investors",
+          "id": "marketplace-suspension-trends",
+          "need": "Suspension and reinstatement patterns by category",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "brands, marketplaces",
+          "id": "counterfeit-listing-signals",
+          "need": "Listings showing counterfeit indicators against our catalogue",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "marketplaces, brands, regulators",
+          "id": "review-manipulation-signals",
+          "need": "Review pattern anomalies by seller and product",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "ecommerce ops, marketing",
+          "id": "shipping-cutoff-calendar",
+          "need": "Carrier and retailer cutoff dates as they are published and revised",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "brands, retailers, affiliates",
+          "id": "promo-calendar-feed",
+          "need": "Promotional events and their terms as announced",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "ecommerce, tax software, finance",
+          "id": "sales-tax-rate-changes",
+          "need": "Rate and boundary changes by jurisdiction with effective dates",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "retailers, tax software",
+          "id": "tax-holiday-calendar",
+          "need": "Sales tax holidays by state with the covered categories",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "ecommerce finance, tax advisors",
+          "id": "nexus-threshold-changes",
+          "need": "Economic nexus threshold changes by state",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "landlords, competitors, investors, suppliers",
+          "id": "store-opening-closing-feed",
+          "need": "Location openings and closures by chain",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "mapping platforms, consumers, retailers",
+          "id": "store-hours-accuracy",
+          "need": "Where published hours disagree with the authoritative source",
+          "phase": 4,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "franchisees, counsel, investors",
+          "id": "franchise-disclosure-changes",
+          "need": "Disclosure document changes between annual versions",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "delivery platforms, consumers, insurers",
+          "id": "restaurant-inspection-feed",
+          "need": "Inspection scores and violations by establishment",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "delivery platforms, press, consumers",
+          "id": "food-safety-closure-feed",
+          "need": "Closures and reopenings the day they happen",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "restaurant groups, economists, investors",
+          "id": "menu-price-index",
+          "need": "Menu price movement by segment and geography",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "restaurants, consumers, regulators",
+          "id": "delivery-fee-index",
+          "need": "Platform fee and commission changes over time",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "economists, press, retailers",
+          "id": "grocery-basket-index",
+          "need": "A transparent basket with every source and observation date shown",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "fleets, consumers, traders",
+          "id": "fuel-price-by-station",
+          "need": "Station-level prices with the observation age exposed",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "EV drivers, fleet operators, apps",
+          "id": "ev-charger-availability",
+          "need": "Charger status with the staleness of each report stated",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "fleets, regulators, drivers",
+          "id": "charging-network-uptime",
+          "need": "Measured uptime by network against the uptime they claim",
+          "phase": 3,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "fleets, apps, consumers",
+          "id": "parking-rate-changes",
+          "need": "Municipal and operator rate changes",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "riders, employers, apps",
+          "id": "transit-fare-changes",
+          "need": "Fare and pass price changes by agency",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "consumers, press, procurement",
+          "id": "telecom-plan-changes",
+          "need": "Plan price and allowance changes with the prior terms",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "consumers, businesses, advocates",
+          "id": "utility-bill-rate-changes",
+          "need": "Approved rate changes by utility and class",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "retail finance, counsel",
+          "id": "gift-card-escheatment-rules",
+          "need": "Unclaimed property rule changes by state",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "consumers, press, competitors",
+          "id": "loyalty-program-changes",
+          "need": "Earning and redemption term changes with the prior terms",
+          "phase": 4,
+          "shape": "revision"
+        }
+      ],
+      "sector": "retail-commerce-consumer"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). Supply chain buyers pay for lead time. Almost every entry here is worth money because it arrives before the disruption reaches the invoice, and most are computable from watching public feeds change rather than from any proprietary source.",
+      "entries": [
+        {
+          "analysis": "kourob",
+          "buyer": "importers, 3PLs, retail planners",
+          "id": "port-congestion-index",
+          "need": "Berth and anchorage congestion by port, updated hourly, with the trend",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "importers, freight forwarders",
+          "id": "vessel-eta-drift",
+          "need": "How much each carrier's published ETA moves between departure and arrival",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "drayage, importers",
+          "id": "container-dwell-time",
+          "need": "Dwell by terminal with the reporting gaps shown rather than smoothed",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "commodity analysts, shippers",
+          "id": "rail-carload-weekly",
+          "need": "Weekly carload and intermodal volumes with revisions separated",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "bts-transtats"
+          ]
+        },
+        {
+          "buyer": "shippers, brokers",
+          "id": "truck-spot-rate-index",
+          "need": "Lane-level spot rate movement with the source of each quote disclosed",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "shippers, insurers, brokers",
+          "id": "carrier-safety-changes",
+          "need": "Safety rating and out-of-service changes per carrier the day they post",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "brokers, shippers",
+          "id": "carrier-authority-revocations",
+          "need": "Operating authority revoked or reinstated, before we tender a load to them",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, fleet safety",
+          "id": "hos-violation-trends",
+          "need": "Hours of service violation patterns by carrier",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "importers, customs brokers, ERP vendors",
+          "id": "tariff-schedule-changes",
+          "need": "HTS code and duty rate changes with the effective date and the prior rate",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "buyer": "importers, trade counsel",
+          "id": "tariff-exclusion-rulings",
+          "need": "Exclusion grants, denials, and expirations by product",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "federal-register"
+          ]
+        },
+        {
+          "buyer": "trade counsel, importers",
+          "id": "trade-action-updates",
+          "need": "Section 301 and antidumping actions as they publish",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "federal-register"
+          ]
+        },
+        {
+          "buyer": "exporters, compliance, semiconductor firms",
+          "id": "export-control-list-delta",
+          "need": "Every change to controlled item lists with the diff",
+          "phase": 2,
+          "shape": "revision",
+          "upstream": [
+            "federal-register"
+          ]
+        },
+        {
+          "buyer": "compliance, procurement",
+          "id": "entity-list-changes",
+          "need": "Restricted party additions and removals within the hour",
+          "phase": 1,
+          "shape": "change",
+          "upstream": [
+            "federal-register"
+          ]
+        },
+        {
+          "buyer": "importers, ESG teams, retailers",
+          "id": "forced-labor-detention-orders",
+          "need": "Detention orders and entity additions that will stop our shipments",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "shipping, commodity traders, banks",
+          "id": "sanctioned-vessel-list",
+          "need": "Vessels added to or removed from sanctions designations",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "procurement, manufacturing",
+          "id": "supplier-bankruptcy-early-warning",
+          "need": "Lien, lawsuit, and filing signals on our suppliers before they fail",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "procurement, business continuity",
+          "id": "supplier-disruption-events",
+          "need": "Fires, floods, and closures at facilities we depend on",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "carriers, shippers",
+          "id": "weather-lane-disruption",
+          "need": "Weather events mapped to the specific lanes and terminals they will hit",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "nws",
+            "aviationweather"
+          ]
+        },
+        {
+          "buyer": "risk managers, insurers",
+          "id": "seismic-supplier-exposure",
+          "need": "Earthquakes matched against supplier facility locations within minutes",
+          "phase": 1,
+          "shape": "change",
+          "upstream": [
+            "usgs-earthquake"
+          ]
+        },
+        {
+          "buyer": "shippers, retailers, manufacturers",
+          "id": "labor-action-feed",
+          "need": "Strike notices, votes, and contract expirations affecting logistics",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "importers, retail planners",
+          "id": "port-labor-negotiation-tracker",
+          "need": "Contract milestones and deadlines at major ports",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "ocean carriers, traders",
+          "id": "canal-transit-restrictions",
+          "need": "Draft and transit slot restrictions with the date each took effect",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "forwarders, shippers",
+          "id": "airfreight-capacity-index",
+          "need": "Capacity and rate movement by trade lane",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "forwarders",
+          "id": "air-cargo-embargo-notices",
+          "need": "Carrier embargoes by station and commodity",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "3PLs, industrial real estate",
+          "id": "warehouse-vacancy-rates",
+          "need": "Vacancy and asking rate by submarket with the revision history",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "pharma logistics, food distributors",
+          "id": "cold-chain-excursions",
+          "need": "Temperature excursion events matched to shipments",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "retailers, manufacturers",
+          "id": "recall-to-supplier-mapping",
+          "need": "A recall published upstream, mapped to which of our SKUs and suppliers it touches",
+          "phase": 2,
+          "shape": "reconciliation",
+          "upstream": [
+            "openfda",
+            "cpsc-recalls",
+            "nhtsa-recalls"
+          ]
+        },
+        {
+          "buyer": "importers, quality teams",
+          "id": "import-refusal-by-supplier",
+          "need": "Refusals at the border grouped by manufacturer, as a supplier risk score input",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "openfda"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "traders, ESG teams",
+          "id": "commodity-origin-shift",
+          "need": "Where imports of a commodity are shifting origin country month over month",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "electronics manufacturers",
+          "id": "semiconductor-lead-times",
+          "need": "Lead time movement by part family with the source of each quote",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "manufacturers, policy teams",
+          "id": "rare-earth-export-quotas",
+          "need": "Quota and licensing changes affecting critical minerals",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "agriculture, traders",
+          "id": "fertilizer-price-feed",
+          "need": "Regional fertilizer prices with the publication lag exposed",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "carriers, charterers",
+          "id": "shipping-emissions-compliance",
+          "need": "Emissions rating changes and compliance thresholds by vessel",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "shipping compliance",
+          "id": "maritime-regulation-changes",
+          "need": "IMO and flag state requirement changes with effective dates",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, emergency response, rail-adjacent communities",
+          "id": "hazmat-incident-feed",
+          "need": "Hazardous material incidents normalised across modes",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "energy, insurers, regulators",
+          "id": "pipeline-incident-feed",
+          "need": "Pipeline incidents and their reported cause, with later amendments",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "shippers, insurers, communities",
+          "id": "rail-incident-feed",
+          "need": "Rail incidents with the revision history of the reported cause",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "trucking, routing software",
+          "id": "bridge-restriction-changes",
+          "need": "Weight and height restriction changes that invalidate a planned route",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "logistics, routing, fleets",
+          "id": "road-closure-feed",
+          "need": "Closures and restrictions normalised across state DOT feeds",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "cross-border trucking",
+          "id": "border-wait-times",
+          "need": "Crossing wait times with the forecast graded against what happened",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "ecommerce, finance teams",
+          "id": "parcel-surcharge-changes",
+          "need": "Carrier surcharge and accessorial changes before they hit the invoice",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "ecommerce operations",
+          "id": "last-mile-delay-index",
+          "need": "Delivery performance by carrier and region against promised windows",
+          "phase": 4,
+          "shape": "grading"
+        },
+        {
+          "buyer": "retail planners, investors",
+          "id": "inventory-to-sales-ratio",
+          "need": "Official ratio with revisions separated from new data",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "bea"
+          ]
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "procurement, risk",
+          "id": "supplier-concentration-risk",
+          "need": "Where public trade data shows our category depends on one origin or plant",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "compliance, ESG",
+          "id": "conflict-mineral-disclosures",
+          "need": "Disclosure changes by filer with the smelter list diff",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "sec-edgar"
+          ]
+        },
+        {
+          "buyer": "consumer goods, packaging suppliers",
+          "id": "packaging-regulation-changes",
+          "need": "Material bans and labelling rules by jurisdiction",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "consumer goods finance",
+          "id": "epr-fee-changes",
+          "need": "Extended producer responsibility fee schedule changes by state",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "importers, trade counsel",
+          "id": "customs-broker-ruling-feed",
+          "need": "Classification rulings that change how our goods are treated",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "shippers, contract negotiators",
+          "id": "freight-rate-index-revisions",
+          "need": "Published index values get restated; show me when and by how much",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "competitive intel, trade finance",
+          "id": "bill-of-lading-delta",
+          "need": "Shipment records appearing and being amended after first publication",
+          "phase": 4,
+          "shape": "revision"
+        }
+      ],
+      "sector": "supply-chain-logistics"
+    },
+    {
+      "description": "Hypotheses only (ADR-0012). Travel has the tightest freshness requirements and the cleanest anchors anywhere in the register: almost everything scheduled is later settled, so grading feeds are mechanical and satisfy rule H1 without interpretation.",
+      "entries": [
+        {
+          "buyer": "airlines, travel apps, insurers",
+          "id": "flight-delay-forecast-grading",
+          "need": "Grade published delay predictions against actual gate times",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "airline ops, corporate travel, cargo",
+          "id": "ground-stop-alerts",
+          "need": "Ground stops and delay programmes within a minute of issue",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "faa-nasstatus"
+          ]
+        },
+        {
+          "buyer": "airport concessions, travel apps, ground handlers",
+          "id": "gate-change-feed",
+          "need": "Gate reassignments as they happen",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "aviation analysts, maintenance, spotters",
+          "id": "tail-swap-detection",
+          "need": "Aircraft substitutions against the published schedule",
+          "phase": 4,
+          "shape": "reconciliation",
+          "upstream": [
+            "opensky"
+          ]
+        },
+        {
+          "buyer": "travel agencies, corporate travel, OTAs",
+          "id": "schedule-change-feed",
+          "need": "Published schedule changes with the prior times",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "airports, tourism boards, competitors",
+          "id": "route-launch-feed",
+          "need": "New and discontinued routes as filed",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "airlines, airports, analysts",
+          "id": "slot-allocation-changes",
+          "need": "Slot holdings and transfers at coordinated airports",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "corporate travel, agencies, consumers",
+          "id": "fare-rule-changes",
+          "need": "Change and cancellation rule changes by carrier",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "consumers, corporate travel, press",
+          "id": "baggage-fee-changes",
+          "need": "Fee changes with the prior fee and effective date",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "airlines, regulators, press, travel apps",
+          "id": "airline-ontime-revisions",
+          "need": "Reported on-time statistics get restated; show the revision",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "bts-transtats"
+          ]
+        },
+        {
+          "buyer": "consumers, corporate travel, insurers",
+          "id": "mishandled-baggage-rates",
+          "need": "Baggage performance by carrier with revisions separated",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "bts-transtats"
+          ]
+        },
+        {
+          "buyer": "consumer advocates, regulators, press",
+          "id": "denied-boarding-stats",
+          "need": "Involuntary denied boarding rates by carrier",
+          "phase": 3,
+          "shape": "revision",
+          "upstream": [
+            "bts-transtats"
+          ]
+        },
+        {
+          "buyer": "operators, MROs, lessors, insurers",
+          "id": "airworthiness-directive-feed",
+          "need": "Directives and their compliance deadlines by aircraft type",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "lessors, brokers, analysts",
+          "id": "aircraft-registration-changes",
+          "need": "Ownership and registration changes by tail number",
+          "phase": 3,
+          "shape": "change",
+          "upstream": [
+            "faa-aircraft-registry"
+          ]
+        },
+        {
+          "buyer": "insurers, operators, press, regulators",
+          "id": "aviation-incident-feed",
+          "need": "Incidents and accidents with the later amendments to cause",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "flight ops, dispatchers, GA pilots",
+          "id": "notam-change-detection",
+          "need": "What changed in the NOTAMs for my route since I last checked",
+          "phase": 3,
+          "shape": "revision"
+        },
+        {
+          "buyer": "airlines, cargo, ground handlers",
+          "id": "runway-closure-feed",
+          "need": "Closures and construction affecting capacity",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "GA pilots, drone operators, flight ops",
+          "id": "airspace-restriction-feed",
+          "need": "Temporary flight restrictions as issued and lifted",
+          "phase": 2,
+          "shape": "change"
+        },
+        {
+          "buyer": "travellers, corporate travel, airports",
+          "id": "airport-wait-time-grading",
+          "need": "Grade published security wait estimates against measured throughput",
+          "phase": 4,
+          "shape": "grading"
+        },
+        {
+          "buyer": "corporate travel, importers, travellers",
+          "id": "customs-processing-times",
+          "need": "Processing times by port of entry with the reporting lag",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "corporate mobility, agencies, travellers",
+          "id": "visa-requirement-changes",
+          "need": "Entry requirement changes by nationality and destination",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "corporate security, insurers, agencies",
+          "id": "travel-advisory-changes",
+          "need": "Advisory level changes with the prior level and reason",
+          "phase": 2,
+          "shape": "revision"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "airlines, agencies, travellers",
+          "id": "entry-requirement-tracker",
+          "need": "Documentation and health requirements by destination",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "travellers, agencies, mobility teams",
+          "id": "passport-processing-times",
+          "need": "Published processing times against what applicants actually experience",
+          "phase": 4,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "travellers, corporate mobility",
+          "id": "trusted-traveller-appointments",
+          "need": "Appointment availability by enrolment centre",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "cross-border commuters, trucking, tourism",
+          "id": "border-crossing-wait",
+          "need": "Wait times with the observation age stated honestly",
+          "phase": 3,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "corporate travel, revenue managers, OTAs",
+          "id": "hotel-rate-change-feed",
+          "need": "Rate movement by property with the prior rate",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "corporate travel, event planners",
+          "id": "hotel-availability-feed",
+          "need": "Availability around a date and location with observation freshness",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "consumers, regulators, corporate travel",
+          "id": "resort-fee-disclosure",
+          "need": "Mandatory fee changes and disclosure compliance",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "investors, revenue managers, cities",
+          "id": "short-term-rental-availability",
+          "need": "Listing counts and availability by neighbourhood over time",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "agencies, ports, passengers",
+          "id": "cruise-itinerary-changes",
+          "need": "Itinerary and port call changes with the prior itinerary",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "port operators, tour operators, retailers",
+          "id": "port-call-cancellations",
+          "need": "Cancelled calls as soon as they are known",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "commuters, employers, apps",
+          "id": "rail-schedule-changes",
+          "need": "Timetable changes by operator with the prior times",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "employers, apps, riders",
+          "id": "transit-service-alerts",
+          "need": "Service alerts normalised across agencies",
+          "phase": 2,
+          "shape": "change",
+          "upstream": [
+            "gtfs-mta",
+            "gtfs-bart",
+            "gtfs-wmata",
+            "transitland"
+          ]
+        },
+        {
+          "buyer": "agencies, riders, employers, cities",
+          "id": "transit-ontime-performance",
+          "need": "Measured performance against the published schedule",
+          "phase": 3,
+          "shape": "grading",
+          "upstream": [
+            "gtfs-mta",
+            "transitland"
+          ]
+        },
+        {
+          "buyer": "app developers, agencies, funders",
+          "id": "transit-feed-health",
+          "need": "Which agency realtime feeds are stale, broken, or silently wrong",
+          "phase": 2,
+          "shape": "coverage",
+          "upstream": [
+            "transitland"
+          ]
+        },
+        {
+          "buyer": "cities, operators, apps",
+          "id": "bikeshare-availability",
+          "need": "Dock and vehicle availability with the report age",
+          "phase": 4,
+          "shape": "coverage"
+        },
+        {
+          "buyer": "cities, operators, regulators",
+          "id": "scooter-fleet-distribution",
+          "need": "Fleet deployment against permitted caps by zone",
+          "phase": 4,
+          "shape": "reconciliation"
+        },
+        {
+          "buyer": "riders, employers, regulators, researchers",
+          "id": "rideshare-surge-index",
+          "need": "Surge pricing patterns by geography and time",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "lenders, investors, regulators",
+          "id": "taxi-medallion-transfers",
+          "need": "Transfer prices and volumes over time",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "analysis": "kourob",
+          "buyer": "fleets, consumers, regulators",
+          "id": "ev-range-grading",
+          "need": "Grade claimed range against observed range by model and conditions",
+          "phase": 4,
+          "shape": "grading"
+        },
+        {
+          "buyer": "fleets, regulators, drivers",
+          "id": "charging-uptime-grading",
+          "need": "Grade network uptime claims against observed availability",
+          "phase": 3,
+          "shape": "grading"
+        },
+        {
+          "buyer": "fleets, routing software, commuters",
+          "id": "toll-rate-changes",
+          "need": "Toll changes by facility with effective dates",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "fleets, commuters, employers",
+          "id": "congestion-pricing-changes",
+          "need": "Zone and rate changes with the prior schedule",
+          "phase": 4,
+          "shape": "revision"
+        },
+        {
+          "buyer": "fleets, routing, commuters",
+          "id": "road-condition-feed",
+          "need": "Surface and closure conditions normalised across DOTs",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "trucking, tourism, commuters",
+          "id": "mountain-pass-status",
+          "need": "Chain requirements and closures with the update time",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "commuters, freight, tourism",
+          "id": "ferry-service-status",
+          "need": "Cancellations and delays by route",
+          "phase": 4,
+          "shape": "change"
+        },
+        {
+          "buyer": "ski areas, backcountry users, insurers",
+          "id": "avalanche-forecast-grading",
+          "need": "Grade forecast danger ratings against observed avalanche activity",
+          "phase": 4,
+          "shape": "grading"
+        },
+        {
+          "buyer": "tourism, municipalities, apps",
+          "id": "beach-water-advisories",
+          "need": "Advisory issuance and lifting with the sample date behind each",
+          "phase": 3,
+          "shape": "change"
+        },
+        {
+          "buyer": "insurers, hotels, airlines, ticketing",
+          "id": "event-cancellation-feed",
+          "need": "Large event cancellations and postponements as announced",
+          "phase": 4,
+          "shape": "change"
+        }
+      ],
+      "sector": "travel-mobility"
+    }
+  ],
+  "total": 500
+}

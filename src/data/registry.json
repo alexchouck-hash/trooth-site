@@ -1,0 +1,3019 @@
+{
+  "by_kind": {
+    "dataset": 10,
+    "feed": 14,
+    "mcp": 100,
+    "rest": 76
+  },
+  "by_priority": {
+    "1": 28,
+    "2": 67,
+    "3": 105
+  },
+  "by_status": {
+    "candidate": 195,
+    "promoted": 5
+  },
+  "groups": [
+    {
+      "category": "feeds-finance-markets",
+      "description": "Central banks, international statistical agencies, market data, and crypto. Financial data is where redistribution terms bite hardest: several widely used endpoints are free to call and still forbid republication, which is exactly the distinction the licence chain exists to carry. Nothing here is promoted without reading the terms in full.",
+      "entries": [
+        {
+          "auth": "none",
+          "domain": "fx",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+          "id": "ecb-fx",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "ECB euro foreign exchange reference rates",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Published once daily at a fixed time, so it is a cheap and exact accuracy anchor for FX."
+        },
+        {
+          "auth": "none",
+          "domain": "fx",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.frankfurter.app/",
+          "id": "frankfurter",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Frankfurter",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Open-source republisher of ECB rates, so the lineage pair needs no licence negotiation."
+        },
+        {
+          "auth": "none",
+          "domain": "central-bank",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.bankofengland.co.uk/boeapps/database/",
+          "id": "bank-of-england",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "Bank of England statistics",
+          "priority": 3,
+          "status": "candidate",
+          "why": "A second central bank, for release-schedule comparison outside the United States."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://data.imf.org/",
+          "id": "imf-data",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "IMF Data",
+          "priority": 3,
+          "status": "candidate",
+          "why": "International macro series, heavily revised between vintages."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "expected_terms": "open-attribution",
+          "homepage": "https://datahelpdesk.worldbank.org/knowledgebase/topics/125589",
+          "id": "world-bank",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "World Bank Open Data",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Aggregates national statistics agencies, a broad lineage graph in one source."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "expected_terms": "open-attribution",
+          "homepage": "https://data-explorer.oecd.org/",
+          "id": "oecd",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "OECD Data Explorer",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Another derivative of national agencies, useful for republish-lag comparison."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "expected_terms": "open-attribution",
+          "homepage": "https://ec.europa.eu/eurostat/web/main/data/web-services",
+          "id": "eurostat",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Eurostat",
+          "priority": 2,
+          "status": "candidate",
+          "why": "European official statistics with a published release calendar."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.statcan.gc.ca/en/developers",
+          "id": "statcan",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Statistics Canada",
+          "priority": 3,
+          "status": "candidate",
+          "why": "National statistics outside the US with clear open licensing."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "expected_terms": "open-attribution",
+          "homepage": "https://developer.ons.gov.uk/",
+          "id": "ons-uk",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "UK Office for National Statistics",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Open Government Licence, a licence family we do not otherwise cover."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.abs.gov.au/about/data-services",
+          "id": "abs-australia",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Australian Bureau of Statistics",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Southern hemisphere coverage and a different release calendar shape."
+        },
+        {
+          "auth": "none",
+          "domain": "rates",
+          "expected_terms": "public-domain",
+          "homepage": "https://home.treasury.gov/interest-rates-data-csv-archive",
+          "id": "treasury-yield-curve",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "US Treasury yield curve rates",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Daily at a known time, and republished by many vendors, so lineage is easy to prove."
+        },
+        {
+          "auth": "none",
+          "domain": "markets",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+          "id": "cftc-cot",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "CFTC Commitments of Traders",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Weekly on a fixed schedule with occasional republished corrections."
+        },
+        {
+          "auth": "none",
+          "domain": "markets",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.sec.gov/dera/data/financial-statement-data-sets.html",
+          "id": "sec-financial-statements",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "SEC Financial Statement Data Sets",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Quarterly bulk companion to EDGAR, where restatements become visible in aggregate."
+        },
+        {
+          "auth": "api_key",
+          "domain": "crypto",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.coingecko.com/en/api",
+          "id": "coingecko",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "CoinGecko",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Aggregated crypto prices, a derivative whose disagreement with exchanges is large."
+        },
+        {
+          "auth": "none",
+          "domain": "crypto",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://docs.cdp.coinbase.com/exchange/docs/welcome",
+          "id": "coinbase-exchange",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Coinbase Exchange public data",
+          "priority": 3,
+          "status": "candidate",
+          "why": "A primary venue to compare against aggregators on the same instrument."
+        },
+        {
+          "auth": "none",
+          "domain": "crypto",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://docs.kraken.com/api/",
+          "id": "kraken-public",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Kraken public market data",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Second primary venue, so disagreement has more than two points."
+        },
+        {
+          "auth": "api_key",
+          "domain": "markets",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.alphavantage.co/documentation/",
+          "id": "alpha-vantage",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Alpha Vantage",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Free equity data tier, widely used in agent demos."
+        },
+        {
+          "auth": "api_key",
+          "domain": "markets",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://polygon.io/docs",
+          "id": "polygon-io",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Polygon.io",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Licensed market data, pass-through only, never redistributed by us."
+        },
+        {
+          "auth": "api_key",
+          "domain": "markets",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://finnhub.io/docs/api",
+          "id": "finnhub",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Finnhub",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Second licensed market data provider for pass-through."
+        },
+        {
+          "auth": "api_key",
+          "domain": "markets",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://docs.data.nasdaq.com/",
+          "id": "nasdaq-data-link",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Nasdaq Data Link",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Mixed free and licensed datasets under one key, so per-dataset terms must be chained."
+        }
+      ]
+    },
+    {
+      "category": "feeds-geo-transport",
+      "description": "Geography, mapping, aviation, marine, transit, and earth observation. This group has the tightest freshness requirements in the catalog, measured in seconds rather than hours, and it contains several sources whose terms restrict commercial use or redistribution, so the licence reading here matters more than anywhere else.",
+      "entries": [
+        {
+          "auth": "none",
+          "domain": "geography",
+          "expected_terms": "open-share-alike",
+          "homepage": "https://wiki.openstreetmap.org/wiki/Overpass_API",
+          "id": "overpass",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "OpenStreetMap Overpass API",
+          "notes": "ODbL share-alike plus a published usage policy. Needs careful reading before promotion.",
+          "priority": 2,
+          "status": "candidate",
+          "why": "The clearest share-alike case we would route to, which forces licence chaining to work."
+        },
+        {
+          "auth": "none",
+          "domain": "geography",
+          "expected_terms": "open-share-alike",
+          "homepage": "https://nominatim.org/release-docs/latest/api/Overview/",
+          "id": "nominatim",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Nominatim geocoding",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Geocoding, though the public instance has a strict usage policy we must respect."
+        },
+        {
+          "auth": "api_key",
+          "domain": "geography",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.geonames.org/export/web-services.html",
+          "id": "geonames",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "GeoNames",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Place name resolution across countries."
+        },
+        {
+          "auth": "none",
+          "domain": "geography",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.naturalearthdata.com/",
+          "id": "natural-earth",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "Natural Earth",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Public domain basemap geometry with no attribution burden at all."
+        },
+        {
+          "auth": "none",
+          "domain": "geography",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html",
+          "id": "census-tiger",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "Census TIGER/Line",
+          "priority": 3,
+          "status": "candidate",
+          "why": "US boundary geometry, the join layer for every segment breakdown we publish."
+        },
+        {
+          "auth": "none",
+          "domain": "aviation",
+          "expected_terms": "public-domain",
+          "homepage": "https://aviationweather.gov/data/api/",
+          "id": "aviationweather",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Aviation Weather Center METAR and TAF",
+          "priority": 1,
+          "status": "candidate",
+          "why": "TAF forecasts graded by later METAR observations. A second anchor, same shape as NWS."
+        },
+        {
+          "auth": "none",
+          "domain": "aviation",
+          "expected_terms": "public-domain",
+          "homepage": "https://nasstatus.faa.gov/",
+          "id": "faa-nasstatus",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "FAA National Airspace System Status",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Ground stops and delays, where a minute of staleness changes the answer."
+        },
+        {
+          "auth": "none",
+          "domain": "aviation",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.faa.gov/licenses_certificates/aircraft_certification/aircraft_registry/releasable_aircraft_download",
+          "id": "faa-aircraft-registry",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "FAA Aircraft Registry",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Slow-moving registry, a good schema stability baseline over years."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "aviation",
+          "expected_terms": "noncommercial-only",
+          "homepage": "https://openskynetwork.github.io/opensky-api/",
+          "id": "opensky",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "OpenSky Network",
+          "notes": "Believed non-commercial for the free tier. Under ADR-0008 that makes it a free-endpoint source only. Confirm before promotion; this is exactly the case use classes exist for.\n",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Live aircraft positions, and the second non-commercial source after Open-Meteo."
+        },
+        {
+          "auth": "none",
+          "domain": "marine",
+          "expected_terms": "public-domain",
+          "homepage": "https://api.tidesandcurrents.noaa.gov/api/prod/",
+          "id": "noaa-coops",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "NOAA CO-OPS Tides and Currents",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Publishes predictions and verified water levels separately. A mechanical accuracy anchor."
+        },
+        {
+          "auth": "none",
+          "domain": "marine",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.ndbc.noaa.gov/",
+          "id": "noaa-ndbc",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "NOAA National Data Buoy Center",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Sensor dropouts are common and visible, which makes completeness by segment real."
+        },
+        {
+          "auth": "api_key",
+          "domain": "transit",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://api.mta.info/",
+          "id": "gtfs-mta",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "MTA GTFS-realtime",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Sub-minute freshness, which stresses the p95 lag measurement harder than anything else."
+        },
+        {
+          "auth": "api_key",
+          "domain": "transit",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.bart.gov/schedules/developers",
+          "id": "gtfs-bart",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "BART GTFS-realtime",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Second transit feed, for cross-agency comparison of the same data shape."
+        },
+        {
+          "auth": "api_key",
+          "domain": "transit",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://developer.wmata.com/",
+          "id": "gtfs-wmata",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "WMATA GTFS and realtime",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Transit coverage in a third metro area."
+        },
+        {
+          "auth": "api_key",
+          "domain": "transit",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.transit.land/documentation/",
+          "id": "transitland",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Transitland",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Aggregator of agency feeds, so it is a lineage pair with each agency source."
+        },
+        {
+          "auth": "none",
+          "domain": "transport",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.transtats.bts.gov/",
+          "id": "bts-transtats",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "Bureau of Transportation Statistics",
+          "priority": 3,
+          "status": "candidate",
+          "why": "On-time performance, published monthly on a fixed schedule."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "earth-observation",
+          "expected_terms": "open-attribution",
+          "homepage": "https://dataspace.copernicus.eu/",
+          "id": "copernicus",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Copernicus Data Space",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Sentinel imagery, free and open, with a large object size worth cost modelling."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "earth-observation",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.earthdata.nasa.gov/",
+          "id": "nasa-earthdata",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "NASA Earthdata",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Earth science across many instruments, with reprocessing as a revision event."
+        },
+        {
+          "auth": "api_key",
+          "domain": "space",
+          "expected_terms": "public-domain",
+          "homepage": "https://api.nasa.gov/",
+          "id": "nasa-api",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "NASA Open APIs",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Near-earth objects and space weather, with a free demo key for quick testing."
+        },
+        {
+          "auth": "none",
+          "domain": "space",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.swpc.noaa.gov/products-and-data",
+          "id": "noaa-swpc",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "NOAA Space Weather Prediction Center",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Forecasts and observations in the same feed family, so accuracy is anchorable."
+        }
+      ]
+    },
+    {
+      "category": "feeds-government",
+      "description": "United States federal statistical, regulatory, and fiscal feeds. Most works of the US federal government are public domain under 17 U.S.C. 105, but that is a rule about authorship and not a substitute for reading a given agency's own terms, so every entry here still starts at license_status unverified. Five entries are promoted because their terms were read and cited during Phase 0.",
+      "entries": [
+        {
+          "auth": "none",
+          "domain": "weather",
+          "endpoint": "https://api.weather.gov",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.weather.gov/documentation/services-web-api",
+          "id": "nws",
+          "kind": "rest",
+          "license_status": "confirmed",
+          "license_url": "https://www.weather.gov/disclaimer",
+          "name": "National Weather Service API",
+          "priority": 1,
+          "status": "promoted",
+          "why": "Primary US weather, and the accuracy anchor where observations grade earlier forecasts."
+        },
+        {
+          "auth": "none",
+          "domain": "hazards",
+          "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/",
+          "expected_terms": "public-domain",
+          "homepage": "https://earthquake.usgs.gov/earthquakes/feed/",
+          "id": "usgs-earthquake",
+          "kind": "feed",
+          "license_status": "confirmed",
+          "license_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+          "name": "USGS Earthquake Hazards Program",
+          "priority": 1,
+          "status": "promoted",
+          "why": "Magnitudes are revised after publication, which is the clearest revision behaviour we have."
+        },
+        {
+          "auth": "none",
+          "domain": "economics",
+          "endpoint": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.bls.gov/developers/",
+          "id": "bls",
+          "kind": "rest",
+          "license_status": "confirmed",
+          "license_url": "https://www.bls.gov/bls/linksite.htm",
+          "name": "Bureau of Labor Statistics Public Data API",
+          "priority": 1,
+          "status": "promoted",
+          "why": "Scheduled releases, so freshness lag can be measured against a published calendar."
+        },
+        {
+          "auth": "api_key",
+          "domain": "economics",
+          "endpoint": "https://api.stlouisfed.org/fred",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://fred.stlouisfed.org/docs/api/fred/",
+          "id": "fred",
+          "kind": "rest",
+          "license_status": "confirmed",
+          "license_url": "https://fred.stlouisfed.org/docs/api/terms_of_use.html",
+          "name": "Federal Reserve Economic Data",
+          "notes": "Listed as FRED's own terms of use, not public domain. Individual series carry the terms of their originating source, which is why per-series origin notes are required.\n",
+          "priority": 1,
+          "status": "promoted",
+          "why": "Republishes BLS, so republish lag is measurable and validates lineage inference."
+        },
+        {
+          "auth": "none",
+          "domain": "weather",
+          "endpoint": "https://api.open-meteo.com/v1",
+          "expected_terms": "noncommercial-only",
+          "homepage": "https://open-meteo.com",
+          "id": "open-meteo",
+          "kind": "rest",
+          "license_status": "confirmed",
+          "license_url": "https://open-meteo.com/en/license",
+          "name": "Open-Meteo",
+          "notes": "Free tier is non-commercial. Under ADR-0008 it routes only for callers who declared noncommercial, or for commercial callers who bring their own paid plan credentials.\n",
+          "priority": 1,
+          "status": "promoted",
+          "why": "Derivative of NWS and others, so it demonstrates lineage lag and field disagreement."
+        },
+        {
+          "auth": "api_key",
+          "domain": "economics",
+          "expected_terms": "public-domain",
+          "homepage": "https://apps.bea.gov/API/signup/",
+          "id": "bea",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Bureau of Economic Analysis",
+          "priority": 1,
+          "status": "candidate",
+          "why": "GDP advance, second, and third estimates are the cleanest revision story in public data."
+        },
+        {
+          "auth": "api_key",
+          "domain": "demographics",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.census.gov/data/developers/data-sets/acs-5year.html",
+          "id": "census-acs",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "US Census American Community Survey",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Vintage-based revision and completeness that genuinely varies by geographic segment."
+        },
+        {
+          "auth": "none",
+          "domain": "fiscal",
+          "expected_terms": "public-domain",
+          "homepage": "https://fiscaldata.treasury.gov/api-documentation/",
+          "id": "treasury-fiscaldata",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "US Treasury Fiscal Data",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Daily scheduled releases with exact publication times and no key required."
+        },
+        {
+          "auth": "api_key",
+          "domain": "energy",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.eia.gov/opendata/",
+          "id": "eia",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Energy Information Administration",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Weekly petroleum and electricity series with routine revisions."
+        },
+        {
+          "auth": "none",
+          "domain": "regulatory",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.sec.gov/edgar/sec-api-documentation",
+          "id": "sec-edgar",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "SEC EDGAR",
+          "notes": "Requires a declared User-Agent and respects a published request rate limit.",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Restatements are revisions with legal weight, and filings carry exact acceptance times."
+        },
+        {
+          "auth": "none",
+          "domain": "regulatory",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.federalregister.gov/developers/documentation/api/v1",
+          "id": "federal-register",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Federal Register API",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Daily regulatory publication with a stable schema over a long horizon."
+        },
+        {
+          "auth": "api_key",
+          "domain": "regulatory",
+          "expected_terms": "public-domain",
+          "homepage": "https://open.gsa.gov/api/regulationsgov/",
+          "id": "regulations-gov",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Regulations.gov",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Rulemaking dockets and public comments for regulatory agents."
+        },
+        {
+          "auth": "none",
+          "domain": "fiscal",
+          "expected_terms": "public-domain",
+          "homepage": "https://api.usaspending.gov/",
+          "id": "usaspending",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "USAspending",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Federal award data that is corrected heavily after first publication."
+        },
+        {
+          "auth": "none",
+          "domain": "meta",
+          "expected_terms": "public-domain",
+          "homepage": "https://catalog.data.gov/",
+          "id": "data-gov",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "Data.gov catalog",
+          "priority": 2,
+          "status": "candidate",
+          "why": "A catalog of catalogs, and the fastest route to finding further candidates."
+        },
+        {
+          "auth": "api_key",
+          "domain": "elections",
+          "expected_terms": "public-domain",
+          "homepage": "https://api.open.fec.gov/developers/",
+          "id": "fec",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Federal Election Commission",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Filing amendments are frequent and explicit, so revision behaviour is easy to score."
+        },
+        {
+          "auth": "api_key",
+          "domain": "legislative",
+          "expected_terms": "public-domain",
+          "homepage": "https://api.congress.gov/",
+          "id": "congress-gov",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Congress.gov API",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Bill status with defined stages, useful for correction latency."
+        },
+        {
+          "auth": "none",
+          "domain": "safety",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.cpsc.gov/Recalls/CPSC-Recalls-Application-Program-Interface-API-Information",
+          "id": "cpsc-recalls",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "CPSC Recalls",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Consumer product recalls, part of the regulatory wedge alongside openFDA."
+        },
+        {
+          "auth": "none",
+          "domain": "safety",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.nhtsa.gov/nhtsa-datasets-and-apis",
+          "id": "nhtsa-recalls",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "NHTSA Recalls and Complaints",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Vehicle recalls and complaints, with duplicate reporting worth detecting."
+        },
+        {
+          "auth": "none",
+          "domain": "fiscal",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.irs.gov/statistics/soi-tax-stats",
+          "id": "irs-soi",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "IRS Statistics of Income",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Slow-moving tax statistics, a good completeness-by-segment case."
+        },
+        {
+          "auth": "api_key",
+          "domain": "reference",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.usps.com/business/web-tools-apis/",
+          "id": "usps-zip",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "USPS ZIP Code lookup",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Address normalisation, a common preprocessing step before any geographic query."
+        }
+      ]
+    },
+    {
+      "category": "feeds-reference-security",
+      "description": "Encyclopaedic and reference corpora, plus security advisory feeds. The reference sources are where schema drift and revision behaviour are most extreme, which makes them good stress tests. The security feeds are the clearest case of correction latency mattering to somebody: a CVE amended a week late is a week of wrong answers.",
+      "entries": [
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.wikidata.org/wiki/Wikidata:Data_access",
+          "id": "wikidata",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Wikidata",
+          "priority": 2,
+          "status": "candidate",
+          "why": "CC0, edited constantly, so it is the most extreme revision behaviour we could score."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "open-share-alike",
+          "homepage": "https://www.mediawiki.org/wiki/API:Main_page",
+          "id": "wikipedia",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Wikipedia API",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Share-alike text and an enormous untrusted-text surface. Both worth handling properly."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "open-share-alike",
+          "homepage": "https://www.dbpedia.org/resources/",
+          "id": "dbpedia",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "DBpedia",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Structured derivative of Wikipedia, so the lag is measurable against the primary."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "public-domain",
+          "homepage": "https://openlibrary.org/developers/api",
+          "id": "openlibrary",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Open Library",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Bibliographic records, community edited, with steady completeness improvement."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://archive.org/help/aboutsearch.htm",
+          "id": "internet-archive",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Internet Archive",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Wayback captures are a second opinion on what a source said at a past time."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "public-domain",
+          "homepage": "https://musicbrainz.org/doc/MusicBrainz_API",
+          "id": "musicbrainz",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "MusicBrainz",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Open music metadata with a strict rate limit and a clear attribution policy."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "open-share-alike",
+          "homepage": "https://openfoodfacts.github.io/openfoodfacts-server/api/",
+          "id": "openfoodfacts",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Open Food Facts",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Crowd-sourced product data where completeness varies enormously by country segment."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.openbrewerydb.org/",
+          "id": "open-brewery-db",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Open Brewery DB",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Small, stable, and free. A useful low-stakes fixture for adapter tests."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "open-attribution",
+          "homepage": "https://date.nager.at/Api",
+          "id": "nager-date",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Nager.Date public holidays",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Holiday calendars, which every release-schedule calculation eventually needs."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "open-attribution",
+          "homepage": "https://restcountries.com/",
+          "id": "restcountries",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "REST Countries",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Country reference data, the join key for international sources."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.iana.org/domains/root/files",
+          "id": "iana-tld",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "IANA root zone and TLD registry",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Rarely changes, so it is an excellent schema-stability control case."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "open-share-alike",
+          "homepage": "https://publicsuffix.org/",
+          "id": "publicsuffix",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "Public Suffix List",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Underpins any domain-level grouping we do, and changes in small reviewable diffs."
+        },
+        {
+          "auth": "none",
+          "domain": "reference",
+          "expected_terms": "open-attribution",
+          "homepage": "https://cldr.unicode.org/",
+          "id": "unicode-cldr",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "Unicode CLDR",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Locale data on a fixed twice-yearly release schedule."
+        },
+        {
+          "auth": "api_key",
+          "domain": "security",
+          "expected_terms": "public-domain",
+          "homepage": "https://nvd.nist.gov/developers/vulnerabilities",
+          "id": "nvd-cve",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "NVD CVE API",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Severity scores are revised after publication, and lateness has a real security cost."
+        },
+        {
+          "auth": "none",
+          "domain": "security",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.cve.org/",
+          "id": "cve-org",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "CVE Program records",
+          "priority": 2,
+          "status": "candidate",
+          "why": "The primary that NVD enriches, so the pair proves lineage in a domain people care about."
+        },
+        {
+          "auth": "none",
+          "domain": "security",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "id": "cisa-kev",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "CISA Known Exploited Vulnerabilities",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Small, authoritative, appended on a schedule. A clean freshness case."
+        },
+        {
+          "auth": "bearer",
+          "domain": "security",
+          "expected_terms": "open-share-alike",
+          "homepage": "https://github.com/advisories",
+          "id": "github-advisory",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "GitHub Advisory Database",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Package-level advisories, another derivative of CVE with its own curation lag."
+        },
+        {
+          "auth": "none",
+          "domain": "security",
+          "expected_terms": "open-attribution",
+          "homepage": "https://osv.dev/",
+          "id": "osv-dev",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "OSV.dev",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Open vulnerability format aggregating several databases, so disagreement is visible."
+        },
+        {
+          "auth": "none",
+          "domain": "security",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.first.org/epss/",
+          "id": "epss",
+          "kind": "feed",
+          "license_status": "unverified",
+          "name": "EPSS exploit prediction scores",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Daily rescored predictions, which is accuracy with a settleable outcome later."
+        },
+        {
+          "auth": "api_key",
+          "domain": "security",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://haveibeenpwned.com/API/v3",
+          "id": "hibp",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Have I Been Pwned",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Breach metadata only. Never route to the account-lookup path from a shared key."
+        }
+      ]
+    },
+    {
+      "category": "feeds-science-health",
+      "description": "Biomedical, scholarly, environmental, and public health feeds. This group carries the regulatory wedge (openFDA and friends) and the sources with the most interesting revision and completeness behaviour, because science corrects itself in public and on a schedule.",
+      "entries": [
+        {
+          "auth": "none",
+          "domain": "regulatory-health",
+          "expected_terms": "public-domain",
+          "homepage": "https://open.fda.gov/apis/",
+          "id": "openfda",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "openFDA",
+          "priority": 1,
+          "status": "candidate",
+          "why": "MAUDE, 510(k), and recalls. The regulatory wedge, with duplicate reports to dedupe."
+        },
+        {
+          "auth": "none",
+          "domain": "health",
+          "expected_terms": "public-domain",
+          "homepage": "https://clinicaltrials.gov/data-api/api",
+          "id": "clinicaltrials-gov",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "ClinicalTrials.gov",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Trial records are amended continuously, with an explicit last-update timestamp."
+        },
+        {
+          "auth": "none",
+          "domain": "research",
+          "expected_terms": "public-domain",
+          "homepage": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+          "id": "pubmed",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "PubMed E-utilities",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Citation metadata at scale, with retractions as a correction-latency signal."
+        },
+        {
+          "auth": "none",
+          "domain": "research",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/",
+          "id": "pmc",
+          "kind": "dataset",
+          "license_status": "unverified",
+          "name": "PubMed Central Open Access subset",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Full text under per-article licences, which makes licence chaining concrete."
+        },
+        {
+          "auth": "api_key",
+          "domain": "research",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.semanticscholar.org/product/api",
+          "id": "semantic-scholar",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Semantic Scholar",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Derivative of Crossref and others, so it is a second lineage test outside weather."
+        },
+        {
+          "auth": "none",
+          "domain": "research",
+          "expected_terms": "public-domain",
+          "homepage": "https://docs.openalex.org/",
+          "id": "openalex",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "OpenAlex",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Open scholarly graph, explicitly CC0, and a clean primary for citation lineage."
+        },
+        {
+          "auth": "none",
+          "domain": "research",
+          "expected_terms": "open-attribution",
+          "homepage": "https://api.crossref.org/",
+          "id": "crossref",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "Crossref",
+          "priority": 2,
+          "status": "candidate",
+          "why": "DOI registration is the primary that OpenAlex and Semantic Scholar both derive from."
+        },
+        {
+          "auth": "none",
+          "domain": "research",
+          "expected_terms": "open-attribution",
+          "homepage": "https://info.arxiv.org/help/api/",
+          "id": "arxiv",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "arXiv API",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Versioned preprints, where revision is a first-class concept in the source itself."
+        },
+        {
+          "auth": "none",
+          "domain": "environment",
+          "expected_terms": "open-attribution",
+          "homepage": "https://techdocs.gbif.org/en/openapi/",
+          "id": "gbif",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "GBIF Global Biodiversity Information Facility",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Species occurrence records with per-dataset licences, so licence chaining is forced."
+        },
+        {
+          "auth": "none",
+          "domain": "research",
+          "expected_terms": "public-domain",
+          "homepage": "https://api.reporter.nih.gov/",
+          "id": "nih-reporter",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "NIH RePORTER",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Grant funding records, a completeness case broken out by institute."
+        },
+        {
+          "auth": "api_key",
+          "domain": "health",
+          "expected_terms": "public-domain",
+          "homepage": "https://data.cdc.gov/",
+          "id": "cdc-socrata",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "CDC Open Data",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Weekly series that backfill for weeks, the strongest revision-over-time example."
+        },
+        {
+          "auth": "none",
+          "domain": "health",
+          "expected_terms": "public-domain",
+          "homepage": "https://wonder.cdc.gov/",
+          "id": "cdc-wonder",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "CDC WONDER",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Mortality and natality with suppression rules that make completeness explicit."
+        },
+        {
+          "auth": "none",
+          "domain": "health",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.who.int/data/gho/info/gho-odata-api",
+          "id": "who-gho",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "WHO Global Health Observatory",
+          "priority": 3,
+          "status": "candidate",
+          "why": "International health indicators, a derivative of national statistical agencies."
+        },
+        {
+          "auth": "none",
+          "domain": "health",
+          "expected_terms": "public-domain",
+          "homepage": "https://npiregistry.cms.hhs.gov/api-page",
+          "id": "npi-registry",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "NPPES NPI Registry",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Provider identity, the join key for most US healthcare data work."
+        },
+        {
+          "auth": "none",
+          "domain": "health",
+          "expected_terms": "public-domain",
+          "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/",
+          "id": "rxnorm",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "RxNorm",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Drug terminology, the normalisation layer under any medication query."
+        },
+        {
+          "auth": "none",
+          "domain": "health",
+          "expected_terms": "public-domain",
+          "homepage": "https://dailymed.nlm.nih.gov/dailymed/app-support-web-services.cfm",
+          "id": "dailymed",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "DailyMed",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Structured product labelling, updated when manufacturers file changes."
+        },
+        {
+          "auth": "none",
+          "domain": "environment",
+          "expected_terms": "public-domain",
+          "homepage": "https://waterservices.usgs.gov/",
+          "id": "usgs-water",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "USGS Water Services",
+          "priority": 1,
+          "status": "candidate",
+          "why": "Values are flagged provisional then approved, so revisions are labelled by the source."
+        },
+        {
+          "auth": "api_key",
+          "domain": "environment",
+          "expected_terms": "public-domain",
+          "homepage": "https://docs.airnowapi.org/",
+          "id": "airnow",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "AirNow",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Official US air quality, the primary that OpenAQ republishes."
+        },
+        {
+          "auth": "api_key",
+          "domain": "environment",
+          "expected_terms": "open-attribution",
+          "homepage": "https://docs.openaq.org/",
+          "id": "openaq",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "OpenAQ",
+          "priority": 2,
+          "status": "candidate",
+          "why": "Aggregator of AirNow and others, a lineage pair with no licence complication."
+        },
+        {
+          "auth": "none",
+          "domain": "environment",
+          "expected_terms": "public-domain",
+          "homepage": "https://echo.epa.gov/tools/web-services",
+          "id": "epa-echo",
+          "kind": "rest",
+          "license_status": "unverified",
+          "name": "EPA ECHO",
+          "priority": 3,
+          "status": "candidate",
+          "why": "Enforcement and compliance history, part of the regulatory wedge."
+        }
+      ]
+    },
+    {
+      "category": "mcp-business",
+      "description": "MCP servers for payments, commerce, CRM, support, marketing, and communications. Several of these can move money or send messages on a customer's behalf. Promotion of any entry with a write path requires the confirmation rules in the runbook to be written first; Trooth routes reads by default and never exposes a write tool without an explicit ADR.",
+      "entries": [
+        {
+          "auth": "oauth2",
+          "domain": "payments",
+          "endpoint": "https://mcp.stripe.com",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://docs.stripe.com/mcp",
+          "id": "stripe",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Stripe",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "We will already run Stripe for billing, so it is the cheapest hosted server to test."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "payments",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.paypal.com",
+          "id": "paypal",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "PayPal",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Payments coverage."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "payments",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://squareup.com",
+          "id": "square",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Square",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Point-of-sale and small business payments."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "commerce",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.shopify.com",
+          "id": "shopify",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Shopify",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Catalog, inventory, and order data, where staleness has a direct cost."
+        },
+        {
+          "auth": "api_key",
+          "domain": "commerce",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.bigcommerce.com",
+          "id": "bigcommerce",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "BigCommerce",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Commerce coverage."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "crm",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.salesforce.com",
+          "id": "salesforce",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Salesforce",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "The CRM enterprises run, and the most valuable pass-through target we could support."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "crm",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.hubspot.com",
+          "id": "hubspot",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "HubSpot",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "CRM coverage for smaller teams, with a usable free tier for testing."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "support",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.zendesk.com",
+          "id": "zendesk",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Zendesk",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Support tickets, which are untrusted text with a clear event time."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "support",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.intercom.com",
+          "id": "intercom",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Intercom",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Support and messaging coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "support",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://freshdesk.com",
+          "id": "freshdesk",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Freshdesk",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Support coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "crm",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.pipedrive.com",
+          "id": "pipedrive",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Pipedrive",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "CRM coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "marketing",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://mailchimp.com",
+          "id": "mailchimp",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Mailchimp",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Campaign data, with a send path that must stay behind confirmation."
+        },
+        {
+          "auth": "api_key",
+          "domain": "marketing",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.klaviyo.com",
+          "id": "klaviyo",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Klaviyo",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Commerce marketing coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "communications",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.twilio.com",
+          "id": "twilio",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Twilio",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Messaging and voice, and a metered upstream whose cost belongs in the envelope quota."
+        },
+        {
+          "auth": "api_key",
+          "domain": "communications",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://sendgrid.com",
+          "id": "sendgrid",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "SendGrid",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Transactional mail coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "communications",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://resend.com",
+          "id": "resend",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Resend",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Developer-first mail, likely what we use for alerts."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "finance",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://plaid.com",
+          "id": "plaid",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Plaid",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Bank data strictly under the customer's own credentials, never redistributed."
+        },
+        {
+          "auth": "api_key",
+          "domain": "finance",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://alpaca.markets",
+          "id": "alpaca",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Alpaca",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Market data and brokerage; read-only routing, no order path, ever."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "finance",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://quickbooks.intuit.com",
+          "id": "quickbooks",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "QuickBooks",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "vendor": "Intuit",
+          "why": "Accounting data for small business agents."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "finance",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.xero.com",
+          "id": "xero",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Xero",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Accounting coverage outside the United States."
+        }
+      ]
+    },
+    {
+      "category": "mcp-data-search",
+      "description": "MCP servers for analytics warehouses, vector and graph stores, and web search or crawl. Search and crawl servers carry the largest untrusted-text surface in the catalog, so every promotion here needs the H5 quarantine path exercised before it merges.",
+      "entries": [
+        {
+          "auth": "none",
+          "domain": "analytics",
+          "expected_terms": "open-attribution",
+          "homepage": "https://duckdb.org",
+          "id": "duckdb",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "DuckDB",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Reads our Parquet archive directly, so it is the reference client for as-of replay."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "analytics",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://clickhouse.com",
+          "id": "clickhouse",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "ClickHouse",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Column store with a free tier, a plausible home for the snapshot archive at scale."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "analytics",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.snowflake.com",
+          "id": "snowflake",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Snowflake",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Enterprise warehouse, the most requested pass-through target in sales conversations."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "analytics",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.databricks.com",
+          "id": "databricks",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Databricks",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Lakehouse coverage."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "analytics",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://cloud.google.com/bigquery",
+          "id": "bigquery",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "BigQuery",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "vendor": "Google",
+          "why": "Hosts many free public datasets, some of which are catalog candidates in their own right."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "search",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.elastic.co",
+          "id": "elasticsearch",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Elasticsearch",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Self-hosted search coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "search",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.algolia.com",
+          "id": "algolia",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Algolia",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Hosted search coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "search",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.meilisearch.com",
+          "id": "meilisearch",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Meilisearch",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Open-source search, cheap to self-host alongside the console."
+        },
+        {
+          "auth": "api_key",
+          "domain": "search",
+          "expected_terms": "open-attribution",
+          "homepage": "https://typesense.org",
+          "id": "typesense",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Typesense",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Open-source search alternative."
+        },
+        {
+          "auth": "api_key",
+          "domain": "vector",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.pinecone.io",
+          "id": "pinecone",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Pinecone",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "The most common hosted vector store in agent stacks."
+        },
+        {
+          "auth": "api_key",
+          "domain": "vector",
+          "expected_terms": "open-attribution",
+          "homepage": "https://qdrant.tech",
+          "id": "qdrant",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Qdrant",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Open-source vector store with a documented server."
+        },
+        {
+          "auth": "api_key",
+          "domain": "vector",
+          "expected_terms": "open-attribution",
+          "homepage": "https://weaviate.io",
+          "id": "weaviate",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Weaviate",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Vector store coverage."
+        },
+        {
+          "auth": "none",
+          "domain": "vector",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.trychroma.com",
+          "id": "chroma",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Chroma",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Local vector store, useful in offline evals."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "graph",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://neo4j.com",
+          "id": "neo4j",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Neo4j",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Graph queries, and the obvious store for the lineage graph itself."
+        },
+        {
+          "auth": "api_key",
+          "domain": "search",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://exa.ai",
+          "id": "exa",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Exa",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Neural web search, with results that are entirely untrusted text."
+        },
+        {
+          "auth": "api_key",
+          "domain": "search",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://tavily.com",
+          "id": "tavily",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Tavily",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Agent-oriented search, widely used and a good injection-surface test case."
+        },
+        {
+          "auth": "api_key",
+          "domain": "search",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.perplexity.ai",
+          "id": "perplexity",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Perplexity",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Answer engine, where provenance is asserted but not verifiable."
+        },
+        {
+          "auth": "api_key",
+          "domain": "search",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://brave.com/search/api",
+          "id": "brave-search",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Brave Search",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Independent web index with a free tier."
+        },
+        {
+          "auth": "api_key",
+          "domain": "crawl",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.firecrawl.dev",
+          "id": "firecrawl",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Firecrawl",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "stdio"
+          ],
+          "why": "Page-to-markdown crawling, the highest-risk untrusted-text path we would route to."
+        },
+        {
+          "auth": "api_key",
+          "domain": "crawl",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://apify.com",
+          "id": "apify",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Apify",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Scraper marketplace, and a preview of the Phase 3 provider model."
+        }
+      ]
+    },
+    {
+      "category": "mcp-developer",
+      "description": "MCP servers covering source control, issue tracking, code quality, CI, and containers. Every entry is a candidate under ADR-0010 until a promotion PR confirms its terms from the vendor's own documentation. license_status unverified means nobody has read the terms yet.",
+      "entries": [
+        {
+          "auth": "oauth2",
+          "domain": "developer",
+          "endpoint": "https://api.githubcopilot.com/mcp/",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://github.com/github/github-mcp-server",
+          "id": "github",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "GitHub",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "stdio"
+          ],
+          "why": "Repository, issue, and pull request access is the most requested agent tool surface."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://gitlab.com",
+          "id": "gitlab",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "GitLab",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "stdio"
+          ],
+          "why": "Second source-control surface, needed before any enterprise conversation."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://bitbucket.org",
+          "id": "bitbucket",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Bitbucket",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Completes source control coverage for Atlassian shops."
+        },
+        {
+          "auth": "none",
+          "domain": "developer",
+          "expected_terms": "open-attribution",
+          "homepage": "https://github.com/modelcontextprotocol/servers",
+          "id": "git-local",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Git (local repository)",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Local-only server with no network calls, useful as a zero-risk routing test case."
+        },
+        {
+          "auth": "none",
+          "domain": "developer",
+          "expected_terms": "open-attribution",
+          "homepage": "https://github.com/modelcontextprotocol/servers",
+          "id": "filesystem",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Filesystem",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "The canonical reference server, and the clearest example of a tool with no provenance."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "developer",
+          "endpoint": "https://mcp.linear.app/mcp",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://linear.app",
+          "id": "linear",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Linear",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Issue tracking is where agent workflows start, and Linear ships a hosted server."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.atlassian.com/software/jira",
+          "id": "jira",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Jira",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "sse"
+          ],
+          "vendor": "Atlassian",
+          "why": "The issue tracker most enterprises actually run."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.atlassian.com/software/confluence",
+          "id": "confluence",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Confluence",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "sse"
+          ],
+          "vendor": "Atlassian",
+          "why": "Internal documentation retrieval, the most common private RAG target."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.sonarsource.com",
+          "id": "sonarqube",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "SonarQube",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Code quality metrics as a routed source, with a self-hosted option."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://snyk.io",
+          "id": "snyk",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Snyk",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Vulnerability data with a revision pattern worth scoring; advisories get amended."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "open-attribution",
+          "homepage": "https://semgrep.dev",
+          "id": "semgrep",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Semgrep",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Static analysis with an open rules corpus."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://circleci.com",
+          "id": "circleci",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "CircleCI",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Build status as a feed, with exact event timestamps for freshness scoring."
+        },
+        {
+          "auth": "basic",
+          "domain": "developer",
+          "expected_terms": "open-attribution",
+          "homepage": "https://www.jenkins.io",
+          "id": "jenkins",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Jenkins",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Self-hosted CI, the common case in regulated environments."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://buildkite.com",
+          "id": "buildkite",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Buildkite",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "CI coverage for teams that run their own agents."
+        },
+        {
+          "auth": "none",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.docker.com",
+          "id": "docker",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Docker",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Container inspection and image metadata, a common agent operations task."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "developer",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://kubernetes.io",
+          "id": "kubernetes",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Kubernetes",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Cluster state is the clearest pass-through credential case in the catalog."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://developer.hashicorp.com/terraform",
+          "id": "terraform",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Terraform",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "vendor": "HashiCorp",
+          "why": "Registry metadata and plan inspection for infrastructure agents."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.pulumi.com",
+          "id": "pulumi",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Pulumi",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Second infrastructure-as-code surface."
+        },
+        {
+          "auth": "api_key",
+          "domain": "developer",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://e2b.dev",
+          "id": "e2b",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "E2B",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Sandboxed execution, useful for evaluating tools before routing to them."
+        },
+        {
+          "auth": "none",
+          "domain": "developer",
+          "expected_terms": "open-attribution",
+          "homepage": "https://playwright.dev",
+          "id": "playwright",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Playwright",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "vendor": "Microsoft",
+          "why": "Browser automation, and the largest untrusted-text surface of any common server."
+        }
+      ]
+    },
+    {
+      "category": "mcp-infrastructure",
+      "description": "MCP servers for cloud platforms, managed databases, hosting, and observability. Most of these are reached with the customer's own credentials, so they are the natural first users of pass-through auth (ADR-0008) rather than anything Trooth redistributes.",
+      "entries": [
+        {
+          "auth": "passthrough",
+          "domain": "infrastructure",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://awslabs.github.io/mcp",
+          "id": "aws",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Amazon Web Services",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "The largest cloud surface, and pass-through credentials are the only way to reach it."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "infrastructure",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://azure.microsoft.com",
+          "id": "azure",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Microsoft Azure",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Second cloud, required for enterprise parity."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "infrastructure",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://cloud.google.com",
+          "id": "gcp",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Google Cloud",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Third cloud, and the path to BigQuery as a routed source."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://developers.cloudflare.com/agents/model-context-protocol",
+          "id": "cloudflare",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Cloudflare",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "sse"
+          ],
+          "why": "We run on Cloudflare, so this is the one we can test end to end at zero cost."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://vercel.com",
+          "id": "vercel",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Vercel",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Deployment state for front-end agents."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.netlify.com",
+          "id": "netlify",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Netlify",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Alternative hosting surface."
+        },
+        {
+          "auth": "api_key",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://fly.io",
+          "id": "fly-io",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Fly.io",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Machine and region state for latency-sensitive deployments."
+        },
+        {
+          "auth": "api_key",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://railway.app",
+          "id": "railway",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Railway",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Hosting coverage for smaller teams."
+        },
+        {
+          "auth": "api_key",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://render.com",
+          "id": "render",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Render",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Hosting coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.digitalocean.com",
+          "id": "digitalocean",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "DigitalOcean",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Hosting coverage, and a cheap place to run a self-hosted console."
+        },
+        {
+          "auth": "api_key",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://supabase.com",
+          "id": "supabase",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Supabase",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "stdio"
+          ],
+          "why": "Managed Postgres with a documented server, common in agent side projects."
+        },
+        {
+          "auth": "api_key",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://neon.tech",
+          "id": "neon",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Neon",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "stdio"
+          ],
+          "why": "Serverless Postgres with branching, a good demonstration of as-of replay."
+        },
+        {
+          "auth": "api_key",
+          "domain": "infrastructure",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://planetscale.com",
+          "id": "planetscale",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "PlanetScale",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Managed MySQL coverage."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "infrastructure",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.mongodb.com",
+          "id": "mongodb",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "MongoDB",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Document database coverage, and schema stability scoring where there is no schema."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "infrastructure",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://redis.io",
+          "id": "redis",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Redis",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Cache inspection, relevant to the served_from field in the envelope."
+        },
+        {
+          "auth": "passthrough",
+          "domain": "infrastructure",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://github.com/modelcontextprotocol/servers",
+          "id": "postgres",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "PostgreSQL",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "The reference database server, and the most common customer-owned source."
+        },
+        {
+          "auth": "api_key",
+          "domain": "observability",
+          "expected_terms": "open-attribution",
+          "homepage": "https://grafana.com",
+          "id": "grafana",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Grafana",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Both a routed source and the free dashboard tool we document in ADR-0011."
+        },
+        {
+          "auth": "none",
+          "domain": "observability",
+          "expected_terms": "open-attribution",
+          "homepage": "https://prometheus.io",
+          "id": "prometheus",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Prometheus",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Time series with exact scrape timestamps, so freshness lag is unambiguous."
+        },
+        {
+          "auth": "api_key",
+          "domain": "observability",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.datadoghq.com",
+          "id": "datadog",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Datadog",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Commercial observability coverage."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "observability",
+          "endpoint": "https://mcp.sentry.dev/mcp",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://sentry.io",
+          "id": "sentry",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Sentry",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Error events with a clear event time, and a hosted server to test against."
+        }
+      ]
+    },
+    {
+      "category": "mcp-productivity",
+      "description": "MCP servers for messaging, mail, calendars, documents, files, design, and task tracking. Almost all of these reach private customer data, so they are pass-through by default and none of their content is ever cached by Trooth beyond the customer's own private cache.",
+      "entries": [
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "endpoint": "https://mcp.notion.com/mcp",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.notion.so",
+          "id": "notion",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Notion",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Hosted server, broad adoption, and a clean OAuth flow to model pass-through on."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://slack.com",
+          "id": "slack",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Slack",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Where teams already are, and a large untrusted-text surface worth quarantining well."
+        },
+        {
+          "auth": "bearer",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://discord.com",
+          "id": "discord",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Discord",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Community messaging coverage."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://developers.google.com/gmail/api",
+          "id": "gmail",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Gmail",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "vendor": "Google",
+          "why": "Mail access, the most sensitive pass-through case and the one to get right first."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://developers.google.com/calendar",
+          "id": "google-calendar",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Google Calendar",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "vendor": "Google",
+          "why": "Scheduling data with exact event timestamps."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://developers.google.com/drive",
+          "id": "google-drive",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Google Drive",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "vendor": "Google",
+          "why": "Document retrieval, the most common private RAG source."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://learn.microsoft.com/graph",
+          "id": "microsoft-365",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Microsoft 365",
+          "priority": 1,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Graph covers mail, files, calendar, and Teams behind one enterprise credential."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://learn.microsoft.com/graph/outlook-mail-concept-overview",
+          "id": "outlook",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Outlook",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "vendor": "Microsoft",
+          "why": "Mail coverage for Microsoft shops, likely folded into the Graph entry."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.box.com",
+          "id": "box",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Box",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Regulated-industry file storage."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://www.dropbox.com",
+          "id": "dropbox",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Dropbox",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "File storage coverage."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://asana.com",
+          "id": "asana",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Asana",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Work tracking outside engineering teams."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://monday.com",
+          "id": "monday",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "monday.com",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Work management coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://clickup.com",
+          "id": "clickup",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "ClickUp",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Work management coverage."
+        },
+        {
+          "auth": "api_key",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://trello.com",
+          "id": "trello",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Trello",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Lightweight task boards."
+        },
+        {
+          "auth": "api_key",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://todoist.com",
+          "id": "todoist",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Todoist",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Personal task management, a common first agent integration."
+        },
+        {
+          "auth": "none",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://obsidian.md",
+          "id": "obsidian",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Obsidian",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Local notes, entirely offline, with no redistribution question at all."
+        },
+        {
+          "auth": "api_key",
+          "domain": "productivity",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://airtable.com",
+          "id": "airtable",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Airtable",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Structured customer data with a real schema, useful for schema stability scoring."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "design",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.figma.com",
+          "id": "figma",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Figma",
+          "priority": 2,
+          "status": "candidate",
+          "transport": [
+            "streamable-http",
+            "stdio"
+          ],
+          "why": "Design context for agents that write front-end code."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "design",
+          "expected_terms": "vendor-tos",
+          "homepage": "https://www.canva.com",
+          "id": "canva",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Canva",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "streamable-http"
+          ],
+          "why": "Design asset coverage."
+        },
+        {
+          "auth": "oauth2",
+          "domain": "productivity",
+          "expected_terms": "customer-credentials",
+          "homepage": "https://zoom.us",
+          "id": "zoom",
+          "kind": "mcp",
+          "license_status": "unverified",
+          "name": "Zoom",
+          "priority": 3,
+          "status": "candidate",
+          "transport": [
+            "stdio"
+          ],
+          "why": "Meeting transcripts, which are untrusted text with a precise event time."
+        }
+      ]
+    }
+  ],
+  "total": 200
+}

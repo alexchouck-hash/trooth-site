@@ -1,0 +1,4913 @@
+{
+  "counts": {
+    "provisional": 0,
+    "rated": 0,
+    "unrated": 700
+  },
+  "emblem_version": "0.1",
+  "emblems": [
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "abs-australia",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "accessibility-suit-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ad-transparency-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "advisory-coverage-gaps",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "advisory-disagreement-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "agency-guidance-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "agent-framework-breaking-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ai-incident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ai-regulation-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "air-cargo-embargo-notices",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "air-quality-forecast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "aircraft-registration-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "airfreight-capacity-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "airline-ontime-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "airnow",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "airport-wait-time-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "airspace-restriction-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "airtable",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "airworthiness-directive-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "algolia",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "allergen-declaration-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "alpaca",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "alpha-vantage",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "aml-guidance-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "animal-disease-outbreak-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "antitrust-filing-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "api-breaking-change-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "apify",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "app-permission-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "app-ranking-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "app-review-sentiment-shift",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "app-store-policy-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "appellate-opinion-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "appraisal-vs-sale-divergence",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "approval-calendar-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "arxiv",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "asana",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "assessment-change-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "assortment-change-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "attack-framework-updates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "avalanche-forecast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "aviation-incident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "aviationweather",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "awards-nomination-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "aws",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "azure",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "baggage-fee-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bank-branch-closures",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bank-call-report-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bank-of-england",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bankruptcy-filing-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "base-image-cve-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bea",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "beach-water-advisories",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "benchmark-disagreement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "beneficial-ownership-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bgp-anomaly-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "bigcommerce",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "bigquery",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bikeshare-availability",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bill-of-lading-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "biodiversity-observation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "bitbucket",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "blocklist-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "blood-supply-levels",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bls",
+      "subject_kind": "source"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "board-appointment-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "border-crossing-wait",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "border-wait-times",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "box",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "box-office-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "boxed-warning-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "brand-impersonation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "brand-mention-provenance",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "brave-search",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "breach-notification-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "breach-notification-latency",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bridge-restriction-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "broadband-availability-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "brownfield-registry-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "bts-transtats",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "building-permit-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "buildkite",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "business-registration-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "campaign-finance-amendments",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "canal-transit-restrictions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "canva",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cap-rate-disagreement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "capacity-auction-results",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "carbon-intensity-by-region",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "carbon-registry-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "carrier-authority-revocations",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "carrier-safety-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cdc-backfill-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cdc-socrata",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cdc-wonder",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "census-acs",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "census-tiger",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "certificate-of-occupancy-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "certificate-transparency-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "certification-status-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cfpb-complaint-trends",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cftc-cot",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cftc-cot-weekly-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "charging-network-uptime",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "charging-uptime-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "chroma",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cipher-deprecation-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "circleci",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cisa-kev",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "class-action-filing-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "clickhouse",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "clickup",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "climate-disclosure-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "clinicaltrials-gov",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cloud-deprecation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "cloudflare",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "code-set-updates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "code-violation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "coinbase-exchange",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "coingecko",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cold-chain-excursions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "comment-deadline-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "commodity-inventory-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "commodity-origin-shift",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "conflict-mineral-disclosures",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "confluence",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "congestion-pricing-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "congress-gov",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "consent-decree-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "construction-accident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "construction-cost-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "consumer-recall-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "container-dwell-time",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "contractor-license-actions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cookie-banner-compliance",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "copernicus",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "copyright-registration-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "correction-latency-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cosmetic-ingredient-restrictions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "counterfeit-listing-signals",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "court-docket-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cpi-revision-history",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cpsc-recalls",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "credential-exposure-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "credit-rating-actions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "crime-incident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "crop-condition-by-county",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "crop-progress-weekly",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "crossref",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cruise-itinerary-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "crypto-aggregator-divergence",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "customs-broker-ruling-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "customs-processing-times",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cve-enrichment-latency",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cve-org",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "cve-severity-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dailymed",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "data-gov",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "databricks",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "datadog",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "days-on-market-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dbpedia",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dea-registration-actions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "debarment-list-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "deed-transfer-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "defi-tvl-disagreement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "deforestation-alert-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "delivery-fee-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "denied-boarding-stats",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dependency-license-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "detection-rule-updates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "device-recall-early-warning",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "digitalocean",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "discord",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dividend-announcement-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dmca-notice-trends",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dns-change-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "docker",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "doj-action-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "domain-registration-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "dot-letting-schedule",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "dropbox",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "drought-monitor-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "drug-shortage-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "duckdb",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "e2b",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "earnings-calendar-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "earnings-transcript-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ecb-fx",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "economic-calendar-drift",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "effective-date-calendar",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "efficiency-standard-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "eia",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "elasticsearch",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "email-auth-policy-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "emissions-reporting-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "employer-sentiment-divergence",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "employment-law-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "energy-benchmark-disclosure",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "energy-code-adoption",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "entity-list-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "entry-requirement-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "environmental-site-assessment-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "epa-echo",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "epr-fee-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "epss",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "epss-score-movement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "esg-rating-disagreement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "esports-result-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ethics-disclosure-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "eurostat",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ev-charger-availability",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ev-range-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "event-cancellation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "eviction-filing-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "exa",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "exchange-outage-detector",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "executive-change-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "expanded-access-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "export-control-list-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "export-license-actions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "faa-aircraft-registry",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "faa-nasstatus",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fact-check-claim-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "failed-bank-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fare-rule-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fcpa-enforcement-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fec",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "federal-contract-mods",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "federal-register",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "federal-rule-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fee-schedule-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ferc-filing-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ferry-service-status",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fertilizer-price-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "figma",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "filesystem",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "filing-latency-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "finnhub",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "firecrawl",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fishery-quota-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "five-ten-k-clearance-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "flaring-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "flight-delay-forecast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "flood-forecast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "flood-insurance-rate-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "flood-map-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "flu-forecast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "fly-io",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "foia-log-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "food-price-index-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "food-safety-closure-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "forced-labor-detention-orders",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "foreclosure-filing-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "franchise-disclosure-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "frankfurter",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fred",
+      "subject_kind": "source"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fred-republish-lag",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "free-tier-shrinkage",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "freight-rate-index-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "freshdesk",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ftc-enforcement-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fuel-price-by-station",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fx-reference-vs-venue",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "fx-republisher-divergence",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gas-storage-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gate-change-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gbif",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "gcp",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gdp-vintage-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "generation-mix-realtime",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "geonames",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gift-card-escheatment-rules",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "git-local",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "github",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "github-advisory",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "gitlab",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "gmail",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "google-calendar",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "google-drive",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "grafana",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "grain-export-inspections",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "grant-funding-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "graphql-schema-diff",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "grid-emergency-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "grocery-basket-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ground-stop-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gsa-price-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gtfs-bart",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gtfs-mta",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gtfs-wmata",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "gtin-registry-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hazmat-incident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "heat-advisory-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hibp",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hiring-signal-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hmda-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hoa-assessment-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hos-violation-trends",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hospital-capacity-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hospital-price-transparency-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hospital-quality-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hotel-availability-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hotel-rate-change-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "housing-starts-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "hubspot",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "hurricane-track-error",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "iana-tld",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "icd-code-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "imf-data",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "immigration-policy-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "import-refusal-by-supplier",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "import-refusal-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "incident-postmortem-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "index-rebalance-announcements",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "influencer-disclosure-compliance",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "infrastructure-grant-awards",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ingredient-reformulation-detector",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "insider-form4-latency",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "inspection-observation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "insurance-complaint-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "insurance-rate-filings",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "intercom",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "interconnection-queue-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "internet-archive",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "inventory-to-sales-ratio",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ioc-feed-disagreement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "irs-soi",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "jenkins",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "jira",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "job-posting-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "jobless-claims-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "kev-addition-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "klaviyo",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "knowledge-panel-divergence",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "kraken-public",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "kubernetes",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "label-change-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "labor-action-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "last-mile-delay-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "layoff-announcement-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "lca-disclosure-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "lead-service-line-inventory",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "leaderboard-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "licensing-board-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "licensure-disciplinary-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "linear",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "listing-price-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "livestock-inventory-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "lmp-price-spikes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "lng-terminal-flows",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "lobbying-disclosure-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "loyalty-program-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "mailchimp",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "malicious-package-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "maritime-regulation-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "marketplace-suspension-trends",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "material-price-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "maude-adverse-event-spikes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "maude-duplicate-dedup",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "maude-summary-reporting-flags",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "mcp-injection-surface-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "mcp-registry-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "mcp-server-uptime",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "mcp-tool-schema-drift",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "medicaid-policy-by-state",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "meilisearch",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "menu-price-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "merger-review-status",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "methane-leak-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "microsoft-365",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "minimum-wage-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "mishandled-baggage-rates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "model-behaviour-drift",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "model-capability-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "model-deprecation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "model-pricing-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "model-release-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "moderation-report-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "monday",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "mongodb",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "mortgage-recording-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "mountain-pass-status",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "municipal-disclosure-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "municipal-ordinance-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "music-metadata-disagreement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "musicbrainz",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nager-date",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nasa-api",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nasa-earthdata",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nasdaq-data-link",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "natural-earth",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ndc-directory-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "neo4j",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "neon",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "netlify",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "new-product-launch-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "news-correction-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nexus-threshold-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nhtsa-recalls",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nih-reporter",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nlrb-petition-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "noaa-coops",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "noaa-ndbc",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "noaa-swpc",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nominatim",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "notam-change-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "notion",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "npi-registry",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nursing-home-inspection-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nutrition-label-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nvd-cve",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "nws",
+      "subject_kind": "source"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "obsidian",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "odds-line-movement",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "oecd",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "offset-invalidation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ons-uk",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "opec-production-vs-quota",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "open-brewery-db",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "open-meteo",
+      "subject_kind": "source"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "openalex",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "openapi-spec-diff",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "openaq",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "openfda",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "openfoodfacts",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "openlibrary",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "opensky",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "opportunity-zone-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "orange-book-patent-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "orphan-designation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "os-eol-calendar",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "osha-citation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "osha-construction-citations",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "osv-dev",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "out-of-stock-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "outage-restoration-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "outbreak-signal-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "outlook",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "overpass",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "package-yank-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "packaging-regulation-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "parcel-surcharge-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "parking-rate-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "passport-processing-times",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "patent-assignment-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "patent-grant-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "patent-litigation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "payer-formulary-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "payment-outage-detector",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "paypal",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "paywall-policy-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pension-disclosure-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pep-list-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "permit-to-completion-lag",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "perplexity",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pesticide-registration-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "petroleum-inventory-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "phishing-domain-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "pinecone",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "pipedrive",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pipeline-incident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pipeline-maintenance-notices",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "plaid",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "planetscale",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "planning-agenda-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "planted-acreage-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "platform-fee-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "platform-policy-diff",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "playwright",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pma-approval-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pmc",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "podcast-catalog-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "political-ad-spend-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pollen-count-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "polygon-io",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "port-call-cancellations",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "port-congestion-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "port-labor-negotiation-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "postgres",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "press-release-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "price-change-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pricing-page-diff",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "prior-auth-policy-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "privacy-enforcement-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "privacy-law-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "privacy-policy-diff",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "prometheus",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "promo-calendar-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "prop-sixty-five-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "proposed-to-final-diff",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "provider-churn-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "provider-directory-accuracy",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "public-works-bid-tabs",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "publicsuffix",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "pubmed",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "pulumi",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "purple-book-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "qdrant",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "quickbooks",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "radon-zone-updates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rail-carload-weekly",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rail-incident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rail-schedule-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "railway",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ransomware-leak-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rare-earth-export-quotas",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rate-decision-nowcast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rate-limit-policy-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ratings-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rec-issuance-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "recall-effectiveness-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "recall-to-sku-mapping",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "recall-to-supplier-mapping",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "redis",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "refinery-outage-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "regulations-gov",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "regulatory-agenda-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "render",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "renewable-curtailment-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rent-regulation-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "research-integrity-signals",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "resend",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "reservoir-level-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "resort-fee-disclosure",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "restaurant-inspection-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "restcountries",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "retail-sales-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "retraction-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "return-policy-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "review-manipulation-signals",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rezoning-application-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rideshare-surge-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rig-count-weekly",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "road-closure-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "road-condition-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "route-launch-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rss-feed-health",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "runtime-deprecation-calendar",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "runway-closure-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rxnorm",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "rxnorm-term-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "salary-range-disclosure-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sales-tax-rate-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "salesforce",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sanctioned-vessel-list",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sanctions-list-delta",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sba-program-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sbom-drift-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "schedule-change-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "school-boundary-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "school-rating-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "scooter-fleet-distribution",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sdk-inclusion-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sec-edgar",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sec-enforcement-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sec-financial-statements",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sec-restatement-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "seismic-retrofit-mandates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "seismic-supplier-exposure",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "semantic-scholar",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "semgrep",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "semiconductor-lead-times",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "sendgrid",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "sentry",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "settled-outcome-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "settlement-approval-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "shipping-cutoff-calendar",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "shipping-emissions-compliance",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "shopify",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "short-interest-updates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "short-term-rental-availability",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "short-term-rental-rules",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "shrinkflation-detector",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sla-credit-eligibility",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "slack",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "slot-allocation-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "snowflake",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "snowpack-water-equivalent",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "snyk",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "social-verification-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "solar-wind-forecast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "sonarqube",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sports-injury-report-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "sports-schedule-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "square",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "stablecoin-attestation-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "statcan",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "state-ag-action-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "state-bill-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "state-regulation-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "status-page-honesty-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "status-page-incident-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "stealth-edit-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "store-hours-accuracy",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "store-opening-closing-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "streamflow-provisional-to-approved",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "streaming-catalog-churn",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "stripe",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "submarket-vacancy-rates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "subscription-price-increases",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "substance-restriction-updates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "supabase",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "superfund-status-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "supplier-bankruptcy-early-warning",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "supplier-concentration-risk",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "supplier-disruption-events",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "syndication-lag-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tail-swap-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "takedown-transparency-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tariff-exclusion-rulings",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tariff-schedule-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "tavily",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tax-holiday-calendar",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tax-lien-sale-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "taxi-medallion-transfers",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "telecom-plan-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "terms-of-service-diff",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "terraform",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "thirteen-f-amendment-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "thirteen-f-holdings-change",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "threat-actor-ttp-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tls-expiry-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "todoist",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "token-listing-delisting",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "toll-rate-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tornado-warning-lead-time",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "toy-safety-standard-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "tracker-presence-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trade-action-updates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trade-balance-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trademark-opposition-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trademark-registration-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "transit-accessibility-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "transit-fare-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "transit-feed-health",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "transit-ontime-performance",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "transit-service-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "transitland",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "transplant-waitlist-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "travel-advisory-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "treasury-auction-drift",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "treasury-fiscaldata",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "treasury-yield-curve",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "trello",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trial-completion-date-slips",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trial-endpoint-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trial-results-posting-latency",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trial-site-additions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trial-status-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "truck-spot-rate-index",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "trusted-traveller-appointments",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "twilio",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "typesense",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "typosquat-detection",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "ucc-lien-filings",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "unicode-cldr",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "uptime-vs-claimed-sla",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "usaspending",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "usgs-earthquake",
+      "subject_kind": "source"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "usgs-water",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "usps-zip",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "utility-bill-rate-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "utility-connection-lead-times",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "utility-rate-case-tracker",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "vaccine-signal-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "variance-decision-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "variant-classification-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "venue-capacity-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "vercel",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "vessel-eta-drift",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "veterinary-recall-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "visa-bulletin-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "visa-requirement-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "warehouse-vacancy-rates",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "warn-notice-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "warning-letter-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "warranty-term-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wasde-revisions",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wastewater-signal-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "water-quality-violations",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "water-rights-transfers",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "weather-lane-disruption",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "weaviate",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "well-permit-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "who-gho",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wikidata",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wikidata-entity-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wikipedia",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wikipedia-article-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wildfire-perimeter-feed",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wildfire-risk-zone-changes",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "wildfire-smoke-forecast-grading",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "world-bank",
+      "subject_kind": "registry-candidate"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "xero",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "yield-curve-asof",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "zendesk",
+      "subject_kind": "mcp-server"
+    },
+    {
+      "grade": null,
+      "issuer": "trooth",
+      "state": "unrated",
+      "subject_id": "zoning-change-alerts",
+      "subject_kind": "demand-hypothesis"
+    },
+    {
+      "grade": null,
+      "issuer": "modafied",
+      "state": "unrated",
+      "subject_id": "zoom",
+      "subject_kind": "mcp-server"
+    }
+  ],
+  "formula_version": "0.1",
+  "generated_at": "2026-09-14T00:18:30Z",
+  "total": 700
+}

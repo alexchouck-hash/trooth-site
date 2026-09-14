@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Emblem from '../components/Emblem.astro';
+import { p } from '../utils/paths';
+import registry from '../data/registry.json';
+import demand from '../data/demand.json';
+import ui from '../data/ui-outputs.json';
+import connect from '../data/connect.json';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const EMBLEM_DIR = path.resolve('./public/emblems');
+
+function emblemFor(id: string) {
+  try {
+    const file = path.join(EMBLEM_DIR, `${id}.json`);
+    return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf-8')) : null;
+  } catch { return null; }
+}
+
+const allEntries = (registry.groups as any[]).flatMap((g) => g.entries);
+const promoted = allEntries.filter((e: any) => e.status === 'promoted');
+const priorityOne = allEntries.filter((e: any) => e.status === 'candidate' && e.priority === 1);
+
+const clients: [string, string][] = [
+  ['Claude Code and Claude Desktop', 'stdio, streamable HTTP'],
+  ['Cursor', 'stdio, streamable HTTP'],
+  ['VS Code with GitHub Copilot', 'stdio, streamable HTTP'],
+  ['Windsurf', 'stdio'],
+  ['Zed', 'stdio'],
+  ['Cline', 'stdio'],
+  ['Continue', 'stdio'],
+  ['Goose', 'stdio, streamable HTTP'],
+  ['Raycast', 'stdio'],
+  ['JetBrains IDEs', 'stdio'],
+];
+
+const frameworks = 'Anthropic Agent SDK, OpenAI Agents SDK, LangChain and LangGraph, LlamaIndex, CrewAI, AutoGen, Pydantic AI, Mastra, Vercel AI SDK, Semantic Kernel, Haystack, DSPy';
+const automation = 'n8n, Node-RED, Windmill, Temporal, Apache Airflow, Dagster, Prefect, Huginn, Zapier, Make, Pipedream, Activepieces';
+
+const comparison: [string, string, string][] = [
+  ['Answers', 'what changed, when, from where', 'what it means, what to do'],
+  ['Method', 'mechanical, reproducible, no model', 'interpretive, may use a model'],
+  ['Output', 'signed envelope with provenance', 'analysis, citing that envelope'],
+  ['Fails by', 'being stale, or wrong about a fact', 'being wrong about a judgement'],
+];
+---
+
+<Layout
+  title="Connect"
+  description="What Trooth feeds connect to: the Kourob analysis layer, agent clients, automation, and 108 open source UI tools."
+  activeNav="connect"
+>
+  <section style="margin-bottom:2.5rem;">
+    <h1 style="font-size:2.25rem; font-weight:800; margin-bottom:0.75rem;">Connect</h1>
+    <p style="font-size:1.1rem; color:var(--text-muted); max-width:760px;">
+      Trooth is a pipe, and a pipe is only worth having if something is on the other end of it.
+      This is what the feeds connect to: the analysis layer, the agent clients, the automation
+      tools, and the open source dashboards that can render a feed without anyone building a UI.
+    </p>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <div style="display:flex; align-items:baseline; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.75rem;">
+      <h2 style="font-size:1.5rem; font-weight:700;">1. Kourob</h2>
+      <span class="badge-tag">Analysis layer</span>
+    </div>
+
+    {connect.kourob_description_pending && (
+      <div style="border:1px solid var(--accent-amber); background:rgba(251,191,36,0.08); padding:1rem 1.25rem; border-radius:10px; margin-bottom:1rem;">
+        <strong style="display:block; margin-bottom:0.35rem;">Description pending</strong>
+        <p style="font-size:0.95rem; color:var(--text-muted); margin:0;">
+          The description of Kourob has not been supplied by its owner yet. Rather than guess,
+          this page says so. A provenance product does not publish claims it cannot source,
+          including claims about itself.
+        </p>
+      </div>
+    )}
+
+    <p style="color:var(--text-muted); max-width:760px; margin-bottom:1.25rem;">
+      Trooth answers what changed, when, and according to which source. That is mechanical,
+      reproducible, and runs with no model anywhere in the request path. Kourob answers what it
+      means, which is interpretation and belongs in a layer that is allowed to use a model.
+      Keeping the two apart is why a Trooth answer can be verified and a Kourob answer can be
+      argued with.
+    </p>
+
+    <div style="overflow-x:auto; margin-bottom:1rem;">
+      <table>
+        <thead><tr><th></th><th>Trooth</th><th>Kourob</th></tr></thead>
+        <tbody>
+          {comparison.map(([label, a, b]) => (
+            <tr><td><strong>{label}</strong></td><td>{a}</td><td>{b}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:0.95rem; color:var(--text-muted);">
+      Of the {demand.total} feed opportunities in the demand register,
+      <strong>{demand.kourob_count}</strong> are marked as needing an analysis layer. Those are
+      the natural first integration.
+    </p>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">2. 10xAnd</h2>
+    <p style="color:var(--text-muted); max-width:760px;">
+      The regulatory vertical: adverse events, recalls, inspections, and clearances. Planned for
+      Phase 4. Nothing is built yet.
+    </p>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.75rem;">3. Agent clients</h2>
+    <p style="color:var(--text-muted); margin-bottom:1rem; max-width:760px;">
+      Anything speaking the Model Context Protocol reaches every source through one server and
+      six tools, instead of one server per source. The server itself is Phase 1 and is not built
+      yet, so these are targets rather than working integrations.
+    </p>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Client</th><th>Transport</th></tr></thead>
+        <tbody>
+          {clients.map(([name, transport]) => (
+            <tr><td>{name}</td><td><code>{transport}</code></td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">4. Frameworks and automation</h2>
+    <p style="color:var(--text-muted); margin-bottom:0.75rem; max-width:760px;">
+      For teams building their own agents: {frameworks}.
+    </p>
+    <p style="color:var(--text-muted); max-width:760px;">
+      For turning a change into an action without writing code: {automation}. A revision alert
+      that opens a ticket is worth more than one that opens a dashboard.
+    </p>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <div style="display:flex; align-items:baseline; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.5rem;">
+      <h2 style="font-size:1.5rem; font-weight:700;">5. Open source UI outputs</h2>
+      <span class="badge-tag">{ui.total_tools} tools, {ui.total_types} types</span>
+    </div>
+    <p style="color:var(--text-muted); margin-bottom:1.5rem; max-width:760px;">
+      Trooth publishes JSON and CSV today, a Prometheus metrics endpoint at Phase 1, and Parquet
+      at Phase 2. Every tool below consumes at least one of those. The
+      <a href={p('/console')}>Trooth Console</a> is the zero-setup default; it is not the only
+      option, and we would rather you used something you already run.
+    </p>
+
+    {ui.types.map((group: any) => (
+      <div style="margin-bottom:1.75rem;">
+        <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:0.2rem; text-transform:capitalize;">
+          {group.type.replace(/-/g, ' ')}
+        </h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.6rem;">{group.what}</p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+          {group.tools.map((tool: any) => (
+            <span
+              title={`${tool.license} | reads ${(tool.trooth_input || []).join(', ')}${tool.notes ? ' | ' + tool.notes : ''}`}
+              style="border:1px solid var(--border); background:var(--bg-card); padding:0.25rem 0.65rem; border-radius:999px; font-size:0.85rem;"
+            >{tool.name} <span style="color:var(--text-subtle); font-size:0.78rem;">{tool.license}</span></span>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <p style="font-size:0.85rem; color:var(--text-subtle);">
+      Licences are as commonly understood and are not verified the way catalog licences are.
+      Check the terms before adopting one.
+    </p>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <div style="display:flex; align-items:baseline; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.5rem;">
+      <h2 style="font-size:1.5rem; font-weight:700;">Connector registry</h2>
+      <span class="badge-tag">{registry.by_status?.promoted ?? 0} live of {registry.total}</span>
+    </div>
+    <p style="color:var(--text-muted); margin-bottom:1.5rem; max-width:760px;">
+      {registry.total} connectors we intend to support: {registry.by_kind?.mcp ?? 0} MCP servers
+      and the rest data feeds. A connector becomes routable only after someone reads its licence
+      from the source's own documentation and cites the URL. Until then it is listed here and
+      nowhere else, and it carries no grade because nothing has been measured.
+    </p>
+
+    <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.75rem;">Live now</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:0.85rem; margin-bottom:2rem;">
+      {promoted.map((entry: any) => {
+        const emblem = emblemFor(entry.id);
+        return (
+          <div style="border:1px solid var(--border); border-radius:10px; padding:1rem; background:var(--bg-card);">
+            <a href={p(`/scorecards/${entry.id}`)} style="font-weight:700; display:block; margin-bottom:0.6rem;">{entry.name}</a>
+            {emblem && <Emblem emblem={emblem} size="sm" href={p(`/scorecards/${entry.id}`)} />}
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.6rem;">{entry.why}</p>
+          </div>
+        );
+      })}
+    </div>
+
+    <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.75rem;">
+      Next up: {priorityOne.length} priority one candidates
+    </h3>
+    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+      {priorityOne.map((entry: any) => (
+        <span
+          id={entry.id}
+          title={entry.why}
+          style="border:1px dashed var(--border); padding:0.25rem 0.65rem; border-radius:999px; font-size:0.85rem; color:var(--text-muted);"
+        >{entry.name}</span>
+      ))}
+    </div>
+  </section>
+</Layout>

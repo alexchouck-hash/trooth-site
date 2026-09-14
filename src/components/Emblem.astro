@@ -1,0 +1,97 @@
+---
+/**
+ * The Modafied emblem (ADR-0013).
+ *
+ * Inline SVG, no library, no image service, no runtime cost. The grade and the six component
+ * bars are always rendered together, because a grade shown on its own is the opaque composite
+ * score that ADR-0005 rejected. A dimension with no data draws grey and is never treated as a
+ * zero: an absent measurement and a bad measurement have to look different.
+ *
+ * MCP servers are graded by Modafied. Data feeds are graded by Trooth's published method and
+ * countersigned by Modafied once it has reproduced them. The issuer is on the face of the mark.
+ */
+export interface Props {
+  emblem: {
+    subject_id: string;
+    subject_kind: string;
+    state: "rated" | "provisional" | "unrated";
+    grade: string | null;
+    composite: number | null;
+    issuer: string;
+    countersigned?: boolean;
+    dimensions: Record<string, { status: string; normalized: number | null }>;
+    unrated_reason?: string | null;
+  };
+  size?: "sm" | "md";
+  href?: string;
+}
+
+const { emblem, size = "md", href } = Astro.props;
+
+const DIMS = [
+  "freshness_lag",
+  "revision_behavior",
+  "correction_latency",
+  "completeness_by_segment",
+  "schema_stability",
+  "internal_consistency",
+];
+
+const GRADE_COLOR: Record<string, string> = {
+  A: "#34d399", B: "#a3e635", C: "#fbbf24", D: "#fb923c", E: "#f43f5e",
+};
+
+const unrated = emblem.state === "unrated";
+const accent = unrated ? "#64748b" : (GRADE_COLOR[emblem.grade ?? "E"] ?? "#94a3b8");
+const barW = size === "sm" ? 10 : 14;
+const barGap = 3;
+const barMaxH = size === "sm" ? 18 : 24;
+const width = size === "sm" ? 134 : 170;
+const height = size === "sm" ? 46 : 58;
+const label = unrated
+  ? "Unrated"
+  : `${emblem.grade}${emblem.state === "provisional" ? "*" : ""}`;
+const title = unrated
+  ? `Modafied: unrated. ${emblem.unrated_reason ?? "nothing measured yet"}`
+  : `Modafied grade ${emblem.grade} (composite ${emblem.composite}), issued by ${emblem.issuer}`;
+
+const Tag = href ? "a" : "span";
+---
+
+<Tag href={href} class="emblem" title={title} aria-label={title} data-state={emblem.state}>
+  <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} role="img" aria-hidden="true">
+    <rect
+      x="0.5" y="0.5" width={width - 1} height={height - 1} rx="6"
+      fill="#0b0f19"
+      stroke={unrated ? "#2d3748" : accent}
+      stroke-width="1"
+      stroke-dasharray={emblem.state === "provisional" ? "4 3" : "0"}
+    />
+    <text x="9" y={size === "sm" ? 14 : 16} font-size={size === "sm" ? 8 : 9}
+          font-family="ui-monospace, monospace" fill="#64748b" letter-spacing="0.08em">MODAFIED</text>
+    <text x={width - 9} y={size === "sm" ? 15 : 18} text-anchor="end"
+          font-size={size === "sm" ? 13 : 16} font-weight="800"
+          font-family="ui-monospace, monospace" fill={accent}>{label}</text>
+
+    {DIMS.map((key, i) => {
+      const bar = emblem.dimensions?.[key];
+      const ok = bar && bar.status === "ok" && bar.normalized !== null;
+      const value = ok ? (bar!.normalized as number) : 0;
+      const h = ok ? Math.max(2, (value / 100) * barMaxH) : 2;
+      const x = 9 + i * (barW + barGap);
+      const baseY = height - 8;
+      return (
+        <g>
+          <rect x={x} y={baseY - barMaxH} width={barW} height={barMaxH} rx="1.5" fill="#1f2937" />
+          <rect x={x} y={baseY - h} width={barW} height={h} rx="1.5" fill={ok ? accent : "#334155"} />
+        </g>
+      );
+    })}
+  </svg>
+</Tag>
+
+<style>
+  .emblem { display: inline-block; line-height: 0; text-decoration: none; }
+  .emblem svg { display: block; }
+  a.emblem:hover rect:first-of-type { stroke-width: 1.5; }
+</style>

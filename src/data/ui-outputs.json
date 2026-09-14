@@ -1,0 +1,1171 @@
+{
+  "total_tools": 108,
+  "total_types": 15,
+  "types": [
+    {
+      "tools": [
+        {
+          "id": "metabase",
+          "license": "AGPL-3.0-or-later",
+          "name": "Metabase",
+          "notes": "Easiest for non-technical viewers; needs the data in a database.",
+          "self_host": true,
+          "trooth_input": [
+            "sql",
+            "csv"
+          ]
+        },
+        {
+          "id": "superset",
+          "license": "Apache-2.0",
+          "name": "Apache Superset",
+          "notes": "Most capable, heaviest to operate.",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        },
+        {
+          "id": "redash",
+          "license": "BSD-2-Clause",
+          "name": "Redash",
+          "self_host": true,
+          "trooth_input": [
+            "sql",
+            "json"
+          ]
+        },
+        {
+          "id": "grafana",
+          "license": "AGPL-3.0-only",
+          "name": "Grafana",
+          "notes": "Best fit for freshness and uptime; the Infinity datasource reads our JSON directly.",
+          "self_host": true,
+          "trooth_input": [
+            "prometheus",
+            "json",
+            "sql"
+          ]
+        },
+        {
+          "id": "lightdash",
+          "license": "MIT",
+          "name": "Lightdash",
+          "notes": "Metrics defined in code, which suits a versioned method.",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        },
+        {
+          "id": "rilldata",
+          "license": "Apache-2.0",
+          "name": "Rill",
+          "notes": "Reads Parquet with no warehouse at all.",
+          "self_host": true,
+          "trooth_input": [
+            "parquet",
+            "duckdb"
+          ]
+        },
+        {
+          "id": "chartbrew",
+          "license": "MIT",
+          "name": "Chartbrew",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "sql"
+          ]
+        },
+        {
+          "id": "opensearch-dashboards",
+          "license": "Apache-2.0",
+          "name": "OpenSearch Dashboards",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "querybook",
+          "license": "Apache-2.0",
+          "name": "Querybook",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        },
+        {
+          "id": "blazer",
+          "license": "MIT",
+          "name": "Blazer",
+          "notes": "Smallest possible SQL dashboard; a single Rails mount.",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        }
+      ],
+      "type": "bi-dashboard",
+      "what": "Point-and-click dashboards over a dataset, built for people who do not write code."
+    },
+    {
+      "tools": [
+        {
+          "id": "evidence",
+          "license": "MIT",
+          "name": "Evidence.dev",
+          "notes": "Markdown with SQL in it, builds to a static site. Closest in spirit to how we publish.",
+          "self_host": true,
+          "trooth_input": [
+            "sql",
+            "parquet",
+            "csv"
+          ]
+        },
+        {
+          "id": "observable-framework",
+          "license": "ISC",
+          "name": "Observable Framework",
+          "notes": "Static build, data loaders in any language, excellent charts.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv",
+            "parquet"
+          ]
+        },
+        {
+          "id": "quarto",
+          "license": "MIT",
+          "name": "Quarto",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json",
+            "parquet"
+          ]
+        },
+        {
+          "id": "jupyter",
+          "license": "BSD-3-Clause",
+          "name": "JupyterLab",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv",
+            "parquet"
+          ]
+        },
+        {
+          "id": "marimo",
+          "license": "Apache-2.0",
+          "name": "marimo",
+          "notes": "Reactive notebooks that are plain Python files, so they diff properly.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv",
+            "parquet"
+          ]
+        },
+        {
+          "id": "streamlit",
+          "license": "Apache-2.0",
+          "name": "Streamlit",
+          "notes": "Fastest path from a JSON feed to something clickable.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv",
+            "parquet"
+          ]
+        },
+        {
+          "id": "dash",
+          "license": "MIT",
+          "name": "Plotly Dash",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "panel",
+          "license": "BSD-3-Clause",
+          "name": "HoloViz Panel",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv",
+            "parquet"
+          ]
+        },
+        {
+          "id": "shiny",
+          "license": "MIT",
+          "name": "Shiny",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        },
+        {
+          "id": "voila",
+          "license": "BSD-3-Clause",
+          "name": "Voila",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        }
+      ],
+      "type": "notebook-and-report",
+      "what": "Narrative output where prose and computed figures live together and rebuild on a schedule."
+    },
+    {
+      "tools": [
+        {
+          "id": "vega-lite",
+          "license": "BSD-3-Clause",
+          "name": "Vega-Lite",
+          "notes": "Declarative spec; a chart becomes a JSON object we could publish alongside the data.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "echarts",
+          "license": "Apache-2.0",
+          "name": "Apache ECharts",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "chartjs",
+          "license": "MIT",
+          "name": "Chart.js",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "plotly-js",
+          "license": "MIT",
+          "name": "Plotly.js",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "d3",
+          "license": "ISC",
+          "name": "D3",
+          "notes": "What Trooth Console's SVG generation is modelled on, without the runtime.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "uplot",
+          "license": "MIT",
+          "name": "uPlot",
+          "notes": "Tiny and fast; right choice for long freshness time series.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "observable-plot",
+          "license": "ISC",
+          "name": "Observable Plot",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "recharts",
+          "license": "MIT",
+          "name": "Recharts",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "nivo",
+          "license": "MIT",
+          "name": "nivo",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "frappe-charts",
+          "license": "MIT",
+          "name": "Frappe Charts",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        }
+      ],
+      "type": "charting-library",
+      "what": "Libraries for drawing the chart yourself, when you are embedding rather than adopting a tool."
+    },
+    {
+      "tools": [
+        {
+          "id": "ag-grid-community",
+          "license": "MIT",
+          "name": "AG Grid Community",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "tanstack-table",
+          "license": "MIT",
+          "name": "TanStack Table",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "tabulator",
+          "license": "MIT",
+          "name": "Tabulator",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "datatables",
+          "license": "MIT",
+          "name": "DataTables",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "glide-data-grid",
+          "license": "MIT",
+          "name": "Glide Data Grid",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "perspective",
+          "license": "Apache-2.0",
+          "name": "Perspective",
+          "notes": "Streaming pivot grid in WebAssembly; handles the archive without a server.",
+          "self_host": true,
+          "trooth_input": [
+            "parquet",
+            "json"
+          ]
+        },
+        {
+          "id": "handsontable-ce",
+          "license": "MIT",
+          "name": "Handsontable Community",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        },
+        {
+          "id": "revogrid",
+          "license": "MIT",
+          "name": "RevoGrid",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        }
+      ],
+      "type": "table-and-grid",
+      "what": "Dense tabular output, which is what most people actually want from a catalog or a change feed."
+    },
+    {
+      "tools": [
+        {
+          "id": "leaflet",
+          "license": "BSD-2-Clause",
+          "name": "Leaflet",
+          "self_host": true,
+          "trooth_input": [
+            "geojson"
+          ]
+        },
+        {
+          "id": "maplibre-gl",
+          "license": "BSD-3-Clause",
+          "name": "MapLibre GL JS",
+          "self_host": true,
+          "trooth_input": [
+            "geojson",
+            "pmtiles"
+          ]
+        },
+        {
+          "id": "openlayers",
+          "license": "BSD-2-Clause",
+          "name": "OpenLayers",
+          "self_host": true,
+          "trooth_input": [
+            "geojson"
+          ]
+        },
+        {
+          "id": "deckgl",
+          "license": "MIT",
+          "name": "deck.gl",
+          "notes": "Right choice for large point sets like seismic or AIS.",
+          "self_host": true,
+          "trooth_input": [
+            "geojson",
+            "json"
+          ]
+        },
+        {
+          "id": "keplergl",
+          "license": "MIT",
+          "name": "kepler.gl",
+          "self_host": true,
+          "trooth_input": [
+            "geojson",
+            "csv"
+          ]
+        },
+        {
+          "id": "qgis",
+          "license": "GPL-2.0-or-later",
+          "name": "QGIS",
+          "notes": "Desktop; for analysis rather than publishing.",
+          "self_host": true,
+          "trooth_input": [
+            "geojson",
+            "csv"
+          ]
+        },
+        {
+          "id": "turf",
+          "license": "MIT",
+          "name": "Turf.js",
+          "notes": "Geometry operations, not a UI, but needed by every map above.",
+          "self_host": true,
+          "trooth_input": [
+            "geojson"
+          ]
+        },
+        {
+          "id": "protomaps",
+          "license": "BSD-3-Clause",
+          "name": "Protomaps",
+          "notes": "Basemap tiles from a single file on R2, so no tile server to pay for.",
+          "self_host": true,
+          "trooth_input": [
+            "pmtiles"
+          ]
+        }
+      ],
+      "type": "map-and-geo",
+      "what": "Geographic output, needed by most of the government, transport, and environment feeds."
+    },
+    {
+      "tools": [
+        {
+          "id": "appsmith",
+          "license": "Apache-2.0",
+          "name": "Appsmith",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "sql"
+          ]
+        },
+        {
+          "id": "tooljet",
+          "license": "AGPL-3.0-only",
+          "name": "ToolJet",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "sql"
+          ]
+        },
+        {
+          "id": "budibase",
+          "license": "GPL-3.0-only",
+          "name": "Budibase",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "sql"
+          ]
+        },
+        {
+          "id": "refine",
+          "license": "MIT",
+          "name": "Refine",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "react-admin",
+          "license": "MIT",
+          "name": "React Admin",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "directus",
+          "license": "BSL-1.1",
+          "name": "Directus",
+          "notes": "Source-available rather than open source. Check the licence before commercial use.",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        },
+        {
+          "id": "nocodb",
+          "license": "AGPL-3.0-only",
+          "name": "NocoDB",
+          "self_host": true,
+          "trooth_input": [
+            "sql",
+            "csv"
+          ]
+        },
+        {
+          "id": "baserow",
+          "license": "MIT",
+          "name": "Baserow",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        },
+        {
+          "id": "grist",
+          "license": "Apache-2.0",
+          "name": "Grist",
+          "notes": "Spreadsheet with real formulas; good for hand-checking a scorecard.",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        }
+      ],
+      "type": "admin-panel-internal-tool",
+      "what": "Build a small internal app over a feed without writing a front end."
+    },
+    {
+      "tools": [
+        {
+          "id": "uptime-kuma",
+          "license": "MIT",
+          "name": "Uptime Kuma",
+          "notes": "Simplest self-hosted status page; can poll our status JSON directly.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "http"
+          ]
+        },
+        {
+          "id": "gatus",
+          "license": "Apache-2.0",
+          "name": "Gatus",
+          "notes": "Config as YAML, which fits how the catalog already works.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "http"
+          ]
+        },
+        {
+          "id": "cachet",
+          "license": "MIT",
+          "name": "Cachet",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "statping-ng",
+          "license": "GPL-3.0-only",
+          "name": "Statping-ng",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "netdata",
+          "license": "GPL-3.0-only",
+          "name": "Netdata",
+          "self_host": true,
+          "trooth_input": [
+            "prometheus"
+          ]
+        },
+        {
+          "id": "zabbix",
+          "license": "AGPL-3.0-only",
+          "name": "Zabbix",
+          "self_host": true,
+          "trooth_input": [
+            "prometheus",
+            "json"
+          ]
+        },
+        {
+          "id": "prometheus-alertmanager",
+          "license": "Apache-2.0",
+          "name": "Prometheus Alertmanager",
+          "self_host": true,
+          "trooth_input": [
+            "prometheus"
+          ]
+        }
+      ],
+      "type": "status-and-uptime",
+      "what": "The output shape for freshness and availability, which is most of what a status page is."
+    },
+    {
+      "tools": [
+        {
+          "id": "ntfy",
+          "license": "Apache-2.0",
+          "name": "ntfy",
+          "notes": "Push to phone from a webhook in one line. The cheapest useful output we could document.",
+          "self_host": true,
+          "trooth_input": [
+            "webhook"
+          ]
+        },
+        {
+          "id": "apprise",
+          "license": "BSD-3-Clause",
+          "name": "Apprise",
+          "notes": "One call fans out to eighty notification services.",
+          "self_host": true,
+          "trooth_input": [
+            "webhook"
+          ]
+        },
+        {
+          "id": "gotify",
+          "license": "MIT",
+          "name": "Gotify",
+          "self_host": true,
+          "trooth_input": [
+            "webhook"
+          ]
+        },
+        {
+          "id": "novu",
+          "license": "MIT",
+          "name": "Novu",
+          "self_host": true,
+          "trooth_input": [
+            "webhook"
+          ]
+        },
+        {
+          "id": "alertmanager",
+          "license": "Apache-2.0",
+          "name": "Alertmanager",
+          "self_host": true,
+          "trooth_input": [
+            "prometheus"
+          ]
+        },
+        {
+          "id": "huginn",
+          "license": "MIT",
+          "name": "Huginn",
+          "notes": "Agent-style rules over feeds; predates the current agent wave by a decade.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "rss"
+          ]
+        }
+      ],
+      "type": "alerting-and-notification",
+      "what": "Output that arrives rather than being visited. For change and revision feeds this is the real UI."
+    },
+    {
+      "tools": [
+        {
+          "id": "jq",
+          "license": "MIT",
+          "name": "jq",
+          "notes": "The baseline. If a feed is not pleasant in jq, the shape is wrong.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "visidata",
+          "license": "GPL-3.0-only",
+          "name": "VisiData",
+          "notes": "Explore a snapshot archive interactively in a terminal.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv",
+            "parquet"
+          ]
+        },
+        {
+          "id": "duckdb-cli",
+          "license": "MIT",
+          "name": "DuckDB CLI",
+          "notes": "Query the published archive with no install beyond one binary.",
+          "self_host": true,
+          "trooth_input": [
+            "parquet",
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "csvlens",
+          "license": "MIT",
+          "name": "csvlens",
+          "self_host": true,
+          "trooth_input": [
+            "csv"
+          ]
+        },
+        {
+          "id": "textual",
+          "license": "MIT",
+          "name": "Textual",
+          "notes": "For building a terminal console if one is ever wanted.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "rich",
+          "license": "MIT",
+          "name": "Rich",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "gum",
+          "license": "MIT",
+          "name": "gum",
+          "notes": "Shell-script UIs; useful in runbooks.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        }
+      ],
+      "type": "terminal-and-cli",
+      "what": "Output for operators and for agents that read text. Underrated and effectively free to support."
+    },
+    {
+      "tools": [
+        {
+          "id": "astro",
+          "license": "MIT",
+          "name": "Astro",
+          "notes": "What the Trooth site and console already use.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "md"
+          ]
+        },
+        {
+          "id": "mkdocs-material",
+          "license": "MIT",
+          "name": "MkDocs Material",
+          "self_host": true,
+          "trooth_input": [
+            "md"
+          ]
+        },
+        {
+          "id": "docusaurus",
+          "license": "MIT",
+          "name": "Docusaurus",
+          "self_host": true,
+          "trooth_input": [
+            "md"
+          ]
+        },
+        {
+          "id": "vitepress",
+          "license": "MIT",
+          "name": "VitePress",
+          "self_host": true,
+          "trooth_input": [
+            "md"
+          ]
+        },
+        {
+          "id": "hugo",
+          "license": "Apache-2.0",
+          "name": "Hugo",
+          "self_host": true,
+          "trooth_input": [
+            "md",
+            "json"
+          ]
+        },
+        {
+          "id": "eleventy",
+          "license": "MIT",
+          "name": "Eleventy",
+          "self_host": true,
+          "trooth_input": [
+            "md",
+            "json"
+          ]
+        },
+        {
+          "id": "quartz",
+          "license": "MIT",
+          "name": "Quartz",
+          "self_host": true,
+          "trooth_input": [
+            "md"
+          ]
+        }
+      ],
+      "type": "static-site-and-docs",
+      "what": "How the method, the catalog, and the cards get published at zero running cost."
+    },
+    {
+      "tools": [
+        {
+          "id": "shields-io",
+          "license": "CC0-1.0",
+          "name": "Shields.io",
+          "notes": "Self-hostable badge renderer. The emblem endpoint can speak its schema.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "badgen",
+          "license": "ISC",
+          "name": "Badgen",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "simple-icons",
+          "license": "CC0-1.0",
+          "name": "Simple Icons",
+          "self_host": true,
+          "trooth_input": [
+            "svg"
+          ]
+        },
+        {
+          "id": "inline-svg",
+          "license": "n/a",
+          "name": "Inline SVG (no library)",
+          "notes": "What the Modafied emblem actually is. Zero dependencies, zero runtime, works in email.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "oembed",
+          "license": "n/a",
+          "name": "oEmbed",
+          "notes": "A standard worth supporting so cards unfurl in Slack and Notion.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        }
+      ],
+      "type": "embeddable-widget",
+      "what": "Small marks that travel onto other people's pages. This is how the Modafied emblem spreads."
+    },
+    {
+      "tools": [
+        {
+          "id": "duckdb-wasm",
+          "license": "MIT",
+          "name": "DuckDB-Wasm",
+          "notes": "Query the archive in the browser with no backend. The cheapest 'try it' we could ship.",
+          "self_host": true,
+          "trooth_input": [
+            "parquet"
+          ]
+        },
+        {
+          "id": "datasette",
+          "license": "Apache-2.0",
+          "name": "Datasette",
+          "notes": "Publishes a database as a browsable, queryable, API-backed site.",
+          "self_host": true,
+          "trooth_input": [
+            "sqlite",
+            "csv"
+          ]
+        },
+        {
+          "id": "malloy",
+          "license": "MIT",
+          "name": "Malloy",
+          "self_host": true,
+          "trooth_input": [
+            "parquet",
+            "sql"
+          ]
+        },
+        {
+          "id": "sqlpad",
+          "license": "MIT",
+          "name": "SQLPad",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        },
+        {
+          "id": "cube",
+          "license": "Apache-2.0",
+          "name": "Cube",
+          "notes": "Semantic layer, if the six dimensions ever need one definition across many tools.",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        }
+      ],
+      "type": "sql-and-exploration",
+      "what": "For the buyer who wants the archive, not a picture of it."
+    },
+    {
+      "tools": [
+        {
+          "id": "mermaid",
+          "license": "MIT",
+          "name": "Mermaid",
+          "notes": "Renders in GitHub and most docs tools with no build step.",
+          "self_host": true,
+          "trooth_input": [
+            "text"
+          ]
+        },
+        {
+          "id": "cytoscape",
+          "license": "MIT",
+          "name": "Cytoscape.js",
+          "notes": "Best fit for an interactive primary/derivative lineage graph.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "sigma-js",
+          "license": "MIT",
+          "name": "Sigma.js",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "antv-g6",
+          "license": "MIT",
+          "name": "AntV G6",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "graphviz",
+          "license": "EPL-1.0",
+          "name": "Graphviz",
+          "notes": "Good for a static lineage diagram generated at build time.",
+          "self_host": true,
+          "trooth_input": [
+            "text"
+          ]
+        },
+        {
+          "id": "gephi",
+          "license": "GPL-3.0-only",
+          "name": "Gephi",
+          "notes": "Desktop analysis of the lineage graph.",
+          "self_host": true,
+          "trooth_input": [
+            "csv"
+          ]
+        }
+      ],
+      "type": "diagram-and-graph",
+      "what": "For lineage, which is a graph and reads badly as a table."
+    },
+    {
+      "tools": [
+        {
+          "id": "luckysheet",
+          "license": "MIT",
+          "name": "Luckysheet",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        },
+        {
+          "id": "x-spreadsheet",
+          "license": "MIT",
+          "name": "x-spreadsheet",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        },
+        {
+          "id": "sheetjs-ce",
+          "license": "Apache-2.0",
+          "name": "SheetJS Community",
+          "notes": "Writing a real .xlsx export is a one-day job and would unblock several buyers.",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        },
+        {
+          "id": "univer",
+          "license": "Apache-2.0",
+          "name": "Univer",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
+        },
+        {
+          "id": "ethercalc",
+          "license": "CPAL-1.0",
+          "name": "EtherCalc",
+          "self_host": true,
+          "trooth_input": [
+            "csv"
+          ]
+        }
+      ],
+      "type": "spreadsheet",
+      "what": "The output format most business buyers will actually open, whatever we would prefer."
+    },
+    {
+      "tools": [
+        {
+          "id": "sse",
+          "license": "n/a",
+          "name": "Server-Sent Events",
+          "notes": "Simplest streaming transport; works through the Worker with no extra service.",
+          "self_host": true,
+          "trooth_input": [
+            "http"
+          ]
+        },
+        {
+          "id": "grafana-live",
+          "license": "AGPL-3.0-only",
+          "name": "Grafana Live",
+          "self_host": true,
+          "trooth_input": [
+            "websocket"
+          ]
+        },
+        {
+          "id": "perspective-stream",
+          "license": "Apache-2.0",
+          "name": "Perspective (streaming)",
+          "self_host": true,
+          "trooth_input": [
+            "arrow",
+            "websocket"
+          ]
+        },
+        {
+          "id": "centrifugo",
+          "license": "MIT",
+          "name": "Centrifugo",
+          "self_host": true,
+          "trooth_input": [
+            "websocket"
+          ]
+        },
+        {
+          "id": "mosquitto",
+          "license": "EPL-2.0",
+          "name": "Eclipse Mosquitto",
+          "notes": "For the industrial and sensor buyers who expect MQTT rather than HTTP.",
+          "self_host": true,
+          "trooth_input": [
+            "mqtt"
+          ]
+        }
+      ],
+      "type": "realtime-stream",
+      "what": "For the sub-minute feeds where a page that refreshes every five minutes is useless."
+    }
+  ]
+}

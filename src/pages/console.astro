@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Emblem from '../components/Emblem.astro';
+import { p } from '../utils/paths';
+import registry from '../data/registry.json';
+import fs from 'node:fs';
+import path from 'node:path';
+
+/**
+ * Trooth Console (ADR-0011). Free, no account, no server.
+ *
+ * Built entirely at build time from published JSON, rendered as inline SVG and plain HTML.
+ * No chart library, no client JavaScript, no per-viewer cost, which is the only shape a free
+ * dashboard can take under the $50/month cap. Nothing appears here that a published artifact
+ * does not back.
+ */
+
+const SCORECARD_DIR = path.resolve('./public/scorecards');
+const EMBLEM_DIR = path.resolve('./public/emblems');
+
+function readJson(file: string) {
+  try { return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf-8')) : null; }
+  catch { return null; }
+}
+
+const emblemIndex = readJson(path.join(EMBLEM_DIR, 'index.json')) ?? { counts: {}, total: 0 };
+const manifest = readJson(path.join(SCORECARD_DIR, 'manifest.json'));
+
+const sources = (registry.groups as any[])
+  .flatMap((g) => g.entries)
+  .filter((e: any) => e.status === 'promoted')
+  .map((e: any) => ({
+    entry: e,
+    card: readJson(path.join(SCORECARD_DIR, `${e.id}.json`)),
+    emblem: readJson(path.join(EMBLEM_DIR, `${e.id}.json`)),
+  }))
+  .filter((s) => s.card);
+
+const DIMS: [string, string, (d: any) => number | null, string][] = [
+  ['freshness_lag', 'Freshness p95', (d) => d?.freshness_lag?.p95_seconds ?? null, 's'],
+  ['revision_behavior', 'Revision rate', (d) => d?.revision_behavior?.revision_rate_pct ?? null, '%'],
+  ['correction_latency', 'Correction p95', (d) => d?.correction_latency?.p95_seconds ?? null, 's'],
+  ['completeness_by_segment', 'Completeness', (d) => d?.completeness_by_segment?.overall_pct ?? null, '%'],
+  ['schema_stability', 'Schema stable', (d) => d?.schema_stability?.stable_snapshots_pct ?? null, '%'],
+  ['internal_consistency', 'Consistency', (d) => d?.internal_consistency?.consistent_snapshots_pct ?? null, '%'],
+];
+
+function fmt(value: number | null, unit: string) {
+  if (value === null || value === undefined) return null;
+  if (unit === 's') {
+    if (value < 90) return `${Math.round(value)}s`;
+    if (value < 5400) return `${(value / 60).toFixed(1)}m`;
+    return `${(value / 3600).toFixed(1)}h`;
+  }
+  return `${Number(value).toFixed(1)}%`;
+}
+
+const rated = emblemIndex.counts?.rated ?? 0;
+const provisional = emblemIndex.counts?.provisional ?? 0;
+const unrated = emblemIndex.counts?.unrated ?? 0;
+
+const stats: [string, string][] = [
+  ['Connectors tracked', String(registry.total)],
+  ['Live in catalog', String(registry.by_status?.promoted ?? 0)],
+  ['Rated', String(rated)],
+  ['Provisional', String(provisional)],
+  ['Unrated', String(unrated)],
+  ['Last published', manifest?.published_at ?? 'never'],
+];
+
+const artifacts: [string, string, string][] = [
+  ['Scorecard per source', '/scorecards/<id>.json', 'live'],
+  ['Scorecard manifest', '/scorecards/manifest.json', 'live'],
+  ['Emblem per connector', '/emblems/<id>.json', 'live'],
+  ['Emblem index', '/emblems/index.json', 'live'],
+  ['Prometheus metrics', '/metrics', 'Phase 1'],
+  ['Snapshot archive (Parquet)', '/archive/', 'Phase 2'],
+];
+---
+
+<Layout
+  title="Console"
+  description="A free static dashboard over the Trooth benchmark. No account, no server, no cost."
+  activeNav="console"
+>
+  <section style="margin-bottom: 2rem;">
+    <div style="display:flex; align-items:baseline; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.6rem;">
+      <h1 style="font-size:2.25rem; font-weight:800;">Console</h1>
+      <span class="badge-tag">Free, no account</span>
+    </div>
+    <p style="font-size:1.1rem; color:var(--text-muted); max-width:760px;">
+      Every number here is built from published JSON that anyone can download. No login, no
+      client-side framework, nothing computed in your browser. If you would rather use a tool you
+      already run, the same artifacts feed <a href={p('/connect')}>108 open source dashboards</a>.
+    </p>
+  </section>
+
+  {rated === 0 && (
+    <section style="border:1px solid var(--accent-amber); background:rgba(251,191,36,0.08); border-radius:10px; padding:1.25rem 1.5rem; margin-bottom:2.5rem;">
+      <h2 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">
+        Nothing is rated yet, and that is the honest answer
+      </h2>
+      <p style="color:var(--text-muted); margin-bottom:0.6rem;">
+        All {emblemIndex.total} connectors currently read <strong>unrated</strong>. Two real
+        reasons, both being fixed before any grade appears here:
+      </p>
+      <ul style="margin-left:1.25rem; color:var(--text-muted); display:flex; flex-direction:column; gap:0.3rem;">
+        <li>The scoring job still returns fixed constants where measurements belong. A grade computed from those would be decoration.</li>
+        <li>The archive does not yet cover a long enough window for the percentiles to mean anything.</li>
+      </ul>
+      <p style="color:var(--text-muted); margin-top:0.6rem;">
+        Publishing a confident letter grade today would be the exact failure this project exists
+        to argue against. The count of rated connectors is the real progress bar.
+      </p>
+    </section>
+  )}
+
+  <section style="margin-bottom:2.5rem;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:1rem;">
+      {stats.map(([label, value]) => (
+        <div style="border:1px solid var(--border); border-radius:10px; padding:0.9rem 1rem; background:var(--bg-card);">
+          <div style="font-size:0.75rem; color:var(--text-subtle); text-transform:uppercase; letter-spacing:0.06em;">{label}</div>
+          <div style="font-size:1.3rem; font-weight:800; margin-top:0.25rem; word-break:break-word;">{value}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Six dimensions, side by side</h2>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Emblem</th>
+            {DIMS.map(([, label]) => <th style="white-space:nowrap;">{label}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {sources.map(({ entry, card, emblem }) => (
+            <tr>
+              <td style="white-space:nowrap;">
+                <a href={p(`/scorecards/${entry.id}`)} style="font-weight:600;">{entry.name}</a>
+              </td>
+              <td>
+                {emblem
+                  ? <Emblem emblem={emblem} size="sm" href={p(`/scorecards/${entry.id}`)} />
+                  : <span style="color:var(--text-subtle);">none</span>}
+              </td>
+              {DIMS.map(([key, , pick, unit]) => {
+                const measured = emblem?.dimensions?.[key]?.status === 'ok';
+                const shown = fmt(pick(card.dimensions), unit);
+                return (
+                  <td style="white-space:nowrap;">
+                    {measured && shown
+                      ? <span>{shown}</span>
+                      : <span style="color:var(--text-subtle);" title="Not enough samples for this dimension yet">insufficient data</span>}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-subtle); margin-top:0.75rem;">
+      A cell reading <em>insufficient data</em> means the dimension has fewer samples than the
+      method requires. It is never drawn as a zero, because zero is a measurement and this is the
+      absence of one.
+    </p>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">How the emblem reads</h2>
+    <p style="color:var(--text-muted); max-width:760px; margin-bottom:1rem;">
+      Six bars, one per dimension, always shown. A letter grade appears only when all six are
+      measured, and it comes from a published equal-weighted formula rather than a private one.
+      A dotted border means provisional: measured, but over a window shorter than the method
+      requires. Grey bars mean no data. MCP servers are graded by
+      <a href="https://alexchouck-hash.github.io/modafied-site/">Modafied</a>, not by Trooth,
+      because Trooth is itself an MCP server.
+    </p>
+  </section>
+
+  <section style="margin-bottom:3rem;">
+    <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">Take the data instead</h2>
+    <p style="color:var(--text-muted); margin-bottom:1rem; max-width:760px;">
+      The console is a convenience, not the product. Everything it draws is public:
+    </p>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Artifact</th><th>Path</th><th>Status</th></tr></thead>
+        <tbody>
+          {artifacts.map(([name, pathStr, status]) => (
+            <tr>
+              <td>{name}</td>
+              <td><code>{pathStr}</code></td>
+              <td>{status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Layout>
