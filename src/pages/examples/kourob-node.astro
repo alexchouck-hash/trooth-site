@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { p } from '../../utils/paths';
+---
+
+<Layout title="Example: a KouroB node fed by Trooth" activeNav="examples" description="Feed Trooth envelopes and scorecards into a KouroB node, ask it questions that answer with a citation and a signed receipt, and watch it from a Streamlit dashboard.">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div style="margin-bottom: 3rem;">
+      <div class="badge badge-blue" style="margin-bottom: 1rem;">Example</div>
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 0.75rem;">
+        A KouroB node fed by Trooth
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
+        Trooth says where a number came from and how late it is. A KouroB node holds those numbers as events, answers questions from them with a citation and a signed receipt, and gets cheaper at each question the more it is asked. This page walks through the example that ships in the KouroB repository.
+      </p>
+    </div>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">Two provenance chains, one citation</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        Every Trooth response is an envelope: the payload, the primary source with its licence and timestamps, the freshness lag in seconds, a SHA-256 content hash, and an Ed25519 signature. A <a href="https://github.com/alexchouck-hash/kourob" target="_blank" rel="noopener">KouroB</a> node is a metered, provenance-tracked cell that agents attach to over MCP. Its in-port for Trooth turns each envelope into one <code>observation.v1</code> event and each published scorecard into one <code>scorecard.v1</code> event, keeping the payload whole and lifting the provenance beside it.
+      </p>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        When the node answers, the answer cites the event. The event carries Trooth's content hash and signature. So an agent that asked the node can trace its answer back through the node's receipt chain to the exact Trooth snapshot, and verify that snapshot with <code>trooth.verify</code>.
+      </p>
+      <p style="color: var(--text-muted);">
+        One thing is deliberately not carried across. Trooth quarantines upstream free text as a prompt-injection risk (<code>untrusted_text</code>). The node does not re-admit it into the store its model tiers read; the event records how many strings were dropped.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">Build the node</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The example builds from committed fixtures in under a second: one NWS envelope from the Trooth schema examples and the five scorecards published on this site. Add <code>--live</code> to pull today's scorecards.
+      </p>
+      <pre><code>git clone https://github.com/alexchouck-hash/kourob
+cd kourob
+uv sync --extra ui
+uv run python examples/trooth-node/build.py</code></pre>
+      <p style="color: var(--text-muted); margin: 1rem 0;">Then ask it. Both questions below answer at the cheapest tier: a rule, a SQL query, no model, a citation.</p>
+      <pre><code>uv run kourob query "latest observation at KJFK" --node examples/trooth-node/cell
+
+KJFK at 2026-09-10T18:51:00Z: 21.1 C, humidity 65%, wind 14.5 km/h, Partly Cloudy.
+Source nws (https://api.weather.gov/stations/KJFK/observations/latest),
+412.0s behind the station, content sha256:e3b0c442... [evt_01M2EK...]
+
+  tier        T0 (derived)
+  citations   evt_01M2EK...
+  receipt     rcpt_01M2EK...
+
+uv run kourob query "how fresh is open-meteo" --node examples/trooth-node/cell</code></pre>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">Keep feeding it</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        A file, a directory of envelopes or scorecards, or this site's URL. The node's gate deduplicates on <code>(source_id, snapshot_id)</code> for observations and <code>(source_id, generated_at)</code> for scorecards, so re-ingesting is free, and a changed snapshot under the same key is a contradiction that lands in quarantine rather than silently in the store.
+      </p>
+      <pre><code>uv run kourob ingest path/to/envelopes --from-trooth --node examples/trooth-node/cell
+uv run kourob ingest https://alexchouck-hash.github.io/trooth-site --from-trooth --node examples/trooth-node/cell</code></pre>
+      <p style="color: var(--text-muted); margin-top: 1rem;">
+        Envelopes come from files today because the <code>/fetch</code> endpoint is not public yet. The port already has <code>fetch_envelope</code> for when it is.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">Watch it</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The dashboard is Streamlit, the common open-source choice for a Python data app. It is deliberately generic: it reads the node through its public API, never its files, and asks questions through the same path as any other caller, so every question it puts to the node leaves a receipt. Point it at a different cell and it shows that cell.
+      </p>
+      <pre><code>uv run streamlit run examples/trooth-node/dashboard.py -- examples/trooth-node/cell</code></pre>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.25rem;">
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Observations</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Each envelope with its source, licence, timestamps, freshness lag, hash and key id.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Scorecards</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Freshness p95 and completeness per source, from the cards on this site.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Serving</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Requests by tier and cost per request by day: the node getting cheaper.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Chain</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Whether the receipt chain verifies, and the last receipts with their citations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">A set of nodes, and the provider outputs</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The second example connects four nodes. Three hold data from Trooth sources (NWS and Open-Meteo weather at KJFK, the USGS past-hour earthquake feed, the BLS consumer price index). The fourth, a desk, holds nothing: it declares which questions belong where and keeps a route to each node. Ask the desk about an earthquake and it bridges once to the seismic node, returns that node's cited answer together with the direct route, and refers on the next call. Every hop leaves a receipt, and the receipts chain across nodes, so the price and cost of the whole path are one table.
+      </p>
+      <pre><code>uv run python examples/trooth-set/build.py
+uv run kourob query "largest earthquake in the last hour" --node examples/trooth-set/cells/trooth-desk
+uv run streamlit run examples/trooth-set/dashboard.py -- examples/trooth-set/cells</code></pre>
+      <p style="color: var(--text-muted); margin: 1rem 0;">
+        A KouroB node is also a feed in the sense of the <a href={p('/providers')}>provider page</a>: it answers typed questions from held events, meters every request, and signs every receipt. So <code>kourob publish --trooth</code> writes the two documents a provider needs, in Trooth's schemas, from the node's own records:
+      </p>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; line-height: 1.7; margin-bottom: 1rem;">
+        <li><strong>A catalog entry</strong> (<code>schema/catalog/v0.1</code>): the node's held schemas as fields, its held sources as lineage, their licence, and a metered cost with the node's capacity window.</li>
+        <li><strong>A provider scorecard</strong> (<code>schema/scorecard/v0.1</code>): the six dimensions computed from the node's request log, receipts, quarantine and outcomes. Freshness lag is answer time minus the newest cited event's time; completeness is in-scope requests answered; internal consistency counts contradictions the node's gate quarantined; revisions and correction latency come from settled outcomes.</li>
+      </ul>
+      <p style="color: var(--text-muted);">
+        Both validate against the schemas in this repository. The set dashboard shows them per node next to the node's meter report, so a node and a public source read on one page. The envelopes in that example are snapshots of the real sources signed by the operator's local key, marked <code>key_id: kourob-local</code>, because <code>/fetch</code> is not public yet.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">A network, with Modafied emblems</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The third example is seven nodes: one per Trooth feed (NWS, Open-Meteo, USGS, BLS, FRED), a weather desk over the two weather nodes, and a front desk over all of them, so a weather question crosses three nodes and three receipts. Each source node also holds the feed's <a href="https://modafied.org/" target="_blank" rel="noopener">Modafied</a> emblem. Modafied is the independent benchmark funded by Trooth; the node's in-port verifies each attestation's scorecard hash against Modafied's manifest and fails closed, then keeps the notice with the emblem. The network generates a credits page from what it holds: every feed with its licence and attribution, every Trooth scorecard page, every Modafied emblem in the embed form Modafied prescribes.
+      </p>
+      <p style="color: var(--text-muted);">
+        These are the emblems as Modafied publishes them today, for the five feeds the network holds. They are Modafied's files, linked to Modafied's pages, and they change when the measurement changes.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0;">
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/nws" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/nws.svg" alt="Modafied benchmark emblem for National Weather Service API" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/open-meteo" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/open-meteo.svg" alt="Modafied benchmark emblem for Open-Meteo Weather API" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/usgs-earthquake" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/usgs-earthquake.svg" alt="Modafied benchmark emblem for USGS Earthquake Hazards Program" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/bls" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/bls.svg" alt="Modafied benchmark emblem for Bureau of Labor Statistics Public Data API" height="56" /></a>
+        <a href="https://alexchouck-hash.github.io/modafied-site/scorecards/fred" target="_blank" rel="noopener"><img src="https://alexchouck-hash.github.io/modafied-site/v1/emblems/fred.svg" alt="Modafied benchmark emblem for Federal Reserve Economic Data (FRED)" height="56" /></a>
+      </div>
+      <p style="color: var(--text-subtle); font-size: 0.85rem;">
+        Mechanically computed from public snapshots. This is a measurement, not an endorsement, a verification, or a partnership. It cannot be purchased and it changes without notice when the measurement changes.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">What is not built yet</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; line-height: 1.7;">
+        <li>Nothing settles an observation answer. The natural correction is a Trooth revision: the same source timestamp with a different content hash. The comparator is tracked in the KouroB queue.</li>
+        <li>The <code>/fetch</code> endpoint is not public, so envelopes are ingested from files.</li>
+        <li>The dashboards poll the store. When the node's event tap ships they will subscribe instead.</li>
+        <li>Listing a node in this catalog for real is a pull request to the catalog directory; the entry is generated, the submission is the operator's.</li>
+      </ul>
+    </section>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="https://github.com/alexchouck-hash/kourob/tree/main/examples/trooth-node" target="_blank" rel="noopener" class="btn btn-primary">The example on GitHub &rarr;</a>
+      <a href={p('/docs#envelope')} class="btn btn-secondary">Envelope schema</a>
+      <a href={p('/scorecards')} class="btn btn-secondary">Public scorecards</a>
+    </div>
+  </div>
+</Layout>

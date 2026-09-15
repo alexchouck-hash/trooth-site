@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { p } from '../utils/paths';
+---
+
+<Layout title="About" activeNav="about" description="Trooth is the pipe: one connector, signed envelopes, public scorecards. KouroB is the cell: small, metered, provenance-tracked nodes that hold what came through the pipe and answer from it.">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <div style="margin-bottom: 3rem;">
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 0.75rem;">
+        About
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
+        Two open-source projects by the same author, built to fit together. Trooth is the pipe. KouroB is the cell.
+      </p>
+    </div>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">Trooth, in one paragraph</h2>
+      <p style="color: var(--text-muted);">
+        An application or agent installs one MCP server or calls one REST API. Trooth resolves each request to verified upstream sources, fetches the data, and wraps the response in a provenance envelope: the source's identity and licence, the source timestamp and the fetch time, the freshness lag in seconds, a SHA-256 hash of the bytes, and an Ed25519 signature. Every source in the catalog gets a public scorecard on six mechanical dimensions. Data owners list feeds in the same catalog, set their own price, and are metered per request. See the <a href={p('/method')}>methodology</a> and the <a href={p('/providers')}>provider page</a>.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">What KouroB is</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        <a href="https://github.com/alexchouck-hash/kourob" target="_blank" rel="noopener">KouroB</a> is an open-source structure for building <strong>nodes</strong>: small, specialised, metered units of knowledge and capability that agents attach to. A node owns one narrow slice of the world as typed events, serves questions about it over standard ports (MCP today; A2A and REST are on the way), and refuses or refers anything outside its declared scope. Every request leaves a signed receipt, so an answer can be traced back through every node and every source that produced it, and its cost can be metered along the whole chain.
+      </p>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        The project's stated goal, from its own GOAL.md:
+      </p>
+      <blockquote style="border-left: 3px solid var(--primary); padding: 0.5rem 1rem; color: var(--text-main); margin: 0 0 1rem 0;">
+        Any builder can create a node in one command, connect it to other nodes, and have it become cheaper and better at its job with every request it serves, while every answer it gives can be traced back to its sources and its cost can be metered along the whole chain that produced it.
+      </blockquote>
+      <p style="color: var(--text-muted);">
+        A node gets cheaper by learning which of its questions have become functions of its data. Answers start at a frontier model, and when the same question keeps getting the same answer from the same events, the node mines a rule that reproduces it exactly and serves it from there, at a fraction of the cost, with the same citation. One counter-example disables the rule. Nothing a node does to itself is hidden: promotions, demotions and rollbacks are events in its own store, and its autonomy to make them is a declared level that it earns and can lose.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">The ideas, briefly</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Cells</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">A node has a size ceiling: so many schemas, so many source lines, so much context. Past it, it sheds or splits. This is what stops a project built with language models from growing until nobody can hold it.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">The gate</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Everything a node holds went through one gate: parsed, checked against a data contract, deduplicated, scanned, timestamped. What fails lands in quarantine with a reason. Only the gate writes to the store.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Tiers</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Rules and lookups first, a small distilled model next, a frontier model last, a human only when asked for. Each answer says which tier produced it and how deterministic that tier is.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Receipts</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">A signed, hash-chained record of every request, refusals included. Receipts name the events cited and the upstream receipts of any node consulted, so the chain crosses nodes.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Routes</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">A node knows its neighbours as data, not code. It refers what is not its job, bridges once for a caller that has no route, and hands back the direct route so the second call goes straight there.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Outcomes</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Answers are settled later, by reality where the domain allows it. Settled outcomes are what earn a node a quality premium and what let it promote a rule.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">How the two fit</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        Trooth answers the question <em>where did this number come from, and how late is it?</em> KouroB answers <em>which numbers did you use to answer me, and what did it cost?</em> A KouroB node holds Trooth envelopes as events, keeping the payload whole and lifting the provenance beside it; when the node answers, it cites the event, and the event carries Trooth's content hash and signature. The two provenance chains meet at the citation with no translation between them.
+      </p>
+      <p style="color: var(--text-muted);">
+        It works in the other direction too. A node is a feed in the sense of the provider page: it answers typed questions from held data, meters every request, and signs every response. So a node can publish its own catalog entry and its own six-dimension scorecard, computed from its records, in Trooth's schemas. The <a href={p('/examples/kourob-node')}>examples</a> show both directions running.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">What KouroB is not</h2>
+      <ul style="color: var(--text-muted); padding-left: 1.25rem; line-height: 1.7;">
+        <li><strong>Not an agent.</strong> It is a network of nodes that agents attach to.</li>
+        <li><strong>Not a chat-memory product.</strong> Memory here is an event-sourced, cited, versioned artifact.</li>
+        <li><strong>Not a smaller language model.</strong> A node is a compiled artifact of what a model worked out about one narrow job, plus the data that job needs.</li>
+        <li><strong>Not a blockchain.</strong> Credits are an internal ledger. No money moves in v1.</li>
+      </ul>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem;">Status</h2>
+      <p style="color: var(--text-muted);">
+        Both projects are early. Trooth's benchmark is live on five public sources; its fetch API is not yet public. KouroB serves over MCP, connects nodes on one machine, and has measured its cost curve on a thirty-day replay; the wire transports between operators are the next piece. Both repositories keep a plain status file and say what is not built. Apache-2.0.
+      </p>
+    </section>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="https://github.com/alexchouck-hash/kourob" target="_blank" rel="noopener" class="btn btn-primary">KouroB on GitHub &rarr;</a>
+      <a href={p('/examples/kourob-node')} class="btn btn-secondary">The examples</a>
+      <a href={p('/docs')} class="btn btn-secondary">Trooth docs</a>
+    </div>
+  </div>
+</Layout>
