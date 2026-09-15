@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Documentation &amp; Quickstart | Trooth</title><meta name="description" content="Trooth: The Single Data Connector and Provenance Pipe for Apps and Agents. Signed envelopes, six tools, public scorecards."><meta name="theme-color" content="#0f172a"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"><link rel="stylesheet" href="/trooth-site/_astro/connect.U2M4qlqc.css"></head> <body> <header> <div class="nav-container"> <a href="/trooth-site/" class="brand"> <div class="brand-icon">T</div>
+Trooth
+<span class="badge-tag">Benchmark v0</span> </a> <nav> <a href="/trooth-site/" class>Overview</a> <a href="/trooth-site/scorecards" class>Scorecards</a> <a href="/trooth-site/console" class>Console</a> <a href="/trooth-site/connect" class>Connect</a> <a href="/trooth-site/feeds" class>Feeds</a> <a href="/trooth-site/outputs" class>UI directory</a> <a href="/trooth-site/method" class>Methodology</a> <a href="/trooth-site/docs" class="active">Docs</a> <a href="/trooth-site/providers" class>Providers</a> <a href="/trooth-site/pricing" class>Pricing</a> <a href="/trooth-site/status" class>Status</a> <a href="/trooth-site/docs" class="nav-cta">Quickstart</a> </nav> </div> </header> <main>  <div style="max-width: 860px; margin: 0 auto;"> <div style="margin-bottom: 3rem;"> <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 0.75rem;">
+Developer Documentation
+</h1> <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
+5 minutes to your first signed provenance envelope via Model Context Protocol (MCP) or REST.
+</p> </div> <!-- Quickstart Choice --> <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 3.5rem;"> <a href="#mcp" class="card" style="text-decoration: none; color: inherit; border-color: rgba(56, 189, 248, 0.4);"> <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🤖</div> <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem;">
+For AI Agents (MCP)
+</h3> <p style="color: var(--text-muted); font-size: 0.9rem;">
+Add one MCP server to Claude Desktop, Cursor, or any agent loop. Six tools, dynamic routing.
+</p> </a> <a href="#rest" class="card" style="text-decoration: none; color: inherit; border-color: rgba(56, 189, 248, 0.4);"> <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌐</div> <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem;">
+For Applications (REST)
+</h3> <p style="color: var(--text-muted); font-size: 0.9rem;">
+Query the edge REST Worker with standard HTTP POST requests. Instant JSON envelopes.
+</p> </a> </div> <!-- MCP Installation --> <section id="mcp" style="margin-bottom: 4rem; scroll-margin-top: 5rem;"> <div style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;"> <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main);">
+1. MCP Server Setup
+</h2> <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+Install Trooth as a single MCP server. Compatible with all clients supporting the Model Context Protocol.
+</p> </div> <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Claude Desktop Configuration</h3> <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+Add Trooth to your <code>claude_desktop_config.json</code>:
+</p> <pre><code>&#123;
+  "mcpServers": &#123;
+    "trooth": &#123;
+      "command": "npx",
+      "args": ["-y", "@trooth/mcp-server"]
+    &#125;
+  &#125;
+&#125;</code></pre> <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem;">Cursor / Generic Agent Configuration</h3> <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+Add to your Cursor MCP settings or command-line agent launcher:
+</p> <pre><code># Run locally over stdio
+npx -y @trooth/mcp-server
+
+# Or connect to the edge HTTP endpoint
+https://api.trooth.io/mcp</code></pre> <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem;">Available Tools</h3> <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+Trooth registers exactly six tools into your agent's context (CLAUDE.md Rule H10):
+</p> <div style="overflow-x: auto;"> <table> <thead> <tr> <th>Tool Name</th> <th>Parameters</th> <th>Purpose</th> </tr> </thead> <tbody> <tr> <td><code>trooth.resolve</code></td> <td><code>query: string, domain?: string</code></td> <td>Resolve query to candidate sources with acceptance/rejection reasons. No fetch.</td> </tr> <tr> <td><code>trooth.fetch</code></td> <td><code>request_id: string, freshness?: "live" | "cached_ok" | "as_of"</code></td> <td>Fetch verified payload wrapped in signed provenance envelope.</td> </tr> <tr> <td><code>trooth.compare</code></td> <td><code>query: string, sources: string[]</code></td> <td>Query multiple sources simultaneously, returning field disagreements.</td> </tr> <tr> <td><code>trooth.scorecard</code></td> <td><code>source_id: string</code></td> <td>Retrieve 6-dimension scorecard + anchored accuracy for a source.</td> </tr> <tr> <td><code>trooth.catalog.search</code></td> <td><code>domain?: string, license?: string</code></td> <td>Search catalog feeds by domain, license, or refresh cadence.</td> </tr> <tr> <td><code>trooth.verify</code></td> <td><code>envelope: object</code></td> <td>Verify Ed25519 signature and SHA-256 payload digest.</td> </tr> </tbody> </table> </div> </section> <!-- REST API Reference --> <section id="rest" style="margin-bottom: 4rem; scroll-margin-top: 5rem;"> <div style="border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem;"> <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main);">
+2. REST API Reference
+</h2> <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+Base URL: <code>https://api.trooth.io/v1</code> (Local development: <code>http://localhost:8787</code>)
+</p> </div> <div style="display: flex; flex-direction: column; gap: 2rem;"> <!-- POST /resolve --> <div class="card"> <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;"> <span class="badge badge-blue">POST</span> <code style="font-size: 1rem;">/resolve</code> </div> <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+Resolves a natural query to prospective sources without executing a network fetch.
+</p> <pre><code>curl -X POST https://api.trooth.io/v1/resolve \
+  -H "Content-Type: application/json" \
+  -d '&#123; "query": "current weather at JFK airport" &#125;'</code></pre> </div> <!-- POST /fetch --> <div class="card"> <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;"> <span class="badge badge-blue">POST</span> <code style="font-size: 1rem;">/fetch</code> </div> <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+Fetches data from the resolved source and returns the complete signed provenance envelope.
+</p> <pre><code>curl -X POST https://api.trooth.io/v1/fetch \
+  -H "Content-Type: application/json" \
+  -d '&#123;
+    "source_id": "nws",
+    "endpoint": "latest_observations",
+    "freshness": "live"
+  &#125;'</code></pre> </div> <!-- POST /verify --> <div class="card"> <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;"> <span class="badge badge-blue">POST</span> <code style="font-size: 1rem;">/verify</code> </div> <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+Cryptographically validates an envelope using the Trooth Ed25519 public key.
+</p> <pre><code>curl -X POST https://api.trooth.io/v1/verify \
+  -H "Content-Type: application/json" \
+  -d @envelope.json</code></pre> </div> </div> </section> <!-- Verification in Code --> <section id="envelope" class="card" style="margin-bottom: 4rem;"> <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem;">Verifying Signatures in Python</h2> <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+You do not have to trust Trooth blindly. Every envelope can be independently verified locally using standard cryptography libraries:
+</p> <pre><code>import hashlib
+from nacl.signing import VerifyKey
+
+def verify_trooth_envelope(envelope, public_key_hex):
+    # 1. Verify content hash
+    expected_hash = "sha256:" + hashlib.sha256(
+        json.dumps(envelope["data"], sort_keys=True).encode()
+    ).hexdigest()
+    assert envelope["provenance"]["sources"][0]["content_hash"] == expected_hash
+
+    # 2. Verify Ed25519 signature
+    vk = VerifyKey(bytes.fromhex(public_key_hex))
+    sig_bytes = bytes.fromhex(envelope["signature"]["sig"])
+    # Signature covers request_id + snapshot_id + content_hash
+    signed_payload = f"&#123;envelope['request_id']&#125;:&#123;envelope['provenance']['snapshot_id']&#125;:&#123;expected_hash&#125;"
+    vk.verify(signed_payload.encode(), sig_bytes)
+    print("Envelope verified!")</code></pre> </section> </div>  </main> <footer> <div class="footer-container"> <div> <div class="brand" style="margin-bottom: 0.8rem;"> <div class="brand-icon">T</div>
+Trooth
+</div> <p style="margin-bottom: 1rem; max-width: 380px; color: var(--text-muted); font-size: 0.88rem;">
+The single data connector for apps and autonomous agents. Every fetch returns a cryptographically signed envelope with verifiable freshness, lineage, and audit records.
+</p> <p style="font-size: 0.8rem; color: var(--text-subtle);">
+Trooth publishes no scores. Grading is Modafied's, independent of us. No sponsored placement, ever.
+</p> </div> <div class="footer-column"> <h4>Benchmark</h4> <ul> <li><a href="/trooth-site/scorecards">Public Scorecards</a></li> <li><a href="/trooth-site/method">Scoring Methodology</a></li> <li><a href="/trooth-site/status">System Status</a></li> <li><a href="/trooth-site/console">Trooth Console (free)</a></li> <li><a href="/trooth-site/connect">Connect &amp; Integrations</a></li> <li><a href="/trooth-site/feeds">Feed Directory (300 feeds)</a></li> <li><a href="/trooth-site/outputs">UI Directory (185 tools)</a></li> <li><a href="https://alexchouck-hash.github.io/kourob/">KouroB Nodes</a></li> <li><a href="https://alexchouck-hash.github.io/modafied-site/">Modafied (MCP benchmarks)</a></li> <li><a href="/trooth-site/scorecards/nws">NWS Weather Card</a></li> <li><a href="/trooth-site/scorecards/usgs-earthquake">USGS Seismic Card</a></li> </ul> </div> <div class="footer-column"> <h4>Developers</h4> <ul> <li><a href="/trooth-site/docs">Quickstart (5 Min)</a></li> <li><a href="/trooth-site/docs#mcp">MCP Installation</a></li> <li><a href="/trooth-site/docs#rest">REST Endpoints</a></li> <li><a href="/trooth-site/pricing">Pricing & Quotas</a></li> <li><a href="/trooth-site/roadmap">Project Roadmap</a></li> </ul> </div> <div class="footer-column"> <h4>Ecosystem</h4> <ul> <li><a href="/trooth-site/providers">List Your Feed</a></li> <li><a href="https://github.com/alexchouck-hash/trooth-site" target="_blank" rel="noopener">GitHub Repository</a></li> <li><a href="/trooth-site/method#anchor">The Anchor Rule</a></li> <li><a href="/trooth-site/docs#envelope">Envelope Schema</a></li> </ul> </div> </div> <div class="footer-bottom"> <div>&copy; 2026 Alex Houck / Trooth Contributors. Open source under Apache-2.0.</div> <div style="display: flex; gap: 1.5rem;"> <a href="/trooth-site/method" style="color: var(--text-subtle); text-decoration: none;">Methodology</a> <a href="/trooth-site/pricing" style="color: var(--text-subtle); text-decoration: none;">$50/mo Cap Rule</a> <a href="https://github.com/alexchouck-hash/trooth-site" style="color: var(--text-subtle); text-decoration: none;">Source Code</a> </div> </div> </footer> </body></html>

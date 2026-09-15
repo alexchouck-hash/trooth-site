@@ -1,0 +1,42 @@
+{
+  "accuracy_anchor": null,
+  "card_url": "/connect#govdata-de",
+  "composite": null,
+  "countersigned": false,
+  "dimensions": {
+    "completeness_by_segment": {
+      "normalized": null,
+      "status": "insufficient_data"
+    },
+    "correction_latency": {
+      "normalized": null,
+      "status": "insufficient_data"
+    },
+    "freshness_lag": {
+      "normalized": null,
+      "status": "insufficient_data"
+    },
+    "internal_consistency": {
+      "normalized": null,
+      "status": "insufficient_data"
+    },
+    "revision_behavior": {
+      "normalized": null,
+      "status": "insufficient_data"
+    },
+    "schema_stability": {
+      "normalized": null,
+      "status": "insufficient_data"
+    }
+  },
+  "emblem_version": "0.1",
+  "generated_at": "2026-09-15T00:17:29Z",
+  "grade": null,
+  "issuer": "modafied",
+  "method_version": "0.1",
+  "state": "unrated",
+  "subject_id": "govdata-de",
+  "subject_kind": "registry-candidate",
+  "unrated_reason": "registry candidate: never fetched, licence not yet confirmed",
+  "window": null
+}
