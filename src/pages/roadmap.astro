@@ -11,6 +11,9 @@ import Layout from '../layouts/Layout.astro';
       <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
         Trooth grows through strict, transparent phase gates tied to cost constraints and verified user demand (CLAUDE.md section 9).
       </p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.85rem;">
+        Every gate has three parts and all three have to clear. <strong>Technical</strong> is a test that passes or fails. <strong>Commercial</strong> is a number. <strong>Desirability</strong> is a question with a yes or no answer, asked of somebody outside this project, and it is the only one of the three that cannot be satisfied by working harder.
+      </p>
     </div>
 
     <!-- Phases Timeline -->
@@ -30,7 +33,11 @@ import Layout from '../layouts/Layout.astro';
           Ships the routing catalog of 5 verified sources, the connector registry, the snapshot and diff jobs, this site and the free Console, and Modafied's emblems rendered as they come.
         </p>
         <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
-          <strong>Gate to proceed:</strong> site live, 5 sources merged, Modafied grading at least 3 of them, its manifest pinned and verifying, fresh-agent test passed. Not satisfied yet: the snapshot cron writes to a runner disk it then discards, so no archive is accumulating.
+          <strong>Gate to proceed.</strong>
+          <div style="margin-top: 0.5rem;"><strong style="color: var(--accent-green);">Technical:</strong> the archive persists across two consecutive cron runs, 5 sources are merged, and Modafied is grading at least 3 with its manifest pinned and verifying.</div>
+          <div style="margin-top: 0.35rem;"><strong style="color: var(--accent-green);">Commercial:</strong> spend stays under $5 a month.</div>
+          <div style="margin-top: 0.35rem;"><strong style="color: var(--accent-green);">Desirability:</strong> the fresh-agent test passes, and one outside reader asks for a source to be added.</div>
+          <div style="margin-top: 0.6rem; color: var(--text-muted);">Not satisfied yet: the snapshot cron writes to a runner disk it then discards, so no archive is accumulating.</div>
         </div>
       </div>
 
@@ -49,7 +56,10 @@ import Layout from '../layouts/Layout.astro';
           Ships the single data connector: TypeScript Cloudflare Worker REST API and thin MCP server implementing the exact six tools. Every fetch returns an Ed25519 signed envelope with provenance.
         </p>
         <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
-          <strong style="color: var(--primary);">Gate to proceed:</strong> 25 distinct weekly active callers, with at least one autonomous production tool integration.
+          <strong style="color: var(--primary);">Gate to proceed.</strong>
+          <div style="margin-top: 0.5rem;"><strong style="color: var(--primary);">Technical:</strong> p95 under 400ms on the quickstart path, and every response carries an envelope with its rejected candidates listed.</div>
+          <div style="margin-top: 0.35rem;"><strong style="color: var(--primary);">Commercial:</strong> 25 distinct weekly active callers, at least one an autonomous production tool.</div>
+          <div style="margin-top: 0.35rem;"><strong style="color: var(--primary);">Desirability:</strong> one external developer replaces a direct API call with Trooth, and says why.</div>
         </div>
       </div>
 
@@ -68,7 +78,10 @@ import Layout from '../layouts/Layout.astro';
           Ships Stripe metered billing, Pro tier ($39/mo for 100k requests), 1-year historical snapshot replay, schema change webhooks, and append-only Merkle transparency log anchored into Bitcoin via OpenTimestamps.
         </p>
         <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
-          <strong style="color: var(--text-muted);">Gate to proceed:</strong> First paying customer. No new cost-bearing features built until this gate is met.
+          <strong style="color: var(--text-muted);">Gate to proceed.</strong>
+          <div style="margin-top: 0.5rem;"><strong>Technical:</strong> the same query replayed with <code>as_of</code> returns byte-identical data and a byte-identical envelope hash.</div>
+          <div style="margin-top: 0.35rem;"><strong>Commercial:</strong> a first paying customer. No new cost-bearing feature is built until this is met.</div>
+          <div style="margin-top: 0.35rem;"><strong>Desirability:</strong> that customer renews or expands.</div>
         </div>
       </div>
 
@@ -87,7 +100,10 @@ import Layout from '../layouts/Layout.astro';
           Allows external data owners to list feeds, filters, or analysis layers. Trooth meters calls and handles automated payouts with a platform take rate. Grading stays with Modafied, listed feeds included.
         </p>
         <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
-          <strong style="color: var(--text-muted);">Gate to proceed:</strong> 3 providers listed and 1 paid feed actively transacting.
+          <strong style="color: var(--text-muted);">Gate to proceed.</strong>
+          <div style="margin-top: 0.5rem;"><strong>Technical:</strong> a provider's feed gets a Modafied scorecard without hand-holding.</div>
+          <div style="margin-top: 0.35rem;"><strong>Commercial:</strong> 3 providers listed and 1 paid feed actively transacting.</div>
+          <div style="margin-top: 0.35rem;"><strong>Desirability:</strong> a provider cites their scorecard publicly, without being asked.</div>
         </div>
       </div>
 
@@ -102,11 +118,35 @@ import Layout from '../layouts/Layout.astro';
         <div style="font-size: 0.85rem; color: var(--text-subtle); margin-bottom: 1rem;">
           Timeline: After Phase 3 Gate
         </div>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
           Regulatory data slices (openFDA MAUDE medical device reports), sports feeds graded against settled game outcomes, and licensed historical revision datasets.
         </p>
+        <div style="background-color: var(--bg-surface); padding: 0.85rem 1rem; border-radius: 6px; font-size: 0.88rem; border: 1px solid var(--border);">
+          <strong style="color: var(--text-muted);">Gate to proceed.</strong>
+          <div style="margin-top: 0.5rem;"><strong>Technical:</strong> the vertical ships on the same envelope with no special case in the pipe.</div>
+          <div style="margin-top: 0.35rem;"><strong>Commercial:</strong> decided on revenue.</div>
+          <div style="margin-top: 0.35rem;"><strong>Desirability:</strong> a vertical user asks for a second feed.</div>
+        </div>
       </div>
     </div>
+
+    <!-- Where Trooth sits -->
+    <section class="card" style="margin-bottom: 2.5rem;">
+      <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.6rem;">Where Trooth sits</h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 0.75rem;">
+        Trooth is one layer of three, and the split is deliberate. Trooth fetches external data and
+        wraps it in a provenance envelope. <a href="https://alexchouck-hash.github.io/kourob/" target="_blank" rel="noopener">KouroB</a>
+        answers repeated questions above it, by replaying short graded chains of small models rather
+        than calling a frontier model every time. <a href="https://alexchouck-hash.github.io/modafied-site/" target="_blank" rel="noopener">Modafied</a>
+        grades what both of them do, against named anchors, with open code.
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7;">
+        Two of those layers route, and they route differently. Trooth decides which source answers a
+        fetch, which is a lookup against a catalog. KouroB decides which models answer a query, which
+        is a planning problem. Keeping them apart is why neither one can quietly become the other,
+        and it is why the planner's failure modes are not the pipe's.
+      </p>
+    </section>
 
     <!-- Kill / Pivot Rule -->
     <section class="card" style="border-color: rgba(244, 63, 94, 0.4); background-color: rgba(244, 63, 94, 0.05);">
