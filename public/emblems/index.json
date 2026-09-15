@@ -2,10 +2,11 @@
   "counts": {
     "graded": 3,
     "rated_but_ungraded": 2,
-    "unrated": 875
+    "unrated": 2080,
+    "unrated_ui_outputs": 185
   },
   "emblem_version": "0.1",
-  "generated_at": "2026-09-14T01:53:48Z",
+  "generated_at": "2026-09-15T00:17:29Z",
   "issuer": "modafied",
   "modafied": {
     "base_url": "https://alexchouck-hash.github.io/modafied-site",
@@ -104,6 +105,6 @@
     ],
     "signed": false
   },
-  "total": 880,
+  "total": 2085,
   "trooth_publishes_scores": false
 }
