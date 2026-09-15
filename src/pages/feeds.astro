@@ -1,0 +1,298 @@
+---
+/**
+ * /feeds - the data feed directory.
+ *
+ * Every row is rendered from src/data/registry.json, which is generated in the Trooth repo by
+ * jobs/site_data.py from catalog/registry/feeds-*.yaml. Nothing here is typed by hand, so the
+ * page and the registry cannot drift. Same rule as /outputs.
+ *
+ * Three things this page must not do, in order of how badly they would hurt:
+ *
+ *   1. No grades. Not a letter, not a bar, not a number (rule H2, ADR-0014). Modafied grades the
+ *      five sources Trooth actually routes to, and those link out to its cards. The other 295
+ *      have never been measured by anyone, and "unmeasured" must not be rendered in a way that
+ *      can be mistaken for "measured badly".
+ *   2. No licence claimed as fact. `expected_terms` is a guess recorded to prioritise the work of
+ *      reading terms pages. The schema says it is never published as fact, so the column says
+ *      guess, the cells are muted, and the caveat sits directly under the filters rather than in
+ *      a footnote nobody reaches.
+ *   3. No implication that a listed feed is usable today. A registry entry is an intent to
+ *      support, not a connector. Only `promoted` is routable, and that is five of three hundred.
+ */
+import Layout from '../layouts/Layout.astro';
+import { p } from '../utils/paths';
+import { modafiedCardUrl } from '../utils/modafied';
+import registry from '../data/registry.json';
+
+const groups = (registry.groups as any[])
+  .filter((g) => g.category.startsWith('feeds-'))
+  .sort((a, b) => a.category.localeCompare(b.category));
+
+const rows = groups.flatMap((g: any) =>
+  g.entries.map((e: any) => ({ ...e, category: g.category }))
+);
+
+function label(category: string) {
+  return category.replace(/^feeds-/, '').replace(/-/g, ' ');
+}
+
+function tally(key: string) {
+  const out: Record<string, number> = {};
+  for (const r of rows) out[(r as any)[key] ?? 'unknown'] = (out[(r as any)[key] ?? 'unknown'] ?? 0) + 1;
+  return out;
+}
+
+const byCategory = tally('category');
+const byTerms = tally('expected_terms');
+const byAuth = tally('auth');
+
+const promoted = rows.filter((r) => r.status === 'promoted');
+const blocked = rows.filter((r) => r.status === 'blocked');
+const priorityOne = rows.filter((r) => r.priority === 1);
+const noAuth = rows.filter((r) => r.auth === 'none');
+
+const termNames = Object.keys(byTerms).sort();
+const authNames = Object.keys(byAuth).sort();
+---
+
+<Layout
+  title="Feed directory"
+  description="Every data feed in the Trooth connector registry: what it is, what it would get us, how it authenticates, and whether anybody has read its licence yet."
+  activeNav="feeds"
+>
+  <section style="margin-bottom:2rem;">
+    <h1 style="font-size:2.25rem; font-weight:800; margin-bottom:0.75rem;">Feed directory</h1>
+    <p style="font-size:1.1rem; color:var(--text-muted); max-width:800px;">
+      {rows.length} data feeds across {groups.length} categories. This is the list of sources
+      Trooth intends to route to, with the reason each one is on it. It is not a list of sources
+      you can call today: {promoted.length} of them are merged into the routing catalog, and the
+      rest are candidates.
+    </p>
+    <p style="color:var(--text-muted); max-width:800px; margin-top:0.75rem;">
+      A feed becomes routable only after somebody reads its terms from the source's own
+      documentation and cites the URL, alongside declarative adapter fields and a live fetch in
+      CI. Until that happens it is listed here and nowhere else, it never appears in an envelope,
+      and it carries no grade, because nothing about it has been measured.
+    </p>
+  </section>
+
+  <section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:0.75rem; margin-bottom:2rem;">
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{rows.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">feeds listed</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{groups.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">categories</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{promoted.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">routable today</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{noAuth.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">need no key</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{blocked.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">blocked, with a reason</div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:2rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">What the categories are for</h2>
+    <p style="color:var(--text-muted); max-width:800px; margin-bottom:1rem;">
+      The grouping is not decorative. Each category was chosen because it exercises something the
+      others do not: feeds that revise for weeks after publication, feeds that correct in seconds,
+      feeds with a settled result at the end that a forecast can honestly be scored against.
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:0.75rem;">
+      {groups.map((g: any) => (
+        <details style="border:1px solid var(--border); border-radius:10px; padding:0.75rem 1rem; background:var(--bg-card);">
+          <summary style="cursor:pointer; font-weight:700; text-transform:capitalize;">
+            {label(g.category)}
+            <span style="font-weight:400; color:var(--text-subtle); font-size:0.85rem;"> · {g.entries.length}</span>
+          </summary>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.55; margin-top:0.6rem;">
+            {g.description}
+          </p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-bottom:1rem;">
+    <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center; margin-bottom:0.75rem;">
+      <input
+        id="q"
+        type="search"
+        placeholder={`Search ${rows.length} feeds, reasons included`}
+        style="flex:1 1 260px; min-width:220px; padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;"
+      />
+      <select id="category" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;">
+        <option value="">All categories</option>
+        {Object.keys(byCategory).sort().map((c) => (
+          <option value={c}>{label(c)} ({byCategory[c]})</option>
+        ))}
+      </select>
+      <select id="status" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;">
+        <option value="">Any status</option>
+        <option value="promoted">Routable now ({promoted.length})</option>
+        <option value="candidate">Candidate ({rows.length - promoted.length - blocked.length})</option>
+        <option value="blocked">Blocked ({blocked.length})</option>
+      </select>
+      <select id="auth" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;">
+        <option value="">Any auth</option>
+        {authNames.map((a) => <option value={a}>{a.replace(/_/g, ' ')} ({byAuth[a]})</option>)}
+      </select>
+      <select id="terms" style="padding:0.5rem 0.75rem; border-radius:8px; border:1px solid var(--border); background:var(--bg-surface); color:var(--text-main); font-size:0.9rem;">
+        <option value="">Any expected terms</option>
+        {termNames.map((t) => <option value={t}>{t.replace(/-/g, ' ')} ({byTerms[t]})</option>)}
+      </select>
+    </div>
+    <p id="count" style="font-size:0.85rem; color:var(--text-subtle); margin-bottom:0.5rem;">
+      Showing all {rows.length} feeds.
+    </p>
+    <p style="font-size:0.85rem; color:var(--text-subtle); max-width:820px;">
+      The terms column is a <strong>guess</strong>, recorded to decide which terms pages to read
+      first. It has not been verified against anything and it is not a statement about what you
+      may do with a feed. Read the source's own terms before you rely on it. Nothing in this
+      table is graded: the five routable sources link to Modafied's card, and the rest have never
+      been measured by anyone.
+    </p>
+  </section>
+
+  <section style="margin-bottom:2.5rem; overflow-x:auto;">
+    <table id="directory" style="width:100%;">
+      <thead>
+        <tr>
+          <th>Feed</th>
+          <th>Category</th>
+          <th>Kind</th>
+          <th>Auth</th>
+          <th>Terms (guess)</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row: any) => (
+          <tr
+            id={row.id}
+            data-name={`${row.name} ${row.id} ${row.domain}`.toLowerCase()}
+            data-why={`${row.why} ${row.reason ?? ''}`.toLowerCase()}
+            data-category={row.category}
+            data-status={row.status}
+            data-auth={row.auth ?? 'unknown'}
+            data-terms={row.expected_terms ?? 'unknown'}
+          >
+            <td style="min-width:260px;">
+              {row.homepage
+                ? <a href={row.homepage} target="_blank" rel="noopener" style="font-weight:600;">{row.name}</a>
+                : <span style="font-weight:600;">{row.name}</span>}
+              <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-subtle);">
+                {row.id} · {row.domain}
+              </div>
+              <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.45; margin-top:0.2rem;">
+                {row.why}
+              </div>
+              {row.reason && (
+                <div style="font-size:0.82rem; color:var(--accent-amber); line-height:1.45; margin-top:0.3rem;">
+                  Blocked: {row.reason}
+                </div>
+              )}
+            </td>
+            <td style="white-space:nowrap; text-transform:capitalize; color:var(--text-muted); font-size:0.85rem;">
+              {label(row.category)}
+            </td>
+            <td style="color:var(--text-muted); font-size:0.85rem;">{row.kind}</td>
+            <td style="color:var(--text-muted); font-size:0.85rem;">{(row.auth ?? 'unknown').replace(/_/g, ' ')}</td>
+            <td style="color:var(--text-subtle); font-size:0.85rem;">{(row.expected_terms ?? 'unknown').replace(/-/g, ' ')}</td>
+            <td style="white-space:nowrap;">
+              {row.status === 'promoted' ? (
+                <>
+                  <span class="badge badge-green">routable</span>
+                  <a href={modafiedCardUrl(row.id)} rel="noopener" style="display:block; font-size:0.78rem; margin-top:0.3rem;">Modafied card &nearr;</a>
+                </>
+              ) : row.status === 'blocked' ? (
+                <span class="badge">blocked</span>
+              ) : (
+                <span style="font-size:0.82rem; color:var(--text-subtle);">candidate</span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.5rem;">Why five and not three hundred</h2>
+    <p style="color:var(--text-muted); max-width:820px; margin-bottom:0.75rem;">
+      Verifying {rows.length} licences by reading {rows.length} terms pages is real work that
+      cannot be faked, and a catalog of {rows.length} entries carrying invented licence
+      confirmations would destroy the only thing this project has to sell. So the registry states
+      the intent and the catalog states the fact, and the gap between them is visible on this page
+      rather than hidden behind a number.
+    </p>
+    <p style="color:var(--text-muted); max-width:820px;">
+      The {blocked.length} blocked entries are the useful half of that discipline. Each one names
+      what the obstacle is, so nobody researches the same licence twice and nobody quietly routes
+      to it anyway. {priorityOne.length} feeds are marked priority one, which means a customer
+      asked or the feed demonstrates something no other entry covers.
+    </p>
+    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.25rem;">
+      <a href={p('/connect')} class="btn btn-secondary">What connects to these</a>
+      <a href={p('/outputs')} class="btn btn-secondary">UI directory</a>
+      <a href={p('/console')} class="btn btn-secondary">Open the Console</a>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  (function () {
+    const q = document.getElementById('q');
+    const category = document.getElementById('category');
+    const status = document.getElementById('status');
+    const auth = document.getElementById('auth');
+    const terms = document.getElementById('terms');
+    const count = document.getElementById('count');
+    const rows = Array.from(document.querySelectorAll('#directory tbody tr'));
+
+    function apply() {
+      const term = (q.value || '').trim().toLowerCase();
+      const wantCategory = category.value;
+      const wantStatus = status.value;
+      const wantAuth = auth.value;
+      const wantTerms = terms.value;
+      let shown = 0;
+
+      for (const row of rows) {
+        const d = row.dataset;
+        const matches =
+          (!term || d.name.includes(term) || d.why.includes(term)) &&
+          (!wantCategory || d.category === wantCategory) &&
+          (!wantStatus || d.status === wantStatus) &&
+          (!wantAuth || d.auth === wantAuth) &&
+          (!wantTerms || d.terms === wantTerms);
+        row.hidden = !matches;
+        if (matches) shown++;
+      }
+
+      count.textContent =
+        shown === rows.length
+          ? `Showing all ${rows.length} feeds.`
+          : `Showing ${shown} of ${rows.length} feeds.`;
+    }
+
+    for (const el of [q, category, status, auth, terms]) {
+      el.addEventListener('input', apply);
+      el.addEventListener('change', apply);
+    }
+
+    // Deep link support: /feeds#entsoe-transparency lands on that row.
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView({ block: 'center' });
+    }
+  })();
+</script>
