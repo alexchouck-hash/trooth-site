@@ -1,6 +1,2395 @@
 {
-  "total_tools": 108,
-  "total_types": 15,
+  "catalog_version": "0.2",
+  "facets": {
+    "by_input": {
+      "arrow": 1,
+      "csv": 45,
+      "duckdb": 3,
+      "geojson": 9,
+      "html": 3,
+      "http": 9,
+      "json": 113,
+      "mcp": 3,
+      "md": 13,
+      "mqtt": 1,
+      "parquet": 14,
+      "pmtiles": 2,
+      "prometheus": 5,
+      "rss": 8,
+      "smtp": 2,
+      "sql": 23,
+      "sqlite": 1,
+      "svg": 2,
+      "text": 3,
+      "webhook": 12,
+      "websocket": 5,
+      "xlsx": 1
+    },
+    "by_license": {
+      "AGPL-3.0-only": 13,
+      "AGPL-3.0-or-later": 1,
+      "Apache-2.0": 38,
+      "BSD-2-Clause": 5,
+      "BSD-3-Clause": 10,
+      "BSD-3-Clause with branding clause": 1,
+      "BSL-1.1": 1,
+      "CC0-1.0": 2,
+      "CPAL-1.0": 1,
+      "EPL-1.0": 1,
+      "EPL-2.0": 1,
+      "Elastic-2.0": 1,
+      "GPL-2.0-or-later": 4,
+      "GPL-3.0-only": 7,
+      "GPL-3.0-or-later": 1,
+      "ISC": 4,
+      "MIT": 83,
+      "MPL-2.0": 3,
+      "Unlicense": 1,
+      "n/a": 7
+    },
+    "by_type": {
+      "admin-panel-internal-tool": 11,
+      "agent-and-chat-surface": 6,
+      "alerting-and-notification": 8,
+      "bi-dashboard": 13,
+      "charting-library": 14,
+      "chat-and-collaboration": 7,
+      "diagram-and-graph": 8,
+      "email-and-digest": 7,
+      "embeddable-widget": 7,
+      "feed-syndication": 8,
+      "kiosk-and-signage": 6,
+      "map-and-geo": 10,
+      "notebook-and-report": 14,
+      "print-and-pdf": 6,
+      "realtime-stream": 7,
+      "spreadsheet": 7,
+      "sql-and-exploration": 7,
+      "static-site-and-docs": 9,
+      "status-and-uptime": 9,
+      "table-and-grid": 11,
+      "terminal-and-cli": 10
+    },
+    "hosted_only": 1,
+    "reciprocal_license": 34
+  },
+  "index": [
+    {
+      "id": "ag-grid-community",
+      "license": "MIT",
+      "name": "AG Grid Community",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "alerta",
+      "license": "Apache-2.0",
+      "name": "Alerta",
+      "notes": "De-duplicates and correlates alerts, which a revision feed needs early or it becomes noise.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "webhook"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "alertmanager",
+      "license": "Apache-2.0",
+      "name": "Alertmanager",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "prometheus"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "anthias",
+      "license": "GPL-2.0-or-later",
+      "name": "Anthias",
+      "notes": "Digital signage on a Raspberry Pi. The cheapest hardware path to a wall display.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "http"
+      ],
+      "type": "kiosk-and-signage"
+    },
+    {
+      "id": "antv-g2",
+      "license": "MIT",
+      "name": "AntV G2",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "antv-g6",
+      "license": "MIT",
+      "name": "AntV G6",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "echarts",
+      "license": "Apache-2.0",
+      "name": "Apache ECharts",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "superset",
+      "license": "Apache-2.0",
+      "name": "Apache Superset",
+      "notes": "Most capable, heaviest to operate.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "zeppelin",
+      "license": "Apache-2.0",
+      "name": "Apache Zeppelin",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql",
+        "json"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "apexcharts",
+      "license": "MIT",
+      "name": "ApexCharts",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "apprise",
+      "license": "BSD-3-Clause",
+      "name": "Apprise",
+      "notes": "One call fans out to eighty notification services.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "appsmith",
+      "license": "Apache-2.0",
+      "name": "Appsmith",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "sql"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "assistant-ui",
+      "license": "MIT",
+      "name": "assistant-ui",
+      "notes": "React components for embedding a provenance panel in another product.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "agent-and-chat-surface"
+    },
+    {
+      "id": "astro",
+      "license": "MIT",
+      "name": "Astro",
+      "notes": "What the Trooth site and console already use.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "md"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "atom",
+      "license": "n/a",
+      "name": "Atom",
+      "notes": "A change feed is a feed. Publishing Atom means every reader below works with no integration.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "badgen",
+      "license": "ISC",
+      "name": "Badgen",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "embeddable-widget"
+    },
+    {
+      "id": "baserow",
+      "license": "MIT",
+      "name": "Baserow",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "billboard-js",
+      "license": "MIT",
+      "name": "billboard.js",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "blazer",
+      "license": "MIT",
+      "name": "Blazer",
+      "notes": "Smallest possible SQL dashboard; a single Rails mount.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "budibase",
+      "license": "GPL-3.0-only",
+      "name": "Budibase",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "sql"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "cachet",
+      "license": "MIT",
+      "name": "Cachet",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "centrifugo",
+      "license": "MIT",
+      "name": "Centrifugo",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "websocket"
+      ],
+      "type": "realtime-stream"
+    },
+    {
+      "id": "chainlit",
+      "license": "Apache-2.0",
+      "name": "Chainlit",
+      "notes": "Custom elements make a source and freshness panel easy to render beside an answer.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "agent-and-chat-surface"
+    },
+    {
+      "id": "chartjs",
+      "license": "MIT",
+      "name": "Chart.js",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "chartbrew",
+      "license": "MIT",
+      "name": "Chartbrew",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "sql"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "csvlens",
+      "license": "MIT",
+      "name": "csvlens",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "cube",
+      "license": "Apache-2.0",
+      "name": "Cube",
+      "notes": "Semantic layer, if the six dimensions ever need one definition across many tools.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "sql-and-exploration"
+    },
+    {
+      "id": "cytoscape",
+      "license": "MIT",
+      "name": "Cytoscape.js",
+      "notes": "Best fit for an interactive primary/derivative lineage graph.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "d2",
+      "license": "MPL-2.0",
+      "name": "D2",
+      "notes": "Text to diagram like Mermaid, with better layout for a wide lineage graph.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "text"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "d3",
+      "license": "ISC",
+      "name": "D3",
+      "notes": "What Trooth Console's SVG generation is modelled on, without the runtime.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "datalens",
+      "license": "Apache-2.0",
+      "name": "DataLens",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "datasette",
+      "license": "Apache-2.0",
+      "name": "Datasette",
+      "notes": "Publishes a database as a browsable, queryable, API-backed site.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sqlite",
+        "csv"
+      ],
+      "type": "sql-and-exploration"
+    },
+    {
+      "id": "datatables",
+      "license": "MIT",
+      "name": "DataTables",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "dbeaver-ce",
+      "license": "Apache-2.0",
+      "name": "DBeaver Community",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql",
+        "duckdb"
+      ],
+      "type": "sql-and-exploration"
+    },
+    {
+      "id": "deckgl",
+      "license": "MIT",
+      "name": "deck.gl",
+      "notes": "Right choice for large point sets like seismic or AIS.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson",
+        "json"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "directus",
+      "license": "BSL-1.1",
+      "name": "Directus",
+      "notes": "Source-available rather than open source. Check the licence before commercial use.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "discourse",
+      "license": "GPL-2.0-or-later",
+      "name": "Discourse",
+      "notes": "For a public changelog people can reply to.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "rss"
+      ],
+      "type": "chat-and-collaboration"
+    },
+    {
+      "id": "docusaurus",
+      "license": "MIT",
+      "name": "Docusaurus",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "duckdb-cli",
+      "license": "MIT",
+      "name": "DuckDB CLI",
+      "notes": "Query the published archive with no install beyond one binary.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "parquet",
+        "json",
+        "csv"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "duckdb-wasm",
+      "license": "MIT",
+      "name": "DuckDB-Wasm",
+      "notes": "Query the archive in the browser with no backend. The cheapest 'try it' we could ship.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "parquet"
+      ],
+      "type": "sql-and-exploration"
+    },
+    {
+      "id": "mosquitto",
+      "license": "EPL-2.0",
+      "name": "Eclipse Mosquitto",
+      "notes": "For the industrial and sensor buyers who expect MQTT rather than HTTP.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "mqtt"
+      ],
+      "type": "realtime-stream"
+    },
+    {
+      "id": "element",
+      "license": "Apache-2.0",
+      "name": "Element on Matrix",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook",
+        "json"
+      ],
+      "type": "chat-and-collaboration"
+    },
+    {
+      "id": "eleventy",
+      "license": "MIT",
+      "name": "Eleventy",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md",
+        "json"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "ethercalc",
+      "license": "CPAL-1.0",
+      "name": "EtherCalc",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "csv"
+      ],
+      "type": "spreadsheet"
+    },
+    {
+      "id": "evidence",
+      "license": "MIT",
+      "name": "Evidence.dev",
+      "notes": "Markdown with SQL in it, builds to a static site. Closest in spirit to how we publish.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql",
+        "parquet",
+        "csv"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "feedgen",
+      "license": "BSD-2-Clause",
+      "name": "feedgen",
+      "notes": "Generates the Atom and RSS above from Python, which is where the jobs already live.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "frappe-charts",
+      "license": "MIT",
+      "name": "Frappe Charts",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "frappe-datatable",
+      "license": "MIT",
+      "name": "Frappe DataTable",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "freshrss",
+      "license": "AGPL-3.0-only",
+      "name": "FreshRSS",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "rss"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "fx",
+      "license": "MIT",
+      "name": "fx",
+      "notes": "Interactive JSON viewer; the fastest way to read an envelope by hand.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "gatus",
+      "license": "Apache-2.0",
+      "name": "Gatus",
+      "notes": "Config as YAML, which fits how the catalog already works.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "http"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "gephi",
+      "license": "GPL-3.0-only",
+      "name": "Gephi",
+      "notes": "Desktop analysis of the lineage graph.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "csv"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "glance",
+      "license": "AGPL-3.0-only",
+      "name": "Glance",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "rss"
+      ],
+      "type": "kiosk-and-signage"
+    },
+    {
+      "id": "glide-data-grid",
+      "license": "MIT",
+      "name": "Glide Data Grid",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "gotenberg",
+      "license": "MIT",
+      "name": "Gotenberg",
+      "notes": "PDF rendering as a stateless HTTP service, which avoids a headless browser in the Worker.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "html"
+      ],
+      "type": "print-and-pdf"
+    },
+    {
+      "id": "gotify",
+      "license": "MIT",
+      "name": "Gotify",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "gradio",
+      "license": "Apache-2.0",
+      "name": "Gradio",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "grafana",
+      "license": "AGPL-3.0-only",
+      "name": "Grafana",
+      "notes": "Best fit for freshness and uptime; the Infinity datasource reads our JSON directly.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "prometheus",
+        "json",
+        "sql"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "grafana-kiosk",
+      "license": "Apache-2.0",
+      "name": "Grafana Kiosk",
+      "notes": "Drives an existing Grafana dashboard into full screen and keeps it logged in.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "http"
+      ],
+      "type": "kiosk-and-signage"
+    },
+    {
+      "id": "grafana-live",
+      "license": "AGPL-3.0-only",
+      "name": "Grafana Live",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "websocket"
+      ],
+      "type": "realtime-stream"
+    },
+    {
+      "id": "graphic-walker",
+      "license": "AGPL-3.0-only",
+      "name": "Graphic Walker",
+      "notes": "Drag-and-drop exploration embeddable in a page, with no server of its own.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "graphviz",
+      "license": "EPL-1.0",
+      "name": "Graphviz",
+      "notes": "Good for a static lineage diagram generated at build time.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "text"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "grid-js",
+      "license": "MIT",
+      "name": "Grid.js",
+      "notes": "Small enough to drop into a static page with no build step.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "grist",
+      "license": "Apache-2.0",
+      "name": "Grist",
+      "notes": "Spreadsheet with real formulas; good for hand-checking a scorecard.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "gum",
+      "license": "MIT",
+      "name": "gum",
+      "notes": "Shell-script UIs; useful in runbooks.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "handsontable-ce",
+      "license": "MIT",
+      "name": "Handsontable Community",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "harlequin",
+      "license": "MIT",
+      "name": "Harlequin",
+      "notes": "A terminal IDE for DuckDB; reads the archive with no browser.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "parquet",
+        "duckdb"
+      ],
+      "type": "sql-and-exploration"
+    },
+    {
+      "id": "healthchecks",
+      "license": "BSD-3-Clause",
+      "name": "Healthchecks",
+      "notes": "Dead-man switch for the cron. Answers whether the snapshot ran, which is not the same question as whether the source is up.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "http"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "panel",
+      "license": "BSD-3-Clause",
+      "name": "HoloViz Panel",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv",
+        "parquet"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "homepage",
+      "license": "GPL-3.0-only",
+      "name": "Homepage",
+      "notes": "YAML-configured, reads a JSON field straight into a tile. The least work per screen.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "http"
+      ],
+      "type": "kiosk-and-signage"
+    },
+    {
+      "id": "huginn",
+      "license": "MIT",
+      "name": "Huginn",
+      "notes": "Agent-style rules over feeds; predates the current agent wave by a decade.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "rss"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "hugo",
+      "license": "Apache-2.0",
+      "name": "Hugo",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md",
+        "json"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "icalendar",
+      "license": "n/a",
+      "name": "iCalendar",
+      "notes": "Release calendars for scheduled publishers like FRED and SEC belong in a calendar, not a dashboard.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "inline-svg",
+      "license": "n/a",
+      "name": "Inline SVG (no library)",
+      "notes": "What the Modafied emblem actually is. Zero dependencies, zero runtime, works in email.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "embeddable-widget"
+    },
+    {
+      "id": "jless",
+      "license": "MIT",
+      "name": "jless",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "jq",
+      "license": "MIT",
+      "name": "jq",
+      "notes": "The baseline. If a feed is not pleasant in jq, the shape is wrong.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "json-feed",
+      "license": "n/a",
+      "name": "JSON Feed",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "jspreadsheet-ce",
+      "license": "MIT",
+      "name": "Jspreadsheet CE",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "spreadsheet"
+    },
+    {
+      "id": "jupyter",
+      "license": "BSD-3-Clause",
+      "name": "JupyterLab",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv",
+        "parquet"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "keila",
+      "license": "AGPL-3.0-only",
+      "name": "Keila",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "email-and-digest"
+    },
+    {
+      "id": "keplergl",
+      "license": "MIT",
+      "name": "kepler.gl",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson",
+        "csv"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "kibana",
+      "license": "Elastic-2.0",
+      "name": "Kibana",
+      "notes": "Source-available, not open source. Fine to self-host, not fine to resell as a service.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "leaflet",
+      "license": "BSD-2-Clause",
+      "name": "Leaflet",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "librechat",
+      "license": "MIT",
+      "name": "LibreChat",
+      "notes": "Speaks MCP, so it can hold the Trooth server directly once Phase 1 ships.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "mcp"
+      ],
+      "type": "agent-and-chat-surface"
+    },
+    {
+      "id": "libreoffice-calc",
+      "license": "MPL-2.0",
+      "name": "LibreOffice Calc",
+      "notes": "Desktop, and the honest answer for a buyer who only wants the file.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "xlsx"
+      ],
+      "type": "spreadsheet"
+    },
+    {
+      "id": "lightdash",
+      "license": "MIT",
+      "name": "Lightdash",
+      "notes": "Metrics defined in code, which suits a versioned method.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "listmonk",
+      "license": "AGPL-3.0-only",
+      "name": "listmonk",
+      "notes": "Single binary, handles lists and scheduled campaigns. The cheapest real digest we could run.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "email-and-digest"
+    },
+    {
+      "id": "llm-cli",
+      "license": "Apache-2.0",
+      "name": "llm",
+      "notes": "Pipe an envelope into a model from a shell, which is how most people will first try this.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "agent-and-chat-surface"
+    },
+    {
+      "id": "lowcoder",
+      "license": "AGPL-3.0-only",
+      "name": "Lowcoder",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "sql"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "luckysheet",
+      "license": "MIT",
+      "name": "Luckysheet",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "spreadsheet"
+    },
+    {
+      "id": "magicmirror",
+      "license": "MIT",
+      "name": "MagicMirror",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "rss"
+      ],
+      "type": "kiosk-and-signage"
+    },
+    {
+      "id": "mailpit",
+      "license": "MIT",
+      "name": "Mailpit",
+      "notes": "Catches the digest in development so nobody tests against a real list.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "smtp"
+      ],
+      "type": "email-and-digest"
+    },
+    {
+      "id": "maizzle",
+      "license": "MIT",
+      "name": "Maizzle",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "md"
+      ],
+      "type": "email-and-digest"
+    },
+    {
+      "id": "malloy",
+      "license": "MIT",
+      "name": "Malloy",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "parquet",
+        "sql"
+      ],
+      "type": "sql-and-exploration"
+    },
+    {
+      "id": "maplibre-gl",
+      "license": "BSD-3-Clause",
+      "name": "MapLibre GL JS",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson",
+        "pmtiles"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "marimo",
+      "license": "Apache-2.0",
+      "name": "marimo",
+      "notes": "Reactive notebooks that are plain Python files, so they diff properly.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv",
+        "parquet"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "matterbridge",
+      "license": "Apache-2.0",
+      "name": "Matterbridge",
+      "notes": "One post fans out to the chat tools we do not want to integrate one by one.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook"
+      ],
+      "type": "chat-and-collaboration"
+    },
+    {
+      "id": "mattermost",
+      "license": "AGPL-3.0-only",
+      "name": "Mattermost",
+      "notes": "Incoming webhooks take a JSON body directly, so a change feed needs no adapter.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "webhook",
+        "json"
+      ],
+      "type": "chat-and-collaboration"
+    },
+    {
+      "id": "mcp-inspector",
+      "license": "MIT",
+      "name": "MCP Inspector",
+      "notes": "The debugging surface for our own server. Belongs in the quickstart.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "mcp"
+      ],
+      "type": "agent-and-chat-surface"
+    },
+    {
+      "id": "mermaid",
+      "license": "MIT",
+      "name": "Mermaid",
+      "notes": "Renders in GitHub and most docs tools with no build step.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "text"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "metabase",
+      "license": "AGPL-3.0-or-later",
+      "name": "Metabase",
+      "notes": "Easiest for non-technical viewers; needs the data in a database.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "sql",
+        "csv"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "miller",
+      "license": "BSD-2-Clause",
+      "name": "Miller",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "miniflux",
+      "license": "Apache-2.0",
+      "name": "Miniflux",
+      "notes": "Minimal reader, single binary, and it honours conditional GETs, which TASK-MIG-5 cares about.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "rss"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "mjml",
+      "license": "MIT",
+      "name": "MJML",
+      "notes": "Email HTML that survives Outlook. Needed before any digest goes out.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "md"
+      ],
+      "type": "email-and-digest"
+    },
+    {
+      "id": "mkdocs-material",
+      "license": "MIT",
+      "name": "MkDocs Material",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "nats",
+      "license": "Apache-2.0",
+      "name": "NATS",
+      "notes": "Subject-based fan-out; one subject per source is the obvious shape for a change feed.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "websocket"
+      ],
+      "type": "realtime-stream"
+    },
+    {
+      "id": "netdata",
+      "license": "GPL-3.0-only",
+      "name": "Netdata",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "prometheus"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "nivo",
+      "license": "MIT",
+      "name": "nivo",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "nocodb",
+      "license": "AGPL-3.0-only",
+      "name": "NocoDB",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "sql",
+        "csv"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "novu",
+      "license": "MIT",
+      "name": "Novu",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "ntfy",
+      "license": "Apache-2.0",
+      "name": "ntfy",
+      "notes": "Push to phone from a webhook in one line. The cheapest useful output we could document.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "observable-framework",
+      "license": "ISC",
+      "name": "Observable Framework",
+      "notes": "Static build, data loaders in any language, excellent charts.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv",
+        "parquet"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "observable-plot",
+      "license": "ISC",
+      "name": "Observable Plot",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "oembed",
+      "license": "n/a",
+      "name": "oEmbed",
+      "notes": "A standard worth supporting so cards unfurl in Slack and Notion.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "embeddable-widget"
+    },
+    {
+      "id": "open-webui",
+      "license": "BSD-3-Clause with branding clause",
+      "name": "Open WebUI",
+      "notes": "Check the branding clause before white-labelling it.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "mcp"
+      ],
+      "type": "agent-and-chat-surface"
+    },
+    {
+      "id": "openlayers",
+      "license": "BSD-2-Clause",
+      "name": "OpenLayers",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "opensearch-dashboards",
+      "license": "Apache-2.0",
+      "name": "OpenSearch Dashboards",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "pandoc",
+      "license": "GPL-2.0-or-later",
+      "name": "Pandoc",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "md",
+        "json"
+      ],
+      "type": "print-and-pdf"
+    },
+    {
+      "id": "perspective",
+      "license": "Apache-2.0",
+      "name": "Perspective",
+      "notes": "Streaming pivot grid in WebAssembly; handles the archive without a server.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "parquet",
+        "json"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "perspective-stream",
+      "license": "Apache-2.0",
+      "name": "Perspective (streaming)",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "arrow",
+        "websocket"
+      ],
+      "type": "realtime-stream"
+    },
+    {
+      "id": "playwright",
+      "license": "Apache-2.0",
+      "name": "Playwright",
+      "notes": "Heavier, and the only option when the page needs JavaScript to finish rendering.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "html"
+      ],
+      "type": "print-and-pdf"
+    },
+    {
+      "id": "dash",
+      "license": "MIT",
+      "name": "Plotly Dash",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "plotly-js",
+      "license": "MIT",
+      "name": "Plotly.js",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "postal",
+      "license": "MIT",
+      "name": "Postal",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "smtp"
+      ],
+      "type": "email-and-digest"
+    },
+    {
+      "id": "prometheus-alertmanager",
+      "license": "Apache-2.0",
+      "name": "Prometheus Alertmanager",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "prometheus"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "protomaps",
+      "license": "BSD-3-Clause",
+      "name": "Protomaps",
+      "notes": "Basemap tiles from a single file on R2, so no tile server to pay for.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "pmtiles"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "qgis",
+      "license": "GPL-2.0-or-later",
+      "name": "QGIS",
+      "notes": "Desktop; for analysis rather than publishing.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "geojson",
+        "csv"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "quarto",
+      "license": "MIT",
+      "name": "Quarto",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json",
+        "parquet"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "quartz",
+      "license": "MIT",
+      "name": "Quartz",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "querybook",
+      "license": "Apache-2.0",
+      "name": "Querybook",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "react-admin",
+      "license": "MIT",
+      "name": "React Admin",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "recharts",
+      "license": "MIT",
+      "name": "Recharts",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "redash",
+      "license": "BSD-2-Clause",
+      "name": "Redash",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql",
+        "json"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "refine",
+      "license": "MIT",
+      "name": "Refine",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "reflex",
+      "license": "Apache-2.0",
+      "name": "Reflex",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "sql"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "resvg",
+      "license": "MPL-2.0",
+      "name": "resvg",
+      "notes": "SVG to PNG for the surfaces that still refuse SVG, email among them.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "svg"
+      ],
+      "type": "embeddable-widget"
+    },
+    {
+      "id": "revogrid",
+      "license": "MIT",
+      "name": "RevoGrid",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "rich",
+      "license": "MIT",
+      "name": "Rich",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "rilldata",
+      "license": "Apache-2.0",
+      "name": "Rill",
+      "notes": "Reads Parquet with no warehouse at all.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "parquet",
+        "duckdb"
+      ],
+      "type": "bi-dashboard"
+    },
+    {
+      "id": "rocketchat",
+      "license": "MIT",
+      "name": "Rocket.Chat",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook",
+        "json"
+      ],
+      "type": "chat-and-collaboration"
+    },
+    {
+      "id": "rss-bridge",
+      "license": "Unlicense",
+      "name": "RSS-Bridge",
+      "notes": "The reverse direction: makes a feed out of a source that refuses to publish one.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "http"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "rss2email",
+      "license": "GPL-3.0-or-later",
+      "name": "rss2email",
+      "notes": "Turns the syndication output below into the digest output here, with no code of ours.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "rss"
+      ],
+      "type": "email-and-digest"
+    },
+    {
+      "id": "satori",
+      "license": "MIT",
+      "name": "Satori",
+      "notes": "Renders an SVG card at the edge, so a per-source social image costs one Worker call.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "embeddable-widget"
+    },
+    {
+      "id": "sse",
+      "license": "n/a",
+      "name": "Server-Sent Events",
+      "notes": "Simplest streaming transport; works through the Worker with no extra service.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "http"
+      ],
+      "type": "realtime-stream"
+    },
+    {
+      "id": "sheetjs-ce",
+      "license": "Apache-2.0",
+      "name": "SheetJS Community",
+      "notes": "Writing a real .xlsx export is a one-day job and would unblock several buyers.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "spreadsheet"
+    },
+    {
+      "id": "shields-io",
+      "license": "CC0-1.0",
+      "name": "Shields.io",
+      "notes": "Self-hostable badge renderer. The emblem endpoint can speak its schema.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "embeddable-widget"
+    },
+    {
+      "id": "shiny",
+      "license": "MIT",
+      "name": "Shiny",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "shoutrrr",
+      "license": "MIT",
+      "name": "Shoutrrr",
+      "notes": "One Go library, one URL per destination. Smallest possible notification dependency.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook"
+      ],
+      "type": "alerting-and-notification"
+    },
+    {
+      "id": "sigma-js",
+      "license": "MIT",
+      "name": "Sigma.js",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "simple-icons",
+      "license": "CC0-1.0",
+      "name": "Simple Icons",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "svg"
+      ],
+      "type": "embeddable-widget"
+    },
+    {
+      "id": "slack-webhook",
+      "license": "n/a",
+      "name": "Slack incoming webhook",
+      "notes": "Hosted, not self-hostable. Listed because it is what most teams will actually point at us.",
+      "reciprocal_license": false,
+      "self_host": false,
+      "trooth_input": [
+        "webhook"
+      ],
+      "type": "chat-and-collaboration"
+    },
+    {
+      "id": "slickgrid",
+      "license": "MIT",
+      "name": "SlickGrid",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "smashing",
+      "license": "MIT",
+      "name": "Smashing",
+      "notes": "The Dashing successor. One widget per tile, pushed over HTTP.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "kiosk-and-signage"
+    },
+    {
+      "id": "socket-io",
+      "license": "MIT",
+      "name": "Socket.IO",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "websocket"
+      ],
+      "type": "realtime-stream"
+    },
+    {
+      "id": "solara",
+      "license": "MIT",
+      "name": "Solara",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "sqlpad",
+      "license": "MIT",
+      "name": "SQLPad",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "sql"
+      ],
+      "type": "sql-and-exploration"
+    },
+    {
+      "id": "starlight",
+      "license": "MIT",
+      "name": "Starlight",
+      "notes": "Astro-native docs, so the docs and the console share one build.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "statping-ng",
+      "license": "GPL-3.0-only",
+      "name": "Statping-ng",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "streamlit",
+      "license": "Apache-2.0",
+      "name": "Streamlit",
+      "notes": "Fastest path from a JSON feed to something clickable.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv",
+        "parquet"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "tabulator",
+      "license": "MIT",
+      "name": "Tabulator",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "tanstack-table",
+      "license": "MIT",
+      "name": "TanStack Table",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "table-and-grid"
+    },
+    {
+      "id": "tectonic",
+      "license": "MIT",
+      "name": "Tectonic",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md",
+        "csv"
+      ],
+      "type": "print-and-pdf"
+    },
+    {
+      "id": "terriajs",
+      "license": "Apache-2.0",
+      "name": "TerriaJS",
+      "notes": "Built for government open data portals, which is most of the catalog.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson",
+        "csv"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "textual",
+      "license": "MIT",
+      "name": "Textual",
+      "notes": "For building a terminal console if one is ever wanted.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "tt-rss",
+      "license": "GPL-3.0-only",
+      "name": "Tiny Tiny RSS",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "rss"
+      ],
+      "type": "feed-syndication"
+    },
+    {
+      "id": "tippecanoe",
+      "license": "BSD-3-Clause",
+      "name": "tippecanoe",
+      "notes": "Builds the tiles rather than drawing them, and every large map above needs it.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "tooljet",
+      "license": "AGPL-3.0-only",
+      "name": "ToolJet",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "sql"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "turf",
+      "license": "MIT",
+      "name": "Turf.js",
+      "notes": "Geometry operations, not a UI, but needed by every map above.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "geojson"
+      ],
+      "type": "map-and-geo"
+    },
+    {
+      "id": "typst",
+      "license": "Apache-2.0",
+      "name": "Typst",
+      "notes": "Fast, scriptable, and the templates diff cleanly. Best fit for a recurring report.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "print-and-pdf"
+    },
+    {
+      "id": "univer",
+      "license": "Apache-2.0",
+      "name": "Univer",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "spreadsheet"
+    },
+    {
+      "id": "uplot",
+      "license": "MIT",
+      "name": "uPlot",
+      "notes": "Tiny and fast; right choice for long freshness time series.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "upptime",
+      "license": "MIT",
+      "name": "Upptime",
+      "notes": "Status page built from GitHub Actions and commits. Runs at no cost, which matters under H6.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "http"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "uptime-kuma",
+      "license": "MIT",
+      "name": "Uptime Kuma",
+      "notes": "Simplest self-hosted status page; can poll our status JSON directly.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "http"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "vega-lite",
+      "license": "BSD-3-Clause",
+      "name": "Vega-Lite",
+      "notes": "Declarative spec; a chart becomes a JSON object we could publish alongside the data.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "vis-network",
+      "license": "Apache-2.0",
+      "name": "vis-network",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "diagram-and-graph"
+    },
+    {
+      "id": "visidata",
+      "license": "GPL-3.0-only",
+      "name": "VisiData",
+      "notes": "Explore a snapshot archive interactively in a terminal.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv",
+        "parquet"
+      ],
+      "type": "terminal-and-cli"
+    },
+    {
+      "id": "visx",
+      "license": "MIT",
+      "name": "visx",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json"
+      ],
+      "type": "charting-library"
+    },
+    {
+      "id": "vitepress",
+      "license": "MIT",
+      "name": "VitePress",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "voila",
+      "license": "BSD-3-Clause",
+      "name": "Voila",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "csv"
+      ],
+      "type": "notebook-and-report"
+    },
+    {
+      "id": "weasyprint",
+      "license": "BSD-3-Clause",
+      "name": "WeasyPrint",
+      "notes": "HTML and CSS to PDF with no browser, and the emblem SVG renders as-is.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "html",
+        "json"
+      ],
+      "type": "print-and-pdf"
+    },
+    {
+      "id": "windmill",
+      "license": "AGPL-3.0-only",
+      "name": "Windmill",
+      "notes": "Scripts and an app builder in one, so the same tool can poll a feed and render it.",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "json",
+        "sql"
+      ],
+      "type": "admin-panel-internal-tool"
+    },
+    {
+      "id": "x-spreadsheet",
+      "license": "MIT",
+      "name": "x-spreadsheet",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "csv",
+        "json"
+      ],
+      "type": "spreadsheet"
+    },
+    {
+      "id": "zabbix",
+      "license": "AGPL-3.0-only",
+      "name": "Zabbix",
+      "notes": "",
+      "reciprocal_license": true,
+      "self_host": true,
+      "trooth_input": [
+        "prometheus",
+        "json"
+      ],
+      "type": "status-and-uptime"
+    },
+    {
+      "id": "zola",
+      "license": "MIT",
+      "name": "Zola",
+      "notes": "",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "md",
+        "json"
+      ],
+      "type": "static-site-and-docs"
+    },
+    {
+      "id": "zulip",
+      "license": "Apache-2.0",
+      "name": "Zulip",
+      "notes": "A topic per source keeps a noisy revision feed readable, which flat channels do not.",
+      "reciprocal_license": false,
+      "self_host": true,
+      "trooth_input": [
+        "webhook",
+        "json"
+      ],
+      "type": "chat-and-collaboration"
+    }
+  ],
+  "total_tools": 185,
+  "total_types": 21,
   "types": [
     {
       "tools": [
@@ -101,6 +2490,36 @@
           "license": "MIT",
           "name": "Blazer",
           "notes": "Smallest possible SQL dashboard; a single Rails mount.",
+          "self_host": true,
+          "trooth_input": [
+            "sql"
+          ]
+        },
+        {
+          "id": "kibana",
+          "license": "Elastic-2.0",
+          "name": "Kibana",
+          "notes": "Source-available, not open source. Fine to self-host, not fine to resell as a service.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "graphic-walker",
+          "license": "AGPL-3.0-only",
+          "name": "Graphic Walker",
+          "notes": "Drag-and-drop exploration embeddable in a page, with no server of its own.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "datalens",
+          "license": "Apache-2.0",
+          "name": "DataLens",
           "self_host": true,
           "trooth_input": [
             "sql"
@@ -222,6 +2641,46 @@
             "json",
             "csv"
           ]
+        },
+        {
+          "id": "zeppelin",
+          "license": "Apache-2.0",
+          "name": "Apache Zeppelin",
+          "self_host": true,
+          "trooth_input": [
+            "sql",
+            "json"
+          ]
+        },
+        {
+          "id": "gradio",
+          "license": "Apache-2.0",
+          "name": "Gradio",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "solara",
+          "license": "MIT",
+          "name": "Solara",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "reflex",
+          "license": "Apache-2.0",
+          "name": "Reflex",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "sql"
+          ]
         }
       ],
       "type": "notebook-and-report",
@@ -324,6 +2783,42 @@
           "trooth_input": [
             "json"
           ]
+        },
+        {
+          "id": "apexcharts",
+          "license": "MIT",
+          "name": "ApexCharts",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "visx",
+          "license": "MIT",
+          "name": "visx",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "billboard-js",
+          "license": "MIT",
+          "name": "billboard.js",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "antv-g2",
+          "license": "MIT",
+          "name": "AntV G2",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
         }
       ],
       "type": "charting-library",
@@ -407,6 +2902,36 @@
           "self_host": true,
           "trooth_input": [
             "json"
+          ]
+        },
+        {
+          "id": "grid-js",
+          "license": "MIT",
+          "name": "Grid.js",
+          "notes": "Small enough to drop into a static page with no build step.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "slickgrid",
+          "license": "MIT",
+          "name": "SlickGrid",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "frappe-datatable",
+          "license": "MIT",
+          "name": "Frappe DataTable",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
           ]
         }
       ],
@@ -493,6 +3018,27 @@
           "self_host": true,
           "trooth_input": [
             "pmtiles"
+          ]
+        },
+        {
+          "id": "terriajs",
+          "license": "Apache-2.0",
+          "name": "TerriaJS",
+          "notes": "Built for government open data portals, which is most of the catalog.",
+          "self_host": true,
+          "trooth_input": [
+            "geojson",
+            "csv"
+          ]
+        },
+        {
+          "id": "tippecanoe",
+          "license": "BSD-3-Clause",
+          "name": "tippecanoe",
+          "notes": "Builds the tiles rather than drawing them, and every large map above needs it.",
+          "self_host": true,
+          "trooth_input": [
+            "geojson"
           ]
         }
       ],
@@ -589,6 +3135,27 @@
             "csv",
             "json"
           ]
+        },
+        {
+          "id": "lowcoder",
+          "license": "AGPL-3.0-only",
+          "name": "Lowcoder",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "sql"
+          ]
+        },
+        {
+          "id": "windmill",
+          "license": "AGPL-3.0-only",
+          "name": "Windmill",
+          "notes": "Scripts and an app builder in one, so the same tool can poll a feed and render it.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "sql"
+          ]
         }
       ],
       "type": "admin-panel-internal-tool",
@@ -663,6 +3230,26 @@
           "trooth_input": [
             "prometheus"
           ]
+        },
+        {
+          "id": "upptime",
+          "license": "MIT",
+          "name": "Upptime",
+          "notes": "Status page built from GitHub Actions and commits. Runs at no cost, which matters under H6.",
+          "self_host": true,
+          "trooth_input": [
+            "http"
+          ]
+        },
+        {
+          "id": "healthchecks",
+          "license": "BSD-3-Clause",
+          "name": "Healthchecks",
+          "notes": "Dead-man switch for the cron. Answers whether the snapshot ran, which is not the same question as whether the source is up.",
+          "self_host": true,
+          "trooth_input": [
+            "http"
+          ]
         }
       ],
       "type": "status-and-uptime",
@@ -726,6 +3313,27 @@
           "trooth_input": [
             "json",
             "rss"
+          ]
+        },
+        {
+          "id": "alerta",
+          "license": "Apache-2.0",
+          "name": "Alerta",
+          "notes": "De-duplicates and correlates alerts, which a revision feed needs early or it becomes noise.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "webhook"
+          ]
+        },
+        {
+          "id": "shoutrrr",
+          "license": "MIT",
+          "name": "Shoutrrr",
+          "notes": "One Go library, one URL per destination. Smallest possible notification dependency.",
+          "self_host": true,
+          "trooth_input": [
+            "webhook"
           ]
         }
       ],
@@ -805,6 +3413,35 @@
           "trooth_input": [
             "json"
           ]
+        },
+        {
+          "id": "fx",
+          "license": "MIT",
+          "name": "fx",
+          "notes": "Interactive JSON viewer; the fastest way to read an envelope by hand.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "jless",
+          "license": "MIT",
+          "name": "jless",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "miller",
+          "license": "BSD-2-Clause",
+          "name": "Miller",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
         }
       ],
       "type": "terminal-and-cli",
@@ -878,6 +3515,26 @@
           "trooth_input": [
             "md"
           ]
+        },
+        {
+          "id": "starlight",
+          "license": "MIT",
+          "name": "Starlight",
+          "notes": "Astro-native docs, so the docs and the console share one build.",
+          "self_host": true,
+          "trooth_input": [
+            "md"
+          ]
+        },
+        {
+          "id": "zola",
+          "license": "MIT",
+          "name": "Zola",
+          "self_host": true,
+          "trooth_input": [
+            "md",
+            "json"
+          ]
         }
       ],
       "type": "static-site-and-docs",
@@ -931,6 +3588,26 @@
           "self_host": true,
           "trooth_input": [
             "json"
+          ]
+        },
+        {
+          "id": "satori",
+          "license": "MIT",
+          "name": "Satori",
+          "notes": "Renders an SVG card at the edge, so a per-source social image costs one Worker call.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "resvg",
+          "license": "MPL-2.0",
+          "name": "resvg",
+          "notes": "SVG to PNG for the surfaces that still refuse SVG, email among them.",
+          "self_host": true,
+          "trooth_input": [
+            "svg"
           ]
         }
       ],
@@ -987,6 +3664,27 @@
           "self_host": true,
           "trooth_input": [
             "sql"
+          ]
+        },
+        {
+          "id": "harlequin",
+          "license": "MIT",
+          "name": "Harlequin",
+          "notes": "A terminal IDE for DuckDB; reads the archive with no browser.",
+          "self_host": true,
+          "trooth_input": [
+            "parquet",
+            "duckdb"
+          ]
+        },
+        {
+          "id": "dbeaver-ce",
+          "license": "Apache-2.0",
+          "name": "DBeaver Community",
+          "self_host": true,
+          "trooth_input": [
+            "sql",
+            "duckdb"
           ]
         }
       ],
@@ -1052,6 +3750,25 @@
           "trooth_input": [
             "csv"
           ]
+        },
+        {
+          "id": "d2",
+          "license": "MPL-2.0",
+          "name": "D2",
+          "notes": "Text to diagram like Mermaid, with better layout for a wide lineage graph.",
+          "self_host": true,
+          "trooth_input": [
+            "text"
+          ]
+        },
+        {
+          "id": "vis-network",
+          "license": "Apache-2.0",
+          "name": "vis-network",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
         }
       ],
       "type": "diagram-and-graph",
@@ -1108,6 +3825,27 @@
           "trooth_input": [
             "csv"
           ]
+        },
+        {
+          "id": "libreoffice-calc",
+          "license": "MPL-2.0",
+          "name": "LibreOffice Calc",
+          "notes": "Desktop, and the honest answer for a buyer who only wants the file.",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "xlsx"
+          ]
+        },
+        {
+          "id": "jspreadsheet-ce",
+          "license": "MIT",
+          "name": "Jspreadsheet CE",
+          "self_host": true,
+          "trooth_input": [
+            "csv",
+            "json"
+          ]
         }
       ],
       "type": "spreadsheet",
@@ -1162,10 +3900,470 @@
           "trooth_input": [
             "mqtt"
           ]
+        },
+        {
+          "id": "nats",
+          "license": "Apache-2.0",
+          "name": "NATS",
+          "notes": "Subject-based fan-out; one subject per source is the obvious shape for a change feed.",
+          "self_host": true,
+          "trooth_input": [
+            "websocket"
+          ]
+        },
+        {
+          "id": "socket-io",
+          "license": "MIT",
+          "name": "Socket.IO",
+          "self_host": true,
+          "trooth_input": [
+            "websocket"
+          ]
         }
       ],
       "type": "realtime-stream",
       "what": "For the sub-minute feeds where a page that refreshes every five minutes is useless."
+    },
+    {
+      "tools": [
+        {
+          "id": "mattermost",
+          "license": "AGPL-3.0-only",
+          "name": "Mattermost",
+          "notes": "Incoming webhooks take a JSON body directly, so a change feed needs no adapter.",
+          "self_host": true,
+          "trooth_input": [
+            "webhook",
+            "json"
+          ]
+        },
+        {
+          "id": "rocketchat",
+          "license": "MIT",
+          "name": "Rocket.Chat",
+          "self_host": true,
+          "trooth_input": [
+            "webhook",
+            "json"
+          ]
+        },
+        {
+          "id": "zulip",
+          "license": "Apache-2.0",
+          "name": "Zulip",
+          "notes": "A topic per source keeps a noisy revision feed readable, which flat channels do not.",
+          "self_host": true,
+          "trooth_input": [
+            "webhook",
+            "json"
+          ]
+        },
+        {
+          "id": "element",
+          "license": "Apache-2.0",
+          "name": "Element on Matrix",
+          "self_host": true,
+          "trooth_input": [
+            "webhook",
+            "json"
+          ]
+        },
+        {
+          "id": "matterbridge",
+          "license": "Apache-2.0",
+          "name": "Matterbridge",
+          "notes": "One post fans out to the chat tools we do not want to integrate one by one.",
+          "self_host": true,
+          "trooth_input": [
+            "webhook"
+          ]
+        },
+        {
+          "id": "discourse",
+          "license": "GPL-2.0-or-later",
+          "name": "Discourse",
+          "notes": "For a public changelog people can reply to.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "rss"
+          ]
+        },
+        {
+          "id": "slack-webhook",
+          "license": "n/a",
+          "name": "Slack incoming webhook",
+          "notes": "Hosted, not self-hostable. Listed because it is what most teams will actually point at us.",
+          "self_host": false,
+          "trooth_input": [
+            "webhook"
+          ]
+        }
+      ],
+      "type": "chat-and-collaboration",
+      "what": "Output that lands where the team already is. For most buyers this beats any page they have to remember to visit."
+    },
+    {
+      "tools": [
+        {
+          "id": "listmonk",
+          "license": "AGPL-3.0-only",
+          "name": "listmonk",
+          "notes": "Single binary, handles lists and scheduled campaigns. The cheapest real digest we could run.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "keila",
+          "license": "AGPL-3.0-only",
+          "name": "Keila",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "mjml",
+          "license": "MIT",
+          "name": "MJML",
+          "notes": "Email HTML that survives Outlook. Needed before any digest goes out.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "md"
+          ]
+        },
+        {
+          "id": "maizzle",
+          "license": "MIT",
+          "name": "Maizzle",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "md"
+          ]
+        },
+        {
+          "id": "postal",
+          "license": "MIT",
+          "name": "Postal",
+          "self_host": true,
+          "trooth_input": [
+            "smtp"
+          ]
+        },
+        {
+          "id": "mailpit",
+          "license": "MIT",
+          "name": "Mailpit",
+          "notes": "Catches the digest in development so nobody tests against a real list.",
+          "self_host": true,
+          "trooth_input": [
+            "smtp"
+          ]
+        },
+        {
+          "id": "rss2email",
+          "license": "GPL-3.0-or-later",
+          "name": "rss2email",
+          "notes": "Turns the syndication output below into the digest output here, with no code of ours.",
+          "self_host": true,
+          "trooth_input": [
+            "rss"
+          ]
+        }
+      ],
+      "type": "email-and-digest",
+      "what": "The scheduled summary. Unfashionable, and still the format a non-technical buyer forwards to their boss."
+    },
+    {
+      "tools": [
+        {
+          "id": "atom",
+          "license": "n/a",
+          "name": "Atom",
+          "notes": "A change feed is a feed. Publishing Atom means every reader below works with no integration.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "json-feed",
+          "license": "n/a",
+          "name": "JSON Feed",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "miniflux",
+          "license": "Apache-2.0",
+          "name": "Miniflux",
+          "notes": "Minimal reader, single binary, and it honours conditional GETs, which TASK-MIG-5 cares about.",
+          "self_host": true,
+          "trooth_input": [
+            "rss"
+          ]
+        },
+        {
+          "id": "freshrss",
+          "license": "AGPL-3.0-only",
+          "name": "FreshRSS",
+          "self_host": true,
+          "trooth_input": [
+            "rss"
+          ]
+        },
+        {
+          "id": "tt-rss",
+          "license": "GPL-3.0-only",
+          "name": "Tiny Tiny RSS",
+          "self_host": true,
+          "trooth_input": [
+            "rss"
+          ]
+        },
+        {
+          "id": "rss-bridge",
+          "license": "Unlicense",
+          "name": "RSS-Bridge",
+          "notes": "The reverse direction: makes a feed out of a source that refuses to publish one.",
+          "self_host": true,
+          "trooth_input": [
+            "http"
+          ]
+        },
+        {
+          "id": "icalendar",
+          "license": "n/a",
+          "name": "iCalendar",
+          "notes": "Release calendars for scheduled publishers like FRED and SEC belong in a calendar, not a dashboard.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "feedgen",
+          "license": "BSD-2-Clause",
+          "name": "feedgen",
+          "notes": "Generates the Atom and RSS above from Python, which is where the jobs already live.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        }
+      ],
+      "type": "feed-syndication",
+      "what": "Machine-readable subscription formats. They cost nothing to publish and they outlive every UI on this list."
+    },
+    {
+      "tools": [
+        {
+          "id": "weasyprint",
+          "license": "BSD-3-Clause",
+          "name": "WeasyPrint",
+          "notes": "HTML and CSS to PDF with no browser, and the emblem SVG renders as-is.",
+          "self_host": true,
+          "trooth_input": [
+            "html",
+            "json"
+          ]
+        },
+        {
+          "id": "typst",
+          "license": "Apache-2.0",
+          "name": "Typst",
+          "notes": "Fast, scriptable, and the templates diff cleanly. Best fit for a recurring report.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "csv"
+          ]
+        },
+        {
+          "id": "pandoc",
+          "license": "GPL-2.0-or-later",
+          "name": "Pandoc",
+          "self_host": true,
+          "trooth_input": [
+            "md",
+            "json"
+          ]
+        },
+        {
+          "id": "gotenberg",
+          "license": "MIT",
+          "name": "Gotenberg",
+          "notes": "PDF rendering as a stateless HTTP service, which avoids a headless browser in the Worker.",
+          "self_host": true,
+          "trooth_input": [
+            "html"
+          ]
+        },
+        {
+          "id": "playwright",
+          "license": "Apache-2.0",
+          "name": "Playwright",
+          "notes": "Heavier, and the only option when the page needs JavaScript to finish rendering.",
+          "self_host": true,
+          "trooth_input": [
+            "html"
+          ]
+        },
+        {
+          "id": "tectonic",
+          "license": "MIT",
+          "name": "Tectonic",
+          "self_host": true,
+          "trooth_input": [
+            "md",
+            "csv"
+          ]
+        }
+      ],
+      "type": "print-and-pdf",
+      "what": "A fixed document with a date on it. The regulatory and audit buyers ask for this first, whatever we would prefer."
+    },
+    {
+      "tools": [
+        {
+          "id": "grafana-kiosk",
+          "license": "Apache-2.0",
+          "name": "Grafana Kiosk",
+          "notes": "Drives an existing Grafana dashboard into full screen and keeps it logged in.",
+          "self_host": true,
+          "trooth_input": [
+            "http"
+          ]
+        },
+        {
+          "id": "smashing",
+          "license": "MIT",
+          "name": "Smashing",
+          "notes": "The Dashing successor. One widget per tile, pushed over HTTP.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "homepage",
+          "license": "GPL-3.0-only",
+          "name": "Homepage",
+          "notes": "YAML-configured, reads a JSON field straight into a tile. The least work per screen.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "http"
+          ]
+        },
+        {
+          "id": "glance",
+          "license": "AGPL-3.0-only",
+          "name": "Glance",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "rss"
+          ]
+        },
+        {
+          "id": "magicmirror",
+          "license": "MIT",
+          "name": "MagicMirror",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "rss"
+          ]
+        },
+        {
+          "id": "anthias",
+          "license": "GPL-2.0-or-later",
+          "name": "Anthias",
+          "notes": "Digital signage on a Raspberry Pi. The cheapest hardware path to a wall display.",
+          "self_host": true,
+          "trooth_input": [
+            "http"
+          ]
+        }
+      ],
+      "type": "kiosk-and-signage",
+      "what": "A screen on a wall that nobody clicks. Different constraints from a dashboard: no interaction, readable across a room, survives a reboot."
+    },
+    {
+      "tools": [
+        {
+          "id": "open-webui",
+          "license": "BSD-3-Clause with branding clause",
+          "name": "Open WebUI",
+          "notes": "Check the branding clause before white-labelling it.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "mcp"
+          ]
+        },
+        {
+          "id": "librechat",
+          "license": "MIT",
+          "name": "LibreChat",
+          "notes": "Speaks MCP, so it can hold the Trooth server directly once Phase 1 ships.",
+          "self_host": true,
+          "trooth_input": [
+            "json",
+            "mcp"
+          ]
+        },
+        {
+          "id": "chainlit",
+          "license": "Apache-2.0",
+          "name": "Chainlit",
+          "notes": "Custom elements make a source and freshness panel easy to render beside an answer.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "mcp-inspector",
+          "license": "MIT",
+          "name": "MCP Inspector",
+          "notes": "The debugging surface for our own server. Belongs in the quickstart.",
+          "self_host": true,
+          "trooth_input": [
+            "mcp"
+          ]
+        },
+        {
+          "id": "llm-cli",
+          "license": "Apache-2.0",
+          "name": "llm",
+          "notes": "Pipe an envelope into a model from a shell, which is how most people will first try this.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        },
+        {
+          "id": "assistant-ui",
+          "license": "MIT",
+          "name": "assistant-ui",
+          "notes": "React components for embedding a provenance panel in another product.",
+          "self_host": true,
+          "trooth_input": [
+            "json"
+          ]
+        }
+      ],
+      "type": "agent-and-chat-surface",
+      "what": "Where a human meets an agent that is reading Trooth. The envelope has to render here as provenance, not as a wall of JSON."
     }
   ]
 }

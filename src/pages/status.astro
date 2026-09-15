@@ -1,137 +1,123 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { p } from '../utils/paths';
+import { MODAFIED_ORIGIN, MODAFIED_EMBED_SRC, modafiedCardUrl } from '../utils/modafied';
+import registry from '../data/registry.json';
 import fs from 'node:fs';
 import path from 'node:path';
 
-let sourcesStatus = [];
-let lastUpdated = 'Unknown';
+/**
+ * Status.
+ *
+ * This page used to read Trooth's own scorecards for freshness and print a hardcoded
+ * "All Upstream Feeds Operational" badge regardless of what was underneath it. Both are gone:
+ * the scorecards because Trooth no longer computes any (ADR-0014), and the badge because a
+ * status page that cannot say "degraded" is decoration.
+ *
+ * What is honest to show today is narrow, so that is what is shown. Freshness signal comes from
+ * Modafied's live emblems. The snapshot archive is not yet persisting, and this page says so
+ * rather than implying a history that does not exist.
+ */
 
-try {
-  const scorecardsDir = path.resolve('./public/scorecards');
-  const manifestPath = path.join(scorecardsDir, 'manifest.json');
-  if (fs.existsSync(manifestPath)) {
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-    lastUpdated = manifest.published_at;
-
-    const files = fs.readdirSync(scorecardsDir).filter(f => f.endsWith('.json') && f !== 'manifest.json');
-    sourcesStatus = files.map(file => {
-      const card = JSON.parse(fs.readFileSync(path.join(scorecardsDir, file), 'utf-8'));
-      return {
-        id: card.source_id,
-        name: card.source_name,
-        lastSnapshot: card.scoring_window.end,
-        snapshotCount: card.scoring_window.snapshot_count,
-        freshnessP50: card.dimensions.freshness_lag.p50_seconds,
-        status: 'Operational'
-      };
-    });
-  }
-} catch (e) {
-  console.error(e);
+function readJson(file: string) {
+  try { return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf-8')) : null; }
+  catch { return null; }
 }
+
+const emblemIndex = readJson(path.resolve('./public/emblems/index.json'));
+const modafied = emblemIndex?.modafied ?? null;
+
+const sources = (registry.groups as any[])
+  .flatMap((g) => g.entries)
+  .filter((e: any) => e.status === 'promoted')
+  .sort((a: any, b: any) => a.name.localeCompare(b.name));
+
+const graded = modafied?.ratings?.filter((r: any) => r.grade) ?? [];
+const mismatched = modafied?.integrity?.mismatch ?? 0;
+
+const facts: [string, string, string][] = [
+  ['Sources in the routing catalog', String(sources.length), 'ok'],
+  ['Connectors in the registry', String(registry.total), 'ok'],
+  ['Graded by Modafied', `${graded.length} of ${modafied?.count ?? 0}`, graded.length ? 'ok' : 'warn'],
+  ['Snapshot archive', 'not persisting', 'warn'],
+];
+
+const COLOR: Record<string, string> = { ok: 'var(--accent-green)', warn: 'var(--accent-amber)' };
 ---
 
-<Layout title="System & Feed Status" activeNav="status">
+<Layout
+  title="Status"
+  description="What Trooth is collecting, what Modafied is grading, and what is not working yet."
+  activeNav="status"
+>
   <div style="max-width: 960px; margin: 0 auto;">
-    <div style="margin-bottom: 3rem;">
-      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem;">
-        <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em;">
-          Source Ingestion Status
-        </h1>
-        <span class="badge badge-green" style="font-size: 0.85rem; padding: 0.35rem 0.75rem;">
-          All Upstream Feeds Operational
-        </span>
-      </div>
-      <p style="color: var(--text-muted); font-size: 1.1rem;">
-        Live monitoring of snapshot capture jobs across all Phase 0 catalog endpoints.
+    <div style="margin-bottom: 2rem;">
+      <h1 style="font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 0.6rem;">
+        Status
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 820px;">
+        Freshness comes from <a href={MODAFIED_ORIGIN} target="_blank" rel="noopener">Modafied</a>,
+        which measures it with its own clock. Trooth reports only what it can currently stand
+        behind, which is less than this page used to claim.
       </p>
-      <div style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 0.5rem;">
-        Last scoring publication: <code>{lastUpdated}</code>
+    </div>
+
+    <section style="margin-bottom: 2.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem;">
+        {facts.map(([label, value, state]) => (
+          <div style={`border: 1px solid var(--border); border-left: 3px solid ${COLOR[state]}; border-radius: 10px; padding: 0.95rem 1.1rem; background: var(--bg-card);`}>
+            <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.06em;">{label}</div>
+            <div style="font-size: 1.25rem; font-weight: 800; margin-top: 0.25rem;">{value}</div>
+          </div>
+        ))}
       </div>
-    </div>
+    </section>
 
-    <!-- Feed Status Table -->
-    <div style="overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 3.5rem;">
-      <table>
-        <thead>
-          <tr>
-            <th>Source</th>
-            <th>Status</th>
-            <th>Last Captured (UTC)</th>
-            <th>Median Lag (p50)</th>
-            <th>Archive Depth</th>
-            <th>Scorecard</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sourcesStatus.map(s => (
-            <tr>
-              <td>
-                <div style="font-weight: 700; color: var(--text-main);">{s.name}</div>
-                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-subtle);">
-                  <code>{s.id}</code>
-                </div>
-              </td>
-              <td>
-                <span class="badge badge-green">
-                  {s.status}
-                </span>
-              </td>
-              <td style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
-                {s.lastSnapshot}
-              </td>
-              <td style="font-weight: 700; color: var(--primary);">
-                {s.freshnessP50}s
-              </td>
-              <td style="color: var(--text-muted); font-size: 0.88rem;">
-                {s.snapshotCount} captures
-              </td>
-              <td>
-                <a href={p(`/scorecards/${s.id}`)} style="color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.88rem;">
-                  Scorecard &rarr;
-                </a>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <section style="border: 1px solid var(--accent-amber); background: rgba(251, 191, 36, 0.08); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem;">
+      <h2 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Known, and not fixed yet</h2>
+      <ul style="margin-left: 1.2rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem;">
+        <li>
+          <strong>The snapshot archive is not persisting.</strong> The scheduled job writes to the
+          runner's disk and the runner is then destroyed, so no history accumulates. Until that is
+          fixed, replay and the derived feeds it would support do not exist.
+        </li>
+        {mismatched > 0 && (
+          <li>
+            <strong>Modafied's manifest does not match the files it lists.</strong> {mismatched} of
+            its published ratings fail our integrity check, because the manifest describes an
+            earlier generation of its own artifacts. That is a publisher bug rather than an attack.
+            The grades below are shown with that caveat and are not used for routing.
+          </li>
+        )}
+      </ul>
+    </section>
 
-    <!-- Infrastructure Telemetry -->
-    <div class="card">
-      <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0.5rem;">
-        Pipeline Infrastructure Telemetry
-      </h2>
-      <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.5rem;">
-        Snapshot ingestion executes automatically via GitHub Actions cron, writing immutable JSON payloads to Cloudflare R2 object storage.
+    <section style="margin-bottom: 2.5rem;">
+      <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem;">Sources we route to</h2>
+      <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+        {sources.map((source: any) => (
+          <div style="border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; background: var(--bg-card); display: flex; justify-content: space-between; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+            <div style="min-width: 220px;">
+              <a href={p(`/scorecards/${source.id}`)} style="font-weight: 700;">{source.name}</a>
+              <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-subtle); margin-top: 0.15rem;">
+                {source.id} &middot; {source.refresh_cadence ?? source.domain ?? source.kind}
+              </div>
+            </div>
+            <span data-modafied={source.id}></span>
+            <a href={modafiedCardUrl(source.id)} target="_blank" rel="noopener" style="font-size: 0.85rem;">Modafied card &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <p style="color: var(--text-subtle); font-size: 0.87rem; line-height: 1.7;">
+        A feed reading <em>insufficient data</em> has not been withheld. It means the benchmark
+        does not yet have the samples to grade it. Trooth publishes no grades of its own
+        (ADR-0014), so there is nothing here we could have quietly rounded up.
       </p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem;">
-        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
-          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Infrastructure Spend</div>
-          <div style="font-size: 1.35rem; font-weight: 800; color: var(--accent-green);">$0.00 / month</div>
-          <div style="font-size: 0.72rem; color: var(--text-subtle);">Cap: $50.00 / mo</div>
-        </div>
-
-        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
-          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Cron Cadence</div>
-          <div style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Every 6 Hours</div>
-          <div style="font-size: 0.72rem; color: var(--text-subtle);">GHA runner workflow</div>
-        </div>
-
-        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
-          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Storage Engine</div>
-          <div style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Cloudflare R2</div>
-          <div style="font-size: 0.72rem; color: var(--text-subtle);">Zero egress fees</div>
-        </div>
-
-        <div style="background-color: var(--bg-surface); padding: 1rem; border-radius: 8px; border: 1px solid var(--border);">
-          <div style="font-size: 0.75rem; color: var(--text-subtle); text-transform: uppercase;">Site Hosting</div>
-          <div style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Cloudflare Pages</div>
-          <div style="font-size: 0.72rem; color: var(--text-subtle);">Global edge distribution</div>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
+
+  <script is:inline defer src={MODAFIED_EMBED_SRC}></script>
 </Layout>
