@@ -2,8 +2,7 @@
   "counts": {
     "graded": 3,
     "rated_but_ungraded": 2,
-    "unrated": 2080,
-    "unrated_ui_outputs": 185
+    "unrated": 2080
   },
   "emblem_version": "0.1",
   "generated_at": "2026-09-15T00:17:29Z",
@@ -105,6 +104,6 @@
     ],
     "signed": false
   },
-  "total": 2085,
+  "total": 1900,
   "trooth_publishes_scores": false
 }
