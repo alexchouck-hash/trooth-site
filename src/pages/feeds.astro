@@ -32,9 +32,14 @@ const groups = (registry.groups as any[])
   .filter((g) => g.category.startsWith('feeds-'))
   .sort((a, b) => a.category.localeCompare(b.category));
 
-const rows = groups.flatMap((g: any) =>
+const allRows = groups.flatMap((g: any) =>
   g.entries.map((e: any) => ({ ...e, category: g.category }))
 );
+
+// Pin the 5 benchmarked (promoted) feeds to the top so their live Modafied emblems are immediately visible
+const promoted = allRows.filter((r) => r.status === 'promoted');
+const nonPromoted = allRows.filter((r) => r.status !== 'promoted');
+const rows = [...promoted, ...nonPromoted];
 
 function label(category: string) {
   return category.replace(/^feeds-/, '').replace(/-/g, ' ');
@@ -50,7 +55,6 @@ const byCategory = tally('category');
 const byTerms = tally('expected_terms');
 const byAuth = tally('auth');
 
-const promoted = rows.filter((r) => r.status === 'promoted');
 const blocked = rows.filter((r) => r.status === 'blocked');
 const priorityOne = rows.filter((r) => r.priority === 1);
 const noAuth = rows.filter((r) => r.auth === 'none');
@@ -89,9 +93,14 @@ const authNames = Object.keys(byAuth).sort();
       <div style="font-size:1.6rem; font-weight:800;">{groups.length}</div>
       <div style="font-size:0.8rem; color:var(--text-subtle);">categories</div>
     </div>
-    <div class="card" style="padding:0.9rem 1rem;">
-      <div style="font-size:1.6rem; font-weight:800;">{promoted.length}</div>
-      <div style="font-size:0.8rem; color:var(--text-subtle);">routable today</div>
+    <div
+      id="card-routable"
+      class="card"
+      style="padding:0.9rem 1rem; cursor:pointer; border:1px solid rgba(34,197,94,0.35); background:rgba(34,197,94,0.06); transition:transform 0.15s ease;"
+      title="Click to toggle filter for the 5 benchmarked feeds"
+    >
+      <div style="font-size:1.6rem; font-weight:800; color:var(--accent-green, #22c55e);">{promoted.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">⚡ routable today (click)</div>
     </div>
     <div class="card" style="padding:0.9rem 1rem;">
       <div style="font-size:1.6rem; font-weight:800;">{noAuth.length}</div>
@@ -153,6 +162,14 @@ const authNames = Object.keys(byAuth).sort();
         <option value="">Any expected terms</option>
         {termNames.map((t) => <option value={t}>{t.replace(/-/g, ' ')} ({byTerms[t]})</option>)}
       </select>
+      <button
+        id="btn-benchmarked"
+        type="button"
+        style="padding:0.5rem 0.9rem; border-radius:8px; border:1px solid rgba(34,197,94,0.4); background:rgba(34,197,94,0.12); color:#22c55e; font-size:0.88rem; font-weight:600; cursor:pointer; white-space:nowrap; transition:all 0.15s ease;"
+        title="Toggle view of the 5 benchmarked feeds with Modafied emblems"
+      >
+        ⚡ 5 Benchmarked (Routable)
+      </button>
     </div>
     <p id="count" style="font-size:0.85rem; color:var(--text-subtle); margin-bottom:0.5rem;">
       Showing all {rows.length} feeds.
@@ -196,6 +213,7 @@ const authNames = Object.keys(byAuth).sort();
             data-status={row.status}
             data-auth={row.auth ?? 'unknown'}
             data-terms={row.expected_terms ?? 'unknown'}
+            style={row.status === 'promoted' ? 'background:rgba(34,197,94,0.04);' : undefined}
           >
             <td style="min-width:260px;">
               {row.homepage
@@ -304,9 +322,32 @@ const authNames = Object.keys(byAuth).sort();
 
       count.textContent =
         shown === rows.length
-          ? `Showing all ${rows.length} feeds.`
+          ? `Showing all ${rows.length} feeds (5 benchmarked shown first).`
           : `Showing ${shown} of ${rows.length} feeds.`;
+
+      if (btnBenchmarked) {
+        if (wantStatus === 'promoted') {
+          btnBenchmarked.style.background = '#22c55e';
+          btnBenchmarked.style.color = '#ffffff';
+          btnBenchmarked.textContent = '✕ Show All Feeds';
+        } else {
+          btnBenchmarked.style.background = 'rgba(34,197,94,0.12)';
+          btnBenchmarked.style.color = '#22c55e';
+          btnBenchmarked.textContent = '⚡ 5 Benchmarked (Routable)';
+        }
+      }
     }
+
+    const btnBenchmarked = document.getElementById('btn-benchmarked');
+    const cardRoutable = document.getElementById('card-routable');
+
+    function toggleBenchmarked() {
+      status.value = status.value === 'promoted' ? '' : 'promoted';
+      apply();
+    }
+
+    if (btnBenchmarked) btnBenchmarked.addEventListener('click', toggleBenchmarked);
+    if (cardRoutable) cardRoutable.addEventListener('click', toggleBenchmarked);
 
     for (const el of [q, category, status, auth, terms]) {
       el.addEventListener('input', apply);
