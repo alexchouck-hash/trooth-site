@@ -1,0 +1,188 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const p = (path: string) => `${base}${path}`;
+
+const decks = [
+  {
+    slug: '01-trooth-the-receipt',
+    title: 'The receipt',
+    tagline: 'One connector, every answer provable',
+    blurb:
+      'What a caller gets back with the data: which source answered, how old the value was, what it disagreed with, and a signature that makes the answer checkable later.',
+  },
+  {
+    slug: '02-trooth-stop-wiring',
+    title: 'Stop wiring',
+    tagline: 'One connector, every answer provable',
+    blurb:
+      'The tool sprawl problem. One MCP server per data source, one OAuth flow per source, and a context window spent on schemas instead of work.',
+  },
+  {
+    slug: '03-trooth-all-the-benefits',
+    title: 'All the benefits',
+    tagline: 'One connector, every answer provable',
+    blurb:
+      'The full list in one loop: provenance, licence terms carried per source, revision history, cost and quota visible inside the agent loop.',
+  },
+  {
+    slug: '04-client-every-number-earns-its-place',
+    title: 'Every number earns its place',
+    tagline: 'One connector, every number earns its place',
+    blurb:
+      'For a team deciding whether to route through the pipe rather than call five APIs directly. Ends on the free tier and the agent endpoint.',
+  },
+  {
+    slug: '05-client-shared-work-shared-cost',
+    title: 'Shared work, shared cost',
+    tagline: 'Shared work, shared cost',
+    blurb:
+      'For anyone rebuilding the same derived feed by hand that somebody else is also rebuilding by hand, and for anyone with a feed worth listing.',
+  },
+];
+---
+
+<Layout title="Press and pitch assets" activeNav="press">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <div style="margin-bottom: 3rem;">
+      <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; letter-spacing: -0.025em; margin-bottom: 0.75rem;">
+        Press and pitch assets
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; line-height: 1.6;">
+        Silent, looping, animated decks. Built for LinkedIn, email signatures and direct messages, and posted here so a link is always available.
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.85rem;">
+        Each one is a 16:9 GIF of about 40 seconds. They loop, and they are built to make sense entered at any frame. Click a poster to play it.
+      </p>
+    </div>
+
+    <div class="card" style="border-left: 4px solid var(--accent-amber); margin-bottom: 3rem;">
+      <h2 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 0.6rem;">What is shipped, and what these describe</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+        These decks describe the connector in the present tense. It is specified and not yet built. Trooth is at Phase 0: five sources are merged into the routing catalog, snapshots and diffs run on a schedule, and the site and Console are live. The REST API, the MCP server and the signed envelope are Phase 1 and are gated.
+      </p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-top: 0.7rem;">
+        The <a href={p('/roadmap')} style="color: var(--primary);">roadmap</a> says what has to clear before each phase starts, and the <a href={p('/status')} style="color: var(--primary);">status page</a> says what is running right now. Read those before quoting a deck.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2.5rem; margin-bottom: 4rem;">
+      {decks.map((deck) => (
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">{deck.title}</h2>
+            <span style="font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-subtle);">
+              {deck.tagline}
+            </span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.1rem;">
+            {deck.blurb}
+          </p>
+
+          <button
+            class="deck-player"
+            type="button"
+            data-still={p(`/press/${deck.slug}.png`)}
+            data-animated={p(`/press/${deck.slug}.gif`)}
+            aria-label={`Play the deck: ${deck.title}`}
+          >
+            <img
+              src={p(`/press/${deck.slug}.png`)}
+              alt={`Closing frame of the ${deck.title} deck`}
+              width="1200"
+              height="675"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="deck-play" aria-hidden="true">Play</span>
+          </button>
+
+          <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.9rem; font-size: 0.88rem;">
+            <a href={p(`/press/${deck.slug}.gif`)} style="color: var(--primary);">GIF</a>
+            <a href={p(`/press/${deck.slug}.png`)} style="color: var(--primary);">Still frame</a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="card" style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 0.6rem;">Using these</h2>
+      <ul style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; padding-left: 1.1rem;">
+        <li>Reuse them as they are. No permission needed and no attribution required.</li>
+        <li>Do not edit a number inside a frame. Any figure shown comes from a published card, and an edited one no longer does.</li>
+        <li>The wordmark is the one on this site. Working name, and it may change.</li>
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    .deck-player {
+      display: block;
+      position: relative;
+      width: 100%;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg-surface);
+      cursor: pointer;
+      line-height: 0;
+    }
+
+    .deck-player:hover,
+    .deck-player:focus-visible {
+      border-color: var(--primary);
+    }
+
+    .deck-player img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .deck-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0.6rem 1.4rem;
+      border-radius: 999px;
+      background: rgba(11, 15, 25, 0.82);
+      border: 1px solid var(--primary);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .deck-player.is-playing .deck-play {
+      display: none;
+    }
+  </style>
+
+  <script>
+    // Five autoplaying GIFs is about twelve megabytes on load, most of it for decks nobody
+    // scrolled to. The still frame ships instead and the animation is fetched on click.
+    document.querySelectorAll<HTMLButtonElement>('.deck-player').forEach((player) => {
+      player.addEventListener('click', () => {
+        const image = player.querySelector('img');
+        if (!image) return;
+        const still = player.dataset.still;
+        const animated = player.dataset.animated;
+        if (!still || !animated) return;
+
+        if (player.classList.contains('is-playing')) {
+          image.src = still;
+          player.classList.remove('is-playing');
+        } else {
+          image.src = animated;
+          player.classList.add('is-playing');
+        }
+      });
+    });
+  </script>
+</Layout>
