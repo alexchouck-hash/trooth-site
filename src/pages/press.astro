@@ -43,7 +43,9 @@ const decks = [
 ];
 
 // Kept in their own group because they are written for a different reader and make
-// forward-looking claims the client decks do not. Both still carry an unfilled ask.
+// forward-looking claims the client decks do not. The ask card is cut from both. What is
+// still unfilled on them is the closing contact line, which reads [ CONTACT ] and wants an
+// email address rather than a URL, so set-url-line.py does not touch these two.
 const investorDecks = [
   {
     slug: '06-investor-layer-under-every-model',
