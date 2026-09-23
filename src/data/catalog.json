@@ -1,0 +1,3353 @@
+{
+  "sources": [
+    {
+      "auth": {
+        "notes": "No API key. The AWC API documentation asks callers to set a custom User-Agent so automated filtering does not block valid traffic.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://aviationweather.gov/data/api/",
+        "rate_limit": "100 requests per minute. Most endpoints return at most 400 entries; larger pulls are expected to use the cache files."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. The observation is instrument output and the agency publishing it is graded against it by every operator who uses it.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "AWC redistributes observations collected through the NWS observation network rather than operating the sensors. This is the catalog's clearest same-agency lineage pair: nws and aviationweather serve the same KJFK observation, so a disagreement between them is a distribution-path disagreement rather than two instruments differing.\n",
+        "role": "derivative",
+        "upstream_sources": [
+          "nws"
+        ]
+      },
+      "denominator": {
+        "notes": "One station per request as configured. AWC publishes a station table at aviationweather.gov/api/data/stationinfo; until that endpoint is in the catalog, the share of stations reporting at a given hour cannot be computed, and that share is the only honest completeness measure for an observation network.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "METAR observations, TAF forecasts, and hazard products from the NOAA/NWS Aviation Weather Center.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "metar_latest",
+          "params": {
+            "format": "geojson",
+            "ids": "KJFK"
+          },
+          "records": {
+            "event_time": "properties.obsTime",
+            "key": "properties.id",
+            "notes": "geojson is requested rather than json because the json form returns a bare array at the top level and the station id is the only stable identity a METAR record carries. Keying on the station means a later multi-station request diffs correctly without a catalog change.\n",
+            "path": "features"
+          },
+          "url": "https://aviationweather.gov/api/data/metar"
+        }
+      ],
+      "fields": [
+        {
+          "description": "ICAO station identifier.",
+          "name": "features[].properties.id",
+          "type": "string"
+        },
+        {
+          "description": "ISO 8601 UTC time the observation was taken at the station.",
+          "name": "features[].properties.obsTime",
+          "type": "string"
+        },
+        {
+          "description": "Air temperature in degrees Celsius.",
+          "digit_test_applicable": "not_applicable",
+          "name": "features[].properties.temp",
+          "type": "number"
+        },
+        {
+          "description": "Wind speed in knots.",
+          "digit_test_applicable": "not_applicable",
+          "name": "features[].properties.wspd",
+          "type": "number"
+        },
+        {
+          "description": "Altimeter setting in hectopascals.",
+          "digit_test_applicable": "not_applicable",
+          "name": "features[].properties.altim",
+          "type": "number"
+        },
+        {
+          "description": "Visibility in statute miles. A string, because the documented ceiling is reported as 10+ rather than as a number.",
+          "name": "features[].properties.visib",
+          "type": "string"
+        },
+        {
+          "description": "The raw METAR bulletin as transmitted, including the free-text RMK section.",
+          "name": "features[].properties.rawOb",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Human-readable station name.",
+          "name": "features[].properties.site",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Present weather string, null when no significant weather is reported.",
+          "name": "features[].properties.wx",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "features[0].properties.obsTime",
+      "id": "aviationweather",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Data provided by the NOAA/NWS Aviation Weather Center.",
+        "name": "U.S. Government Work (17 U.S.C. 105, NWS Disclaimer)",
+        "notes": "The Aviation Weather Center is a National Weather Service national center and its API documentation publishes no licence of its own. The governing statement is the NWS disclaimer already cited for the nws entry: works prepared by officers and employees of the U.S. Government as part of their official duties are in the public domain. Recorded this way rather than as a separate confirmation, because no separate page exists.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.weather.gov/disclaimer"
+      },
+      "name": "NOAA Aviation Weather Center Data API",
+      "quirks": [
+        "The json format returns a bare array at the top level; geojson returns a FeatureCollection. This entry uses geojson so the records live at a named path.",
+        "Absent groups are null rather than omitted, so a cloud-free observation and a missing observation look similar until the flight category is read.",
+        "visib is a string and its documented ceiling value is 10+, so casting it to a number silently loses the distinction between ten miles and more than ten.",
+        "obsTime is the observation time at the station and reportTime is when it was filed; freshness measured against the wrong one flatters the source by up to an hour.",
+        "Documented limit of 100 requests per minute, and most endpoints cap at 400 entries per response."
+      ],
+      "refresh_cadence": "hourly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "NWS data may be used for any lawful purpose provided the user does not claim ownership, imply endorsement, or present modified content as official material.",
+          "AWC products are advisory. Operational flight decisions are made against an official briefing source, and a republished METAR is not one."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.weather.gov/disclaimer",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "v1 API is public without registration (up to 25 queries/day, 10 years per query). v2 API supports free registered registration key for 500 queries/day.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://www.bls.gov/developers/api_faqs.htm",
+        "rate_limit": "25 queries per day for unregistered v1 API; 500 queries per day for registered v2."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "financial_position",
+        "notes": "Declaring the incentive is not an allegation, and this entry makes no claim that BLS has ever acted on it. It is recorded because CPI indexes a very large amount of money and a grader that flags an anomaly here should know that before deciding how loudly to say so. BLS publishes its methodology and announces annual seasonal-adjustment revisions in advance, so the routine revisions in this series are scheduled, not surprising.\n",
+        "who_benefits": [
+          "Holders and issuers of inflation-indexed securities",
+          "Parties to wage, rent, and benefit contracts indexed to CPI",
+          "The federal government, through debt service and indexed transfer payments"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "Primary originating agency for official United States employment, compensation, and consumer price statistics.",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "CPI is an index level, not a count of anything, so dividing it by a population is not a meaningful operation and no denominator would make it one. The nearest analogue is the expenditure weights from the Consumer Expenditure Survey, which are published separately and are what a caller would need to reweight the basket rather than to compute a rate.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Primary United States labor market and macroeconomic indicators including the Consumer Price Index (CPI) and Unemployment Rate.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "cpi_u_series",
+          "records": {
+            "event_time": null,
+            "key": [
+              "year",
+              "period"
+            ],
+            "notes": "The index into series is safe here only because this endpoint requests exactly one series. Adding a second series id to the URL makes this path wrong, which is the kind of thing that breaks quietly, so adding one is adding an endpoint. No single field identifies an observation, hence the composite key. There is no event timestamp either: BLS publishes a reference period, not an instant, so freshness has to be measured against the release calendar rather than against a field in the payload.\n",
+            "path": "Results.series[0].data"
+          },
+          "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/CUUR0000SA0"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Reference calendar year of the economic observation.",
+          "name": "Results.series[].data[].year",
+          "type": "string"
+        },
+        {
+          "description": "Period code (e.g. M01 for January, M12 for December).",
+          "name": "Results.series[].data[].period",
+          "type": "string"
+        },
+        {
+          "description": "Full name of reference month or quarter.",
+          "name": "Results.series[].data[].periodName",
+          "type": "string"
+        },
+        {
+          "description": "Reported index value or rate as numeric string.",
+          "digit_test_applicable": "not_applicable",
+          "name": "Results.series[].data[].value",
+          "type": "string"
+        },
+        {
+          "description": "Explanatory footnote text accompanying economic observation values.",
+          "name": "Results.series[].data[].footnotes[].text",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "Results.series[0].data[0].year",
+      "id": "bls",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "U.S. Bureau of Labor Statistics",
+        "name": "U.S. Government Work (BLS Linking and Copyright Policy)",
+        "notes": "Information generated by the BLS is in the public domain and may be reproduced without permission.",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.bls.gov/bls/linksite.htm"
+      },
+      "name": "Bureau of Labor Statistics Public Data API",
+      "quirks": [
+        "Values are encoded as strings rather than JSON numbers.",
+        "Historical figures are subject to annual benchmark and seasonal adjustment revisions.",
+        "Strict daily query quotas on anonymous v1 tier.",
+        "Numeric values (Results.series[].data[].value), period codes (period, periodName), calendar year, seriesID, footnotes codes, and status are structured values and codes deliberately left undeclared in the free-text quarantine (TASK-IN-2)."
+      ],
+      "refresh_cadence": "monthly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "The BLS emblem is a federally registered trademark and is never reproduced. Citing the agency as a source is not using the emblem."
+        ],
+        "confirmed_by": "alex",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.bls.gov/bls/linksite.htm",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No app token. An unauthenticated caller shares a throttled pool; a Socrata app token moves it to a per-application limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://dev.socrata.com/docs/app-tokens.html",
+        "rate_limit": "Unauthenticated requests share a throttled pool and are limited without a published number; an app token raises it."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing at the level of this dataset. The counts are compiled from certificates filed by thousands of independent local registrars, which is a poor structure to distort and a good one to be slow.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "CDC compiles the counts from death certificates filed with state vital statistics offices and processed through the National Vital Statistics System. The lag and the revision behaviour are properties of that pipeline, not of the API.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "confirmed_url": "https://data.cdc.gov/NCHS/Provisional-COVID-19-Death-Counts-by-Week-Ending-D/r8kw-7aab",
+        "notes": "total_deaths in the same row is a genuine denominator, so the share of deaths involving COVID-19 is computable from the record alone. It is not a population denominator: a death rate per resident needs census-pep, which is a registry candidate and not routable, and substituting the share for the rate answers a different question with the same decimal.\n",
+        "present": true,
+        "source_id": "cdc-socrata"
+      },
+      "description": "CDC public datasets served through the Socrata Open Data API, starting with provisional COVID-19 and influenza death counts by state and week.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "provisional_covid_deaths",
+          "params": {
+            "$limit": 50,
+            "$order": "end_date DESC"
+          },
+          "records": {
+            "event_time": "end_date",
+            "key": [
+              "state",
+              "start_date",
+              "end_date",
+              "group"
+            ],
+            "notes": "Socrata serves a bare array, so the response body is itself the record collection and path is the empty string. The key is composite because no row carries an id: the same state and period appear once per grouping, and the dataset mixes By Week rows with By Total rows in one response, so group has to be part of the identity. week_ending_date is absent from the By Total rows and cannot be in the key. data_as_of is CDC's own vintage marker, which makes a revision asserted rather than inferred, and provisional death counts are revised for months, which is the behaviour this entry demonstrates.\n",
+            "path": "",
+            "revision_field": "data_as_of"
+          },
+          "response_format": "json",
+          "url": "https://data.cdc.gov/resource/r8kw-7aab.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Vintage of the extract: the date CDC pulled these counts. Not the date of the deaths.",
+          "name": "[].data_as_of",
+          "type": "string"
+        },
+        {
+          "description": "First day of the period the row covers.",
+          "name": "[].start_date",
+          "type": "string"
+        },
+        {
+          "description": "Last day of the period the row covers.",
+          "name": "[].end_date",
+          "type": "string"
+        },
+        {
+          "description": "Grouping of the row, e.g. By Week or By Total. Rows of different groups overlap and must never be summed together.",
+          "name": "[].group",
+          "type": "string"
+        },
+        {
+          "description": "Jurisdiction name, including the United States total as a row rather than as a separate field.",
+          "name": "[].state",
+          "type": "string"
+        },
+        {
+          "description": "Deaths with COVID-19 listed on the certificate, serialised as a string. Suppressed counts are absent rather than zero.",
+          "digit_test_applicable": "not_applicable",
+          "name": "[].covid_19_deaths",
+          "type": "string"
+        },
+        {
+          "description": "All deaths in the period and jurisdiction. The in-record denominator.",
+          "digit_test_applicable": "applicable",
+          "name": "[].total_deaths",
+          "type": "string"
+        },
+        {
+          "description": "Observed deaths as a percentage of the expected count from CDC's own model. A modelled figure sitting beside counted ones.",
+          "digit_test_applicable": "not_applicable",
+          "name": "[].percent_of_expected_deaths",
+          "type": "string"
+        }
+      ],
+      "freshness_field": "[0].data_as_of",
+      "id": "cdc-socrata",
+      "kind": "rest",
+      "license": {
+        "attribution_required": true,
+        "attribution_text": "Source: CDC",
+        "name": "U.S. Government Work (CDC agency materials policy)",
+        "notes": "The cited page states that CDC-produced material is generally not subject to copyright, is in the public domain, and may be freely used or reproduced, and then attaches four obligations to that reuse. redistribution_allowed is false because those obligations make the grant conditional rather than unconditional; use_terms.redistribution carries the finer answer that routing actually reads. The page also carves out contractor and grantee work and third-party licensed content.\n",
+        "redistribution_allowed": false,
+        "spdx": "public-domain",
+        "url": "https://www.cdc.gov/other/agencymaterials.html"
+      },
+      "name": "CDC Open Data (Socrata)",
+      "quirks": [
+        "Socrata returns a bare JSON array with no wrapper, so there is no metadata to diff and no count of what was withheld.",
+        "Every numeric value is a string.",
+        "Suppressed counts, where the figure is between one and nine, are omitted entirely rather than marked, so an absent key means suppressed or genuinely nothing and the two are indistinguishable here.",
+        "By Week and By Total rows arrive in the same response and overlap completely; summing the response double counts.",
+        "Provisional counts for recent weeks rise for months as certificates are processed, so the newest rows are the least complete and look like the calmest.",
+        "$order and $limit are Socrata parameters and carry a dollar sign, which some clients mangle."
+      ],
+      "refresh_cadence": "weekly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Attribution to the agency that developed the material must be given, such as Source: CDC.",
+          "The substantive content of the material must not be changed.",
+          "A republisher must state that the material is otherwise available on the agency website for no charge.",
+          "A disclaimer must state that use does not imply endorsement by CDC, ATSDR, HHS or the United States Government.",
+          "CDC, ATSDR and HHS logos may not be used without express written permission.",
+          "Contractor and grantee work and third-party licensed content on CDC sites are not covered by the public domain statement."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.cdc.gov/other/agencymaterials.html",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Source: CDC. This material is available on the agency website for no charge. Use does not imply endorsement by CDC, ATSDR, HHS or the United States Government.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key. A static JSON file served from cisa.gov.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "rate_limit": "No published limit. A static file; conditional GETs with If-Modified-Since are the polite way to poll it."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. CISA neither sells remediation nor is paid by the vendors it names, and an entry costs the named vendor more than it gains anyone here.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "KEV is a selection from the CVE universe: CISA adds an exploitation judgement and a remediation deadline to identifiers that already exist. It is primary for the exploited-in-the-wild determination and derivative for everything else about the CVE.\n",
+        "role": "derivative",
+        "upstream_sources": [
+          "nvd-cve"
+        ]
+      },
+      "denominator": {
+        "confirmed_url": "https://nvd.nist.gov/vuln",
+        "notes": "Rare in this catalog and worth naming: KEV is a strict subset of published CVEs, and the NVD listing endpoint's totalResults is the population it is drawn from, so a share of CVEs known to be exploited is computable from two catalog sources rather than guessed. The share is of CVEs, not of vulnerabilities in the world, and the two are not the same claim.\n",
+        "present": true,
+        "source_id": "nvd-cve"
+      },
+      "description": "The CISA catalog of vulnerabilities with reliable evidence of active exploitation, with federal remediation due dates.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "kev_catalog",
+          "records": {
+            "event_time": "dateAdded",
+            "key": "cveID",
+            "notes": "One entry per CVE, keyed on the CVE id. CISA has no per-record revision marker, so a changed requiredAction or dueDate is inferred from the value rather than asserted; the wrapper's catalogVersion moves on every publication and is counted as a metadata-change rather than as a revision of anything.\n",
+            "path": "vulnerabilities"
+          },
+          "response_format": "json",
+          "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Publication version, dated, e.g. 2026.09.14.",
+          "name": "catalogVersion",
+          "type": "string"
+        },
+        {
+          "description": "ISO 8601 timestamp of this publication of the catalog.",
+          "name": "dateReleased",
+          "type": "string"
+        },
+        {
+          "description": "Number of entries in this publication. The catalog's own denominator for itself.",
+          "digit_test_applicable": "not_applicable",
+          "name": "count",
+          "type": "integer"
+        },
+        {
+          "description": "CVE identifier, the join key to nvd-cve.",
+          "name": "vulnerabilities[].cveID",
+          "type": "string"
+        },
+        {
+          "description": "Date CISA added the vulnerability to the catalog.",
+          "name": "vulnerabilities[].dateAdded",
+          "type": "string"
+        },
+        {
+          "description": "Date by which federal agencies must remediate.",
+          "name": "vulnerabilities[].dueDate",
+          "type": "string"
+        },
+        {
+          "description": "Known or Unknown. Unknown means CISA lacks confirmation, not that the answer is no.",
+          "name": "vulnerabilities[].knownRansomwareCampaignUse",
+          "type": "string"
+        },
+        {
+          "description": "Vendor or project name as written by CISA, unnormalised against any vendor register.",
+          "name": "vulnerabilities[].vendorProject",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Affected product name.",
+          "name": "vulnerabilities[].product",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Prose description of the vulnerability.",
+          "name": "vulnerabilities[].shortDescription",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Prose remediation instruction. Free text that reads as an instruction and is not one (H5).",
+          "name": "vulnerabilities[].requiredAction",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Free text, usually a list of third-party URLs.",
+          "name": "vulnerabilities[].notes",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "dateReleased",
+      "id": "cisa-kev",
+      "kind": "feed",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: CISA Known Exploited Vulnerabilities Catalog.",
+        "name": "Creative Commons CC0 1.0 Universal",
+        "notes": "The licence file linked from the KEV catalog page states that the KEV database is distributed under the Creative Commons 0 1.0 License and that the data may be used in any legal manner, and carries the full CC0 legal code. It adds that third-party links inside the database are bound by those sites' own policies, and that use of the data does not authorise use of the CISA logo or DHS seal or imply endorsement.\n",
+        "redistribution_allowed": true,
+        "spdx": "CC0-1.0",
+        "url": "https://www.cisa.gov/sites/default/files/licenses/kev/license.txt"
+      },
+      "name": "CISA Known Exploited Vulnerabilities Catalog",
+      "quirks": [
+        "The file is roughly 1.7 MB and is the largest single response in the catalog. Four captures a day is around 200 MB a month before compression, which is the dominant term in this entry's storage cost.",
+        "No per-record revision marker exists, so a corrected dueDate is inferred from the value, unlike usgs-earthquake or nvd-cve which assert their own revisions.",
+        "knownRansomwareCampaignUse is Unknown by default, and reading Unknown as No inverts the meaning of the field.",
+        "dueDate is a federal obligation under a binding operational directive and carries no meaning for anyone else.",
+        "notes carries bare URLs; fetching one because the data said so is exactly the injection path H5 exists to close."
+      ],
+      "refresh_cadence": "daily",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Content behind the notes URLs is bound by the policies and licences of those third-party sites, not by CC0.",
+          "Use of the data does not authorise the CISA logo or DHS seal and must not be presented as a CISA or DHS endorsement."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.cisa.gov/sites/default/files/licenses/kev/license.txt",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://clinicaltrials.gov/data-api/api",
+        "rate_limit": "No published numeric limit. NLM asks for reasonable use and supports paging over repeated full pulls."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "reputational",
+        "notes": "Sponsors write their own records and control when amendments are submitted. Delay, a quietly changed endpoint, or a completion date that keeps sliding all favour the sponsor, and the registry's own audit trail is what makes those visible. Declared because a grader computing correction latency here is measuring the sponsor's behaviour as much as the registry's, and the two should not be attributed to the same party.\n",
+        "who_benefits": [
+          "trial sponsors",
+          "investigators whose results are unfavourable"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "NLM publishes what sponsors and investigators submitted. The registry validates format and completeness, not the truth of a field, and says so.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "notes": "The registry is a census of registered studies, which is not the same as a census of studies conducted: unregistered trials are absent by construction and nothing in the payload counts them. A completeness figure over trials actually run would need a separate frame such as institutional or funder records, which this API does not offer. Requesting countTotal=true yields the number of registered studies matching a query, which is a denominator for registry coverage and not for research activity.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Registered clinical study protocols and results, served from the ClinicalTrials.gov v2 REST API operated by the National Library of Medicine.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "studies_recently_updated",
+          "pagination": {
+            "cursor_path": "nextPageToken",
+            "max_pages": 5,
+            "page_size": 20,
+            "style": "cursor"
+          },
+          "params": {
+            "pageSize": 20,
+            "sort": "LastUpdatePostDate:desc"
+          },
+          "records": {
+            "event_time": "protocolSection.statusModule.lastUpdatePostDateStruct.date",
+            "key": "protocolSection.identificationModule.nctId",
+            "notes": "NCT number is the stable identity of a study for its whole life. The record is amended continuously, and the registry publishes both when the sponsor submitted the amendment and when it was posted, so the gap between submit and post is a correction latency that is measurable rather than estimated.\n",
+            "path": "studies",
+            "revision_field": "protocolSection.statusModule.lastUpdateSubmitDate"
+          },
+          "url": "https://clinicaltrials.gov/api/v2/studies"
+        }
+      ],
+      "fields": [
+        {
+          "description": "NCT registry number, the study's permanent identifier.",
+          "name": "studies[].protocolSection.identificationModule.nctId",
+          "type": "string"
+        },
+        {
+          "description": "Recruitment status, e.g. RECRUITING, COMPLETED, TERMINATED, WITHDRAWN.",
+          "name": "studies[].protocolSection.statusModule.overallStatus",
+          "type": "string"
+        },
+        {
+          "description": "Date the sponsor submitted the most recent amendment.",
+          "name": "studies[].protocolSection.statusModule.lastUpdateSubmitDate",
+          "type": "string"
+        },
+        {
+          "description": "Date that amendment appeared on the registry.",
+          "name": "studies[].protocolSection.statusModule.lastUpdatePostDateStruct.date",
+          "type": "string"
+        },
+        {
+          "description": "Primary completion date. Its type field says ACTUAL or ESTIMATED, and the two must not be mixed.",
+          "name": "studies[].protocolSection.statusModule.primaryCompletionDateStruct.date",
+          "type": "string"
+        },
+        {
+          "description": "ACTUAL or ESTIMATED. A date whose type silently flips from ESTIMATED to ACTUAL is the most common quiet revision in this feed.",
+          "name": "studies[].protocolSection.statusModule.primaryCompletionDateStruct.type",
+          "type": "string"
+        },
+        {
+          "description": "Short study title as written by the sponsor.",
+          "name": "studies[].protocolSection.identificationModule.briefTitle",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Full study title as written by the sponsor.",
+          "name": "studies[].protocolSection.identificationModule.officialTitle",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Sponsor-written narrative summary of the study.",
+          "name": "studies[].protocolSection.descriptionModule.briefSummary",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Lead sponsor name as submitted, unnormalised.",
+          "name": "studies[].protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "studies[0].protocolSection.statusModule.lastUpdatePostDateStruct.date",
+      "id": "clinicaltrials-gov",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Courtesy of the National Library of Medicine.",
+        "name": "U.S. Government Work (NLM copyright policy)",
+        "notes": "ClinicalTrials.gov is operated by NLM. The cited NLM policy states that works produced by the U.S. government are not subject to copyright protection in the United States and may be freely used or reproduced, including commercially, and requests the courtesy line above. The policy carves out privately contributed or licensed material found on NLM sites; study records are sponsor submissions published under the registry's own terms rather than licensed third-party works. The site's own terms page is JavaScript-rendered and returned no text to read, which is why the NLM policy is the page cited.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.nlm.nih.gov/web_policies.html"
+      },
+      "name": "ClinicalTrials.gov Study Records",
+      "quirks": [
+        "The v2 API nests everything under protocolSection modules, so field paths are long and a module is absent rather than empty when a sponsor supplied nothing.",
+        "Dates are sometimes YYYY-MM and sometimes YYYY-MM-DD in the same field, depending on what the sponsor submitted.",
+        "Outcome measures can be added, removed, or reworded after a study completes; that is the revision behaviour worth watching here.",
+        "Paging is by nextPageToken, and the token is not stable across amendments to the underlying set.",
+        "The public web pages are a JavaScript application; only the API returns readable content to an automated client."
+      ],
+      "refresh_cadence": "daily",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "The courtesy line Courtesy of the National Library of Medicine is requested rather than required.",
+          "NLM asks that its name not be used to imply endorsement of a product or service."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.nlm.nih.gov/web_policies.html",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://data.ecb.europa.eu/help/api/overview",
+        "rate_limit": "No published numeric limit. The ECB asks for reasonable use and supports If-Modified-Since on this API."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing at the level of the published reference rate. The ECB holds policy positions that move exchange rates, which is a different thing from an interest in misreporting the rate it publishes for accounting and statistical use.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "The ECB computes the euro reference rates itself from a daily concertation between central banks and publishes them as the reference. It is the origin of the number, not a republisher of a market print, which is why a rate here and a rate from a trading venue are allowed to differ without either being wrong.\n",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "A price series has no population to be rated against; the question does not arise. Stated rather than left blank so nobody re-derives it. Completeness for this source means publication on every TARGET business day, which is answerable from the observation dates across snapshots rather than from anything inside one response.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "ECB euro foreign exchange reference rates, served from the ECB Data Portal SDMX API.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "usd_eur_daily",
+          "params": {
+            "format": "jsondata",
+            "lastNObservations": 1
+          },
+          "records": {
+            "event_time": "structure.dimensions.observation[0].values[0].id",
+            "key": null,
+            "notes": "SDMX-JSON stores observations in a map keyed by position within the series and the dates live in a parallel structure block, so there is no array of records to key on and pretending otherwise would key on position, which is the failure ADR-0017 exists to prevent. With lastNObservations=1 the response holds exactly one observation, the body is that record, and the observation date sits at a deterministic path. A multi-observation endpoint needs a declared SDMX parse step that does not exist yet.\n",
+            "path": null
+          },
+          "url": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A"
+        }
+      ],
+      "fields": [
+        {
+          "description": "When the ECB generated this response. Moves on every fetch and is not an event time.",
+          "name": "header.prepared",
+          "type": "string"
+        },
+        {
+          "description": "The observation date, ISO date. The event time for the single returned rate.",
+          "name": "structure.dimensions.observation[0].values[0].id",
+          "type": "string"
+        },
+        {
+          "description": "Series map keyed by joined dimension positions, e.g. 0:0:0:0:0. Each holds an observations map keyed by position.",
+          "name": "dataSets[0].series",
+          "type": "object"
+        },
+        {
+          "description": "Dimension values in declared order: frequency, currency, currency denominator, exchange rate type, suffix.",
+          "name": "structure.dimensions.series[].values[].id",
+          "type": "string"
+        },
+        {
+          "description": "Human-readable dataflow name.",
+          "name": "structure.name",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "structure.dimensions.observation[0].values[0].id",
+      "id": "ecb-fx",
+      "kind": "rest",
+      "license": {
+        "attribution_required": true,
+        "attribution_text": "Source: European Central Bank",
+        "name": "ECB copyright and reuse statement",
+        "notes": "The ECB permits reuse including commercial reuse, subject to conditions: the information must appear accurately, the ECB must be cited as the source, any modification such as a seasonal adjustment or a derived growth rate must be stated explicitly, and a publisher who sells a document containing the information must tell buyers before payment and at each access that it is available free on the ECB website. redistribution_allowed is false because those are real obligations, not a courtesy.\n",
+        "redistribution_allowed": false,
+        "spdx": "LicenseRef-ECB-Reuse",
+        "url": "https://www.ecb.europa.eu/services/disclaimer/html/index.en.html"
+      },
+      "name": "European Central Bank Exchange Rates (SDMX)",
+      "quirks": [
+        "SDMX-JSON separates values from their labels: the rate is in dataSets and the date is in structure, joined by position.",
+        "Observations are a JSON object keyed by stringified integers, not an array, so ordinary array handling silently does nothing.",
+        "The content type is application/vnd.sdmx.data+json, not application/json; a client that dispatches on content type may refuse to parse it.",
+        "Rates are published on TARGET business days only, so a weekend fetch returns the previous business day and a freshness lag measured against wall-clock time reads as a two-day failure every Sunday.",
+        "The daily publication happens around 16:00 CET, so a rate fetched in the morning is yesterday's by design."
+      ],
+      "refresh_cadence": "daily",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "The ECB must be cited as the source and the information must be reproduced accurately.",
+          "Any modification, including seasonal adjustment or a calculated growth rate, must be stated explicitly.",
+          "If the information is incorporated into a document sold in any format, buyers must be told before payment and at each access that it is available free on the ECB website. This obligation reaches any paid Trooth tier that serves these rates.",
+          "ECB Working Papers and Occasional Papers, being authored works, need prior written authorisation and are outside this grant."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.ecb.europa.eu/services/disclaimer/html/index.en.html",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Source: European Central Bank. This information is available free of charge on the ECB website.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key. EMSC asks that heavy users contact them rather than poll aggressively.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://www.seismicportal.eu/fdsn-wsevent.html",
+        "rate_limit": "No published numeric limit. EMSC asks heavy users to make contact rather than poll."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. EMSC is a non-governmental scientific body publishing solutions that other networks recompute independently, which is the condition under which a distorted value is caught rather than the condition that invites one.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "EMSC merges solutions from contributing national networks and publishes the merged event. The contributing agency is named per record in properties.auth, which makes this the catalog's first source that discloses its own upstream inside the payload.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "notes": "A catalogue of events with no exposure attached: it supports counts of earthquakes and forbids any rate per station, per area, or per unit of network sensitivity. What a caller would need is the contributing station inventory and its detection threshold by region, neither of which this service publishes.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Euro-Mediterranean Seismological Centre real-time earthquake catalogue, served over the FDSN event web service.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "events_recent",
+          "params": {
+            "format": "json",
+            "limit": 20
+          },
+          "records": {
+            "event_time": "properties.time",
+            "key": "id",
+            "notes": "EMSC bumps properties.lastupdate when an event is recomputed, so a revision is asserted by the upstream rather than inferred from a magnitude that moved. The same shape as usgs-earthquake, deliberately: two independent networks reporting the same physical events is the only honest way to test disagreement.\n",
+            "path": "features",
+            "revision_field": "properties.lastupdate"
+          },
+          "url": "https://www.seismicportal.eu/fdsnws/event/1/query"
+        }
+      ],
+      "fields": [
+        {
+          "description": "EMSC unique event identifier, e.g. 20260916_0000046.",
+          "name": "features[].id",
+          "type": "string"
+        },
+        {
+          "description": "ISO 8601 UTC origin time of the earthquake.",
+          "name": "features[].properties.time",
+          "type": "string"
+        },
+        {
+          "description": "ISO 8601 UTC time of the most recent recomputation of this event.",
+          "name": "features[].properties.lastupdate",
+          "type": "string"
+        },
+        {
+          "description": "Magnitude on the scale named in magtype.",
+          "digit_test_applicable": "not_applicable",
+          "name": "features[].properties.mag",
+          "type": "number"
+        },
+        {
+          "description": "Magnitude scale, e.g. ml, mb, mw. Two events with different magtypes are not comparable on magnitude alone.",
+          "name": "features[].properties.magtype",
+          "type": "string"
+        },
+        {
+          "description": "Hypocentre depth in kilometres.",
+          "digit_test_applicable": "not_applicable",
+          "name": "features[].properties.depth",
+          "type": "number"
+        },
+        {
+          "description": "The contributing agency whose solution EMSC published for this event.",
+          "name": "features[].properties.auth",
+          "type": "string"
+        },
+        {
+          "description": "Named geographic region of the event.",
+          "name": "features[].properties.flynn_region",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "features[0].properties.time",
+      "id": "emsc-seismic",
+      "kind": "rest",
+      "license": {
+        "attribution_required": true,
+        "attribution_text": "Credit: EMSC/CSEM, https://www.emsc-csem.org",
+        "name": "EMSC/CSEM Terms of Use (non-commercial reproduction with credit)",
+        "notes": "The terms page opens with all rights reserved and then permits reproduction for personal, academic, educational, non-commercial research or other non-commercial use, with credit. It adds that some datasets served by the site are distributed under CC BY 4.0 and to refer to each web service's own documentation; the FDSN event service publishes no such statement, so the site-wide non-commercial default is what governs here. Recorded as the narrower of the two readings on purpose: flattening a conditional licence into an unconditional yes is the mistake this catalog has already made twice. redistribution_allowed is false because redistribution is conditional, not unconditional.\n",
+        "redistribution_allowed": false,
+        "spdx": "LicenseRef-EMSC-Terms",
+        "url": "https://www.seismicportal.eu/terms.html"
+      },
+      "name": "EMSC Seismic Portal FDSN Event Service",
+      "quirks": [
+        "GeoJSON coordinates carry depth as a negative third element while properties.depth is positive kilometres. The two disagree by sign on purpose and neither is wrong.",
+        "Early solutions are automatic and are revised by an analyst within minutes to hours, so correction latency here is short and measurable, unlike sources that revise quarterly.",
+        "properties.auth names the contributing network, so the same physical event can appear here under one agency's solution and in usgs-earthquake under another's.",
+        "The terms permit non-commercial use only, so this source must never be routed to a caller declaring commercial under ADR-0008."
+      ],
+      "refresh_cadence": "5m",
+      "use_terms": {
+        "commercial": "forbidden",
+        "conditions": [
+          "Reproduction is permitted for personal, academic, educational, non-commercial research or other non-commercial use only. Any other use needs written permission from EMSC/CSEM.",
+          "Credit must be given as: Credit: EMSC/CSEM, https://www.emsc-csem.org",
+          "The CC BY 4.0 grant named on the terms page applies to datasets whose own service documentation says so. The FDSN event service says nothing, so it is not covered."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.seismicportal.eu/terms.html",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Credit: EMSC/CSEM, https://www.emsc-csem.org",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "env_var": "FRED_API_KEY",
+        "notes": "Requires a free 32-character API key registered at research.stlouisfed.org.",
+        "type": "api_key"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://fred.stlouisfed.org/docs/api/terms_of_use.html",
+        "rate_limit": "120 requests per minute."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "financial_position",
+        "notes": "Inherited rather than original. FRED republishes CPIAUCSL from BLS, so any incentive on the value itself sits upstream and is declared on the bls entry. FRED's own exposure is different in kind: it controls the republication lag, which is the measurement this source is in the catalog to demonstrate, and nobody has an identified interest in distorting that.\n",
+        "who_benefits": [
+          "Holders and issuers of inflation-indexed securities",
+          "Parties to contracts indexed to CPI"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "Republishes primary BLS series (e.g., CPIAUCSL). Demonstrates measurable republication lag against primary BLS releases.",
+        "role": "derivative",
+        "upstream_sources": [
+          "bls",
+          "bea",
+          "us-treasury"
+        ]
+      },
+      "denominator": {
+        "notes": "Same as the BLS entry this republishes: an index level is not a count and no denominator turns it into a rate. FRED adds nothing on this axis, because it adds no observations of its own.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Economic research time-series database maintained by the Research Division of the Federal Reserve Bank of St. Louis, aggregating macroeconomic data from hundreds of regional and global sources.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "cpi_observations",
+          "params": {
+            "file_type": "json",
+            "series_id": "CPIAUCSL"
+          },
+          "records": {
+            "event_time": "date",
+            "key": "date",
+            "notes": "FRED revises observations in place without changing the date, so a revision here is a value change on an existing key. That is exactly what index-keyed diffing could not distinguish from an insertion, and it is why this source is worth keying properly: the republication lag against BLS is the thing this entry demonstrates.\n",
+            "path": "observations"
+          },
+          "url": "https://api.stlouisfed.org/fred/series/observations"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Observation date formatted as YYYY-MM-DD.",
+          "name": "observations[].date",
+          "type": "string"
+        },
+        {
+          "description": "Observation value formatted as numeric string or '.' for missing values.",
+          "digit_test_applicable": "not_applicable",
+          "name": "observations[].value",
+          "type": "string"
+        }
+      ],
+      "freshness_field": "observations[0].date",
+      "id": "fred",
+      "license": {
+        "attribution_required": true,
+        "attribution_text": "Federal Reserve Bank of St. Louis",
+        "name": "FRED API Terms of Use",
+        "notes": "Corrected from public-domain per ADR-0008. FRED is an aggregator, so the licence is per series rather than per source. The terms of use state that series available through the API may be owned by third parties and subject to copyright restrictions, and that before using a third-party series for anything beyond personal use you must contact the data owner. Copyrighted series carry the word Copyright in their notes field. The one series in this entry, CPIAUCSL, originates at BLS and is public domain; that does not generalise to any other series.\n",
+        "redistribution_allowed": false,
+        "spdx": "LicenseRef-FRED-ToU",
+        "url": "https://fred.stlouisfed.org/docs/api/terms_of_use.html"
+      },
+      "name": "Federal Reserve Economic Data (FRED)",
+      "quirks": [
+        "Requires free API key passed as query parameter `api_key`.",
+        "Missing values are represented as '.' string instead of null or NaN.",
+        "Values are derivative republications and lag primary BLS releases by minutes to hours.",
+        "Observation dates (observations[].date), observation values (observations[].value), realtime_start, and realtime_end are structured dates and numeric strings deliberately left undeclared in the free-text quarantine (TASK-IN-2)."
+      ],
+      "refresh_cadence": "monthly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Per series, not per source. Check the series notes field for the word Copyright before routing or storing it.",
+          "A series whose notes contain Copyright is not redistributable without contacting the data owner; treat it as redistribution forbidden until cleared.",
+          "Only CPIAUCSL has been cleared on this entry. Adding an endpoint adds an unreviewed licence.",
+          "The required notice below must be displayed by any product built on this data."
+        ],
+        "confirmed_by": "alex",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://fred.stlouisfed.org/docs/api/terms_of_use.html",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "This product uses the FRED\u00ae API but is not endorsed or certified by the Federal Reserve Bank of St. Louis.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://www.gleif.org/en/lei-data/gleif-api",
+        "rate_limit": "No published numeric limit for the public API."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-19",
+        "kind": "regulatory_relief",
+        "notes": "Entity reference data, and parent relationships in particular, are supplied by the entity and verified to a level the record itself states. Under-declaring a parent can reduce what a group has to report elsewhere. Declared, not measured, and not an accusation about any record; corroborationLevel is the field that makes the question answerable per record, which is exactly why it is declared above.\n",
+        "who_benefits": [
+          "entities declaring their own parent relationships",
+          "groups whose consolidation obligations depend on declared ownership"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "GLEIF does not register entities itself. Local Operating Units issue and maintain each record and GLEIF consolidates them into the Golden Copy, so the managing LOU named in every record is the actual upstream. This is the catalog's first source that names a different upstream per record rather than per source.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "confirmed_url": "https://www.gleif.org/en/lei-data/global-lei-index",
+        "notes": "meta.pagination.total is the number of LEI records, so coverage questions about the LEI system are answerable from the response itself. It is not a denominator for legal entities in existence, which no source publishes, and a completeness figure phrased over real companies rather than over issued LEIs would be a different and unsupported claim.\n",
+        "present": true,
+        "source_id": "gleif-lei"
+      },
+      "description": "Legal Entity Identifier reference data from the Global Legal Entity Identifier Foundation, the identifier that joins company records across regulatory datasets.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "lei_records",
+          "pagination": {
+            "limit_param": "page[size]",
+            "max_pages": 5,
+            "page_size": 10,
+            "style": "page"
+          },
+          "params": {
+            "page[size]": 10
+          },
+          "records": {
+            "event_time": "attributes.registration.lastUpdateDate",
+            "key": "id",
+            "notes": "The LEI is the record's identity for its whole life and never changes, which is the entire purpose of the identifier. GLEIF bumps registration.lastUpdateDate when a record is amended by its managing LOU, so a revision is asserted rather than inferred from a changed address. Used as both event_time and revision_field because the registration timestamp is the only time this record carries.\n",
+            "path": "data",
+            "revision_field": "attributes.registration.lastUpdateDate"
+          },
+          "url": "https://api.gleif.org/api/v1/lei-records"
+        }
+      ],
+      "fields": [
+        {
+          "description": "The 20-character Legal Entity Identifier.",
+          "name": "data[].id",
+          "type": "string"
+        },
+        {
+          "description": "ISO 8601 timestamp of the most recent amendment to this record.",
+          "name": "data[].attributes.registration.lastUpdateDate",
+          "type": "string"
+        },
+        {
+          "description": "ISSUED, LAPSED, RETIRED, MERGED or similar. A LAPSED record is stale reference data that still resolves, which is worse than one that does not.",
+          "name": "data[].attributes.registration.status",
+          "type": "string"
+        },
+        {
+          "description": "The LEI of the Local Operating Unit responsible for this record. The per-record upstream.",
+          "name": "data[].attributes.registration.managingLou",
+          "type": "string"
+        },
+        {
+          "description": "How far the LOU verified the record against an authoritative register. FULLY_CORROBORATED and ENTITY_SUPPLIED_ONLY are very different claims wearing the same shape.",
+          "name": "data[].attributes.registration.corroborationLevel",
+          "type": "string"
+        },
+        {
+          "description": "Registered legal name of the entity, as supplied.",
+          "name": "data[].attributes.entity.legalName.name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "One registered address line, as supplied. Named per element rather than as the array, because quarantine tags string values and an array is not one.",
+          "name": "data[].attributes.entity.legalAddress.addressLines[]",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "When GLEIF last published the consolidated Golden Copy this response was served from.",
+          "name": "meta.goldenCopy.publishDate",
+          "type": "string"
+        }
+      ],
+      "freshness_field": "meta.goldenCopy.publishDate",
+      "id": "gleif-lei",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: GLEIF Legal Entity Identifier data.",
+        "name": "Creative Commons CC0 1.0 Universal",
+        "notes": "The cited page states that the data available through the Access Service are provided under the CC0 licence. An unconditional public domain dedication over an identifier system is unusual and is the reason this source is worth routing to at all: an identifier that cannot be freely redistributed cannot be used to join anything.\n",
+        "redistribution_allowed": true,
+        "spdx": "CC0-1.0",
+        "url": "https://www.gleif.org/en/meta/lei-data-terms-of-use"
+      },
+      "name": "GLEIF Legal Entity Identifier Records",
+      "quirks": [
+        "The media type is application/vnd.api+json, a JSON:API document, so records sit under data[] with their payload under attributes and their links under relationships.",
+        "Parameter names carry brackets, page[size] and page[number].",
+        "Unfiltered listing walks 3.4 million records in publication order, which is arbitrary for any purpose other than this one: confirming the endpoint answers and the record paths resolve.",
+        "A LAPSED record keeps resolving and keeps returning data. Absence of an error is not evidence that reference data is current.",
+        "lastUpdateDate moves on renewal as well as on amendment, so a revision here can be a record that was confirmed unchanged."
+      ],
+      "refresh_cadence": "daily",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "None. CC0 waives attribution as well as restriction; the attribution string above is courtesy."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-19",
+        "confirmed_url": "https://www.gleif.org/en/meta/lei-data-terms-of-use",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key. CO-OPS asks for an application identifier in the application parameter or the User-Agent.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://api.tidesandcurrents.noaa.gov/api/prod/",
+        "rate_limit": "No published numeric limit. CO-OPS asks that bulk users request date ranges rather than polling per observation."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. Water level is instrument output published by the agency that operates the instrument, with no party paying for the number to move.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "CO-OPS owns and operates the tide gauges and publishes their output. Shares an agency with nws but not a sensor network.",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "One station per request. The number of stations in the network and how many reported at a given time are not in this response; the station inventory is a separate mdapi service that is not in the catalog, so network coverage cannot be computed here.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Water level, tide prediction, and meteorological observations from the NOAA Center for Operational Oceanographic Products and Services station network.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "water_level_latest",
+          "params": {
+            "date": "latest",
+            "datum": "MLLW",
+            "format": "json",
+            "product": "water_level",
+            "station": "8454000",
+            "time_zone": "gmt",
+            "units": "metric"
+          },
+          "records": {
+            "event_time": "t",
+            "key": "t",
+            "notes": "One observation per response under date=latest, but the shape is a list and stays a list for a date range, so it is keyed rather than compared whole. The timestamp is the only identifying field the record carries.\n",
+            "path": "data"
+          },
+          "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Observation timestamp, YYYY-MM-DD HH:MM in the requested time zone. Not ISO 8601 and carries no offset.",
+          "name": "data[].t",
+          "type": "string"
+        },
+        {
+          "description": "Water level relative to the requested datum, in metres, serialised as a string.",
+          "digit_test_applicable": "not_applicable",
+          "name": "data[].v",
+          "type": "string"
+        },
+        {
+          "description": "Standard deviation of the one-second samples making up the six-minute mean.",
+          "digit_test_applicable": "not_applicable",
+          "name": "data[].s",
+          "type": "string"
+        },
+        {
+          "description": "Four comma-separated quality flags: outlier, flat tolerance, rate of change, and maximum/minimum exceeded.",
+          "name": "data[].f",
+          "type": "string"
+        },
+        {
+          "description": "Quality level. p is preliminary and v is verified.",
+          "name": "data[].q",
+          "type": "string"
+        },
+        {
+          "description": "Station name.",
+          "name": "metadata.name",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "data[0].t",
+      "id": "noaa-coops",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Data provided by NOAA Center for Operational Oceanographic Products and Services (CO-OPS).",
+        "name": "U.S. Government Work (NOAA NOS Disclaimer)",
+        "notes": "The cited page states that information on government servers is in the public domain unless specifically annotated otherwise and may be used freely by the public, and that federal government material is not subject to copyright protection. Attribution is requested when NOS material is reproduced.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://tidesandcurrents.noaa.gov/disclaimers.html"
+      },
+      "name": "NOAA CO-OPS Tides and Currents",
+      "quirks": [
+        "Errors arrive as HTTP 400 with a JSON body {\"error\": {\"message\": ...}} rather than an empty result, so a failed fetch is a well-formed document.",
+        "Values are strings, and the timestamp format is YYYY-MM-DD HH:MM with no offset, so the requested time_zone is the only thing that says what the clock means.",
+        "Preliminary water levels are revised into verified values on a monthly cycle, which is the revision behaviour this entry demonstrates.",
+        "datum is mandatory for water_level and the request fails without it; the same station returns different numbers under MLLW, MSL and STND."
+      ],
+      "refresh_cadence": "6m",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Public domain applies unless a specific item is annotated otherwise. Nothing in the water level product is so annotated.",
+          "Raw water levels are preliminary and have not passed the quality control that NOS applies to verified data. The distinction belongs in any republished figure."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://tidesandcurrents.noaa.gov/disclaimers.html",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://www.swpc.noaa.gov/content/data-access",
+        "rate_limit": "No published numeric limit. Static JSON products regenerated on a fixed cadence; conditional GETs are the polite way to poll."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-19",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. SWPC is graded in public by grid and satellite operators who feel the consequences directly, and it has no commercial position in whether a storm is forecast.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "SWPC issues these alerts. It is the originating authority for United States space weather warnings, and the third NWS center in this catalog after nws and aviationweather, which makes agency-level correlated failure visible rather than hypothetical.\n",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "An alert feed counts issuances and says nothing about how many conditions occurred, so nothing here supports a rate, a hit rate, or a miss rate. Grading SWPC on accuracy needs a measured geomagnetic index as the anchor, which is a separate SWPC product not in the catalog. Until it is, this source supports freshness and revision questions only, and H1 forbids stating an accuracy number without naming that anchor.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Space weather watches, warnings and alerts issued by the NOAA/NWS Space Weather Prediction Center.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "alerts",
+          "records": {
+            "event_time": "issue_datetime",
+            "key": [
+              "product_id",
+              "issue_datetime"
+            ],
+            "notes": "The body is a bare array, so the records are the response and path is the empty string. The key has to be composite: product_id names the kind of alert and repeats constantly, 18 distinct values across 73 live records, while issue_datetime is unique per issuance. Keyed on product_id alone, every new geomagnetic warning would overwrite the last one and be reported as a revision of it.\n",
+            "path": ""
+          },
+          "response_format": "json",
+          "url": "https://services.swpc.noaa.gov/products/alerts.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Alert product code, e.g. K04W for a geomagnetic K-index 4 warning. Repeats across issuances.",
+          "name": "[].product_id",
+          "type": "string"
+        },
+        {
+          "description": "When SWPC issued this alert. Space-separated, not ISO 8601, and UTC by documentation rather than by the string.",
+          "name": "[].issue_datetime",
+          "type": "string"
+        },
+        {
+          "description": "The entire alert as free text: code, serial number, validity window, condition and impact narrative, with embedded CRLF and LF line endings. This is the largest single untrusted-text surface in the catalog and the whole record is that one field.\n",
+          "name": "[].message",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "[0].issue_datetime",
+      "id": "noaa-swpc",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Data provided by the NOAA/NWS Space Weather Prediction Center.",
+        "name": "U.S. Government Work (17 U.S.C. 105, NWS Disclaimer)",
+        "notes": "SWPC is a National Weather Service national center and publishes no licence of its own, so the governing statement is the NWS disclaimer already cited for nws and aviationweather: works prepared by officers and employees of the U.S. Government as part of their official duties are in the public domain. Recorded this way, with the reason stated, rather than by inventing a SWPC-specific citation.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.weather.gov/disclaimer"
+      },
+      "name": "NOAA Space Weather Prediction Center Alerts",
+      "quirks": [
+        "The response is a bare JSON array with no wrapper, so there is no count, no generation timestamp, and no statement of what was omitted.",
+        "The record is essentially one free-text blob; everything a consumer wants, including the validity window and the serial number, is inside the message string rather than in a field.",
+        "Messages carry mixed CRLF and LF line endings within the same string, which breaks naive line splitting and makes byte-identical comparison sensitive to nothing meaningful.",
+        "issue_datetime is space-separated with fractional seconds, e.g. 2026-09-16 05:38:03.320, and is not parseable as ISO 8601 without substitution.",
+        "Alerts extend and supersede each other by serial number inside the text, so the supersession relationship is stated in prose and is invisible to any structured consumer."
+      ],
+      "refresh_cadence": "15m",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "NWS data may be used for any lawful purpose provided the user does not claim ownership, imply endorsement, or present modified content as official material.",
+          "These are operational alerts. A republished alert is not an official warning and must not be presented as one."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-19",
+        "confirmed_url": "https://www.weather.gov/disclaimer",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No key required. An API key raises the rate limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://nvd.nist.gov/developers/start-here",
+        "rate_limit": "Not recorded. NVD publishes its limits on a JavaScript-rendered developer page that returned no text to read, and a number nobody read is a number nobody should route on (H15). An API key raises whatever the limit is."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "vendor_revenue",
+        "notes": "Many CVE records are assigned and described by the vendor of the affected product, and the severity attached to a flaw in one's own product is not a neutral quantity. The metrics array names its source per score, so an NVD score and a vendor score can be told apart, which is exactly what makes the declaration actionable rather than an insinuation.\n",
+        "who_benefits": [
+          "vendors acting as CNAs for their own products",
+          "security vendors whose products are graded on coverage"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "The CVE record is created by a CVE Numbering Authority and published by the CVE Program; NVD enriches it with CVSS scores, CWE mappings, and CPE configurations. The description is the CNA's, the score is usually NVD's, and sourceIdentifier per metric says which.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "notes": "This endpoint addresses one CVE. The listing form returns totalResults, which counts CVEs in the database and is a denominator for questions about the database; it is not a denominator for vulnerabilities in existence, and no source can supply that one. Coverage questions phrased over real-world software need a software inventory frame that neither NVD nor anything else here publishes.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Enriched CVE records with CVSS scores, CWE mappings, and configuration data, served from the NIST National Vulnerability Database.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "cve_log4shell",
+          "params": {
+            "cveId": "CVE-2021-44228"
+          },
+          "records": {
+            "event_time": "cve.published",
+            "key": "cve.id",
+            "notes": "A single well-known record rather than a page of the newest ones, deliberately. The unparameterised listing returns the oldest CVEs first and they never move, so it would measure nothing; a date-windowed query cannot be expressed in static params. One heavily re-analysed record exercises the behaviour this source is here to demonstrate: NVD bumps cve.lastModified when it re-scores or re-maps an existing CVE, so a revision is asserted by the upstream and the vulnStatus field says which stage it reached.\n",
+            "path": "vulnerabilities",
+            "revision_field": "cve.lastModified"
+          },
+          "url": "https://services.nvd.nist.gov/rest/json/cves/2.0"
+        }
+      ],
+      "fields": [
+        {
+          "description": "CVE identifier.",
+          "name": "vulnerabilities[].cve.id",
+          "type": "string"
+        },
+        {
+          "description": "Timestamp the CVE was published, with no timezone designator.",
+          "name": "vulnerabilities[].cve.published",
+          "type": "string"
+        },
+        {
+          "description": "Timestamp of NVD's most recent modification to the record.",
+          "name": "vulnerabilities[].cve.lastModified",
+          "type": "string"
+        },
+        {
+          "description": "Analysis stage, e.g. Awaiting Analysis, Analyzed, Modified, Rejected. A score attached to an unanalysed record is provisional.",
+          "name": "vulnerabilities[].cve.vulnStatus",
+          "type": "string"
+        },
+        {
+          "description": "CVSS v3.1 base score, 0.0 to 10.0.",
+          "digit_test_applicable": "not_applicable",
+          "name": "vulnerabilities[].cve.metrics.cvssMetricV31[].cvssData.baseScore",
+          "type": "number"
+        },
+        {
+          "description": "Who produced this score: nvd@nist.gov, or the CNA, which is often the affected vendor.",
+          "name": "vulnerabilities[].cve.metrics.cvssMetricV31[].source",
+          "type": "string"
+        },
+        {
+          "description": "Free-text vulnerability description supplied by the assigning CNA, in several languages.",
+          "name": "vulnerabilities[].cve.descriptions[].value",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Reference link supplied by the CNA. A URL from an upstream is data, and following one is a fetch nobody authorised.",
+          "name": "vulnerabilities[].cve.references[].url",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "vulnerabilities[0].cve.lastModified",
+      "id": "nvd-cve",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: NIST National Vulnerability Database.",
+        "name": "U.S. Government Work (NIST copyright statement)",
+        "notes": "The cited NIST statement is that, with the exception of material marked as copyrighted, information presented on NIST sites is considered public information and may be distributed or copied. NIST asks that its name not be used to imply endorsement. The NVD's own developer pages are JavaScript-rendered and returned no readable text, which is why the agency-level statement is what is cited and why no rate-limit number is recorded below.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.nist.gov/oism/copyrights"
+      },
+      "name": "NIST National Vulnerability Database CVE API",
+      "quirks": [
+        "Timestamps carry no timezone designator, e.g. 2026-08-11T19:33:44.513, and are UTC by documentation rather than by the string.",
+        "A record can carry several CVSS metric blocks from different sources with different scores; picking one without reading source silently prefers whoever is listed first.",
+        "Rejected CVEs stay in the database with vulnStatus Rejected rather than disappearing, so a count of records is not a count of vulnerabilities.",
+        "Rate limits are enforced and are considerably tighter without an API key. No number is recorded here because the page stating them could not be read; callers should back off on HTTP 403."
+      ],
+      "refresh_cadence": "hourly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "NIST material must not be used to imply NIST endorsement of a product, service, or organisation.",
+          "CVE descriptions originate with the assigning CNA and the CVE Program; NVD adds the enrichment. Attribution that names only NIST understates where the record came from."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.nist.gov/oism/copyrights",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "Requires a custom User-Agent header with contact info. No API key needed.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://www.weather.gov/documentation/services-web-api",
+        "rate_limit": "Reasonable use guidelines; throttle if exceeding ~30 requests per minute."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. The agency publishes forecasts it is then graded against by everyone, and has no commercial position in the values.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "Originating authority for official United States meteorological observations and forecasts.",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "This entry addresses one station and one gridpoint, so nothing in a response says how many stations exist or how many of them reported. The station universe is published separately at api.weather.gov/stations; until that endpoint is in the catalog, coverage of the NWS network cannot be computed from anything here.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Primary United States weather observations, terminal forecasts, and hazard alerts from NOAA / NWS.",
+      "endpoints": [
+        {
+          "headers": {
+            "Accept": "application/geo+json",
+            "User-Agent": "(trooth.io, contact@trooth.io)"
+          },
+          "method": "GET",
+          "name": "latest_observations",
+          "records": {
+            "event_time": "properties.timestamp",
+            "key": null,
+            "notes": "One observation per response. The whole body is the record and the diff compares it whole.",
+            "path": null
+          },
+          "url": "https://api.weather.gov/stations/KJFK/observations/latest"
+        },
+        {
+          "headers": {
+            "Accept": "application/geo+json",
+            "User-Agent": "(trooth.io, contact@trooth.io)"
+          },
+          "method": "GET",
+          "name": "gridpoint_forecast",
+          "records": {
+            "event_time": "startTime",
+            "key": "startTime",
+            "notes": "Keyed on startTime rather than on the number field, which is a position in the current forecast and is reused: period 1 is tonight in one snapshot and tomorrow night in the next. Keying on number would report every period as revised on every run.\n",
+            "path": "properties.periods"
+          },
+          "url": "https://api.weather.gov/gridpoints/OKX/33,37/forecast"
+        }
+      ],
+      "fields": [
+        {
+          "description": "ISO 8601 observation timestamp as recorded by the weather station.",
+          "name": "properties.timestamp",
+          "type": "string"
+        },
+        {
+          "description": "Air temperature in degrees Celsius.",
+          "digit_test_applicable": "not_applicable",
+          "name": "properties.temperature.value",
+          "type": "number"
+        },
+        {
+          "description": "Relative humidity percentage (0-100).",
+          "digit_test_applicable": "not_applicable",
+          "name": "properties.relativeHumidity.value",
+          "type": "number"
+        },
+        {
+          "description": "Wind speed in kilometers per hour.",
+          "digit_test_applicable": "not_applicable",
+          "name": "properties.windSpeed.value",
+          "type": "number"
+        },
+        {
+          "description": "Textual description of weather conditions.",
+          "name": "properties.textDescription",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Human-readable weather station name (e.g. airport or facility name).",
+          "name": "properties.stationName",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Raw METAR weather observation transmission string.",
+          "name": "properties.rawMessage",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "properties.timestamp",
+      "id": "nws",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Data provided by the National Oceanic and Atmospheric Administration (NOAA) National Weather Service.",
+        "name": "U.S. Government Work (17 U.S.C. 105)",
+        "notes": "Works prepared by officers and employees of the U.S. Government as part of official duties are in the public domain.",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.weather.gov/disclaimer"
+      },
+      "name": "National Weather Service API",
+      "quirks": [
+        "Requires unique User-Agent header; requests without User-Agent return HTTP 403.",
+        "Intermittent 503 Service Unavailable errors during regional radar updates.",
+        "Missing values represented as null inside object value fields rather than omitted keys.",
+        "JSON-LD context mappings (@context.*), unit codes (*.unitCode), QC markers (*.qualityControl), icons/URLs (properties.icon), and ISO timestamps are structured metadata and enums deliberately left undeclared in the free-text quarantine (TASK-IN-2)."
+      ],
+      "refresh_cadence": "hourly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "NWS data may be used without charge for any lawful purpose, provided the user does not claim ownership, imply endorsement, or present modified content as official material.",
+          "The NWS name and visual identifiers are trademarked. Attribution names the agency; it never implies affiliation."
+        ],
+        "confirmed_by": "alex",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.weather.gov/disclaimer",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "Free for non-commercial and open use without API key up to 10,000 daily API calls.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "freemium",
+        "pricing_url": "https://open-meteo.com/en/pricing",
+        "rate_limit": "10,000 daily API calls for non-commercial use; max 5,000 calls/hour."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "vendor_revenue",
+        "notes": "Stated because it is structural, not because anything has been observed. The free API is non-commercial only and rate limited while the paid plan is not, so the vendor has a business reason for the tiers to differ, which is an ordinary and disclosed business model. It matters here only because Trooth fetches on the free tier: a difference between what the free tier serves and what the paid tier serves would look exactly like probe gaming (TH-03) without being it. Anyone grading this source should compare tiers before drawing a conclusion. See CLAUDE.md open question 6.\n",
+        "who_benefits": [
+          "Open-Meteo, whose paid tier is differentiated from the free tier this entry uses"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "Interpolates and derives values from NOAA NWS and other national weather models. Demonstrates measurable publication lag vs primary NWS.",
+        "role": "derivative",
+        "upstream_sources": [
+          "nws",
+          "noaa-gfs",
+          "ecmwf",
+          "dwd"
+        ]
+      },
+      "denominator": {
+        "notes": "Model output on a grid, so there is no missing-record question: every cell has a value by construction. There is also no observation count behind any value, which is the more useful thing to know. A caller cannot tell from this feed how many real measurements supported a given number, and for an interpolated product that is the figure they would actually want.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Global open weather forecast API combining national numerical weather prediction models including NOAA GFS/HRRR, ECMWF, DWD ICON, and MeteoFrance.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "current_weather",
+          "params": {
+            "current": "temperature_2m,relative_humidity_2m,wind_speed_10m",
+            "hourly": "temperature_2m",
+            "latitude": 40.64,
+            "longitude": -73.78
+          },
+          "records": {
+            "event_time": "current.time",
+            "key": null,
+            "notes": "The response carries one current block and an hourly array on the same body. The current block is what this entry routes on and it is a single record, so the diff compares the body whole. Keying the hourly array is a second endpoint's job, and declaring path null here rather than pointing at hourly is the honest version of what is actually being compared.\n",
+            "path": null
+          },
+          "url": "https://api.open-meteo.com/v1/forecast"
+        }
+      ],
+      "fields": [
+        {
+          "description": "ISO 8601 string of current model output timestep.",
+          "name": "current.time",
+          "type": "string"
+        },
+        {
+          "description": "Air temperature at 2 meters above ground in degrees Celsius.",
+          "name": "current.temperature_2m",
+          "type": "number"
+        },
+        {
+          "description": "Relative humidity at 2 meters above ground as a percentage.",
+          "name": "current.relative_humidity_2m",
+          "type": "number"
+        },
+        {
+          "description": "Wind speed at 10 meters above ground in km/h.",
+          "digit_test_applicable": "not_applicable",
+          "name": "current.wind_speed_10m",
+          "type": "number"
+        }
+      ],
+      "freshness_field": "current.time",
+      "id": "open-meteo",
+      "license": {
+        "attribution_required": true,
+        "attribution_text": "Weather data by Open-Meteo.com",
+        "name": "Creative Commons Attribution 4.0 International",
+        "notes": "The data is CC-BY 4.0, but the free API tier is restricted to non-commercial use by the service terms, which is a separate restriction from the data licence. Commercial callers need Open-Meteo's paid plan, supplied as a pass-through credential. Confirmed against the terms page, which states that the free API services may only be used for non-commercial purposes. This is CLAUDE.md open question 6.\n",
+        "redistribution_allowed": true,
+        "spdx": "CC-BY-4.0",
+        "url": "https://open-meteo.com/en/license"
+      },
+      "name": "Open-Meteo Weather API",
+      "quirks": [
+        "Values are model-interpolated rather than direct physical station sensor readings.",
+        "Model update cycles occur every 1 to 3 hours depending on upstream model run schedule.",
+        "Time strings (current.time, hourly.time[]), timezones, and unit labels (current_units.*, hourly_units.*) are structural labels and units deliberately left undeclared in the free-text quarantine (TASK-IN-2)."
+      ],
+      "refresh_cadence": "hourly",
+      "use_terms": {
+        "commercial": "requires_paid_plan",
+        "conditions": [
+          "Free tier is non-commercial only: fewer than 10,000 API calls per day, 5,000 per hour, 600 per minute.",
+          "A commercial caller reaches this source only by supplying their own Open-Meteo paid-plan credential (auth type passthrough, Phase 2). Until then, /pro rejects it with the licence as the reason.",
+          "CC-BY 4.0 attribution with a link to open-meteo.com must travel with any redistributed copy."
+        ],
+        "confirmed_by": "alex",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://open-meteo.com/en/terms",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No key required. An API key raises the daily limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://open.fda.gov/apis/authentication/",
+        "rate_limit": "Without a key: 240 requests per minute and 1,000 per day, per IP. With a key: 240 per minute and 120,000 per day, per key."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-22",
+        "kind": "regulatory_relief",
+        "notes": "The decision is FDA's; the descriptive text is the applicant's. Declared, not measured.\n",
+        "who_benefits": [
+          "applicants, who write the device name and choose the predicate they claim equivalence to"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "openFDA republishes CDRH's premarket notification database. The applicant writes the submission, CDRH decides, openFDA publishes the decision record.\n",
+        "role": "derivative",
+        "upstream_sources": [
+          "FDA CDRH 510(k) database"
+        ]
+      },
+      "denominator": {
+        "notes": "This is the population of clearance decisions, not of devices on the market. A count of clearances per product code measures submission activity, and it is a denominator for nothing else: a device can be cleared and never sold, and many devices are 510(k)-exempt and never appear here.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "FDA premarket notification decisions: every 510(k) clearance, with applicant, product code, decision date, and review panel, served through openFDA.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "clearances_recent",
+          "params": {
+            "limit": 20,
+            "sort": "decision_date:desc"
+          },
+          "records": {
+            "event_time": "decision_date",
+            "key": "k_number",
+            "notes": "k_number is FDA's submission number and was unique across 100 live records on 2026-09-22. There is no amendment marker, so a changed record is inferred by the diff, never asserted by the upstream.\n",
+            "path": "results"
+          },
+          "url": "https://api.fda.gov/device/510k.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "510(k) submission number, e.g. K262526.",
+          "name": "results[].k_number",
+          "type": "string"
+        },
+        {
+          "description": "Date of the decision, as YYYY-MM-DD.",
+          "name": "results[].decision_date",
+          "type": "string"
+        },
+        {
+          "description": "Date CDRH received the submission, as YYYY-MM-DD.",
+          "name": "results[].date_received",
+          "type": "string"
+        },
+        {
+          "description": "Decision code, e.g. SESE (substantially equivalent).",
+          "name": "results[].decision_code",
+          "type": "string"
+        },
+        {
+          "description": "Traditional, Special, or Abbreviated.",
+          "name": "results[].clearance_type",
+          "type": "string"
+        },
+        {
+          "description": "Three-letter FDA product code; joins to openfda-device-classification.",
+          "name": "results[].product_code",
+          "type": "string"
+        },
+        {
+          "description": "Two-letter review panel code.",
+          "name": "results[].advisory_committee",
+          "type": "string"
+        },
+        {
+          "description": "Device name as written by the applicant.",
+          "name": "results[].device_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Applicant company name, unnormalised.",
+          "name": "results[].applicant",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Named contact person at the applicant.",
+          "name": "results[].contact",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "meta.last_updated",
+      "id": "openfda-device-510k",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Food and Drug Administration, openFDA.",
+        "name": "Creative Commons CC0 1.0 Universal (public domain dedication)",
+        "notes": "Same source-level grant as the openfda entry: CC0 unless otherwise noted, with GMDN content carved out. Re-read on 2026-09-22. A live device/510k response carries no GMDN field, so the carve-out does not reach this endpoint. redistribution_allowed stays false for the same reason it does on openfda: the grant is conditional at source level.\n",
+        "redistribution_allowed": false,
+        "spdx": "CC0-1.0",
+        "url": "https://open.fda.gov/license/"
+      },
+      "name": "openFDA Device 510(k) Clearances",
+      "quirks": [
+        "Addresses and contacts are personal and business data published by FDA; carry them, never enrich them.",
+        "The openfda sub-object lists every registration number associated with the product code, which can run to hundreds of entries per record and inflates payload size.",
+        "Decision dates are ISO dates here, while the enforcement and MAUDE endpoints use YYYYMMDD strings."
+      ],
+      "refresh_cadence": "weekly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "GMDN content anywhere in openFDA needs a separate licence from The GMDN Agency for commercial services or AI training. This endpoint returns no GMDN field; re-check before adding another.",
+          "Use must not imply FDA endorsement of the user or the product.",
+          "FDA's own disclaimer travels with the data: results are unvalidated and must not be relied on for decisions about medical care."
+        ],
+        "confirmed_by": "claude-opus-5-5",
+        "confirmed_on": "2026-09-22",
+        "confirmed_url": "https://open.fda.gov/license/",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Do not rely on openFDA to make decisions regarding medical care. Results are unvalidated.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No key required. An API key raises the daily limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://open.fda.gov/apis/authentication/",
+        "rate_limit": "Without a key: 240 requests per minute and 1,000 per day, per IP. With a key: 240 per minute and 120,000 per day, per key."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-22",
+        "kind": "none_identified",
+        "notes": "FDA writes the table; no party identified gains from distorting it.",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "CDRH maintains the classification; openFDA republishes it.",
+        "role": "derivative",
+        "upstream_sources": [
+          "FDA CDRH product classification database"
+        ]
+      },
+      "denominator": {
+        "notes": "A reference table. It counts device types, not devices, and is the denominator for nothing.",
+        "present": false,
+        "source_id": null
+      },
+      "description": "FDA's product code table: device class, regulation number, review panel, and implant and life-sustaining flags for every product code. The join key for every other device endpoint.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "product_codes",
+          "params": {
+            "limit": 20
+          },
+          "records": {
+            "key": "product_code",
+            "notes": "A reference table with no date field, so there is no event_time and freshness lag is not measurable per record. openFDA refuses to sort on product_code, so the request takes the default order, which was identical across two consecutive requests on 2026-09-22. If it ever shuffles, the diff will report it as churn; that is the signal to page by search instead.\n",
+            "path": "results"
+          },
+          "url": "https://api.fda.gov/device/classification.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Three-letter FDA product code.",
+          "name": "results[].product_code",
+          "type": "string"
+        },
+        {
+          "description": "Device class as a string: 1, 2, 3, or a letter code for unclassified and special cases.",
+          "name": "results[].device_class",
+          "type": "string"
+        },
+        {
+          "description": "21 CFR regulation number.",
+          "name": "results[].regulation_number",
+          "type": "string"
+        },
+        {
+          "description": "Two-letter medical specialty code.",
+          "name": "results[].medical_specialty",
+          "type": "string"
+        },
+        {
+          "description": "Y or N.",
+          "name": "results[].implant_flag",
+          "type": "string"
+        },
+        {
+          "description": "Y or N.",
+          "name": "results[].life_sustain_support_flag",
+          "type": "string"
+        },
+        {
+          "description": "Device type name.",
+          "name": "results[].device_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Definition text for the device type.",
+          "name": "results[].definition",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "meta.last_updated",
+      "id": "openfda-device-classification",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Food and Drug Administration, openFDA.",
+        "name": "Creative Commons CC0 1.0 Universal (public domain dedication)",
+        "notes": "Same source-level grant as the openfda entry: CC0 unless otherwise noted, with GMDN content carved out. Re-read on 2026-09-22. A live device/classification response carries no GMDN field, so the carve-out does not reach this endpoint. redistribution_allowed stays false for the same reason it does on openfda: the grant is conditional at source level.\n",
+        "redistribution_allowed": false,
+        "spdx": "CC0-1.0",
+        "url": "https://open.fda.gov/license/"
+      },
+      "name": "openFDA Device Classification",
+      "quirks": [
+        "device_class is a string, not an integer.",
+        "The openfda sub-object lists 510(k) numbers and registrations for the code, so this is also a cheap way to find every clearance under one code."
+      ],
+      "refresh_cadence": "weekly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "GMDN content anywhere in openFDA needs a separate licence from The GMDN Agency for commercial services or AI training. This endpoint returns no GMDN field; re-check before adding another.",
+          "Use must not imply FDA endorsement of the user or the product.",
+          "FDA's own disclaimer travels with the data: results are unvalidated and must not be relied on for decisions about medical care."
+        ],
+        "confirmed_by": "claude-opus-5-5",
+        "confirmed_on": "2026-09-22",
+        "confirmed_url": "https://open.fda.gov/license/",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Do not rely on openFDA to make decisions regarding medical care. Results are unvalidated.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No key required. An API key raises the daily limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://open.fda.gov/apis/authentication/",
+        "rate_limit": "Without a key: 240 requests per minute and 1,000 per day, per IP. With a key: 240 per minute and 120,000 per day, per key."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-22",
+        "kind": "reputational",
+        "notes": "The classification is FDA's; the descriptive text is the firm's. Declared, not measured.",
+        "who_benefits": [
+          "recalling firms, who write the product description, reason, and quantity"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "FDA publishes the Enforcement Report weekly; openFDA republishes it. The recall itself is the firm's, the classification is FDA's.\n",
+        "role": "derivative",
+        "upstream_sources": [
+          "FDA Enforcement Report"
+        ]
+      },
+      "denominator": {
+        "notes": "Counts classified recall records. product_quantity is free text in units the firm picks, so it cannot be summed across records without parsing and unit conversion that the upstream does not support.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "FDA's weekly enforcement report for devices: recalls once FDA has classified them as Class I, II or III, with status, classification date, and voluntary or mandated flag.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "enforcement_recent",
+          "params": {
+            "limit": 20,
+            "sort": "report_date:desc"
+          },
+          "records": {
+            "event_time": "report_date",
+            "key": "recall_number",
+            "notes": "recall_number was unique and non-empty across 100 live device records on 2026-09-22. The drug enforcement endpoint was not promoted because one of its 100 latest records had an empty recall_number.\n",
+            "path": "results"
+          },
+          "url": "https://api.fda.gov/device/enforcement.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Recall number, Z-NNNN-YYYY for devices. Same value as product_res_number in openfda-device-recall.",
+          "name": "results[].recall_number",
+          "type": "string"
+        },
+        {
+          "description": "Recall event id shared by every product in one recall.",
+          "name": "results[].event_id",
+          "type": "string"
+        },
+        {
+          "description": "Class I, Class II, or Class III, by health hazard.",
+          "name": "results[].classification",
+          "type": "string"
+        },
+        {
+          "description": "Ongoing, Completed, or Terminated.",
+          "name": "results[].status",
+          "type": "string"
+        },
+        {
+          "description": "Date of the enforcement report that carried this record, YYYYMMDD.",
+          "name": "results[].report_date",
+          "type": "string"
+        },
+        {
+          "description": "Date the firm initiated the recall, YYYYMMDD.",
+          "name": "results[].recall_initiation_date",
+          "type": "string"
+        },
+        {
+          "description": "Date FDA classified the recall, YYYYMMDD.",
+          "name": "results[].center_classification_date",
+          "type": "string"
+        },
+        {
+          "description": "Whether the recall was firm-initiated or FDA-mandated.",
+          "name": "results[].voluntary_mandated",
+          "type": "string"
+        },
+        {
+          "description": "Recalling firm name, unnormalised. Misspellings occur.",
+          "name": "results[].recalling_firm",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Product description written by the firm.",
+          "name": "results[].product_description",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Reason for the recall, free text.",
+          "name": "results[].reason_for_recall",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Affected lots and identifiers, free text.",
+          "name": "results[].code_info",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Where the product was distributed, free text.",
+          "name": "results[].distribution_pattern",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Quantity recalled, free text with units chosen by the firm.",
+          "name": "results[].product_quantity",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "meta.last_updated",
+      "id": "openfda-device-enforcement",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Food and Drug Administration, openFDA.",
+        "name": "Creative Commons CC0 1.0 Universal (public domain dedication)",
+        "notes": "Same source-level grant as the openfda entry: CC0 unless otherwise noted, with GMDN content carved out. Re-read on 2026-09-22. A live device/enforcement response carries no GMDN field, so the carve-out does not reach this endpoint. redistribution_allowed stays false for the same reason it does on openfda: the grant is conditional at source level.\n",
+        "redistribution_allowed": false,
+        "spdx": "CC0-1.0",
+        "url": "https://open.fda.gov/license/"
+      },
+      "name": "openFDA Device Enforcement Reports",
+      "quirks": [
+        "Dates are YYYYMMDD strings here and YYYY-MM-DD in openfda-device-recall for the same recall.",
+        "A recall reaches this endpoint only after FDA classifies it, so it lags openfda-device-recall; see the quirk there for the 2026-09-22 check.",
+        "The openfda sub-object was empty on the device records checked on 2026-09-22, so product code and 510(k) joins go through openfda-device-recall instead.",
+        "recalling_firm is unnormalised; one live record on 2026-09-22 read 'Nipro Renal Soultions USA'."
+      ],
+      "refresh_cadence": "weekly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "GMDN content anywhere in openFDA needs a separate licence from The GMDN Agency for commercial services or AI training. This endpoint returns no GMDN field; re-check before adding another.",
+          "Use must not imply FDA endorsement of the user or the product.",
+          "FDA's own disclaimer travels with the data: results are unvalidated and must not be relied on for decisions about medical care."
+        ],
+        "confirmed_by": "claude-opus-5-5",
+        "confirmed_on": "2026-09-22",
+        "confirmed_url": "https://open.fda.gov/license/",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Do not rely on openFDA to make decisions regarding medical care. Results are unvalidated.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No key required. An API key raises the daily limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://open.fda.gov/apis/authentication/",
+        "rate_limit": "Without a key: 240 requests per minute and 1,000 per day, per IP. With a key: 240 per minute and 120,000 per day, per key."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-22",
+        "kind": "regulatory_relief",
+        "notes": "Declared, not measured.",
+        "who_benefits": [
+          "applicants, who write the trade name and the supplement description"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "CDRH decides; openFDA republishes the decision record.",
+        "role": "derivative",
+        "upstream_sources": [
+          "FDA CDRH PMA database"
+        ]
+      },
+      "denominator": {
+        "notes": "Supplements outnumber original approvals, so a count of records per applicant measures paperwork volume, not the number of devices.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "FDA premarket approval decisions for Class III devices, including every supplement: labelling changes, manufacturing site changes, and design changes.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "approvals_recent",
+          "params": {
+            "limit": 20,
+            "sort": "decision_date:desc"
+          },
+          "records": {
+            "event_time": "decision_date",
+            "key": [
+              "pma_number",
+              "supplement_number"
+            ],
+            "notes": "A PMA and its supplements share pma_number, so identity is the pair. Unique across 100 live records on 2026-09-22.\n",
+            "path": "results"
+          },
+          "url": "https://api.fda.gov/device/pma.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "PMA number, e.g. P150031.",
+          "name": "results[].pma_number",
+          "type": "string"
+        },
+        {
+          "description": "Supplement number, e.g. S084; empty for the original approval.",
+          "name": "results[].supplement_number",
+          "type": "string"
+        },
+        {
+          "description": "Decision date, YYYY-MM-DD.",
+          "name": "results[].decision_date",
+          "type": "string"
+        },
+        {
+          "description": "Decision code, e.g. APPR.",
+          "name": "results[].decision_code",
+          "type": "string"
+        },
+        {
+          "description": "Review track of the supplement.",
+          "name": "results[].supplement_type",
+          "type": "string"
+        },
+        {
+          "description": "FDA product code; joins to openfda-device-classification.",
+          "name": "results[].product_code",
+          "type": "string"
+        },
+        {
+          "description": "Applicant company name, unnormalised.",
+          "name": "results[].applicant",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Trade name as written by the applicant.",
+          "name": "results[].trade_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Generic device name.",
+          "name": "results[].generic_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Reason category for the supplement.",
+          "name": "results[].supplement_reason",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Approval order statement, free text.",
+          "name": "results[].ao_statement",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "meta.last_updated",
+      "id": "openfda-device-pma",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Food and Drug Administration, openFDA.",
+        "name": "Creative Commons CC0 1.0 Universal (public domain dedication)",
+        "notes": "Same source-level grant as the openfda entry: CC0 unless otherwise noted, with GMDN content carved out. Re-read on 2026-09-22. A live device/pma response carries no GMDN field, so the carve-out does not reach this endpoint. redistribution_allowed stays false for the same reason it does on openfda: the grant is conditional at source level.\n",
+        "redistribution_allowed": false,
+        "spdx": "CC0-1.0",
+        "url": "https://open.fda.gov/license/"
+      },
+      "name": "openFDA Device Premarket Approvals (PMA)",
+      "quirks": [
+        "Most records are supplements, not new devices. Filter on an empty supplement_number for original approvals."
+      ],
+      "refresh_cadence": "weekly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "GMDN content anywhere in openFDA needs a separate licence from The GMDN Agency for commercial services or AI training. This endpoint returns no GMDN field; re-check before adding another.",
+          "Use must not imply FDA endorsement of the user or the product.",
+          "FDA's own disclaimer travels with the data: results are unvalidated and must not be relied on for decisions about medical care."
+        ],
+        "confirmed_by": "claude-opus-5-5",
+        "confirmed_on": "2026-09-22",
+        "confirmed_url": "https://open.fda.gov/license/",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Do not rely on openFDA to make decisions regarding medical care. Results are unvalidated.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No key required. An API key raises the daily limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://open.fda.gov/apis/authentication/",
+        "rate_limit": "Without a key: 240 requests per minute and 1,000 per day, per IP. With a key: 240 per minute and 120,000 per day, per key."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-22",
+        "kind": "reputational",
+        "notes": "Firms describe their own recalls and choose how narrowly to scope the affected lots. Declared, not measured, and not a claim that any given recall is misdescribed.\n",
+        "who_benefits": [
+          "recalling firms, who write the product description, reason, and scope of their own recall"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "The recalling firm initiates and describes the recall, CDRH classifies and posts it, and openFDA republishes the posting.\n",
+        "role": "derivative",
+        "upstream_sources": [
+          "FDA CDRH medical device recall database"
+        ]
+      },
+      "denominator": {
+        "notes": "Counts recalled products, not units in service. product_quantity is free text written by the firm (\"3,286 cases\") and is not a denominator either. A recall rate per manufacturer needs installed base, which FDA does not publish.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Medical device recalls as CDRH posts them: one record per recalled product, with recalling firm, reason, root cause, and the 510(k) numbers of the recalled device.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "recalls_recent",
+          "params": {
+            "limit": 20,
+            "sort": "event_date_posted:desc"
+          },
+          "records": {
+            "event_time": "event_date_posted",
+            "key": "product_res_number",
+            "notes": "product_res_number (Z-NNNN-YYYY) identifies one recalled product and was unique across 100 live records on 2026-09-22. One recall event (res_event_number) spans several products, so the event number is not a record key.\n",
+            "path": "results"
+          },
+          "url": "https://api.fda.gov/device/recall.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Recall number for one product, Z-NNNN-YYYY. The same number is recall_number in openfda-device-enforcement.",
+          "name": "results[].product_res_number",
+          "type": "string"
+        },
+        {
+          "description": "Recall event number, shared by every product in one recall.",
+          "name": "results[].res_event_number",
+          "type": "string"
+        },
+        {
+          "description": "Date the firm initiated the recall, YYYY-MM-DD.",
+          "name": "results[].event_date_initiated",
+          "type": "string"
+        },
+        {
+          "description": "Date CDRH posted the recall, YYYY-MM-DD.",
+          "name": "results[].event_date_posted",
+          "type": "string"
+        },
+        {
+          "description": "Posting status, e.g. Open, Classified or Terminated.",
+          "name": "results[].recall_status",
+          "type": "string"
+        },
+        {
+          "description": "FDA product code of the recalled device.",
+          "name": "results[].product_code",
+          "type": "string"
+        },
+        {
+          "description": "510(k) numbers of the recalled device; joins to openfda-device-510k.",
+          "name": "results[].k_numbers",
+          "type": "array"
+        },
+        {
+          "description": "Recalling firm name, unnormalised.",
+          "name": "results[].recalling_firm",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Product description written by the firm.",
+          "name": "results[].product_description",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Reason for the recall, free text.",
+          "name": "results[].reason_for_recall",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Root cause category as FDA records it.",
+          "name": "results[].root_cause_description",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Lots, serial numbers, model numbers and UDI-DIs affected, free text.",
+          "name": "results[].code_info",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Actions the firm asked consignees to take, free text.",
+          "name": "results[].action",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Where the product was distributed, free text.",
+          "name": "results[].distribution_pattern",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "meta.last_updated",
+      "id": "openfda-device-recall",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Food and Drug Administration, openFDA.",
+        "name": "Creative Commons CC0 1.0 Universal (public domain dedication)",
+        "notes": "Same source-level grant as the openfda entry: CC0 unless otherwise noted, with GMDN content carved out. Re-read on 2026-09-22. A live device/recall response carries no GMDN field, so the carve-out does not reach this endpoint. redistribution_allowed stays false for the same reason it does on openfda: the grant is conditional at source level.\n",
+        "redistribution_allowed": false,
+        "spdx": "CC0-1.0",
+        "url": "https://open.fda.gov/license/"
+      },
+      "name": "openFDA Device Recalls (CDRH recall database)",
+      "quirks": [
+        "The same recall appears in openfda-device-enforcement under recall_number, usually later. Checked on 2026-09-22: Z-3133-2026 was in both, while Z-3139-2026 and Z-3140-2026, posted 2026-09-18, were in this endpoint and not yet in the enforcement report.",
+        "code_info carries UDI-DIs and lot numbers inside free text; nothing structured holds them.",
+        "One recall event covers several products, each its own record with its own Z-number."
+      ],
+      "refresh_cadence": "weekly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "GMDN content anywhere in openFDA needs a separate licence from The GMDN Agency for commercial services or AI training. This endpoint returns no GMDN field; re-check before adding another.",
+          "Use must not imply FDA endorsement of the user or the product.",
+          "FDA's own disclaimer travels with the data: results are unvalidated and must not be relied on for decisions about medical care."
+        ],
+        "confirmed_by": "claude-opus-5-5",
+        "confirmed_on": "2026-09-22",
+        "confirmed_url": "https://open.fda.gov/license/",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Do not rely on openFDA to make decisions regarding medical care. Results are unvalidated.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No key required. An API key raises the daily limit and is supported as a pass-through credential at Phase 2.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://open.fda.gov/apis/authentication/",
+        "rate_limit": "Without a key: 240 requests per minute and 1,000 per day, per IP. With a key: 240 per minute and 120,000 per day, per key."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "vendor_revenue",
+        "notes": "The reports are written by the parties whose products they describe, under a duty to report that is enforced unevenly. Under-reporting and terse narratives both favour the reporter. This is declared, not measured, and it is not a claim that any given record is wrong; it is the context in which an anomaly in this feed is worth a second look.\n",
+        "who_benefits": [
+          "device manufacturers, who file the reports about their own products",
+          "importers and user facilities with liability exposure"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "openFDA republishes MAUDE, which is itself a collection of reports submitted by manufacturers, importers, and user facilities. Two hops from the event: the reporter writes the record and FDA publishes it.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "notes": "MAUDE counts reports, not exposure. Nothing here says how many of a device are in use, so a report count divided by anything in this payload is not an event rate, and comparing two manufacturers on raw counts compares their market share as much as their safety. A caller wanting a rate needs installed-base or unit-shipment figures, which FDA does not publish; the registration and listing endpoint counts registered devices, not devices in service, and substituting it produces a plausible number that answers a different question.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "FDA Manufacturer and User Facility Device Experience reports of device-associated deaths, injuries, and malfunctions, served through openFDA.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "device_event_recent",
+          "params": {
+            "limit": 20,
+            "sort": "date_received:desc"
+          },
+          "records": {
+            "event_time": "date_received",
+            "key": "mdr_report_key",
+            "notes": "mdr_report_key identifies the report across snapshots; report_number is not unique because a follow-up submission reuses it. date_changed is FDA's own marker for a record it has amended, so a revision here is asserted rather than inferred.\n",
+            "path": "results",
+            "revision_field": "date_changed"
+          },
+          "url": "https://api.fda.gov/device/event.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "FDA's unique key for the report record.",
+          "name": "results[].mdr_report_key",
+          "type": "string"
+        },
+        {
+          "description": "Reporter-assigned report number. Not unique: follow-up submissions reuse it.",
+          "name": "results[].report_number",
+          "type": "string"
+        },
+        {
+          "description": "Date FDA received the report, as YYYYMMDD.",
+          "name": "results[].date_received",
+          "type": "string"
+        },
+        {
+          "description": "Date the adverse event occurred, as YYYYMMDD. Frequently absent.",
+          "name": "results[].date_of_event",
+          "type": "string"
+        },
+        {
+          "description": "Date FDA last amended this record, as YYYYMMDD.",
+          "name": "results[].date_changed",
+          "type": "string"
+        },
+        {
+          "description": "Outcome category: Death, Injury, Malfunction, or Other.",
+          "name": "results[].event_type",
+          "type": "string"
+        },
+        {
+          "description": "Device brand name as written by the reporter.",
+          "name": "results[].device[].brand_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Device generic name as written by the reporter.",
+          "name": "results[].device[].generic_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Manufacturer name as written by the reporter, unnormalised.",
+          "name": "results[].manufacturer_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Narrative description of the event or the manufacturer's evaluation, free text written by the reporter.",
+          "name": "results[].mdr_text[].text",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "FDA's standing disclaimer, returned in every response.",
+          "name": "meta.disclaimer",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "meta.last_updated",
+      "id": "openfda",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Food and Drug Administration, openFDA.",
+        "name": "Creative Commons CC0 1.0 Universal (public domain dedication)",
+        "notes": "The cited page states that content, data, documentation, code, and related materials on openFDA are public domain and made available with a CC0 1.0 Universal dedication. The same page carves out GMDN content, which needs a separate commercial licence from the GMDN Agency. The device/event payload was checked against a live response and carries no GMDN field, so the carve-out does not bite on this endpoint; redistribution_allowed is still false because the source-level grant is conditional and a second endpoint could reach GMDN content without anyone re-reading this note.\n",
+        "redistribution_allowed": false,
+        "spdx": "CC0-1.0",
+        "url": "https://open.fda.gov/license/"
+      },
+      "name": "openFDA Device Adverse Events (MAUDE)",
+      "quirks": [
+        "Dates are YYYYMMDD strings, not ISO 8601, and date_of_event is often empty.",
+        "Duplicate reports of one event are common: an initial submission and a follow-up arrive as separate records with the same report_number and different mdr_report_key.",
+        "Empty values are empty strings rather than nulls or absent keys, so a field is almost never missing and almost never populated.",
+        "meta.last_updated is the freshness of the whole dataset, not of the record, and it moves in weekly steps.",
+        "Narrative text is redacted inconsistently and arrives in upper case with reporter-specific abbreviations."
+      ],
+      "refresh_cadence": "weekly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "GMDN terms carried anywhere in openFDA require a separate commercial licence from The GMDN Agency for commercial services or AI training. The device/event endpoint promoted here returns no GMDN field; any endpoint added later must be re-checked before it is routed.",
+          "Use must not imply FDA endorsement of the user or the product.",
+          "FDA's own disclaimer travels with the data: results are unvalidated and must not be relied on for decisions about medical care."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://open.fda.gov/license/",
+        "noncommercial": "allowed",
+        "redistribution": "conditional",
+        "required_notice": "Do not rely on openFDA to make decisions regarding medical care. Results are unvalidated.",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key. The SEC requires automated callers to declare a User-Agent identifying the company and an administrative contact address.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://www.sec.gov/search-filings/edgar-search-assistance/accessing-edgar-data",
+        "rate_limit": "No more than 10 requests per second in total across all machines; exceeding it limits the IP for a period."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "financial_position",
+        "notes": "The SEC republishes figures the registrant itself asserted, and the registrant's share price moves with them. That is a live incentive in the ordinary course, not an accusation: it is exactly why restatements are worth keying separately and why a value that changes under a new accession number is the interesting event in this feed.\n",
+        "who_benefits": [
+          "the filing company and its officers",
+          "holders of positions in the filer's securities"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "The SEC publishes what registrants filed with it. It is primary for the filing record and is explicitly not the author of the numbers: the figures are the company's own assertions, which is what declared_incentive below is about.\n",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "One company and one concept per request, so nothing here says how many registrants report this concept or how many have filed for a given period. Coverage of the filer universe needs data.sec.gov/files/company_tickers.json together with the XBRL frames endpoint; neither is in the catalog, so no share of filers can be computed from this entry.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Structured financial facts extracted from SEC filings, served from the EDGAR XBRL frames and company APIs.",
+      "endpoints": [
+        {
+          "headers": {
+            "Accept": "application/json",
+            "User-Agent": "Trooth Datastream contact@trooth.io"
+          },
+          "method": "GET",
+          "name": "company_concept_revenue",
+          "records": {
+            "event_time": "filed",
+            "key": [
+              "accn",
+              "start",
+              "end"
+            ],
+            "notes": "Composite key because one accession reports several periods and one period is reported by several accessions. The second half is the point of this entry: when a company restates, the same period reappears under a new accession with a different value, and the pair is what distinguishes a restatement from a first report. Keyed on end alone, a restatement would read as a revision of the original filing, which is precisely the fact a backtest needs to keep separate. start is in the key because accn and end alone are not unique: one 10-K carries both the quarter ending on a date and the year ending on the same date, and on a live response that collided 36 times out of 117. The live fetch gate caught it; the entry as first written would have reported a quarter as a revision of a year on every probe.\n",
+            "path": "units.USD"
+          },
+          "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Accession number of the filing that reported this fact.",
+          "name": "units.USD[].accn",
+          "type": "string"
+        },
+        {
+          "description": "Last day of the period the fact covers, ISO date.",
+          "name": "units.USD[].end",
+          "type": "string"
+        },
+        {
+          "description": "First day of the period the fact covers, ISO date.",
+          "name": "units.USD[].start",
+          "type": "string"
+        },
+        {
+          "description": "The reported amount in US dollars.",
+          "digit_test_applicable": "applicable",
+          "name": "units.USD[].val",
+          "type": "integer"
+        },
+        {
+          "description": "Date the filing carrying this fact was submitted to EDGAR.",
+          "name": "units.USD[].filed",
+          "type": "string"
+        },
+        {
+          "description": "Form type, e.g. 10-K or 10-Q.",
+          "name": "units.USD[].form",
+          "type": "string"
+        },
+        {
+          "description": "Calendar frame the SEC assigned, absent on facts that do not align to a standard frame.",
+          "name": "units.USD[].frame",
+          "type": "string"
+        },
+        {
+          "description": "Human-readable label of the XBRL concept.",
+          "name": "label",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "The taxonomy's prose definition of the concept.",
+          "name": "description",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Registrant name as carried in the filing.",
+          "name": "entityName",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "units.USD[0].filed",
+      "id": "sec-edgar",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Securities and Exchange Commission, EDGAR.",
+        "name": "U.S. Government Work (SEC website policy)",
+        "notes": "The cited page states that information presented on sec.gov is considered public information and may be copied or further distributed by users of the web site without the SEC's permission. The same page carries the access rules quoted in cost.rate_limit. SEC and EDGAR trademarks may not be used in a trade name, trademark, or domain name of an SEC-related business without a licence, which constrains naming rather than data.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.sec.gov/about/privacy-information"
+      },
+      "name": "SEC EDGAR XBRL Company Facts",
+      "quirks": [
+        "Requests without a declaring User-Agent are refused; the SEC treats unclassified bots as crawlers.",
+        "units keys are unit names, so a concept reported in another currency lands under a different key and units.USD is absent rather than empty.",
+        "frame is missing on facts that do not align to a calendar frame, so its absence is normal and not a schema change.",
+        "A restatement appears as a new object with the same end and a different accn, so the array grows rather than mutating in place.",
+        "The concept name is taxonomy-specific: Apple reports RevenueFromContractWithCustomerExcludingAssessedTax, and a filer using Revenues returns 404 for this URL."
+      ],
+      "refresh_cadence": "daily",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Automated access must declare a User-Agent naming the requesting organisation and an administrative contact address; the SEC blocks unclassified bots.",
+          "Total request rate across all machines must stay at or below 10 requests per second.",
+          "The SEC and EDGAR marks may not be used in a trade name, trademark, or domain name of an SEC- or EDGAR-related business without a licence."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.sec.gov/about/privacy-information",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "Explicitly open: the documentation states the API requires no user account or registration token.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://fiscaldata.treasury.gov/api-documentation/",
+        "rate_limit": "No published numeric limit. The documentation states the API is open and requires no account or token."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-19",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing at the level of this series. The headline is politically charged, but the figure is a penny-exact accounting total reconciled daily against auditable Treasury accounts, which is close to the hardest kind of number to move quietly. The interpretation of it is where the incentives live, and interpretation is Kourob's, not the pipe's.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "The Bureau of the Fiscal Service is the accounting authority for the figure, not a republisher of someone else's. Every vendor quoting the national debt is downstream of this endpoint, which makes it a clean primary for lineage tests against commercial feeds.\n",
+        "role": "primary"
+      },
+      "denominator": {
+        "confirmed_url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD",
+        "notes": "Debt as a share of output is the ratio everyone actually wants, and it is computable across two merged catalog sources: this endpoint supplies the numerator daily and world-bank supplies United States GDP in current dollars from the endpoint already in the catalog. The vintages do not match, and that is the point of stating the pair rather than quietly dividing: the debt figure is yesterday's and the GDP figure is last year's.\n",
+        "present": true,
+        "source_id": "world-bank"
+      },
+      "description": "Federal fiscal series published by the Bureau of the Fiscal Service, starting with the total public debt outstanding to the penny.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "debt_to_penny",
+          "pagination": {
+            "limit_param": "page[size]",
+            "max_pages": 5,
+            "page_size": 20,
+            "style": "page"
+          },
+          "params": {
+            "page[size]": 20,
+            "sort": "-record_date"
+          },
+          "records": {
+            "event_time": "record_date",
+            "key": "record_date",
+            "notes": "One row per business day and the date is the identity. Treasury restates a published day only on correction, so a value change under an unchanged record_date is a genuine revision of a figure that is supposed to be exact, which is a stronger signal here than in any estimate-bearing source in this catalog.\n",
+            "path": "data"
+          },
+          "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Business day the figures describe, ISO date.",
+          "name": "data[].record_date",
+          "type": "string"
+        },
+        {
+          "description": "Total public debt outstanding in dollars and cents, serialised as a string.",
+          "digit_test_applicable": "applicable",
+          "name": "data[].tot_pub_debt_out_amt",
+          "type": "string"
+        },
+        {
+          "description": "Portion of the debt held by the public.",
+          "digit_test_applicable": "applicable",
+          "name": "data[].debt_held_public_amt",
+          "type": "string"
+        },
+        {
+          "description": "Portion held in intragovernmental accounts. The two components sum to the total, which is an internal consistency check the payload supports on its own.",
+          "digit_test_applicable": "applicable",
+          "name": "data[].intragov_hold_amt",
+          "type": "string"
+        },
+        {
+          "description": "Human-readable field label supplied in the response metadata.",
+          "name": "meta.labels.record_date",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "data[0].record_date",
+      "id": "treasury-fiscaldata",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Source: U.S. Department of the Treasury, Bureau of the Fiscal Service, Fiscal Data.",
+        "name": "U.S. Government Work (Fiscal Data license and authorization)",
+        "notes": "The cited page's License and Authorization section states that the data is offered free, without restriction, and available to copy, adapt, redistribute, or otherwise use for non-commercial or commercial purposes. That is an unconditional grant naming commercial use explicitly, which is rarer than it should be and is why redistribution_allowed is true here and false on several other public-domain entries in this catalog.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://fiscaldata.treasury.gov/api-documentation/"
+      },
+      "name": "U.S. Treasury Fiscal Data",
+      "quirks": [
+        "Amounts are strings, and they are long: a total public debt figure exceeds the range where a float keeps cents.",
+        "Parameter names carry brackets, page[size] and page[number], which some HTTP clients mangle without explicit encoding.",
+        "The series skips weekends and federal holidays, so a freshness lag measured against wall-clock time reads as failure every Saturday.",
+        "meta.labels restates every field name in prose and moves only when Treasury renames a column, which makes it a quiet schema-drift canary."
+      ],
+      "refresh_cadence": "daily",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "None stated. The grant is unconditional in the source's own words."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-19",
+        "confirmed_url": "https://fiscaldata.treasury.gov/api-documentation/",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key or authentication required.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php",
+        "rate_limit": "Reasonable use guidelines. Static GeoJSON summaries cached on CDN edges."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. Magnitudes are revised downward and upward routinely as more seismograph data arrives, which is ordinary science and is the behaviour this source is in the catalog to demonstrate. Revision is not distortion and must not be flagged as one.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "Primary authority for national and global seismic monitoring.",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "The feed is a census of events the network detected above its threshold, not of events that occurred. Counts are therefore counts of detections, and a rate would need the detection capability of the seismograph network over the same area and period, which this feed does not carry. Counts are safe; rates per region are not.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Real-time global seismic feeds from the United States Geological Survey Earthquake Hazards Program.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "all_hour",
+          "records": {
+            "event_time": "properties.time",
+            "key": "id",
+            "notes": "USGS bumps properties.updated when it recomputes an event, so a revision is asserted by the upstream rather than inferred from a value change.",
+            "path": "features",
+            "revision_field": "properties.updated"
+          },
+          "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson"
+        },
+        {
+          "method": "GET",
+          "name": "all_day",
+          "records": {
+            "event_time": "properties.time",
+            "key": "id",
+            "notes": "USGS bumps properties.updated when it recomputes an event, so a revision is asserted by the upstream rather than inferred from a value change.",
+            "path": "features",
+            "revision_field": "properties.updated"
+          },
+          "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Epoch milliseconds of the earthquake origin event.",
+          "name": "features[].properties.time",
+          "type": "integer"
+        },
+        {
+          "description": "Epoch milliseconds of the latest event revision or calculation.",
+          "name": "features[].properties.updated",
+          "type": "integer"
+        },
+        {
+          "description": "Earthquake magnitude.",
+          "digit_test_applicable": "not_applicable",
+          "name": "features[].properties.mag",
+          "type": "number"
+        },
+        {
+          "description": "Descriptive location string.",
+          "name": "features[].properties.place",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Human-readable event label, magnitude and place joined into one line.",
+          "name": "features[].properties.title",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Longitude, latitude, and depth in kilometers.",
+          "digit_test_applicable": "not_applicable",
+          "name": "features[].geometry.coordinates",
+          "type": "array"
+        },
+        {
+          "description": "Descriptive title of the USGS GeoJSON feed.",
+          "name": "metadata.title",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "features[0].properties.time",
+      "id": "usgs-earthquake",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Data courtesy of the U.S. Geological Survey.",
+        "name": "U.S. Government Work (USGS Copyright Policy)",
+        "notes": "USGS-authored data and information are in the public domain and may be used freely.",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+      },
+      "name": "USGS Earthquake Hazards Program",
+      "quirks": [
+        "Earthquake magnitudes are frequently revised retroactively as additional seismograph data is processed.",
+        "Timestamps are provided in epoch milliseconds rather than ISO 8601 strings.",
+        "Events can occasionally be deleted or consolidated if determined to be false triggers or duplicate detections.",
+        "GeoJSON structural types (type, features[].type, features[].geometry.type), event IDs (features[].id, features[].properties.code, ids), API version (metadata.api), URLs (detail, url, metadata.url), and catalog/status codes (magType, net, sources, status, types) are structured identifiers and enums deliberately left undeclared in the free-text quarantine (TASK-IN-2)."
+      ],
+      "refresh_cadence": "15m",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Public domain covers USGS-authored material only. Not everything USGS publishes is USGS-authored; the earthquake feed is, and that clearance does not extend to photographs or illustrations on USGS pages."
+        ],
+        "confirmed_by": "alex",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://volcanoes.usgs.gov/vhp/notifications.html",
+        "rate_limit": "No published numeric limit. USGS asks for reasonable use and a self-identifying User-Agent."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-19",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. The observatories are graded by eruptions, which are not susceptible to presentation, and no party is paid by the level.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "The notices are issued by the five regional volcano observatories, named per record in obs_fullname, and the Hazards Programme aggregates them. Like gleif-lei, the real upstream is stated inside each record rather than once for the source.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "notes": "This endpoint returns only volcanoes at elevated status, so it is a numerator with its denominator deliberately withheld: four records does not mean four volcanoes exist. The monitored universe is a separate HANS endpoint, getVolcanoesList, which is not in the catalog. Until it is, any share phrased as volcanoes at WATCH is uncomputable here, and that is worth stating because the response gives no hint that it is a filtered view.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Current volcanic alert levels and aviation colour codes for United States volcanoes at elevated status, from the USGS Volcano Hazards Program.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "elevated_volcanoes",
+          "records": {
+            "event_time": "sent_utc",
+            "key": "vnum",
+            "notes": "A bare array, so path is the empty string. Keyed on the volcano rather than on the notice, which is the decision that makes this source useful: a volcano's alert level changing from WATCH to WARNING is a revision of that volcano's status, and keying on notice_identifier would report it as a brand new record with no history. The notice identifier then serves as the revision marker, because USGS mints a new one for every issuance, so a change of status is asserted by the upstream rather than inferred. Checked live: notice_identifier was not unique across the four returned records and vnum was, which is the other reason the key is what it is.\n",
+            "path": "",
+            "revision_field": "notice_identifier"
+          },
+          "response_format": "json",
+          "url": "https://volcanoes.usgs.gov/hans-public/api/volcano/getElevatedVolcanoes"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Smithsonian volcano number. The stable identity of the volcano across notices.",
+          "name": "[].vnum",
+          "type": "string"
+        },
+        {
+          "description": "Identifier of the specific notice, minted fresh for each issuance.",
+          "name": "[].notice_identifier",
+          "type": "string"
+        },
+        {
+          "description": "When the notice was issued. Space-separated rather than ISO 8601.",
+          "name": "[].sent_utc",
+          "type": "string"
+        },
+        {
+          "description": "NORMAL, ADVISORY, WATCH or WARNING. The ground-hazard scale.",
+          "name": "[].alert_level",
+          "type": "string"
+        },
+        {
+          "description": "GREEN, YELLOW, ORANGE or RED. The aviation scale, which moves independently of alert_level and is not a colour-coding of it.",
+          "name": "[].color_code",
+          "type": "string"
+        },
+        {
+          "description": "Notice type, e.g. DU for a daily update or VONA for an aviation notice.",
+          "name": "[].notice_type_cd",
+          "type": "string"
+        },
+        {
+          "description": "Human-readable volcano name.",
+          "name": "[].volcano_name",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Issuing observatory name. The per-record upstream.",
+          "name": "[].obs_fullname",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Link to the full notice. A URL from an upstream is data; following one is a fetch nobody authorised (H5).",
+          "name": "[].notice_url",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "[0].sent_utc",
+      "id": "usgs-volcano-hans",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Data courtesy of the U.S. Geological Survey Volcano Hazards Program.",
+        "name": "U.S. Government Work (USGS Copyright Policy)",
+        "notes": "The cited page states that USGS-authored or produced data and information are considered to be in the U.S. Public Domain. The same page and citation already cover usgs-earthquake and usgs-water; this is the third USGS programme under one confirmed statement rather than three separate readings of the same policy.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+      },
+      "name": "USGS Volcano Hazards Notification Service",
+      "quirks": [
+        "The response is a bare array with no wrapper and no statement that it is filtered to elevated volcanoes, so an empty response and a quiet period are indistinguishable from a broken query.",
+        "notice_identifier is not unique across a single response, because one observatory can issue for several volcanoes under related identifiers. vnum is the identity.",
+        "alert_level and color_code are separate scales that move independently; treating the colour as a rendering of the level loses the aviation hazard entirely.",
+        "sent_utc is space-separated and sent_unixtime is the same instant as an integer, so the payload carries two clocks that must agree and occasionally will not."
+      ],
+      "refresh_cadence": "hourly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Public domain covers USGS-authored material only; the clearance does not extend to third-party imagery elsewhere on usgs.gov.",
+          "These are operational hazard notices. A republished alert level is not an official notification and must not be presented as one."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-19",
+        "confirmed_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key. USGS asks that automated callers identify themselves in the User-Agent.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://waterservices.usgs.gov/docs/instantaneous-values/instantaneous-values-details/",
+        "rate_limit": "No published numeric limit. USGS asks for reasonable use and a self-identifying User-Agent."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "none_identified",
+        "notes": "Somebody looked and found nothing. USGS neither trades on streamflow nor is paid by parties whose interests move with it, and the readings are instrument output rather than a figure anyone submits.\n",
+        "who_benefits": []
+      },
+      "declared_lineage": {
+        "notes": "USGS operates the gages and publishes its own readings. The same agency also supplies usgs-earthquake, so the two share an operator without sharing a measurement network.",
+        "role": "primary"
+      },
+      "denominator": {
+        "notes": "This entry addresses one gage. Nothing in the response says how many gages exist or how many reported, so a coverage figure for the network cannot be computed from it. The site universe is published separately at waterservices.usgs.gov/nwis/site; until that endpoint is in the catalog, completeness of NWIS is not answerable here.\n",
+        "present": false,
+        "source_id": null
+      },
+      "description": "Real-time streamflow, gage height, and water quality observations from the United States Geological Survey National Water Information System.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "instantaneous_discharge",
+          "params": {
+            "format": "json",
+            "parameterCd": "00060",
+            "siteStatus": "all",
+            "sites": "01646500"
+          },
+          "records": {
+            "event_time": "values[0].value[0].dateTime",
+            "key": "name",
+            "notes": "Keyed on the WaterML series name, which is site, parameter and method joined (USGS:01646500:00060:00000) and is stable across responses. Keying on the site code alone would collide the moment a second parameter is added to params, and keying on list position would report every series as revised whenever USGS reorders them.\n",
+            "path": "value.timeSeries"
+          },
+          "url": "https://waterservices.usgs.gov/nwis/iv/"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Series identifier: agency, site code, parameter code and method code joined by colons.",
+          "name": "value.timeSeries[].name",
+          "type": "string"
+        },
+        {
+          "description": "ISO 8601 local time of the reading, with the gage's UTC offset.",
+          "name": "value.timeSeries[].values[].value[].dateTime",
+          "type": "string"
+        },
+        {
+          "description": "Discharge in cubic feet per second, serialised as a string. -999999 is the documented no-data sentinel, not a reading.",
+          "digit_test_applicable": "applicable",
+          "name": "value.timeSeries[].values[].value[].value",
+          "type": "string"
+        },
+        {
+          "description": "Qualifier codes. P marks provisional data that USGS may revise; A marks approved data.",
+          "name": "value.timeSeries[].values[].value[].qualifiers",
+          "type": "array"
+        },
+        {
+          "description": "Human-readable gage name.",
+          "name": "value.timeSeries[].sourceInfo.siteName",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Human-readable parameter description.",
+          "name": "value.timeSeries[].variable.variableDescription",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "value.timeSeries[0].values[0].value[0].dateTime",
+      "id": "usgs-water",
+      "kind": "rest",
+      "license": {
+        "attribution_required": false,
+        "attribution_text": "Data courtesy of the U.S. Geological Survey.",
+        "name": "U.S. Government Work (USGS Copyright Policy)",
+        "notes": "The cited page states that USGS-authored or produced data and information are considered to be in the U.S. Public Domain. The same page carves out non-USGS photographs and graphics used with permission, which this feed contains none of.\n",
+        "redistribution_allowed": true,
+        "spdx": "public-domain",
+        "url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+      },
+      "name": "USGS Water Services Instantaneous Values",
+      "quirks": [
+        "Numeric readings are serialised as strings, so a value comparison is a string comparison unless the consumer casts.",
+        "Missing readings are the sentinel -999999, and variable.noDataValue states it. Treating the sentinel as a measurement produces a large negative discharge.",
+        "Provisional data carry the P qualifier and USGS revises them without notice; the provisional disclaimer is carried in the response's own queryInfo note block.",
+        "The JSON is a JAXB serialisation of WaterML, so the payload carries Java type wrappers (declaredType, globalScope) that are noise rather than data.",
+        "dateTime is local to the gage with an offset, not UTC. Comparing two gages without normalising compares two clocks."
+      ],
+      "refresh_cadence": "15m",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Public domain covers USGS-authored material only. The instantaneous values service is USGS-authored; the clearance does not extend to third-party imagery elsewhere on usgs.gov.",
+          "Credit is requested rather than required: Credit: U.S. Geological Survey, Department of the Interior/USGS."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    },
+    {
+      "auth": {
+        "notes": "No API key.",
+        "type": "none"
+      },
+      "cost": {
+        "model": "free",
+        "pricing_url": "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation",
+        "rate_limit": "No published numeric limit. The World Bank asks for reasonable use and supports paging."
+      },
+      "declared_incentive": {
+        "assessed_on": "2026-09-15",
+        "kind": "reputational",
+        "notes": "The numbers are reported by the countries they describe, and headline aggregates carry political weight at home and consequences in negotiation. The World Bank harmonises but does not independently measure. Declared so that a revision to a back year is read as what it is, a restatement by the reporting country, rather than as an error by the publisher.\n",
+        "who_benefits": [
+          "national governments supplying the figures",
+          "institutions whose lending terms reference the indicators"
+        ]
+      },
+      "declared_lineage": {
+        "notes": "The World Bank compiles indicators from national statistical offices and other international agencies and harmonises them. Every figure here originates with a member country, which is why the incentive below sits with the country rather than with the Bank, and why a disagreement with a national source is expected rather than alarming.\n",
+        "role": "derivative"
+      },
+      "denominator": {
+        "confirmed_url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+        "notes": "Population is published by the same API as SP.POP.TOTL for the same countries and years, so per-capita figures are computable within one source rather than assembled across two with mismatched vintages. Declared present on that basis; adding the population indicator as a second endpoint is the work that makes it usable.\n",
+        "present": true,
+        "source_id": "world-bank"
+      },
+      "description": "World Development Indicators time series by country and indicator, served from the World Bank Indicators API.",
+      "endpoints": [
+        {
+          "method": "GET",
+          "name": "gdp_current_usd_usa",
+          "pagination": {
+            "limit_param": "per_page",
+            "max_pages": 5,
+            "page_size": 10,
+            "style": "page"
+          },
+          "params": {
+            "format": "json",
+            "per_page": 10
+          },
+          "records": {
+            "event_time": "date",
+            "key": "date",
+            "notes": "The response is a two-element array: a paging wrapper first, the observations second. The records therefore live at index 1, and the wrapper at index 0 carries lastupdated, which moves when the World Bank republishes and is counted as a metadata-change. date is the reference year and is the only identity an observation has. Revisions here are inferred from the value, because the API exposes no per-observation revision marker even though back years are restated routinely.\n",
+            "path": "[1]"
+          },
+          "url": "https://api.worldbank.org/v2/country/USA/indicator/NY.GDP.MKTP.CD"
+        }
+      ],
+      "fields": [
+        {
+          "description": "Date the World Bank last refreshed this indicator, ISO date. The freshness of the compilation, not of the observation.",
+          "name": "[0].lastupdated",
+          "type": "string"
+        },
+        {
+          "description": "Number of observations matching the query across all pages.",
+          "digit_test_applicable": "not_applicable",
+          "name": "[0].total",
+          "type": "integer"
+        },
+        {
+          "description": "Reference year of the observation, as a string.",
+          "name": "[1][].date",
+          "type": "string"
+        },
+        {
+          "description": "Indicator value in the indicator's own unit. Null where the country did not report.",
+          "digit_test_applicable": "applicable",
+          "name": "[1][].value",
+          "type": "number"
+        },
+        {
+          "description": "ISO 3166-1 alpha-3 country code.",
+          "name": "[1][].countryiso3code",
+          "type": "string"
+        },
+        {
+          "description": "Observation status flag, usually empty. Where populated it marks estimated or provisional figures.",
+          "name": "[1][].obs_status",
+          "type": "string"
+        },
+        {
+          "description": "Human-readable indicator name.",
+          "name": "[1][].indicator.value",
+          "type": "string",
+          "untrusted": true
+        },
+        {
+          "description": "Human-readable country name.",
+          "name": "[1][].country.value",
+          "type": "string",
+          "untrusted": true
+        }
+      ],
+      "freshness_field": "[0].lastupdated",
+      "id": "world-bank",
+      "kind": "rest",
+      "license": {
+        "attribution_required": true,
+        "attribution_text": "Source: World Bank, World Development Indicators. Licensed under CC BY 4.0.",
+        "name": "Creative Commons Attribution 4.0 International",
+        "notes": "The cited page states that the World Bank applies CC BY 4.0 to datasets it produces and distributes as open data, that this allows copying, modification and distribution in any format for any purpose including commercial use, and that users must give credit and indicate changes. The same page names datasets under other terms: unit-level survey and census microdata under a research licence that forbids redistribution, some datasets under ODbL, and third-party datasets under their own terms. World Development Indicators aggregates are in the CC BY 4.0 class; nothing in this entry touches microdata.\n",
+        "redistribution_allowed": true,
+        "spdx": "CC-BY-4.0",
+        "url": "https://datacatalog.worldbank.org/public-licenses"
+      },
+      "name": "World Bank Indicators API",
+      "quirks": [
+        "The response is an array whose first element is the paging wrapper and whose second is the data; a client expecting an object gets nothing useful.",
+        "An error is returned as an array containing a message object with HTTP 200, so a failed query is a well-formed document.",
+        "date is the reference year as a string, and value is null for years a country did not report, which is different from zero and frequent.",
+        "Back years are restated without notice when a country revises its national accounts, and no field marks the restatement.",
+        "format=json must be passed explicitly; without it the API returns XML."
+      ],
+      "refresh_cadence": "quarterly",
+      "use_terms": {
+        "commercial": "allowed",
+        "conditions": [
+          "Credit must be given and changes indicated, including translations. The attribution string above satisfies this.",
+          "The CC BY 4.0 grant covers World Bank open data such as the indicator aggregates used here. Microdata under the Microdata Research License must not be redistributed, and no endpoint in this entry reaches it."
+        ],
+        "confirmed_by": "claude-opus-5",
+        "confirmed_on": "2026-09-15",
+        "confirmed_url": "https://datacatalog.worldbank.org/public-licenses",
+        "noncommercial": "allowed",
+        "redistribution": "allowed",
+        "share_alike": false
+      }
+    }
+  ],
+  "total": 26
+}

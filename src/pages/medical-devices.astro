@@ -1,0 +1,168 @@
+---
+/**
+ * /medical-devices - the first vertical page (ADR-0020 in the Trooth repo).
+ *
+ * Every licence, condition, quirk and key on this page is rendered from src/data/catalog.json,
+ * which jobs/site_data.py copies verbatim out of catalog/sources/*.yaml. The held endpoints
+ * come from registry.json with the reason each is held. Nothing about a source is typed here,
+ * so the page cannot claim terms the catalog does not.
+ *
+ * No grades of our own (H2, ADR-0014). The benchmark slot is Modafied's hotlinked emblem.
+ * Nothing on this page may describe the API in the present tense before Phase 1 ships.
+ */
+import Layout from '../layouts/Layout.astro';
+import Emblem from '../components/Emblem.astro';
+import { MODAFIED_EMBED_SRC } from '../utils/modafied';
+import { p } from '../utils/paths';
+import catalog from '../data/catalog.json';
+import registry from '../data/registry.json';
+
+const DEVICE_IDS = [
+  'openfda-device-510k',
+  'openfda-device-pma',
+  'openfda-device-classification',
+  'openfda-device-recall',
+  'openfda-device-enforcement',
+  'openfda',
+];
+const HELD_IDS = ['fda-ai-enabled-devices', 'openfda-device-udi', 'openfda-drug-event', 'openfda-drug-enforcement'];
+
+const byId = new Map((catalog.sources as any[]).map((s) => [s.id, s]));
+const sources = DEVICE_IDS.map((id) => byId.get(id)).filter(Boolean) as any[];
+
+const registryEntries = (registry.groups as any[]).flatMap((g) => g.entries ?? []);
+const held = HELD_IDS.map((id) => registryEntries.find((e: any) => e.id === id)).filter(Boolean) as any[];
+
+function keyOf(endpoint: any) {
+  const k = endpoint.records?.key;
+  return Array.isArray(k) ? k.join(' + ') : k;
+}
+---
+
+<Layout
+  title="Medical device data from FDA"
+  description="FDA's device clearances, approvals, recalls, product codes and adverse event reports: what each feed holds, how they join, the licence read from FDA's own page, and the quirks that bite."
+  activeNav="feeds"
+>
+  <section style="margin-bottom:2rem; max-width:820px;">
+    <h1 style="font-size:2.25rem; font-weight:800; margin-bottom:0.75rem;">Medical device data from FDA</h1>
+    <p style="font-size:1.1rem; color:var(--text-muted);">
+      If you are building a medical device, or software that has to get through FDA, you need the
+      regulatory record: what has been cleared, under which product code, what has been recalled,
+      and what has gone wrong in the field. FDA publishes all of it for free through openFDA. It is
+      spread across separate endpoints with different date formats, different identifiers and
+      different refresh schedules, and nothing tells you how they fit together.
+    </p>
+    <p style="color:var(--text-muted); margin-top:0.75rem;">
+      This page covers {sources.length} of those feeds. For each one the licence was read from
+      FDA's own page, the record key was checked against live responses, and the quirks were
+      found by fetching it. Trooth will route to them once the API ships (Phase 1); until then
+      this page is the guide. Grades, where they exist, are Modafied's and are shown as Modafied
+      publishes them.
+    </p>
+  </section>
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">How the feeds join</h2>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Identifier</th><th>Looks like</th><th>Links</th></tr></thead>
+        <tbody>
+          <tr><td>Product code</td><td><code>FMK</code></td><td>Classification is the table of codes. 510(k), PMA, recalls and adverse event reports all carry one.</td></tr>
+          <tr><td>510(k) number</td><td><code>K262526</code></td><td>Clearance records, and the <code>k_numbers</code> list on a recall.</td></tr>
+          <tr><td>PMA number + supplement</td><td><code>P150031 / S084</code></td><td>Approval records. Most rows are supplements, not new devices.</td></tr>
+          <tr><td>Recall number</td><td><code>Z-3133-2026</code></td><td>Called <code>product_res_number</code> in recalls and <code>recall_number</code> in enforcement reports. Same value.</td></tr>
+          <tr><td>MDR report key</td><td><code>mdr_report_key</code></td><td>Adverse event reports. <code>report_number</code> is not unique; follow-ups reuse it.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--text-muted); margin-top:0.75rem; max-width:820px;">
+      One timing detail worth knowing before you build on recalls: a recall reaches the recall
+      endpoint before it reaches the enforcement report. On 2026-09-22, Z-3139-2026 and
+      Z-3140-2026 were in the first and not yet in the second.
+    </p>
+  </section>
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:1rem;">The feeds</h2>
+    <div style="display:grid; gap:1rem;">
+      {sources.map((s) => (
+        <article class="card" id={s.id} style="padding:1.25rem 1.4rem;">
+          <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:flex-start;">
+            <div style="max-width:640px;">
+              <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.35rem;">{s.name}</h3>
+              <p style="color:var(--text-muted); font-size:0.95rem;">{s.description}</p>
+            </div>
+            <Emblem subjectId={s.id} size="sm" />
+          </div>
+
+          <dl style="display:grid; grid-template-columns:max-content 1fr; gap:0.35rem 1rem; margin-top:1rem; font-size:0.9rem;">
+            <dt style="color:var(--text-subtle);">Endpoint</dt>
+            <dd>{s.endpoints.map((e: any) => <code style="margin-right:0.5rem;">{e.url}</code>)}</dd>
+            <dt style="color:var(--text-subtle);">Record key</dt>
+            <dd>{s.endpoints.map((e: any) => <code style="margin-right:0.5rem;">{keyOf(e)}</code>)}</dd>
+            <dt style="color:var(--text-subtle);">Refreshes</dt>
+            <dd>{s.refresh_cadence}</dd>
+            <dt style="color:var(--text-subtle);">Licence</dt>
+            <dd>
+              <a href={s.license.url}>{s.license.spdx}</a>, read from FDA's page on {s.use_terms.confirmed_on}.
+              Commercial use: {s.use_terms.commercial}. Redistribution: {s.use_terms.redistribution}.
+            </dd>
+            <dt style="color:var(--text-subtle);">Rate limit</dt>
+            <dd>{s.cost.rate_limit}</dd>
+          </dl>
+
+          {s.quirks?.length > 0 && (
+            <details style="margin-top:0.9rem;" open>
+              <summary style="cursor:pointer; font-weight:600;">Quirks ({s.quirks.length})</summary>
+              <ul style="margin:0.5rem 0 0 1.1rem; color:var(--text-muted); font-size:0.9rem; line-height:1.55;">
+                {s.quirks.map((q: string) => <li>{q}</li>)}
+              </ul>
+            </details>
+          )}
+
+          <details style="margin-top:0.6rem;">
+            <summary style="cursor:pointer; font-weight:600;">Licence conditions</summary>
+            <ul style="margin:0.5rem 0 0 1.1rem; color:var(--text-muted); font-size:0.9rem; line-height:1.55;">
+              {s.use_terms.conditions.map((c: string) => <li>{c}</li>)}
+            </ul>
+          </details>
+
+          {s.denominator?.notes && (
+            <details style="margin-top:0.6rem;">
+              <summary style="cursor:pointer; font-weight:600;">What a count here does not tell you</summary>
+              <p style="margin-top:0.5rem; color:var(--text-muted); font-size:0.9rem; line-height:1.55;">{s.denominator.notes}</p>
+            </details>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-bottom:2.5rem; max-width:820px;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Not listed yet, and why</h2>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">
+      These are useful and are not in the catalog, each for a stated reason. A feed with an open
+      licence question stays out until the question is answered.
+    </p>
+    <div style="display:grid; gap:0.75rem;">
+      {held.map((e) => (
+        <div class="card" style="padding:0.9rem 1.1rem;">
+          <div style="font-weight:700;"><a href={e.homepage}>{e.name}</a></div>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.3rem;">{e.why}</p>
+          <p style="color:var(--text-subtle); font-size:0.85rem; margin-top:0.3rem;">{e.notes}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-bottom:2rem; max-width:820px;">
+    <p style="color:var(--text-subtle); font-size:0.85rem;">
+      FDA's notice, carried with every one of these feeds: do not rely on openFDA to make decisions
+      regarding medical care; results are unvalidated. Nothing here implies FDA endorsement.
+      See the <a href={p('/feeds')}>full feed directory</a> for every other source.
+    </p>
+  </section>
+
+  <script is:inline defer src={MODAFIED_EMBED_SRC}></script>
+</Layout>

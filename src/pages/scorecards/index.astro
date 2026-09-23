@@ -17,7 +17,7 @@ import registry from '../../data/registry.json';
  */
 
 const sources = (registry.groups as any[])
-  .flatMap((g) => g.entries)
+  .flatMap((g) => g.entries ?? [])
   .filter((e: any) => e.status === 'promoted')
   .sort((a: any, b: any) => a.name.localeCompare(b.name));
 ---

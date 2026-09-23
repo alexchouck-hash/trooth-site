@@ -28,7 +28,7 @@ const emblemIndex = readJson(path.resolve('./public/emblems/index.json'));
 const modafied = emblemIndex?.modafied ?? null;
 
 const sources = (registry.groups as any[])
-  .flatMap((g) => g.entries)
+  .flatMap((g) => g.entries ?? [])
   .filter((e: any) => e.status === 'promoted')
   .sort((a: any, b: any) => a.name.localeCompare(b.name));
 
