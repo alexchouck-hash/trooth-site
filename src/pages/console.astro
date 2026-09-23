@@ -28,7 +28,7 @@ const emblemIndex = readJson(path.join(EMBLEM_DIR, 'index.json')) ?? { counts: {
 const manifest = readJson(path.join(SCORECARD_DIR, 'manifest.json'));
 
 const sources = (registry.groups as any[])
-  .flatMap((g) => g.entries)
+  .flatMap((g) => g.entries ?? [])
   .filter((e: any) => e.status === 'promoted')
   .map((e: any) => ({
     entry: e,

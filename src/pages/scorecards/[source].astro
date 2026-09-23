@@ -12,7 +12,7 @@ import registry from '../../data/registry.json';
 
 export async function getStaticPaths() {
   const entries = (registry.groups as any[])
-    .flatMap((g) => g.entries)
+    .flatMap((g) => g.entries ?? [])
     .filter((e: any) => e.status === 'promoted');
   return entries.map((entry: any) => ({
     params: { source: entry.id },
