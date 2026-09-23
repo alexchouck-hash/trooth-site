@@ -1,0 +1,382 @@
+{
+  "bounties": [
+    {
+      "acceptance_criteria": {
+        "anchor_source_id": "sec-edgar-rss",
+        "max_latency_lag_seconds": 60,
+        "max_null_rate_pct": 0.5,
+        "min_modafied_cleanliness_grade": "A"
+      },
+      "bounty_id": "bounty-001-sec-form-4",
+      "buyer": {
+        "contact": "alex@trooth.io",
+        "name": "Alex Houck",
+        "profile_id": "alex-001"
+      },
+      "cadence": "realtime_stream",
+      "description": "Live capture of all SEC EDGAR Form 4 filings (statement of changes in beneficial ownership). Must extract reporting owner, issuer CIK, ticker, transaction date, transaction code (P/S), shares transacted, price per share, and post-transaction ownership count.\n",
+      "domain": "financial-regulatory",
+      "escrow": {
+        "amount": 250.0,
+        "currency": "USD",
+        "expiration_date": "2026-12-31",
+        "payout_type": "one_time"
+      },
+      "schema_version": "0.1",
+      "status": "open",
+      "target_schema": {
+        "properties": {
+          "filer_cik": {
+            "type": "string"
+          },
+          "issuer_ticker": {
+            "type": "string"
+          },
+          "price_per_share": {
+            "type": "number"
+          },
+          "shares": {
+            "type": "number"
+          },
+          "shares_owned_following": {
+            "type": "number"
+          },
+          "transaction_date": {
+            "format": "date",
+            "type": "string"
+          },
+          "transaction_type": {
+            "enum": [
+              "P",
+              "S",
+              "M",
+              "A",
+              "D"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "filer_cik",
+          "issuer_ticker",
+          "transaction_date",
+          "transaction_type",
+          "shares",
+          "price_per_share"
+        ],
+        "type": "object"
+      },
+      "title": "Real-Time SEC Form 4 Insider Trading Ingest & Envelope Stream"
+    },
+    {
+      "acceptance_criteria": {
+        "anchor_source_id": "uma-oracle-subgraph",
+        "max_null_rate_pct": 0.1,
+        "min_modafied_cleanliness_grade": "A"
+      },
+      "bounty_id": "bounty-002-polymarket-resolved",
+      "buyer": {
+        "contact": "bounties@calibrationcap.com",
+        "name": "Calibration Capital",
+        "profile_id": "calib-cap"
+      },
+      "cadence": "one_time_archive",
+      "description": "Historical archive of all resolved Polymarket prediction market contracts from 2024 to present. Must include settlement transaction hash, final resolution status (YES/NO/INVALID), resolution timestamp, source oracle URL (e.g. UMA), and final pre-resolution tick price.\n",
+      "domain": "prediction-markets",
+      "escrow": {
+        "amount": 150.0,
+        "currency": "USD",
+        "expiration_date": "2026-11-30",
+        "payout_type": "one_time"
+      },
+      "schema_version": "0.1",
+      "status": "open",
+      "target_schema": {
+        "properties": {
+          "final_probability": {
+            "type": "number"
+          },
+          "market_slug": {
+            "type": "string"
+          },
+          "oracle_settle_time": {
+            "type": "string"
+          },
+          "resolution_outcome": {
+            "enum": [
+              "YES",
+              "NO",
+              "INVALID"
+            ],
+            "type": "string"
+          },
+          "settlement_tx": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "market_slug",
+          "resolution_outcome",
+          "settlement_tx",
+          "oracle_settle_time",
+          "final_probability"
+        ],
+        "type": "object"
+      },
+      "title": "Polymarket Historical Settled Outcomes & Resolution Evidence"
+    },
+    {
+      "acceptance_criteria": {
+        "anchor_source_id": "fda-openfda-device",
+        "max_latency_lag_seconds": 86400,
+        "max_null_rate_pct": 1.0,
+        "min_modafied_cleanliness_grade": "B"
+      },
+      "bounty_id": "bounty-003-fda-maude-adverse",
+      "buyer": {
+        "contact": "data@medtechreg.org",
+        "name": "MedTech Regulatory Partners",
+        "profile_id": "medtech-reg"
+      },
+      "cadence": "daily",
+      "description": "Standardized, deduplicated feed of FDA MAUDE medical device adverse reports. Must extract device brand name, manufacturer, suspect product code (3-letter), event date, patient outcome (death, serious injury, malfunction), and sanitized narrative summary.\n",
+      "domain": "clinical-regulatory",
+      "escrow": {
+        "amount": 400.0,
+        "currency": "USD",
+        "expiration_date": "2027-01-31",
+        "payout_type": "recurring_monthly"
+      },
+      "schema_version": "0.1",
+      "status": "open",
+      "target_schema": {
+        "properties": {
+          "date_of_event": {
+            "type": "string"
+          },
+          "event_type": {
+            "enum": [
+              "Death",
+              "Injury",
+              "Malfunction",
+              "Other"
+            ],
+            "type": "string"
+          },
+          "manufacturer_name": {
+            "type": "string"
+          },
+          "mdr_report_key": {
+            "type": "string"
+          },
+          "product_code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "mdr_report_key",
+          "product_code",
+          "manufacturer_name",
+          "event_type",
+          "date_of_event"
+        ],
+        "type": "object"
+      },
+      "title": "FDA MAUDE Medical Device Adverse Event Deduplicated Stream"
+    },
+    {
+      "acceptance_criteria": {
+        "anchor_source_id": "ecmwf-era5-cds",
+        "max_null_rate_pct": 0.05,
+        "min_modafied_cleanliness_grade": "A"
+      },
+      "bounty_id": "bounty-004-era5-weather-extremes",
+      "buyer": {
+        "contact": "feeds@agririsk.io",
+        "name": "AgriRisk Analytics",
+        "profile_id": "agri-risk"
+      },
+      "cadence": "daily",
+      "description": "High-resolution surface temperature and precipitation extremes derived from ECMWF ERA5 reanalysis data. Aggregated to 0.25-degree grid cells globally with 30-year anomaly baseline.\n",
+      "domain": "geospatial-climate",
+      "escrow": {
+        "amount": 200.0,
+        "currency": "USD",
+        "expiration_date": "2026-12-31",
+        "payout_type": "recurring_monthly"
+      },
+      "schema_version": "0.1",
+      "status": "open",
+      "target_schema": {
+        "properties": {
+          "date": {
+            "format": "date",
+            "type": "string"
+          },
+          "grid_cell_id": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "precip_total_mm": {
+            "type": "number"
+          },
+          "temp_anomaly_zscore": {
+            "type": "number"
+          },
+          "temp_max_celsius": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "grid_cell_id",
+          "latitude",
+          "longitude",
+          "date",
+          "temp_max_celsius",
+          "temp_anomaly_zscore",
+          "precip_total_mm"
+        ],
+        "type": "object"
+      },
+      "title": "ERA5 Reanalysis Daily Surface Heat & Precipitation Extremes"
+    },
+    {
+      "acceptance_criteria": {
+        "anchor_source_id": "tennis-settled-result-consensus",
+        "max_latency_lag_seconds": 60,
+        "max_null_rate_pct": 2,
+        "min_modafied_cleanliness_grade": "B"
+      },
+      "bounty_id": "bounty-005-tennis-match-feed",
+      "buyer": {
+        "name": "tennis-predict (Alex Houck)",
+        "profile_id": "tennis-predict"
+      },
+      "cadence": "realtime_stream",
+      "description": "First real bounty of the sports match data vertical (ADR-0019). A live and historical tennis match feed covering ATP, WTA, Challenger and ITF: fixtures with scheduled and actual start time, set and game scores, final result with retirement and walkover flags, match statistics (aces, double faults, serve points, first serves in and won, break points), and point-by-point where offered. The licence must allow displaying derived predictions and the underlying scores on a public commercial website; resale of the raw feed is not required. The feed agrees to be graded by Modafied on its own clock and to be listed \"unmeasured\" otherwise. Budget is a recurring monthly subscription paid to the vendor directly; Trooth carries only the envelope (pass-through, ADR-0008). Budget ceiling is under $150 a month in total.\n",
+      "domain": "sports",
+      "escrow": {
+        "amount": 100.0,
+        "currency": "USD",
+        "expiration_date": "2026-12-31",
+        "payout_type": "recurring_monthly"
+      },
+      "schema_version": "0.1",
+      "status": "open",
+      "target_schema": {
+        "properties": {
+          "actual_start": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "best_of": {
+            "enum": [
+              3,
+              5
+            ],
+            "type": "integer"
+          },
+          "ended_at": {
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "match_id": {
+            "type": "string"
+          },
+          "player1": {
+            "type": "string"
+          },
+          "player2": {
+            "type": "string"
+          },
+          "point_by_point": {
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "round": {
+            "type": "string"
+          },
+          "scheduled_start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "score": {
+            "type": "string"
+          },
+          "stats": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "status": {
+            "enum": [
+              "scheduled",
+              "live",
+              "finished",
+              "retired",
+              "walkover",
+              "cancelled"
+            ],
+            "type": "string"
+          },
+          "surface": {
+            "enum": [
+              "hard",
+              "clay",
+              "grass",
+              "carpet"
+            ],
+            "type": "string"
+          },
+          "tour": {
+            "enum": [
+              "ATP",
+              "WTA",
+              "Challenger",
+              "ITF-M",
+              "ITF-W"
+            ],
+            "type": "string"
+          },
+          "tournament": {
+            "type": "string"
+          },
+          "winner": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "match_id",
+          "tour",
+          "tournament",
+          "surface",
+          "round",
+          "player1",
+          "player2",
+          "scheduled_start",
+          "status",
+          "score"
+        ],
+        "type": "object"
+      },
+      "title": "Tennis match feed: ATP, WTA, Challenger, ITF with live scores and commercial display rights"
+    }
+  ]
+}

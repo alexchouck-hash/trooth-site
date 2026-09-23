@@ -1,0 +1,136 @@
+---
+/**
+ * /sports - tennis match data vendors, side by side (Trooth ADR-0019, ADR-0020 order 2).
+ *
+ * Every vendor row is a registry entry from registry.json; every price and terms fact is the
+ * entry's `notes`, which cites the page it was read from and the date. Nothing is typed here.
+ * The open request is bounty-005 from bounties.json.
+ *
+ * No grades (H2, ADR-0014). The benchmark column is Modafied's hotlinked emblem, and today it
+ * says "not benchmarked" for every vendor because nothing has been measured. No vendor is
+ * described as routable: none is in the catalog.
+ */
+import Layout from '../layouts/Layout.astro';
+import Emblem from '../components/Emblem.astro';
+import { MODAFIED_EMBED_SRC } from '../utils/modafied';
+import { p } from '../utils/paths';
+import registry from '../data/registry.json';
+import bountyData from '../data/bounties.json';
+
+const TENNIS_IDS = ['api-tennis', 'goalserve-tennis', 'matchstat-tennis-api', 'balldontlie', 'the-odds-api', 'sportradar-tennis'];
+const OTHER_IDS = ['mysportsfeeds', 'collegefootballdata', 'datagolf', 'mlb-statsapi', 'nhl-api', 'football-data-org'];
+
+const entries = (registry.groups as any[]).flatMap((g) => g.entries ?? []);
+const pick = (ids: string[]) => ids.map((id) => entries.find((e: any) => e.id === id)).filter(Boolean) as any[];
+const tennis = pick(TENNIS_IDS);
+const others = pick(OTHER_IDS);
+
+const bounty = (bountyData.bounties as any[]).find((b) => b.bounty_id === 'bounty-005-tennis-match-feed');
+
+const REQUEST_URL = 'https://github.com/alexchouck-hash/trooth-site/issues/new?template=request-a-source.yml';
+
+function statusLabel(e: any) {
+  if (e.status === 'blocked') return 'Enterprise only';
+  return e.license_status === 'confirmed' ? 'Terms confirmed' : 'Terms not confirmed';
+}
+---
+
+<Layout
+  title="Tennis data feeds compared"
+  description="Every self-serve tennis match data feed we could find, with prices and licence terms cited from the vendor's own pages, and who actually holds the official rights."
+  activeNav="feeds"
+>
+  <section style="margin-bottom:2rem; max-width:820px;">
+    <h1 style="font-size:2.25rem; font-weight:800; margin-bottom:0.75rem;">Tennis data feeds compared</h1>
+    <p style="font-size:1.1rem; color:var(--text-muted);">
+      If you are building a tennis model, you have to buy match data from someone, and every
+      comparison we found was written by one of the vendors. This one is not. Each price and
+      each licence fact below was read from the vendor's own page, and the page and date are
+      cited next to it. Where a vendor's terms could not be found, it says so.
+    </p>
+    <p style="color:var(--text-muted); margin-top:0.75rem;">
+      Nobody has graded these feeds yet. When Modafied measures one against settled match
+      results, its emblem appears here in Modafied's own words. Until then the emblem column
+      says "not benchmarked", which means nothing has been measured, not that anything is bad.
+    </p>
+  </section>
+
+  <section style="margin-bottom:2.5rem; max-width:820px;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Who holds the official rights</h2>
+    <p style="color:var(--text-muted);">
+      The official data is sold to enterprises, with no published price. {tennis.filter((e) => e.status === 'blocked').map((e) => e.notes)}
+      Everything self-serve below is unofficial, which matters for what you may display and
+      for how fast a feed can know a result.
+    </p>
+  </section>
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:1rem;">Tennis feeds</h2>
+    <div style="display:grid; gap:1rem;">
+      {tennis.filter((e) => e.status !== 'blocked').map((e) => (
+        <article class="card" id={e.id} style="padding:1.2rem 1.4rem;">
+          <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:flex-start;">
+            <div style="max-width:640px;">
+              <h3 style="font-size:1.15rem; font-weight:700;"><a href={e.homepage}>{e.name}</a></h3>
+              <p style="color:var(--text-subtle); font-size:0.8rem; margin-top:0.2rem;">{statusLabel(e)} · auth: {e.auth}</p>
+            </div>
+            <Emblem subjectId={e.id} size="sm" />
+          </div>
+          <p style="margin-top:0.75rem; font-size:0.95rem; line-height:1.6;">{e.notes}</p>
+          <p style="margin-top:0.5rem; color:var(--text-muted); font-size:0.9rem;"><strong>Why it is here:</strong> {e.why}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {bounty && (
+    <section style="margin-bottom:2.5rem; max-width:820px;">
+      <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Open request: {bounty.title}</h2>
+      <div class="card" style="padding:1.2rem 1.4rem;">
+        <p style="font-size:0.95rem; line-height:1.6;">{bounty.description}</p>
+        <dl style="display:grid; grid-template-columns:max-content 1fr; gap:0.35rem 1rem; margin-top:1rem; font-size:0.9rem;">
+          <dt style="color:var(--text-subtle);">Offer</dt>
+          <dd>${bounty.escrow.amount} a month, paid by the buyer to the vendor directly. Trooth holds no money.</dd>
+          <dt style="color:var(--text-subtle);">Latency wanted</dt>
+          <dd>{bounty.acceptance_criteria.max_latency_lag_seconds} seconds or less behind the match</dd>
+          <dt style="color:var(--text-subtle);">Missing values</dt>
+          <dd>{bounty.acceptance_criteria.max_null_rate_pct}% or less</dd>
+          <dt style="color:var(--text-subtle);">Open until</dt>
+          <dd>{bounty.escrow.expiration_date}</dd>
+        </dl>
+        <p style="margin-top:1rem; color:var(--text-muted); font-size:0.9rem;">
+          Vendors: answer by agreeing to be measured by Modafied. A vendor that declines is
+          listed as unmeasured, not removed.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Other sports, next in line</h2>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Feed</th><th>What we found</th></tr></thead>
+        <tbody>
+          {others.map((e) => (
+            <tr>
+              <td style="white-space:nowrap;"><a href={e.homepage}>{e.name}</a></td>
+              <td style="font-size:0.88rem;">{e.notes ?? e.why}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section style="margin-bottom:2rem; max-width:820px;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Missing a feed, or found a price that changed?</h2>
+    <p style="color:var(--text-muted);">
+      <a href={REQUEST_URL}>Open a request</a> with the vendor and a link to the page you read.
+      Every entry here needs a citation, so a link is the most useful thing you can send. See
+      the <a href={p('/feeds')}>full feed directory</a> for every other source.
+    </p>
+  </section>
+
+  <script is:inline defer src={MODAFIED_EMBED_SRC}></script>
+</Layout>
