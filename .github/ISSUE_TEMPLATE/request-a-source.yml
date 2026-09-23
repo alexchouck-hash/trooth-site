@@ -1,0 +1,24 @@
+name: Request a source
+description: A data feed Trooth should list, or a correction to one it lists.
+title: "Source: "
+labels: ["source-request"]
+body:
+  - type: input
+    id: feed
+    attributes:
+      label: Feed or vendor
+      placeholder: e.g. api-tennis.com, openFDA device/udi
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link to the page you read
+      description: Pricing, terms, or docs. Every listed fact needs a citation, so this matters most.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What you need it for, or what changed
+      description: A sentence is enough. Please do not paste API keys or anything private.
