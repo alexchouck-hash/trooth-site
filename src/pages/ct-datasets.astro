@@ -1,0 +1,184 @@
+---
+/**
+ * /ct-datasets - public CT segmentation datasets (Trooth ADR-0020, order 3).
+ *
+ * Rendered from datasets.json, which jobs/site_data.py copies verbatim from
+ * catalog/datasets/*.yaml. Every fact carries the URL it was read from; a null value means it
+ * was looked for and not found, and the page says "not found" rather than hiding the row.
+ *
+ * Linked, never hosted (ADR-0020 D4). No grades (H2, ADR-0014): the emblem slot is Modafied's,
+ * and grading datasets is a proposal to Modafied (ADR-0020 D3), not something Trooth does.
+ */
+import Layout from '../layouts/Layout.astro';
+import Emblem from '../components/Emblem.astro';
+import { MODAFIED_EMBED_SRC } from '../utils/modafied';
+import { p } from '../utils/paths';
+import datasets from '../data/datasets.json';
+
+const group = (datasets.groups as any[]).find((g) => g.category === 'ct-segmentation');
+const entries = (group?.entries ?? []) as any[];
+
+const COMMERCIAL: Record<string, string> = {
+  allowed: 'Allowed',
+  allowed_share_alike: 'Allowed, share-alike',
+  forbidden: 'Not allowed',
+  ask_owner: 'Ask the owner',
+  conflicting: 'Stated terms conflict',
+  unstated: 'No licence found',
+};
+const ACCESS: Record<string, string> = {
+  open: 'Open download',
+  registration: 'Registration',
+  data_use_agreement: 'Data use agreement',
+  credentialed: 'Credentialed',
+  mixed: 'Depends on version',
+};
+const READERS: Record<string, string> = {
+  multiple_shipped: 'Several readers, each shipped',
+  single: 'One label set',
+  not_stated: 'Not stated',
+};
+
+const commercialOk = entries.filter((e) => ['allowed', 'allowed_share_alike'].includes(e.commercial_use.value));
+const withOverlap = entries.filter((e) => e.overlap.declared_sources.length > 0);
+
+function show(v: any) {
+  return v === null || v === undefined ? 'not found' : v;
+}
+---
+
+<Layout
+  title="CT segmentation datasets"
+  description="Public CT datasets for training auto-segmentation, with the licence, commercial use, access, size and declared overlap for each, every fact cited to the page it came from."
+  activeNav="feeds"
+>
+  <section style="margin-bottom:2rem; max-width:820px;">
+    <h1 style="font-size:2.25rem; font-weight:800; margin-bottom:0.75rem;">CT segmentation datasets</h1>
+    <p style="font-size:1.1rem; color:var(--text-muted);">
+      Finding CT data to train a segmentation model is not the hard part. The hard part is
+      knowing which datasets you may use in a product, which ones reuse each other's patients,
+      and whose labels you can trust. This page answers the first two for {entries.length} widely
+      used datasets, with every fact linked to the page it was read from. Where something could
+      not be found, it says so.
+    </p>
+    <p style="color:var(--text-muted); margin-top:0.75rem;">
+      We link to the data and never host it. Nothing here says a dataset is free of identifying
+      information; check that yourself before you use it. A licence summary is not legal advice.
+    </p>
+  </section>
+
+  <section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.75rem; margin-bottom:2rem;">
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{entries.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">datasets checked</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{commercialOk.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">licence allows commercial use</div>
+    </div>
+    <div class="card" style="padding:0.9rem 1rem;">
+      <div style="font-size:1.6rem; font-weight:800;">{withOverlap.length}</div>
+      <div style="font-size:0.8rem; color:var(--text-subtle);">declare cases from other datasets</div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">At a glance</h2>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Dataset</th><th>Licence</th><th>Commercial use</th><th>Access</th><th>Cases</th><th>Readers</th></tr></thead>
+        <tbody>
+          {entries.map((e) => (
+            <tr>
+              <td><a href={`#${e.id}`}>{e.name}</a></td>
+              <td><a href={e.licence.source_url}>{show(e.licence.value)}</a></td>
+              <td>{COMMERCIAL[e.commercial_use.value]}</td>
+              <td>{ACCESS[e.access.value]}</td>
+              <td>{show(e.cases.value)}</td>
+              <td>{READERS[e.readers.value]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  {withOverlap.length > 0 && (
+    <section style="margin-bottom:2.5rem; max-width:820px;">
+      <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Watch for shared patients</h2>
+      <p style="color:var(--text-muted); margin-bottom:0.75rem;">
+        If you train on one of these and test on a dataset it draws from, the same patients can end
+        up on both sides and your test score will look better than it is. These are the overlaps
+        the datasets declare themselves; undeclared overlap is not checked.
+      </p>
+      <ul style="margin-left:1.1rem; line-height:1.7;">
+        {withOverlap.map((e) => (
+          <li><strong>{e.name}</strong> draws on {e.overlap.declared_sources.join(', ')} (<a href={e.overlap.source_url}>source</a>)</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section style="margin-bottom:2.5rem;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:1rem;">Each dataset</h2>
+    <div style="display:grid; gap:1rem;">
+      {entries.map((e) => (
+        <article class="card" id={e.id} style="padding:1.2rem 1.4rem;">
+          <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:flex-start;">
+            <h3 style="font-size:1.15rem; font-weight:700;"><a href={e.homepage}>{e.name}</a></h3>
+            <Emblem subjectId={e.id} size="sm" />
+          </div>
+          <dl style="display:grid; grid-template-columns:max-content 1fr; gap:0.35rem 1rem; margin-top:0.9rem; font-size:0.9rem;">
+            {[
+              ['Modality', { value: e.modality.join(', ') }],
+              ['Licence', e.licence],
+              ['Commercial use', { ...e.commercial_use, value: COMMERCIAL[e.commercial_use.value] }],
+              ['Access', { ...e.access, value: ACCESS[e.access.value] }],
+              ['Cases', e.cases],
+              ['Labels', e.labels],
+              ['Readers', { ...e.readers, value: READERS[e.readers.value] }],
+              ['Format', e.format],
+            ].map(([label, f]: any) => (
+              <>
+                <dt style="color:var(--text-subtle);">{label}</dt>
+                <dd>
+                  {show(f.value)}
+                  {f.note && <span style="color:var(--text-muted);"> · {f.note}</span>}
+                  {f.source_url && <> · <a href={f.source_url} style="font-size:0.8rem;">source</a></>}
+                </dd>
+              </>
+            ))}
+          </dl>
+          {e.overlap.note && (
+            <p style="margin-top:0.6rem; color:var(--text-muted); font-size:0.9rem;"><strong>Provenance:</strong> {e.overlap.note}</p>
+          )}
+          {e.caveats?.length > 0 && (
+            <ul style="margin:0.5rem 0 0 1.1rem; color:var(--text-muted); font-size:0.88rem;">
+              {e.caveats.map((c: string) => <li>{c}</li>)}
+            </ul>
+          )}
+          <p style="margin-top:0.6rem; color:var(--text-subtle); font-size:0.8rem;">Checked {e.checked_on}.</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-bottom:2rem; max-width:820px;">
+    <h2 style="font-size:1.35rem; font-weight:700; margin-bottom:0.75rem;">Grading, and what it will not claim</h2>
+    <p style="color:var(--text-muted);">
+      Modafied, which grades the sources Trooth lists, has been asked to grade datasets on things
+      a machine can check: whether the licence is clear, how hard access is, declared overlap,
+      whether every case has every label it claims, whether masks line up with images, and how
+      much scanner and site metadata is present. Label accuracy is graded only where a dataset
+      ships several readers' labels to compare, as LIDC-IDRI does. Until Modafied publishes a
+      grade, the emblem above each dataset says it has not been measured.
+    </p>
+    <p style="color:var(--text-muted); margin-top:0.75rem;">
+      Missing a dataset, or found a licence that changed?
+      <a href="https://github.com/alexchouck-hash/trooth-site/issues/new?template=request-a-source.yml">Open a request</a>
+      with a link to the page you read. See also <a href={p('/medical-devices')}>FDA device data</a>.
+    </p>
+  </section>
+
+  <script is:inline defer src={MODAFIED_EMBED_SRC}></script>
+</Layout>

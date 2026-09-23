@@ -1,0 +1,438 @@
+{
+  "groups": [
+    {
+      "category": "ct-segmentation",
+      "dataset_guide_version": "0.1",
+      "description": "Public CT datasets used to train organ and lesion auto-segmentation (ADR-0020, order 3). Linked, never hosted. Every fact was read from the URL beside it on the date given; where a fact was looked for and not found, the value is null. Commercial use is derived only from licence text that was read. Nothing here says a dataset is free of identifying information, and nothing here is a grade.\n",
+      "entries": [
+        {
+          "access": {
+            "note": "One zip on Zenodo, with a Dropbox mirror linked from the record.",
+            "source_url": "https://zenodo.org/records/10047292",
+            "value": "open"
+          },
+          "cases": {
+            "source_url": "https://zenodo.org/api/records/10047292",
+            "value": 1228
+          },
+          "caveats": [
+            "The record asks users to cite the TotalSegmentator paper."
+          ],
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "note": "CC BY 4.0 on the dataset record. The TotalSegmentator software has its own terms; this is about the data.",
+            "source_url": "https://zenodo.org/api/records/10047292",
+            "value": "allowed"
+          },
+          "format": {
+            "source_url": "https://zenodo.org/records/10047292",
+            "value": null
+          },
+          "homepage": "https://zenodo.org/records/10047292",
+          "id": "totalsegmentator-ct",
+          "labels": {
+            "source_url": "https://zenodo.org/api/records/10047292",
+            "value": "117 anatomical structures"
+          },
+          "licence": {
+            "source_url": "https://zenodo.org/api/records/10047292",
+            "value": "CC BY 4.0"
+          },
+          "modality": [
+            "CT"
+          ],
+          "name": "TotalSegmentator CT dataset (v2)",
+          "overlap": {
+            "declared_sources": [],
+            "note": "Described as randomly sampled from clinical routine.",
+            "source_url": "https://zenodo.org/api/records/10047292"
+          },
+          "readers": {
+            "source_url": "https://zenodo.org/records/10047292",
+            "value": "not_stated"
+          }
+        },
+        {
+          "access": {
+            "note": "Public S3 bucket, no account.",
+            "source_url": "https://registry.opendata.aws/msd/",
+            "value": "open"
+          },
+          "cases": {
+            "note": "Per-task counts were found only on a third-party mirror, so they are not listed.",
+            "source_url": "https://registry.opendata.aws/msd/",
+            "value": null
+          },
+          "caveats": [
+            "The registry entry gives a required attribution line for the S3 copy."
+          ],
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "note": "Allowed under either licence, but share-alike applies only under the one named in text. Which one governs is unresolved.",
+            "source_url": "https://registry.opendata.aws/msd/",
+            "value": "conflicting"
+          },
+          "format": {
+            "source_url": "https://registry.opendata.aws/msd/",
+            "value": null
+          },
+          "homepage": "https://registry.opendata.aws/msd/",
+          "id": "msd-ct",
+          "labels": {
+            "note": "Per-task labels were found only on a third-party mirror.",
+            "source_url": "https://registry.opendata.aws/msd/",
+            "value": null
+          },
+          "licence": {
+            "note": "The AWS registry entry names one licence and links another. medicaldecathlon.com failed a TLS check on 2026-09-22, so the owner's own page was not read.",
+            "source_url": "https://registry.opendata.aws/msd/",
+            "value": "CC-BY-SA 4.0 International (as written); the link beside it points to CC BY 4.0"
+          },
+          "modality": [
+            "CT",
+            "MRI"
+          ],
+          "name": "Medical Segmentation Decathlon (CT tasks)",
+          "overlap": {
+            "declared_sources": [],
+            "note": "AbdomenCT-1K names MSD as one of its sources; see that entry.",
+            "source_url": "https://registry.opendata.aws/msd/"
+          },
+          "readers": {
+            "source_url": "https://registry.opendata.aws/msd/",
+            "value": "not_stated"
+          }
+        },
+        {
+          "access": {
+            "note": "Downloaded by the repository's script.",
+            "source_url": "https://github.com/neheller/kits23",
+            "value": "open"
+          },
+          "cases": {
+            "note": "489 training, 110 test.",
+            "source_url": "https://kits-challenge.org/kits23/",
+            "value": 599
+          },
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "note": "Non-commercial licence; the README says to contact the organiser for commercial use.",
+            "source_url": "https://github.com/neheller/kits23",
+            "value": "ask_owner"
+          },
+          "format": {
+            "source_url": "https://kits-challenge.org/kits23/",
+            "value": null
+          },
+          "homepage": "https://kits-challenge.org/kits23/",
+          "id": "kits23",
+          "labels": {
+            "source_url": "https://kits-challenge.org/kits23/",
+            "value": "Kidney, tumour, cyst"
+          },
+          "licence": {
+            "source_url": "https://github.com/neheller/kits23",
+            "value": "CC BY-NC-SA"
+          },
+          "modality": [
+            "CT"
+          ],
+          "name": "KiTS23 kidney tumour segmentation",
+          "overlap": {
+            "declared_sources": [],
+            "note": "Patients treated 2010 to 2022 at M Health Fairview. KiTS19, an earlier round, is a declared source of AbdomenCT-1K.",
+            "source_url": "https://kits-challenge.org/kits23/"
+          },
+          "readers": {
+            "source_url": "https://kits-challenge.org/kits23/",
+            "value": "not_stated"
+          }
+        },
+        {
+          "access": {
+            "note": "The challenge page describes registration; the Zenodo record is an open download.",
+            "source_url": "https://zenodo.org/records/7155725",
+            "value": "open"
+          },
+          "cases": {
+            "note": "500 CT and 100 MRI.",
+            "source_url": "https://zenodo.org/api/records/7155725",
+            "value": 500
+          },
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "source_url": "https://zenodo.org/api/records/7155725",
+            "value": "allowed"
+          },
+          "format": {
+            "source_url": "https://zenodo.org/records/7155725",
+            "value": null
+          },
+          "homepage": "https://amos22.grand-challenge.org/",
+          "id": "amos22",
+          "labels": {
+            "source_url": "https://zenodo.org/api/records/7155725",
+            "value": "15 abdominal organs"
+          },
+          "licence": {
+            "source_url": "https://zenodo.org/api/records/7155725",
+            "value": "CC BY 4.0"
+          },
+          "modality": [
+            "CT",
+            "MRI"
+          ],
+          "name": "AMOS 2022 abdominal multi-organ",
+          "overlap": {
+            "declared_sources": [],
+            "note": "Described as multi-centre and multi-vendor.",
+            "source_url": "https://zenodo.org/api/records/7155725"
+          },
+          "readers": {
+            "source_url": "https://amos22.grand-challenge.org/",
+            "value": "not_stated"
+          }
+        },
+        {
+          "access": {
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K",
+            "value": "registration"
+          },
+          "cases": {
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K",
+            "value": "1000+"
+          },
+          "caveats": [
+            "The pseudo tumour labels mark possible tumours and are not confirmed."
+          ],
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K",
+            "value": "unstated"
+          },
+          "format": {
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K",
+            "value": null
+          },
+          "homepage": "https://github.com/JunMa11/AbdomenCT-1K",
+          "id": "abdomenct-1k",
+          "labels": {
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K",
+            "value": "Liver, kidney, spleen, pancreas; a 13-organ extension on a subset; pseudo tumour labels on others"
+          },
+          "licence": {
+            "note": "No data licence found. The repository code is Apache-2.0.",
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K",
+            "value": null
+          },
+          "modality": [
+            "CT"
+          ],
+          "name": "AbdomenCT-1K",
+          "overlap": {
+            "declared_sources": [
+              "NIH Pancreas-CT",
+              "LiTS",
+              "Medical Segmentation Decathlon",
+              "KiTS19"
+            ],
+            "note": "Named in the README's acknowledgment as sources of the abdominal CT. Training on this and testing on any of those risks the same patients on both sides.",
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K"
+          },
+          "readers": {
+            "source_url": "https://github.com/JunMa11/AbdomenCT-1K",
+            "value": "not_stated"
+          }
+        },
+        {
+          "access": {
+            "note": "Download through the TCIA Data Retriever.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+            "value": "open"
+          },
+          "cases": {
+            "note": "Patients; 1,308 series.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+            "value": 1010
+          },
+          "caveats": [
+            "TCIA asks for the dataset DOI to be cited."
+          ],
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+            "value": "allowed"
+          },
+          "format": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+            "value": "DICOM images, XML annotations"
+          },
+          "homepage": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+          "id": "lidc-idri",
+          "labels": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+            "value": "Lung nodules and non-nodules"
+          },
+          "licence": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+            "value": "CC BY 3.0"
+          },
+          "modality": [
+            "CT"
+          ],
+          "name": "LIDC-IDRI lung nodules",
+          "overlap": {
+            "declared_sources": [],
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/"
+          },
+          "readers": {
+            "note": "Four thoracic radiologists, blinded then unblinded reads, each reader's marks in the XML. The one listed dataset where label agreement can be anchored.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/lidc-idri/",
+            "value": "multiple_shipped"
+          }
+        },
+        {
+          "access": {
+            "note": "Version 2 open; version 1 needs controlled-access approval.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+            "value": "mixed"
+          },
+          "cases": {
+            "note": "Subjects; 1,014 studies.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+            "value": 900
+          },
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "note": "Version 2 only.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+            "value": "allowed"
+          },
+          "format": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+            "value": "DICOM"
+          },
+          "homepage": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+          "id": "fdg-pet-ct-lesions",
+          "labels": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+            "value": "FDG-avid lesion masks"
+          },
+          "licence": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+            "value": "CC BY 4.0 for version 2 (defaced images); version 1 under NIH controlled access"
+          },
+          "modality": [
+            "PET/CT"
+          ],
+          "name": "FDG-PET-CT-Lesions (autoPET)",
+          "overlap": {
+            "declared_sources": [],
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/"
+          },
+          "readers": {
+            "note": "One label set per case.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/",
+            "value": "single"
+          }
+        },
+        {
+          "access": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+            "value": "open"
+          },
+          "cases": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+            "value": 140
+          },
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+            "value": "allowed"
+          },
+          "format": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+            "value": null
+          },
+          "homepage": "https://www.cancerimagingarchive.net/collection/ct-org/",
+          "id": "ct-org",
+          "labels": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+            "value": "Lung, bones, liver, kidneys, bladder, and brain in some cases"
+          },
+          "licence": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+            "value": "CC BY 3.0"
+          },
+          "modality": [
+            "CT"
+          ],
+          "name": "CT-ORG multi-organ",
+          "overlap": {
+            "declared_sources": [
+              "LiTS"
+            ],
+            "note": "The collection page says many images were borrowed from LiTS. AbdomenCT-1K also draws on LiTS.",
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/"
+          },
+          "readers": {
+            "source_url": "https://www.cancerimagingarchive.net/collection/ct-org/",
+            "value": "not_stated"
+          }
+        },
+        {
+          "access": {
+            "note": "The earlier academic application process is struck through in the README; a password is now published.",
+            "source_url": "https://github.com/HiLab-git/WORD",
+            "value": "open"
+          },
+          "cases": {
+            "source_url": "https://github.com/HiLab-git/WORD",
+            "value": null
+          },
+          "checked_by": "claude-opus-5-5",
+          "checked_on": "2026-09-22",
+          "commercial_use": {
+            "note": "The README licenses the dataset under GPL-3.0, which permits commercial use, and in the next line says it is not for commercial use.",
+            "source_url": "https://github.com/HiLab-git/WORD",
+            "value": "conflicting"
+          },
+          "format": {
+            "source_url": "https://github.com/HiLab-git/WORD",
+            "value": null
+          },
+          "homepage": "https://github.com/HiLab-git/WORD",
+          "id": "word",
+          "labels": {
+            "source_url": "https://github.com/HiLab-git/WORD",
+            "value": null
+          },
+          "licence": {
+            "source_url": "https://github.com/HiLab-git/WORD",
+            "value": "GNU GPL v3.0 (as stated for the dataset)"
+          },
+          "modality": [
+            "CT"
+          ],
+          "name": "WORD whole abdominal organ dataset",
+          "overlap": {
+            "declared_sources": [],
+            "source_url": "https://github.com/HiLab-git/WORD"
+          },
+          "readers": {
+            "source_url": "https://github.com/HiLab-git/WORD",
+            "value": "not_stated"
+          }
+        }
+      ]
+    }
+  ]
+}
